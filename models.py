@@ -1,14 +1,17 @@
-from sqlalchemy import Column, Integer, String, Text, Date
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+import datetime
 
-Base = declarative_base()
+
+class Base(DeclarativeBase):
+    pass
 
 
 class Book(Base):
     __tablename__ = "books"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    description = Column(Text)
-    pub_date = Column(String)
-    author = Column(String)
-    image = Column(String)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str]
+    description: Mapped[str]
+    pub_date: Mapped[datetime.datetime]
+    author: Mapped[str]
+    image: Mapped[str]
