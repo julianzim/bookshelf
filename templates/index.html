@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My bookshelf</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+    <h1>My books</h1>
+    <ul>
+        {% for book in books %}
+            <li>
+                <h2>{{ book.name }}</h2>
+                <img src="/static/images/{{ book.image }}" alt="Book Cover" style="width:100px;height:auto;">
+                <p>{{ book.description }}</p>
+                <p><strong>Published on:</strong> {{ book.pub_date }}</p>
+                <p><strong>Author:</strong> {{ book.author }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
