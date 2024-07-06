@@ -2,23 +2,24 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from database import create_tables, delete_tables, new_session
-from src.books.models import Book
+from sqlalchemy import select
+
+from src.database import async_session
+from src.queries import reset_database
+from src.books.models import Books
 
 from contextlib import asynccontextmanager
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await delete_tables()
-    print("База очищена")
-    await create_tables()
-    print("База готова к работе")
+    await reset_database()
     yield
     print("Выключение")
 
 
 app = FastAPI(
+    title="Blog of Yassya Lil"
     # lifespan=lifespan
 )
 
@@ -29,8 +30,10 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
-    async with new_session() as session:
-        books = await session.query(Book).all()
+    async with async_session() as session:
+        query= select(Books)
+        result = await session.execute(query)
+        books = result.scalars().all()
     return templates.TemplateResponse("index.html", {"request": request, "books": books})
 
 

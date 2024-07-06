@@ -1,7 +1,7 @@
 import asyncio
 
-from database import async_engine, async_session, Base
-from models import Books
+from src.database import async_engine, async_session, Base
+from src.books.models import Books
 from datetime import date
 
 
@@ -26,8 +26,10 @@ async def add_books():
         await session.commit()
         print("Данные добавлены.")
 
-async def main():
-    await reset_database()
-    await add_books()
 
-asyncio.run(main())
+# async def main():
+#     await reset_database()
+#     await add_books()
+
+
+# asyncio.run(main())
