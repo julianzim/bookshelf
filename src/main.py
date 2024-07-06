@@ -1,10 +1,9 @@
-from fastapi import FastAPI, Request, Depends
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-from sqlalchemy.orm import Session
-from database import get_db, create_tables, delete_tables, new_session
-from models import Book
+from database import create_tables, delete_tables, new_session
+from src.books.models import Book
 
 from contextlib import asynccontextmanager
 
@@ -19,7 +18,9 @@ async def lifespan(app: FastAPI):
     print("Выключение")
 
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(
+    # lifespan=lifespan
+)
 
 templates = Jinja2Templates(directory="templates")
 
