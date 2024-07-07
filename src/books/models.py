@@ -8,7 +8,7 @@ class Books(Base):
     __tablename__ = "books"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str]
+    title: Mapped[str]
     description: Mapped[str]
     pub_date: Mapped[datetime.datetime]
     author: Mapped[str]
