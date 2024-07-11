@@ -21,7 +21,11 @@ async def get_all_books(request: Request, session: AsyncSession = Depends(get_as
     return templates.TemplateResponse("books.html", {"request": request, "books": books})
 
 
+<<<<<<< HEAD
 @router.get(path="/{book_id}")
+=======
+@router.get(path="/book_{book_id}")
+>>>>>>> 47546e81d245f309bd7bb2f633c0922015742879
 async def get_book(book_id: int, session: AsyncSession = Depends(get_async_session)):
     query = select(Books).where(Books.id == book_id)
     result = await session.execute(query)
