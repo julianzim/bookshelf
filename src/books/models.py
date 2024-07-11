@@ -9,7 +9,8 @@ class Books(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str]
-    description: Mapped[str]
+    short_description: Mapped[str]
+    full_description: Mapped[str]
     pub_date: Mapped[datetime.datetime]
     author: Mapped[str]
     image: Mapped[str]

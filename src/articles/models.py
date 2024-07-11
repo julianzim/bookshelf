@@ -9,5 +9,6 @@ class Articles(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str]
-    text: Mapped[str]
+    short_description: Mapped[str]
+    full_description: Mapped[str]
     created_at: Mapped[datetime.datetime]
