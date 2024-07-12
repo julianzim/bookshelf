@@ -9,17 +9,67 @@ from datetime import date
 
 
 example_books = [
-    Books(title="My friend Joy", description="Description 1", pub_date=date(2023, 12, 17), author="Yassya Lil", image="JoyCover.jpg"),
-    Books(title="My friend Sadness", description="Description 2", pub_date=date(2024, 4, 25), author="Yassya Lil", image="SadnessCover.jpg"),
-    Books(title="My friend Anger", description="Description 3", pub_date=date(2024, 4, 1), author="Yassya Lil", image="AngerCover.jpg"),
-    Books(title="My friend Fear", description="Description 4", pub_date=date(2024, 2, 2), author="Yassya Lil", image="FearCover.jpg"),
-    Books(title="My friend Envy", description="Description 5", pub_date=date(2024, 3, 14), author="Yassya Lil", image="EnvyCover.png")
+    Books(
+        title="My friend Joy",
+        short_description="Description 1",
+        full_description="Description 1",
+        pub_date=date(2023, 12, 17),
+        author="Yassya Lil",
+        image="JoyCover.jpg"
+    ),
+    Books(
+        title="My friend Sadness",
+        short_description="Description 2",
+        full_description="Description 1",
+        pub_date=date(2024, 4, 25),
+        author="Yassya Lil",
+        image="SadnessCover.jpg"
+    ),
+    Books(
+        title="My friend Anger",
+        short_description="Description 3",
+        full_description="Description 1",
+        pub_date=date(2024, 4, 1),
+        author="Yassya Lil",
+        image="AngerCover.jpg"
+    ),
+    Books(
+        title="My friend Fear",
+        short_description="Description 4",
+        full_description="Description 1",
+        pub_date=date(2024, 2, 2),
+        author="Yassya Lil",
+        image="FearCover.jpg"
+    ),
+    Books(
+        title="My friend Envy",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="EnvyCover.png"
+    )
 ]
 
 example_articles = [
-    Articles(title="Article 1", text="Article description 1", created_at=date(2024, 1, 10)),
-    Articles(title="Article 2", text="Article description 2", created_at=date(2024, 3, 15)),
-    Articles(title="Article 3", text="Article description 3", created_at=date(2024, 5, 20))
+    Articles(
+        title="Article 1",
+        short_description="Article description 1",
+        full_description="Article description 1",
+        created_at=date(2024, 1, 10)
+    ),
+    Articles(
+        title="Article 2",
+        short_description="Article description 2",
+        full_description="Article description 1",
+        created_at=date(2024, 3, 15)
+    ),
+    Articles(
+        title="Article 3",
+        short_description="Article description 3",
+        full_description="Article description 1",
+        created_at=date(2024, 5, 20)
+    )
 ]
 
 
