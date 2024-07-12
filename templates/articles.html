@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Книги</title>
+    <title>Статьи</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Книги</h1>
+        <h1>Статьи</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
@@ -17,17 +17,8 @@
         <a href="about.html">Об авторе</a>
     </nav>
     <div class="content">
-        <ul>
-            {% for book in books %}
-                <li>
-                    <h2>{{ book.name }}</h2>
-                    <img src="/static/images/{{ book.image }}" alt="Book Cover" style="width:100px;height:auto;">
-                    <p>{{ book.description }}</p>
-                    <p><strong>Published on:</strong> {{ book.pub_date }}</p>
-                    <p><strong>Author:</strong> {{ book.author }}</p>
-                </li>
-            {% endfor %}
-        </ul>
+        <h2>Мои статьи</h2>
+        <p>Описание статей, написанных автором.</p>
     </div>
     <footer>
         <p>&copy; 2023 Мой сайт. Все права защищены.</p>
