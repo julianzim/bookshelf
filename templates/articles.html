@@ -3,22 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Статьи</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Мои статьи</title>
+<!--    <link rel="stylesheet" href="style.css">-->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Статьи</h1>
+        <h1>Мои статьи</h1>
     </header>
     <nav>
-        <a href="index.html">Главная</a>
-        <a href="books.html">Книги</a>
-        <a href="articles.html">Статьи</a>
-        <a href="about.html">Об авторе</a>
+        <a href="/">Главная</a>
+        <a href="/books">Книги</a>
+        <a href="/articles">Статьи</a>
+        <a href="/about">Об авторе</a>
     </nav>
     <div class="content">
-        <h2>Мои статьи</h2>
-        <p>Описание статей, написанных автором.</p>
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.short_description }}</p>
+                    <p><strong>Published on:</strong> {{ article.created_at }}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
     <footer>
         <p>&copy; 2023 Мой сайт. Все права защищены.</p>
