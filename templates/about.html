@@ -1,35 +1,12 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Об авторе</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="\">Главная</a>
-            <a href="\books">Книги</a>
-            <a href="\articles">Статьи</a>
-            <a href="\about">Об авторе</a>
-        </nav>
-    </header>
-    <div class="content">
-        <h2>Обо мне</h2>
-        <p>Информация об авторе сайта.</p>
-        <section id="video">
-            <h2>Видео с YouTube</h2>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </section>
+{% extends "base.html" %}
 
+{% block content %}
+<h2>Обо мне</h2>
+<p>Информация об авторе сайта.</p>
+<section id="video">
+    <h2>Видео с YouTube</h2>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
-    </footer>
-</body>
-</html>
+</section>
+{% endblock %}

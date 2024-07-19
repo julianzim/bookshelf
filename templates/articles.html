@@ -1,35 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои статьи</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="\">Главная</a>
-            <a href="\books">Книги</a>
-            <a href="\articles">Статьи</a>
-            <a href="\about">Об авторе</a>
-        </nav>
-    </header>
-    <div class="content">
-        <ul>
-            {% for article in articles %}
-                <li>
-                    <h2>{{ article.title }}</h2>
-                    <p>{{ article.short_description }}</p>
-                    <p><strong>Published on:</strong> {{ article.created_at }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for article in articles %}
+        <li>
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.short_description }}</p>
+            <p><strong>Published on:</strong> {{ article.created_at }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

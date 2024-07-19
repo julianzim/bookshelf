@@ -1,37 +1,15 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мои книги</title>
-    <link rel="stylesheet" href="/static/styles.css">
-    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="\">Главная</a>
-            <a href="\books">Книги</a>
-            <a href="\articles">Статьи</a>
-            <a href="\about">Об авторе</a>
-        </nav>
-    </header>
-    <div class="content">
-        <ul>
-            {% for book in books %}
-                <li>
-                    <h2>{{ book.title }}</h2>
-                    <img src="/static/images/{{ book.image }}" alt="Book Cover" style="width:100px;height:auto;">
-                    <p>{{ book.short_description }}</p>
-                    <p><strong>Published on:</strong> {{ book.pub_date }}</p>
-                    <p><strong>Author:</strong> {{ book.author }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
-    <footer>
-        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
-    </footer>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for book in books %}
+        <li>
+            <h2>{{ book.title }}</h2>
+            <img src="/static/images/{{ book.image }}" alt="Book Cover" style="width:100px;height:auto;">
+            <p>{{ book.short_description }}</p>
+            <p><strong>Published on:</strong> {{ book.pub_date }}</p>
+            <p><strong>Author:</strong> {{ book.author }}</p>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
