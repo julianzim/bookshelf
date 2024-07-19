@@ -1,24 +1,23 @@
-from fastapi import APIRouter, Depends, Request
-from starlette.responses import HTMLResponse
-from starlette.templating import Jinja2Templates
+from fastapi import APIRouter, Depends
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from typing import List
+
 from src.database import get_async_session
 from src.books.models import Books
+from src.books.schemas import GetAllBooks
 
 router = APIRouter(prefix="/books", tags=["Books"])
 
-templates = Jinja2Templates(directory="templates")
 
-
-@router.get(path="/", response_class=HTMLResponse)
-async def get_all_books(request: Request, session: AsyncSession = Depends(get_async_session)):
+@router.get(path="", response_model=List[GetAllBooks])
+async def get_all_books(session: AsyncSession = Depends(get_async_session)):
     query = select(Books)
     result = await session.execute(query)
     books = result.scalars().all()
-    return templates.TemplateResponse("books.html", {"request": request, "books": books})
+    return books
 
 
 @router.get(path="/{book_name}")
