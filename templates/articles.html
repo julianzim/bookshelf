@@ -8,14 +8,13 @@
 </head>
 <body>
     <header>
-        <h1>Мои статьи</h1>
+        <nav>
+            <a href="\">Главная</a>
+            <a href="\books">Книги</a>
+            <a href="\articles">Статьи</a>
+            <a href="\about">Об авторе</a>
+        </nav>
     </header>
-    <nav>
-        <a href="/">Главная</a>
-        <a href="/books">Книги</a>
-        <a href="/articles">Статьи</a>
-        <a href="/about">Об авторе</a>
-    </nav>
     <div class="content">
         <ul>
             {% for article in articles %}
