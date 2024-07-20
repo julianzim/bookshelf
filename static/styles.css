@@ -1,11 +1,12 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Comic Sans MS', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #f1f1f1;
 }
 header {
-    background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);
+    /*background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);*/
+    background-color: white;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -13,15 +14,44 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    display: flex; /* Добавлено для flex-разметки */
+    align-items: center; /* Центрирует элементы по вертикали */
+    justify-content: center; /* Распределяет пространство между элементами */
+    padding: 0 20px; /* Добавлено для отступов */
 }
+
+.logo-container {
+    position: absolute;
+    left: 30px;  /* Или другой отступ от левого края */
+    display: flex;  /* Flex для горизонтального расположения логотипа и названия сайта */
+    align-items: center;  /* Центрирование элементов по вертикали */
+}
+
+#logo {
+    width: 50px;  /* Установите нужный размер */
+    height: auto; /* Автоматический подбор высоты для пропорциональности */
+    vertical-align: middle; /* Выровнять по вертикали со среднелинейным текстом */
+    margin-right: 10px;  /* Отступ справа от изображения логотипа */
+}
+
+.site-name {
+    font-family: 'Comic Sans MS', sans-serif;  /* Замените на любой другой красивый шрифт */
+    font-size: 28px;  /* Увеличенный размер шрифта */
+    font-weight: bold;  /* Жирный шрифт */
+    color: #333;  /* Цвет текста */
+}
+
 nav {
     text-align: center;
-    margin: 30px 0;
+    width: 100%; /* Обеспечивает центрирование навигации */
+    margin-right: 30px;
 }
+
 nav a {
-    margin: 0 20px;
+    margin: 0 40px;
     text-decoration: none;
-    color: black;
+    color: #333;
+    font-size: 18px;
     font-weight: bold;
 }
 nav a:hover {
@@ -32,13 +62,58 @@ nav a:hover {
     margin: 100px auto;
     padding: 20px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
     border-radius: 8px;
 }
+
+.content-title {
+    text-align: center; /* Центрирование заголовка */
+    font-size: 26px; /* Размер заголовка */
+    font-weight: bold;
+    color: #333;
+}
+
+.content-divider {
+    border: 0;
+    height: 3px;
+    background: #333; /* Цвет линии */
+    margin: 20px 0; /* Отступы вокруг линии */
+}
+
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.book-item {
+    width: calc(40% - 20px); /* Вычитает отступы, чтобы 5 книг поместились в один ряд */
+    margin: 5px;
+    text-align: center;
+}
+
+.book-cover {
+    width: 100%;
+    height: auto;
+}
+
+.book-title {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.book-title:hover {
+    text-decoration: underline;
+}
+
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #f1f1f1;
+    background-color: #e5e5e5;
 }
 
 
