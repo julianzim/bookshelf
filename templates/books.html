@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<ul>
+<h1 class="content-title">Мои эмоции - мои друзья</h1>
+<hr class="content-divider">
+<div class="book-grid">
     {% for book in books %}
-        <li>
-            <h2>{{ book.title }}</h2>
-            <img src="/static/images/{{ book.image }}" alt="Book Cover" style="width:100px;height:auto;">
-            <p>{{ book.short_description }}</p>
-            <p><strong>Published on:</strong> {{ book.pub_date }}</p>
-            <p><strong>Author:</strong> {{ book.author }}</p>
-        </li>
+        <div class="book-item">
+            <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
+            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+        </div>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}

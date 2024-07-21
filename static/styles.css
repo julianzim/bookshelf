@@ -80,19 +80,51 @@ nav a:hover {
     margin: 20px 0; /* Отступы вокруг линии */
 }
 
+.book-carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.book-grid-wrapper {
+    overflow: hidden;
+}
+
 .book-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
+.book-grid-in-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+}
+
 .book-item {
-    width: calc(40% - 20px); /* Вычитает отступы, чтобы 5 книг поместились в один ряд */
-    margin: 5px;
+    width: 15%; /* Задаем ширину в процентах для 5 книг в ряд */
+    flex-shrink: 0;
+    margin: 10px;
+    text-align: center;
+}
+
+.book-item-in-wrapper {
+    width: calc((100% - 80px) / 5);
+    flex-shrink: 0;
+    margin: 0 10px;
     text-align: center;
 }
 
 .book-cover {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+}
+
+.book-cover-in-wrapper {
     width: 100%;
     height: auto;
 }
@@ -108,6 +140,36 @@ nav a:hover {
 
 .book-title:hover {
     text-decoration: underline;
+}
+
+.scroll-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-button.left {
+    left: 0px;
+}
+
+.scroll-button.right {
+    right: 0;
+}
+
+.scroll-button:disabled {
+    opacity: 0;
 }
 
 footer {

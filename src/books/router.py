@@ -9,10 +9,10 @@ from src.database import get_async_session
 from src.books.models import Books
 from src.books.schemas import GetAllBooks
 
-router = APIRouter(tags=["Books"])
+router = APIRouter(prefix="/books", tags=["Books"])
 
 
-@router.get(path="/", response_model=List[GetAllBooks])
+@router.get(path="", response_model=List[GetAllBooks])
 async def get_all_books(session: AsyncSession = Depends(get_async_session)):
     query = select(Books)
     result = await session.execute(query)
