@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="content-title">{{ book.title }}</h1>
+<hr class="content-divider">
+<div class="book-detail">
+    <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover_details">
+    <p>
+        {{ book.full_description }}
+    </p>
+</div>
+{% endblock %}

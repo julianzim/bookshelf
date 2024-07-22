@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Request
 from starlette.templating import Jinja2Templates
 
-from src.books.router import get_all_books
+from src.books.router import get_all_books, get_book
 from src.articles.router import get_all_articles
 
 
@@ -25,6 +25,11 @@ async def get_about(request: Request):
 @router.get("/books")
 async def get_about(request: Request, books=Depends(get_all_books)):
     return templates.TemplateResponse("books.html", {"request": request, "books": books})
+
+
+@router.get("/books/{book_name}")
+async def get_about(request: Request, book=Depends(get_book)):
+    return templates.TemplateResponse("book_details.html", {"request": request, "book": book})
 
 
 @router.get("/articles")

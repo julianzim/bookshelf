@@ -22,7 +22,7 @@ async def get_all_books(session: AsyncSession = Depends(get_async_session)):
 
 @router.get(path="/{book_name}")
 async def get_book(book_name: str, session: AsyncSession = Depends(get_async_session)):
-    book_name_split = " ".join(book_name.split("_"))
+    # book_name_split = " ".join(book_name.split("_"))
     query = select(Books).where(Books.title == book_name)
     result = await session.execute(query)
     book = result.scalars().all()
