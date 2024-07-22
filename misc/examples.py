@@ -84,6 +84,46 @@ example_books = [
         pub_date=date(2024, 3, 14),
         author="Yassya Lil",
         image="GuiltCover.png"
+    ),
+    Books(
+        title="My friend Loneliness",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="LonelinessCover.png"
+    ),
+    Books(
+        title="My friend Shyness",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="ShynessCover.png"
+    ),
+    Books(
+        title="My friend Indifference",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="IndifferenceCover.png"
+    ),
+    Books(
+        title="My friend Helplessness",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="HelplessnessCover.png"
+    ),
+    Books(
+        title="My friend Boredom",
+        short_description="Description 5",
+        full_description="Description 1",
+        pub_date=date(2024, 3, 14),
+        author="Yassya Lil",
+        image="BoredomCover.png"
     )
 ]
 
