@@ -28,7 +28,7 @@ header {
 }
 
 #logo {
-    width: 50px;  /* Установите нужный размер */
+    width: 65px;  /* Установите нужный размер */
     height: auto; /* Автоматический подбор высоты для пропорциональности */
     vertical-align: middle; /* Выровнять по вертикали со среднелинейным текстом */
     margin-right: 10px;  /* Отступ справа от изображения логотипа */
@@ -84,7 +84,7 @@ nav a:hover {
     position: relative;
     display: flex;
     align-items: center;
-    overflow: hidden;
+    /*overflow: hidden;*/
     width: 100%;
 }
 
@@ -112,9 +112,10 @@ nav a:hover {
 }
 
 .book-item-in-wrapper {
-    width: calc((100% - 80px) / 5);
+    width: calc((100% - 100px) / 5);
     flex-shrink: 0;
-    margin: 0 10px;
+    padding: 0 10px;
+    /*margin: 0 10px;*/
     text-align: center;
 }
 
@@ -142,13 +143,33 @@ nav a:hover {
     text-decoration: underline;
 }
 
+
+
+.scroll-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    z-index: 90;
+    background-color: rgba(255, 255, 255, 0);
+    /*cursor: pointer;*/
+}
+
+.scroll-zone.left {
+    left: 0px; /* Сделаем отступ, чтобы не перекрывать кнопку */
+}
+
+.scroll-zone.right {
+    right: 0px; /* Сделаем отступ, чтобы не перекрывать кнопку */
+}
+
 .scroll-button {
     background: none;
     border: none;
     font-size: 24px;
     cursor: pointer;
     position: absolute;
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
     z-index: 100;
     background-color: rgba(255, 255, 255, 0.8);
@@ -165,7 +186,7 @@ nav a:hover {
 }
 
 .scroll-button.right {
-    right: 0;
+    right: 0px;
 }
 
 .scroll-button:disabled {

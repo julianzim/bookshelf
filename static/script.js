@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    const bookItemWidth = document.querySelector('.book-item-in-wrapper').offsetWidth + 20; // Ширина элемента + отступы
+    const bookItemWidth = document.querySelector('.book-item-in-wrapper').offsetWidth * 5; // Ширина элемента + отступы
     console.log("Book item width: ", bookItemWidth);
     let scrollAmount = 0;
 
