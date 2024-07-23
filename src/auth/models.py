@@ -7,7 +7,7 @@ from src.database import Base
 
 
 class Role(Base):
-    __tablename__ = "role"
+    __tablename__ = "roles"
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
@@ -15,7 +15,7 @@ class Role(Base):
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
     email = Column(String, nullable=False)

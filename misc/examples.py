@@ -147,3 +147,8 @@ example_articles = [
         created_at=date(2024, 5, 20)
     )
 ]
+
+'''
+insert into roles values (1, 'user', null), (2, 'admin', null)
+'''
+
