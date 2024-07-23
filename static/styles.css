@@ -130,6 +130,11 @@ nav a:hover {
     height: auto;
 }
 
+.book-cover-details {
+    width: 30%;
+    height: auto;
+}
+
 .book-title {
     display: block;
     margin-top: 10px;
