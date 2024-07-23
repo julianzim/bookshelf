@@ -1,9 +1,14 @@
+/* BODY */
 body {
     font-family: 'Comic Sans MS', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f1f1f1;
 }
+
+
+
+/* HEADER */
 header {
     /*background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);*/
     background-color: white;
@@ -14,49 +19,59 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
-    display: flex; /* Добавлено для flex-разметки */
-    align-items: center; /* Центрирует элементы по вертикали */
+    display: flex;
+    align-items: center;
     justify-content: center; /* Распределяет пространство между элементами */
-    padding: 0 20px; /* Добавлено для отступов */
+    padding: 0 20px;
 }
 
-.logo-container {
-    position: absolute;
-    left: 30px;  /* Или другой отступ от левого края */
-    display: flex;  /* Flex для горизонтального расположения логотипа и названия сайта */
-    align-items: center;  /* Центрирование элементов по вертикали */
-}
 
-#logo {
-    width: 65px;  /* Установите нужный размер */
-    height: auto; /* Автоматический подбор высоты для пропорциональности */
-    vertical-align: middle; /* Выровнять по вертикали со среднелинейным текстом */
-    margin-right: 10px;  /* Отступ справа от изображения логотипа */
-}
 
-.site-name {
-    font-family: 'Comic Sans MS', sans-serif;  /* Замените на любой другой красивый шрифт */
-    font-size: 28px;  /* Увеличенный размер шрифта */
-    font-weight: bold;  /* Жирный шрифт */
-    color: #333;  /* Цвет текста */
-}
+    /* LOGO and SITE NAME*/
+    .logo-container {
+        position: absolute;
+        left: 30px;
+        display: flex;
+        align-items: center;
+    }
 
-nav {
-    text-align: center;
-    width: 100%; /* Обеспечивает центрирование навигации */
-    margin-right: 30px;
-}
+    #logo {
+        width: 65px;
+        height: auto;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
 
-nav a {
-    margin: 0 40px;
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-}
-nav a:hover {
-    text-decoration: underline;
-}
+    .site-name {
+        font-family: 'Comic Sans MS', sans-serif;
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+    }
+
+
+
+    /* NAVIGATION */
+    nav {
+        text-align: center;
+        width: 100%;
+        margin-right: 30px;
+    }
+
+    nav a {
+        margin: 0 40px;
+        text-decoration: none;
+        color: #333;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    nav a:hover {
+        text-decoration: underline;
+    }
+
+
+
+/* CONTENT */
 .content {
     max-width: 1000px;
     margin: 100px auto;
@@ -67,8 +82,8 @@ nav a:hover {
 }
 
 .content-title {
-    text-align: center; /* Центрирование заголовка */
-    font-size: 26px; /* Размер заголовка */
+    text-align: center;
+    font-size: 26px;
     font-weight: bold;
     color: #333;
 }
@@ -76,128 +91,141 @@ nav a:hover {
 .content-divider {
     border: 0;
     height: 3px;
-    background: #333; /* Цвет линии */
-    margin: 20px 0; /* Отступы вокруг линии */
-}
-
-.book-carousel {
-    position: relative;
-    display: flex;
-    align-items: center;
-    /*overflow: hidden;*/
-    width: 100%;
-}
-
-.book-grid-wrapper {
-    overflow: hidden;
-}
-
-.book-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.book-grid-in-wrapper {
-    display: flex;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-}
-
-.book-item {
-    width: 15%; /* Задаем ширину в процентах для 5 книг в ряд */
-    flex-shrink: 0;
-    margin: 10px;
-    text-align: center;
-}
-
-.book-item-in-wrapper {
-    width: calc((100% - 100px) / 5);
-    flex-shrink: 0;
-    padding: 0 10px;
-    /*margin: 0 10px;*/
-    text-align: center;
-}
-
-.book-cover {
-    width: 100%;
-    height: auto;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
-}
-
-.book-cover-in-wrapper {
-    width: 100%;
-    height: auto;
-}
-
-.book-cover-details {
-    width: 30%;
-    height: auto;
-}
-
-.book-title {
-    display: block;
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-}
-
-.book-title:hover {
-    text-decoration: underline;
+    background: #333;
+    margin: 20px 0;
 }
 
 
 
-.scroll-zone {
-    position: absolute;
-    top: 0;
-    bottom: 30px;
-    width: 300px;
-    z-index: 90;
-    background-color: rgba(255, 255, 255, 0.0);
-    /*cursor: pointer;*/
-}
+        /* BOOKS CAROUSEL on main page */
+        .book-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            /*overflow: hidden;*/
+            width: 100%;
+        }
 
-.scroll-zone.left {
-    left: 0px; /* Сделаем отступ, чтобы не перекрывать кнопку */
-}
+        .book-grid-wrapper {
+            overflow: hidden;
+        }
 
-.scroll-zone.right {
-    right: 0px; /* Сделаем отступ, чтобы не перекрывать кнопку */
-}
+        .book-grid-in-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
 
-.scroll-button {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
-    z-index: 100;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .book-item-in-wrapper {
+            width: calc((100% - 100px) / 5);
+            flex-shrink: 0;
+            padding: 0 10px;
+            /*margin: 0 10px;*/
+            text-align: center;
+        }
 
-.scroll-button.left {
-    left: 0px;
-}
+        .book-cover-in-wrapper {
+            width: 100%;
+            height: auto;
+        }
 
-.scroll-button.right {
-    right: 0px;
-}
+        .book-cover {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+        }
 
-.scroll-button:disabled {
-    opacity: 0;
-}
 
+
+        /* BOOK GRID on books page */
+        .book-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .book-item {
+            width: 15%;
+            flex-shrink: 0;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .book-cover-details {
+            width: 30%;
+            height: auto;
+        }
+
+        .book-title {
+            display: block;
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .book-title:hover {
+            text-decoration: underline;
+        }
+
+
+
+        /* SCROLL ZONE */
+        .scroll-zone {
+            position: absolute;
+            top: 0;
+            bottom: 47px;
+            width: 300px;
+            z-index: 90;
+            background-color: rgba(255, 255, 255, 0.0);
+            /*cursor: pointer;*/
+        }
+
+        .scroll-zone.left {
+            left: 0px;
+        }
+
+        .scroll-zone.right {
+            right: 0px;
+        }
+
+
+
+        /* SCROLL BUTTON */
+        .scroll-button {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .scroll-button.left {
+            left: 0px;
+        }
+
+        .scroll-button.right {
+            right: 0px;
+        }
+
+        .scroll-button:disabled {
+            opacity: 0;
+        }
+
+
+
+/* FOOTER */
 footer {
     text-align: center;
     padding: 10px;
