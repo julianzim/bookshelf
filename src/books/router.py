@@ -25,5 +25,5 @@ async def get_book(book_name: str, session: AsyncSession = Depends(get_async_ses
     # book_name_split = " ".join(book_name.split("_"))
     query = select(Books).where(Books.title == book_name)
     result = await session.execute(query)
-    book = result.scalars().all()
+    book = result.scalars().one()
     return book

@@ -23,15 +23,15 @@ async def get_about(request: Request):
 
 
 @router.get("/books")
-async def get_about(request: Request, books=Depends(get_all_books)):
+async def get_books(request: Request, books=Depends(get_all_books)):
     return templates.TemplateResponse("books.html", {"request": request, "books": books})
 
 
 @router.get("/books/{book_name}")
-async def get_about(request: Request, book=Depends(get_book)):
+async def get_book_detail(request: Request, book=Depends(get_book)):
     return templates.TemplateResponse("book_details.html", {"request": request, "book": book})
 
 
 @router.get("/articles")
-async def get_about(request: Request, articles=Depends(get_all_articles)):
+async def get_articles(request: Request, articles=Depends(get_all_articles)):
     return templates.TemplateResponse("articles.html", {"request": request, "articles": articles})
