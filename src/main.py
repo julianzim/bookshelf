@@ -6,7 +6,7 @@ from src.articles.router import router as router_articles
 from src.pages.router import router as router_pages
 
 
-app = FastAPI(title="Blog of Yassya Lil")
+app = FastAPI(title="Yassya Lil")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
