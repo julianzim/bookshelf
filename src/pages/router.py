@@ -5,7 +5,6 @@ from src.books.router import get_all_books, get_book
 from src.articles.router import get_all_articles
 
 
-
 router = APIRouter(
     tags=["Pages"]
 )
@@ -37,6 +36,6 @@ async def get_articles(request: Request, articles=Depends(get_all_articles)):
     return templates.TemplateResponse("articles.html", {"request": request, "articles": articles})
 
 
-@router.get("/auth")
+@router.get("/auth/register")
 async def get_registration(request: Request):
     return templates.TemplateResponse("registration.html", {"request": request})

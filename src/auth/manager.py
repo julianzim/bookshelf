@@ -1,6 +1,6 @@
 from typing import Optional
 
-from fastapi import Depends, Request
+from fastapi import Depends, Request, HTTPException
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
 
 from src.auth.models import User
@@ -21,6 +21,9 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         safe: bool = False,
         request: Optional[Request] = None,
     ) -> models.UP:
+        # if user_create.password != user_create.confirm_password:
+        #     raise HTTPException(status_code=400, detail="Passwords do not match")
+
         await self.validate_password(user_create.password, user_create)
 
         existing_user = await self.user_db.get_by_email(user_create.email)

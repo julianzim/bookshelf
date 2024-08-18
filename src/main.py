@@ -20,14 +20,13 @@ app.include_router(
     prefix="/auth",
     tags=["Auth"],
 )
-
 app.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
     tags=["Auth"],
 )
 
-# if __name__ == "__main__":
-#     import uvicorn
-#
-#     uvicorn.run(app, host="0.0.0.0", port=8000)
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="127.0.0.1", port=8000)
