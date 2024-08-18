@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/" class="logo-link">
+                <img src="/static/logo.ico" alt="Logo" id="logo">
+            </a>
+            <a href="/" class="site-name-link">
+                <span class="site-name">Yassya Lil</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/articles">Статьи</a>
+            <a href="/about">Об авторе</a>
+        </nav>
+        <a href="/auth/login" class="login-button">Log In</a>
+    </header>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2023 Мой сайт. Все права защищены.</p>
+    </footer>
+
+</body>
+</html>

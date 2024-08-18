@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой сайт</title>
+    <link rel="stylesheet" href="/static/styles_auth.css">
+    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/" class="logo-link">
+                <img src="/static/logo.ico" alt="Logo" id="logo">
+            </a>
+            <a href="/" class="site-name-link">
+                <span class="site-name">Yassya Lil</span>
+            </a>
+        </div>
+        <nav>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/articles">Статьи</a>
+            <a href="/about">Об авторе</a>
+        </nav>
+        <a href="/auth/login" class="login-button">Log In</a>
+    </header>
+    <div class="container">
+        <h1>Register</h1>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error" id="email-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-strength" id="password-strength"></div>
+            </div>
+            <div class="form-group">
+                <label for="repeat-password">Repeat Password</label>
+                <input type="password" id="repeat-password" name="repeat_password" required>
+                <div class="error" id="repeat-password-error"></div>
+            </div>
+            <button type="submit" class="submit-button">Register</button>
+        </form>
+        <div class="redirect">
+            Already have an account? <a href="/login">Login here</a>
+        </div>
+    </div>
+
+    <script>
+        // Example JavaScript to handle form validation and password strength display
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const repeatPassword = document.getElementById('repeat-password').value;
+
+            // Clear previous errors
+            document.getElementById('email-error').textContent = '';
+            document.getElementById('repeat-password-error').textContent = '';
+            document.getElementById('password-strength').textContent = '';
+
+            // Example simple validation
+            if (password !== repeatPassword) {
+                document.getElementById('repeat-password-error').textContent = 'Passwords do not match';
+                return;
+            }
+
+            // You can add more validation and password strength check here
+            // ...
+
+            // Submit form data via fetch or any other method
+            console.log('Form submitted with:', { email, password });
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strength = getPasswordStrength(password); // Example function
+
+            document.getElementById('password-strength').textContent = strength;
+        });
+
+        function getPasswordStrength(password) {
+            // Example password strength function
+            if (password.length < 6) return 'Weak';
+            if (password.length < 12) return 'Medium';
+            return 'Strong';
+        }
+    </script>
+</body>
+</html>

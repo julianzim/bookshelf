@@ -39,3 +39,8 @@ async def get_articles(request: Request, articles=Depends(get_all_articles)):
 @router.get("/auth/register")
 async def get_registration(request: Request):
     return templates.TemplateResponse("registration.html", {"request": request})
+
+
+@router.get("/auth/login")
+async def get_registration(request: Request):
+    return templates.TemplateResponse("test.html", {"request": request})
