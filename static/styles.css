@@ -63,7 +63,7 @@ header {
         justify-content: center;
         /*justify-content: space-around;*/
         flex-grow: 1;
-        margin-right: 250px;
+        /*margin-right: 200px;*/
     }
 
     nav a {
@@ -75,6 +75,24 @@ header {
     }
     nav a:hover {
         text-decoration: underline;
+    }
+
+    .login-button {
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        color: white;
+        background-color: #333;
+        border-radius: 25px; /* Делает края овальными */
+        text-decoration: none; /* Убирает подчеркивание */
+        text-align: center;
+        font-weight: bold;
+        margin-right: 50px; /* Выровнено по левому краю страницы */
+        cursor: pointer;
+    }
+
+    .login-button:hover {
+        background-color: darkblue; /* Изменение цвета кнопки при наведении */
     }
 
 

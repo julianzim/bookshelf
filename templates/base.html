@@ -11,19 +11,20 @@
 <body>
     <header>
         <div class="logo-container">
-            <a href="\" class="logo-link">
+            <a href="/" class="logo-link">
                 <img src="/static/logo.ico" alt="Logo" id="logo">
             </a>
-            <a href="\" class="site-name-link">
+            <a href="/" class="site-name-link">
                 <span class="site-name">Yassya Lil</span>
             </a>
         </div>
         <nav>
-            <a href="\">Главная</a>
-            <a href="\books">Книги</a>
-            <a href="\articles">Статьи</a>
-            <a href="\about">Об авторе</a>
+            <a href="/">Главная</a>
+            <a href="/books">Книги</a>
+            <a href="/articles">Статьи</a>
+            <a href="/about">Об авторе</a>
         </nav>
+        <a href="/auth/login" class="login-button">Log In</a>
     </header>
     <div class="content">
         {% block content %}{% endblock %}
