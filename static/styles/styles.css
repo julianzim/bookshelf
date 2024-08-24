@@ -22,7 +22,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between; /* Распределяет пространство между элементами */
-    padding: 0 20px;
 }
 
 
@@ -31,6 +30,7 @@ header {
     .logo-container {
         display: flex;
         align-items: center;
+        margin-left: 30px;
     }
 
     #logo {
@@ -87,12 +87,29 @@ header {
         text-decoration: none; /* Убирает подчеркивание */
         text-align: center;
         font-weight: bold;
-        margin-right: 50px; /* Выровнено по левому краю страницы */
+        margin-right: 30px; /* Выровнено по левому краю страницы */
         cursor: pointer;
     }
 
     .login-button:hover {
         background-color: darkblue; /* Изменение цвета кнопки при наведении */
+    }
+
+    .register-button {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .register-button:hover {
+        text-decoration: underline;
     }
 
 

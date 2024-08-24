@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "pages/base.html" %}
 
 {% block content %}
 <ul>
@@ -6,7 +6,7 @@
         <li>
             <h2>{{ article.title }}</h2>
             <p>{{ article.short_description }}</p>
-            <p><strong>Published on:</strong> {{ article.created_at }}</p>
+            <p><strong>Published at:</strong> {{ article.created_at }}</p>
         </li>
     {% endfor %}
 </ul>
