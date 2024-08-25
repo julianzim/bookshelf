@@ -1,7 +1,8 @@
 from typing import Optional
 
-from fastapi import Depends, Request, HTTPException
+from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
+from fastapi.responses import Response, RedirectResponse
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
@@ -13,7 +14,24 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     verification_token_secret = SECRET_AUTH
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
-        print(f"User {user.id} has registered.")
+        print(f"User {user.id} has registered.")        # TODO
+        # if request:
+        #     # Create a redirect response to the login page
+        #     response = RedirectResponse(url="/auth/login", status_code=302)
+        #     return response
+
+    async def on_after_login(
+        self,
+        user: models.UP,
+        request: Optional[Request] = None,
+        response: Optional[Response] = None,
+    ) -> None:
+        print(f"User {user.id} {user.username} has login.")     # TODO
+        # if response:
+        #     # Create a redirect response to the home page
+        #     redirect_response = RedirectResponse(url="/", status_code=204)
+        #     # Attach the redirect response to the current response object
+        #     response.headers.update(redirect_response.headers)
 
     async def create(
         self,
@@ -21,6 +39,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         safe: bool = False,
         request: Optional[Request] = None,
     ) -> models.UP:
+        # TODO
         # if user_create.password != user_create.confirm_password:
         #     raise HTTPException(status_code=400, detail="Passwords do not match")
 

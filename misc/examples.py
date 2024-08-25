@@ -1,5 +1,6 @@
 from src.books.models import Books
 from src.articles.models import Articles
+from src.auth.models import Role
 
 from datetime import date
 
@@ -145,6 +146,19 @@ example_articles = [
         short_description="Article description 3",
         full_description="Article description 1",
         created_at=date(2024, 5, 20)
+    )
+]
+
+roles = [
+    Role(
+        id=1,
+        name='user',
+        permissions=None
+    ),
+    Role(
+        id=2,
+        name='admin',
+        permissions=None
     )
 ]
 
