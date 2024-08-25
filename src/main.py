@@ -6,9 +6,9 @@ from src.auth.schemas import UserCreate, UserRead
 from src.books.router import router as router_books
 from src.articles.router import router as router_articles
 from src.pages.router import router as router_pages
+from src.queries import reset_database
 
-
-app = FastAPI(title="Yassya Lil")
+app = FastAPI(title="Yassya Lil", lifespan=reset_database)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
