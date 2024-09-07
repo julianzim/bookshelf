@@ -63,26 +63,28 @@ header {
     nav {
         display: flex;
         justify-content: center;
-        /*justify-content: space-around;*/
         flex-grow: 1;
-        /*margin-right: 200px;*/
     }
 
     nav a {
+        display: flex;
         margin: 0 3%;
         text-decoration: none;
         color: #333;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
-    }
-    nav a:hover {
-        text-decoration: underline;
+        align-items: center;
     }
 
     .icon {
-        width: 35px;
+        width: 45px;
         height: auto;
         vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .nav-text:hover {
+        text-decoration: underline;
     }
 
     .login-button {
