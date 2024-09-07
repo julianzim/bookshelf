@@ -3,7 +3,8 @@ body {
     font-family: 'Comic Sans MS', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f1f1f1;
+    /*background-color: #f1f1f1;*/
+
 }
 
 
@@ -11,14 +12,15 @@ body {
 /* HEADER */
 header {
     /*background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);*/
-    background-color: white;
+    /*background-color: white;*/
+    background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
     text-align: center;
     position: fixed;
     width: 100%;
-    height: 75px;
+    height: 80px;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    /*box-shadow: 0 5px 10px rgba(0, 0, 0, .15);*/
     display: flex;
     align-items: center;
     justify-content: space-between; /* Распределяет пространство между элементами */
@@ -113,11 +115,47 @@ header {
     }
 
 
+/* BACKGROUND */
+
+.background {
+    min-height: 100vh;
+    display: flex;
+    background-image: url('../images/backgrounds/Home.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 80px;
+    background-attachment: fixed;
+}
+
+#home.background {
+    background-image: url('../images/backgrounds/Home.png');
+}
+
+#books.background {
+    background-image: url('../images/backgrounds/Books.png');
+}
+
+#book-details.background {
+    background-image: url('../images/backgrounds/Book_details.jpg');
+}
+
+#articles.background {
+    background-image: url('../images/backgrounds/Blog.png');
+}
+
+#about.background {
+    background-image: url('../images/backgrounds/About.png');
+}
+
+
+
+
 
 /* CONTENT */
 .content {
-    max-width: 1000px;
-    margin: 100px auto;
+    height: auto;
+    max-width: 900px;
+    margin: 350px auto 100px auto;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
@@ -163,7 +201,6 @@ header {
             width: calc((100% - 100px) / 5);
             flex-shrink: 0;
             padding: 0 10px;
-            /*margin: 0 10px;*/
             text-align: center;
         }
 
@@ -192,7 +229,19 @@ header {
             flex-shrink: 0;
             margin: 10px;
             text-align: center;
+            /*overflow: hidden; /* Убирает возможность прокрутки */
+            /*transition: box-shadow 0.3s ease; /* Плавный переход для тени */
         }
+
+        /*.book-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }*/
+
+        /*.book-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }*/
 
         .book-cover-details {
             width: 30%;
