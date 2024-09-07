@@ -4,10 +4,7 @@ body {
     background-color: #f1f1f1;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+
 }
 
 
@@ -15,18 +12,18 @@ body {
 /* HEADER */
 header {
     /*background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);*/
-    background-color: white;
+    /*background-color: white;*/
+    /*box-shadow: 0 5px 10px rgba(0, 0, 0, .15);*/
+    background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
     text-align: center;
     position: fixed;
     width: 100%;
-    height: 75px;
+    height: 80px;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Распределяет пространство между элементами */
-    /*padding: 0 20px;*/
+    justify-content: space-between;
 }
 
 
@@ -66,19 +63,27 @@ header {
     nav {
         display: flex;
         justify-content: center;
-        /*justify-content: space-around;*/
         flex-grow: 1;
-        /*margin-right: 200px;*/
     }
 
     nav a {
+        display: flex;
         margin: 0 3%;
         text-decoration: none;
         color: #333;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: bold;
+        align-items: center;
     }
-    nav a:hover {
+
+    .icon {
+        width: 45px;
+        height: auto;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .nav-text:hover {
         text-decoration: underline;
     }
 
@@ -88,19 +93,55 @@ header {
         font-size: 16px;
         color: white;
         background-color: #333;
-        border-radius: 25px; /* Делает края овальными */
-        text-decoration: none; /* Убирает подчеркивание */
+        border-radius: 25px;
+        text-decoration: none;
         text-align: center;
         font-weight: bold;
-        margin-right: 30px; /* Выровнено по левому краю страницы */
+        margin-right: 30px;
         cursor: pointer;
     }
 
     .login-button:hover {
-        background-color: darkblue; /* Изменение цвета кнопки при наведении */
+        background-color: darkblue;
+    }
+
+    .register-button {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        display: inline-block;
+        padding: 8px 16px;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .register-button:hover {
+        text-decoration: underline;
     }
 
 
+/* BACKGROUND */
+
+.background {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 80px;
+    background-attachment: fixed;
+}
+
+#login.background {
+    background-image: url('../images/backgrounds/Signin_Signup.jpg');
+}
+
+#register.background {
+    background-image: url('../images/backgrounds/Signin_Signup.jpg');
+}
 
 
 .auth-container {
@@ -111,6 +152,7 @@ header {
     width: 100%;
     max-width: 400px;
     box-sizing: border-box;
+    margin-top: 100px;
 }
 
 h1 {

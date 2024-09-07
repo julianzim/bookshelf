@@ -19,12 +19,29 @@
             </a>
         </div>
         <nav>
-            <a href="/">Главная</a>
-            <a href="/books">Книги</a>
-            <a href="/articles">Статьи</a>
-            <a href="/about">Об авторе</a>
+            <a href="/">
+                <img src="/static/images/icons/Home.png" class="icon" id="home-ico">
+                <div class="nav-text">Home</div>
+            </a>
+            <a href="/books">
+                <img src="/static/images/icons/Books.png" class="icon" id="books-ico">
+                <div class="nav-text">Books</div>
+            </a>
+            <a href="/articles">
+                <img src="/static/images/icons/Blog.png" class="icon" id="blog-ico">
+                <div class="nav-text">Blog</div>
+            </a>
+            <a href="/about">
+                <img src="/static/images/icons/About.png" class="icon" id="about-ico">
+                <div class="nav-text">About</div>
+            </a>
         </nav>
-        <a href="/auth/login" class="login-button">Sign In</a>
+        <a href="/auth/register" class="register-button">
+            Sign Up
+        </a>
+        <a href="/auth/login" class="login-button">
+            Sign In
+        </a>
     </header>
     {% block content %}{% endblock %}
 </body>
