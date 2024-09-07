@@ -13,6 +13,7 @@ body {
 header {
     /*background: linear-gradient(0deg, #d1d1d1 0%, #ffffff 100%);*/
     /*background-color: white;*/
+    /*box-shadow: 0 5px 10px rgba(0, 0, 0, .15);*/
     background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
     text-align: center;
     position: fixed;
@@ -20,10 +21,9 @@ header {
     height: 80px;
     top: 0;
     z-index: 1000;
-    /*box-shadow: 0 5px 10px rgba(0, 0, 0, .15);*/
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Распределяет пространство между элементами */
+    justify-content: space-between;
 }
 
 
@@ -93,16 +93,16 @@ header {
         font-size: 16px;
         color: white;
         background-color: #333;
-        border-radius: 25px; /* Делает края овальными */
-        text-decoration: none; /* Убирает подчеркивание */
+        border-radius: 25px;
+        text-decoration: none;
         text-align: center;
         font-weight: bold;
-        margin-right: 30px; /* Выровнено по левому краю страницы */
+        margin-right: 30px;
         cursor: pointer;
     }
 
     .login-button:hover {
-        background-color: darkblue; /* Изменение цвета кнопки при наведении */
+        background-color: darkblue;
     }
 
     .register-button {
