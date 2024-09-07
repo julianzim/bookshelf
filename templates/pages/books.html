@@ -1,16 +1,24 @@
 {% extends "pages/base.html" %}
 
 {% block content %}
-<h1 class="content-title">Мои эмоции - мои друзья</h1>
-<hr class="content-divider">
-<div class="book-grid">
-    {% for book in books %}
-        <div class="book-item">
-            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">
-                <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
-            </a>
-            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+
+<div class="background-books">
+    <div class="content">
+        <h1 class="content-title">Мои эмоции - мои друзья</h1>
+        <hr class="content-divider">
+        <div class="book-grid">
+            {% for book in books %}
+                <div class="book-item">
+                    <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">
+                        <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
+                    </a>
+                    <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 </div>
+
+
+
 {% endblock %}
