@@ -8,6 +8,7 @@ from datetime import date
 example_books = [
     Books(
         title="My friend Joy",
+        series="Our Emotions - Our Friends",
         short_description="Description 1",
         full_description="Description 1",
         pub_date=date(2023, 12, 17),
@@ -16,6 +17,7 @@ example_books = [
     ),
     Books(
         title="My friend Sadness",
+        series="Our Emotions - Our Friends",
         short_description="Description 2",
         full_description="Description 1",
         pub_date=date(2024, 4, 25),
@@ -24,6 +26,7 @@ example_books = [
     ),
     Books(
         title="My friend Anger",
+        series="Our Emotions - Our Friends",
         short_description="Description 3",
         full_description="Description 1",
         pub_date=date(2024, 4, 1),
@@ -32,6 +35,7 @@ example_books = [
     ),
     Books(
         title="My friend Fear",
+        series="Our Emotions - Our Friends",
         short_description="Description 4",
         full_description="Description 1",
         pub_date=date(2024, 2, 2),
@@ -40,6 +44,7 @@ example_books = [
     ),
     Books(
         title="My friend Envy",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -48,6 +53,7 @@ example_books = [
     ),
     Books(
         title="My friend Love",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -56,6 +62,7 @@ example_books = [
     ),
     Books(
         title="My friend Jealousy",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -64,6 +71,7 @@ example_books = [
     ),
     Books(
         title="My friend Resentment",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -72,6 +80,7 @@ example_books = [
     ),
     Books(
         title="My friend Shame",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -80,6 +89,7 @@ example_books = [
     ),
     Books(
         title="My friend Guilt",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -88,6 +98,7 @@ example_books = [
     ),
     Books(
         title="My friend Loneliness",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -96,6 +107,7 @@ example_books = [
     ),
     Books(
         title="My friend Shyness",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -104,6 +116,7 @@ example_books = [
     ),
     Books(
         title="My friend Indifference",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -112,6 +125,7 @@ example_books = [
     ),
     Books(
         title="My friend Helplessness",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
@@ -120,6 +134,7 @@ example_books = [
     ),
     Books(
         title="My friend Boredom",
+        series="Our Emotions - Our Friends",
         short_description="Description 5",
         full_description="Description 1",
         pub_date=date(2024, 3, 14),
