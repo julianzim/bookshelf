@@ -170,60 +170,37 @@ footer {
 }
 
 
-/* FORM */
-/*form, input {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+
+/* BOOK GRID */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.registration-container {
-    align-items: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+.book-item {
+    width: 15%;
+    flex-shrink: 0;
+    margin: 10px;
+    text-align: center;
 }
 
-    .registration-container h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        font-size: 24px;
-        color: #333;
-    }
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-    .form-group label {
-        display: block;
-        margin-bottom: 5px;
-        font-weight: bold;
-        color: #555;
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-.register-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
+.book-title {
+    display: block;
+    margin-top: 10px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
 }
 
-    .register-btn:hover {
-        background-color: #0056b3;
+    .book-title:hover {
+        text-decoration: underline;
     }
-*/
+
+.book-cover {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+}
+
