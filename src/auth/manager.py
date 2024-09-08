@@ -2,8 +2,7 @@ from typing import Optional
 
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
-from fastapi.responses import Response, RedirectResponse
-from starlette.responses import RedirectResponse
+from fastapi.responses import Response
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
