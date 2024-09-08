@@ -1,23 +1,84 @@
 {% extends "pages/base.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="/static/styles/2.1_book_details.css">
 
 <div id="book-details" class="background">
     <div class="content" id="book-details-content">
-        <h1 class="content-title" id="book-title">{{ book.title }}</h1>
-        <h2 class="content-title" id="book-series">{{ book.series }}</h2>
-        <div class="book-detail">
-            <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover-details">
-            <p>
-                {{ book.full_description }}
-            </p>
-            <section id="video">
-            <h2>Видео с YouTube</h2>
-            <div class="video-container">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="book-main-block">
+            <div class="book-upper-block">
+                <div class="book-image-left">
+                    <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover-details">
+                </div>
+                <div class="book-descr-right">
+                    <div class="book-titles-right">
+                        <h1 class="book-title-right">{{ book.title }}</h1>
+                        <h2 class="book-series-right">{{ book.series }}</h2>
+                    </div>
+                    <div class="book-descr-text-right">
+                        {{ book.full_description }}
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <div class="lower-info-block">
+                <hr class="content-divider">
+                <div class="info-block">
+                    <div class="info-container">
+                        <div class="info-name">Language</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Language.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.language }}</div>
+                    </div>
+                    <div class="info-container">
+                        <div class="info-name">Age</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Age.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.age }} years</div>
+                    </div>
+                    <div class="info-container">
+                        <div class="info-name">Pages</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Pages.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.pages }} pcs</div>
+                    </div>
+                </div>
+                <hr class="content-divider">
+            </div>
+
+            <div class="video-block">
+                <div class="video-block-title">{{ book.title }} aloud</div>
+                <div class="video-container">
+                    <iframe class="video-frame" width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="reviews-block">
+
+            </div>
         </div>
+
+
+
+
+
+
+
+
+<!--        <div class="book-detail">-->
+<!--            <p>-->
+<!--                {{ book.full_description }}-->
+<!--            </p>-->
+<!--            <section id="video">-->
+<!--            <h2>Видео с YouTube</h2>-->
+<!--            <div class="video-container">-->
+<!--                <iframe width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+<!--            </div>-->
+<!--        </section>-->
+<!--        </div>-->
     </div>
 </div>
 

@@ -1,0 +1,116 @@
+
+    #book-details-content.content {
+        margin: 150px auto 100px auto;
+        display: flex;
+    }
+
+.book-main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4% 2%;
+}
+
+.book-upper-block {
+    display: flex;
+    height: 300px;
+}
+
+.book-image-left {
+    width: 25%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+    .book-cover-details {
+            height: 100%;
+        }
+
+.book-descr-right {
+    width: 75%;
+    padding: 0 10px 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.book-titles-right {
+    align: left;
+}
+
+    .book-title-right {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .book-series-right {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #666;
+    }
+
+.book-descr-text-right {
+
+}
+
+.lower-info-block {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+    padding: 0 5% 0 5%;
+    margin: 20px 0 20px 0;
+}
+
+.info-block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-container {
+    text-align: center;
+}
+
+.info-name {
+    font-weight: bold;
+}
+
+.info-icon {
+
+}
+
+    .icon-info-container {
+        width: 45px;
+        height: auto;
+        vertical-align: middle;
+        margin: 5px 0 5px 0;
+    }
+
+.info-value {
+
+}
+
+
+.video-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.video-block-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+}
+
+.video-frame {
+    width: 95%;
+    height: 500px;
+}
+
