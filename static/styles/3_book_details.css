@@ -1,4 +1,9 @@
 
+#book-details.background {
+    background-image: url('../images/backgrounds/Book_details.jpg');
+}
+
+
 #book-details-content.content {
     margin: 150px auto 100px auto;
     display: flex;
