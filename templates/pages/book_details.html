@@ -3,9 +3,9 @@
 {% block content %}
 
 <div id="book-details" class="background">
-    <div class="content">
-        <h1 class="content-title">{{ book.title }}</h1>
-        <hr class="content-divider">
+    <div class="content" id="book-details-content">
+        <h1 class="content-title" id="book-title">{{ book.title }}</h1>
+        <h2 class="content-title" id="book-series">{{ book.series }}</h2>
         <div class="book-detail">
             <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover-details">
             <p>
