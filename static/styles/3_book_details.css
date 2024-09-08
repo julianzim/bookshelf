@@ -1,8 +1,8 @@
 
-    #book-details-content.content {
-        margin: 150px auto 100px auto;
-        display: flex;
-    }
+#book-details-content.content {
+    margin: 150px auto 100px auto;
+    display: flex;
+}
 
 .book-main-block {
     display: flex;

@@ -11,9 +11,10 @@ router = APIRouter(
 
 templates = Jinja2Templates(directory="templates/")
 
+
 @router.get("/")
-async def get_index(request: Request, books=Depends(get_all_books)):
-    return templates.TemplateResponse("pages/index.html", {"request": request, "books": books})
+async def get_home(request: Request, books=Depends(get_all_books)):
+    return templates.TemplateResponse("pages/home.html", {"request": request, "books": books})
 
 
 @router.get("/about")
@@ -31,9 +32,9 @@ async def get_book_detail(request: Request, book=Depends(get_book)):
     return templates.TemplateResponse("pages/book_details.html", {"request": request, "book": book})
 
 
-@router.get("/articles")
-async def get_articles(request: Request, articles=Depends(get_all_articles)):
-    return templates.TemplateResponse("pages/articles.html", {"request": request, "articles": articles})
+@router.get("/blog")
+async def get_blog(request: Request, articles=Depends(get_all_articles)):
+    return templates.TemplateResponse("pages/blog.html", {"request": request, "articles": articles})
 
 
 @router.get("/auth/register")

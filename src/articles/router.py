@@ -10,7 +10,7 @@ from src.articles.models import Articles
 from src.articles.schemas import GetAllArticles
 
 
-router = APIRouter(prefix="/articles", tags=["Articles"])
+router = APIRouter(prefix="/blog", tags=["Blog"])
 
 
 @router.get(path="", response_model=List[GetAllArticles])
