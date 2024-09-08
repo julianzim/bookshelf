@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="/static/styles/3_book_details.css">
 
 <div id="book-details" class="background">
-    <div class="content" id="book-details-content">
-        <div class="book-main-block">
-            <div class="book-upper-block">
+    <div class="book-details-content">
+        <div class="main-block">
+            <div class="book-descr-block">
                 <div class="book-image-left">
                     <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover-details">
                 </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <div class="lower-info-block">
+            <div class="book-info-block">
                 <hr class="content-divider">
                 <div class="info-block">
                     <div class="info-container">
@@ -56,29 +56,15 @@
                 </div>
             </div>
 
-            <div class="reviews-block">
-
-            </div>
+<!--            <div class="reviews-block"></div>       TODO-->
         </div>
 
+        <div class="minor-block">
+            <div class="sale-top-right-block"></div>
 
+            <div class="related-books-lower-right-block"></div>
+        </div>
 
-
-
-
-
-
-<!--        <div class="book-detail">-->
-<!--            <p>-->
-<!--                {{ book.full_description }}-->
-<!--            </p>-->
-<!--            <section id="video">-->
-<!--            <h2>Видео с YouTube</h2>-->
-<!--            <div class="video-container">-->
-<!--                <iframe width="560" height="315" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        </div>-->
     </div>
 </div>
 

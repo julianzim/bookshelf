@@ -4,19 +4,52 @@
 }
 
 
-#book-details-content.content {
-    margin: 150px auto 100px auto;
+.book-details-content {
     display: flex;
+    height: auto;
+    max-width: 1100px;
+    margin: 150px auto 100px auto;
+    justify-content: space-between;
 }
 
-.book-main-block {
+.main-block {
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 4% 2%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    border-radius: 25px;
 }
 
-.book-upper-block {
+.minor-block {
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+}
+
+.sale-top-right-block {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    border-radius: 25px;
+}
+
+.related-books-lower-right-block {
+    display: flex;
+    height: 800px;
+    width: 100%;
+    margin-top: 10px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    border-radius: 25px;
+}
+
+
+.book-descr-block {
     display: flex;
     height: 300px;
 }
@@ -60,7 +93,7 @@
 
 }
 
-.lower-info-block {
+.book-info-block {
     display: flex;
     width: auto;
     flex-direction: column;
