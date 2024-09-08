@@ -52,6 +52,12 @@
     border: 1px solid #000;
 }
 
+.buy-button-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 .buy-button {
     display: inline-block;
     padding: 8px 16px;
@@ -62,7 +68,6 @@
     text-decoration: none;
     text-align: center;
     font-weight: bold;
-    margin-right: 30px;
     cursor: pointer;
 }
 
