@@ -3,6 +3,7 @@ from typing import Optional
 from fastapi import Depends, Request
 from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
 from fastapi.responses import Response, RedirectResponse
+from starlette.responses import RedirectResponse
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
@@ -15,10 +16,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
         print(f"User {user.id} has registered.")        # TODO
-        # if request:
-        #     # Create a redirect response to the login page
-        #     response = RedirectResponse(url="/auth/login", status_code=302)
-        #     return response
 
     async def on_after_login(
         self,
@@ -27,11 +24,9 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         response: Optional[Response] = None,
     ) -> None:
         print(f"User {user.id} {user.username} has login.")     # TODO
-        # if response:
-        #     # Create a redirect response to the home page
-        #     redirect_response = RedirectResponse(url="/", status_code=204)
-        #     # Attach the redirect response to the current response object
-        #     response.headers.update(redirect_response.headers)
+        if response:
+            response.status_code = 302
+            response.headers["Location"] = "/"
 
     async def create(
         self,
@@ -39,8 +34,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         safe: bool = False,
         request: Optional[Request] = None,
     ) -> models.UP:
-        # TODO
-        # if user_create.password != user_create.confirm_password:
+        # if user_create.password != user_create.confirm_password:      # TODO
         #     raise HTTPException(status_code=400, detail="Passwords do not match")
 
         await self.validate_password(user_create.password, user_create)
