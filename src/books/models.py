@@ -15,3 +15,6 @@ class Books(Base):
     pub_date: Mapped[datetime.datetime]
     author: Mapped[str]
     image: Mapped[str]
+    pages: Mapped[int]
+    language: Mapped[str]
+    age: Mapped[str]

@@ -5,162 +5,223 @@ from src.auth.models import Role
 from datetime import date
 
 
+pub_date = date(2023, 12, 17)
+pages = 35
+language = "English"
+age = "3-6"
+series = "Our Emotions - Our Friends"
+author = "Yassya Lil"
+description = """
+Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, dolor eget aliquet auctor, 
+dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. Aliquam vitae leo tincidunt, 
+convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex pellentesque rhoncus et quis felis. 
+Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam. Donec imperdiet enim odio, sed posuere 
+nibh vulputate vel. Vivamus facilisis in risus nec auctor. Morbi dui diam, efficitur sit amet vulputate 
+sit amet, tempus in dolor. Maecenas ullamcorper est et egestas posuere.
+"""
+
+
 example_books = [
     Books(
         title="My friend Joy",
-        series="Our Emotions - Our Friends",
-        short_description="Description 1",
-        full_description="Description 1",
-        pub_date=date(2023, 12, 17),
-        author="Yassya Lil",
-        image="JoyCover.jpg"
+        image="JoyCover.jpg",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Sadness",
-        series="Our Emotions - Our Friends",
-        short_description="Description 2",
-        full_description="Description 1",
-        pub_date=date(2024, 4, 25),
-        author="Yassya Lil",
-        image="SadnessCover.jpg"
+        image="SadnessCover.jpg",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Anger",
-        series="Our Emotions - Our Friends",
-        short_description="Description 3",
-        full_description="Description 1",
-        pub_date=date(2024, 4, 1),
-        author="Yassya Lil",
-        image="AngerCover.jpg"
+        image="AngerCover.jpg",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Fear",
-        series="Our Emotions - Our Friends",
-        short_description="Description 4",
-        full_description="Description 1",
-        pub_date=date(2024, 2, 2),
-        author="Yassya Lil",
-        image="FearCover.jpg"
+        image="FearCover.jpg",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Envy",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="EnvyCover.png"
+        image="EnvyCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Love",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="LoveCover.png"
+        image="LoveCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Jealousy",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="JealousyCover.png"
+        image="JealousyCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Resentment",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="ResentmentCover.png"
+        image="ResentmentCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Shame",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="ShameCover.png"
+        image="ShameCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Guilt",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="GuiltCover.png"
+        image="GuiltCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Loneliness",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="LonelinessCover.png"
+        image="LonelinessCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Shyness",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="ShynessCover.png"
+        image="ShynessCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Indifference",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="IndifferenceCover.png"
+        image="IndifferenceCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Helplessness",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="HelplessnessCover.png"
+        image="HelplessnessCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     ),
     Books(
         title="My friend Boredom",
-        series="Our Emotions - Our Friends",
-        short_description="Description 5",
-        full_description="Description 1",
-        pub_date=date(2024, 3, 14),
-        author="Yassya Lil",
-        image="BoredomCover.png"
+        image="BoredomCover.png",
+        series=series,
+        short_description=description,
+        full_description=description,
+        pub_date=pub_date,
+        author=author,
+        age=age,
+        pages=pages,
+        language=language
     )
 ]
 
 example_articles = [
     Articles(
         title="Article 1",
-        short_description="Article description 1",
-        full_description="Article description 1",
-        created_at=date(2024, 1, 10)
+        short_description=description,
+        full_description=description,
+        created_at=pub_date
     ),
     Articles(
         title="Article 2",
-        short_description="Article description 2",
-        full_description="Article description 1",
-        created_at=date(2024, 3, 15)
+        short_description=description,
+        full_description=description,
+        created_at=pub_date
     ),
     Articles(
         title="Article 3",
-        short_description="Article description 3",
-        full_description="Article description 1",
-        created_at=date(2024, 5, 20)
+        short_description=description,
+        full_description=description,
+        created_at=pub_date
     )
 ]
 
