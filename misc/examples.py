@@ -15,9 +15,7 @@ description = """
 Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, dolor eget aliquet auctor, 
 dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. Aliquam vitae leo tincidunt, 
 convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex pellentesque rhoncus et quis felis. 
-Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam. Donec imperdiet enim odio, sed posuere 
-nibh vulputate vel. Vivamus facilisis in risus nec auctor. Morbi dui diam, efficitur sit amet vulputate 
-sit amet, tempus in dolor. Maecenas ullamcorper est et egestas posuere.
+Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
 """
 
 
