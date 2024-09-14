@@ -13,7 +13,9 @@
                 <div class="book-descr-right">
                     <div class="book-titles-right">
                         <h1 class="book-title-right">{{ book.title }}</h1>
-                        <h2 class="book-series-right">{{ book.series }}</h2>
+                        <a href="/books" class="book-series-right">
+                            <h2 class="book-series-right">{{ book.series }}</h2>
+                        </a>
                     </div>
                     <div class="book-descr-text-right">
                         {{ book.full_description }}
@@ -22,7 +24,7 @@
             </div>
 
             <div class="book-info-block">
-                <hr class="content-divider">
+                <hr class="content-divider-info-block">
                 <div class="info-block">
                     <div class="info-container">
                         <div class="info-name">Language</div>
@@ -46,7 +48,7 @@
                         <div class="info-value">{{ book.pages }} pcs</div>
                     </div>
                 </div>
-                <hr class="content-divider">
+                <hr class="content-divider-info-block">
             </div>
 
             <div class="video-block">

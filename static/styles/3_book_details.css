@@ -84,13 +84,13 @@
 
 .book-descr-block {
     display: flex;
-    height: 300px;
+    height: 360px;
     justify-content:space-between;
     padding: 0 2%;
 }
 
 .book-image-left {
-    width: 25%;
+    width: 33%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -101,7 +101,7 @@
         }
 
 .book-descr-right {
-    width: 70%;
+    width: 65%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -121,10 +121,22 @@
         margin-bottom: 15px;
         font-size: 18px;
         color: #666;
+        text-decoration: None;
+    }
+
+    .book-series-right:hover {
+        text-decoration: underline;
     }
 
 .book-descr-text-right {
+    font-size: 18px;
+}
 
+.content-divider-info-block {
+    border: 0;
+    height: 3px;
+    background: #222;
+    margin: 10px 0;
 }
 
 .book-info-block {
@@ -153,7 +165,7 @@
 }
 
     .icon-info-container {
-        width: 45px;
+        width: 35px;
         height: auto;
         vertical-align: middle;
         margin: 5px 0 5px 0;
