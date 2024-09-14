@@ -1,15 +1,35 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-y: auto; /* Включаем вертикальную прокрутку */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
 }
 
-body {
-    background-image: url('Home.png');
-    background-size: cover; /* Изображение подстраивается так, чтобы полностью помещаться */
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-attachment: scroll; /* Изображение будет прокручиваться вместе с содержимым */
-    min-height: 150vh; /* Делаем высоту больше, чтобы появилась прокрутка */
+.container {
+  position: relative;
+  width: 100%;
+  height: 200vh; /* Увеличиваем высоту контейнера, чтобы обеспечить прокрутку */
+}
+
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Ограничиваем изображение высотой экрана */
+  object-fit: cover; /* Обрезаем изображение по ширине, сохраняя пропорции */
+  z-index: 1; /* Задний план */
+}
+
+.content {
+  position: sticky;
+  bottom: -100%; /* Контент изначально скрыт за нижней частью экрана */
+  z-index: 2; /* Поверх изображения */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный фон */
+  color: white;
+  box-sizing: border-box;
 }
