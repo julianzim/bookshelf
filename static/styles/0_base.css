@@ -97,7 +97,7 @@ header {
         text-decoration: none;
         text-align: center;
         font-weight: bold;
-        margin-right: 30px;
+        margin-right: 50px;
         cursor: pointer;
     }
 
@@ -138,7 +138,7 @@ header {
 .content {
     height: auto;
     max-width: 900px;
-    margin: 320px auto 100px auto;
+    margin: 285px auto 100px auto;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
