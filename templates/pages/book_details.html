@@ -64,15 +64,36 @@
         <div class="minor-block">
             <div class="purchase-top-right-block">
                 <div class="purchase-options">
-                    <div class="purchase-option"></div>
-                    <div class="purchase-option"></div>
+                    <div class="purchase-option">
+                        <span class="purchase-option-descr">Hardcover</span>
+                        <span class="purchase-option-price">from 5.99$</span>
+                    </div>
+                    <div class="purchase-option">
+                        <span class="purchase-option-descr">Paperback</span>
+                        <span class="purchase-option-price">from 5.99$</span>
+                    </div>
                 </div>
                 <div class="buy-button-container">
-                    <a href="/" class="buy-button">Buy now</a>
+                    <a class="buy-button" href="https://www.amazon.com/Friend-Anger-Our-Emotions-Friends/dp/B0C1J1H9MM/ref=sr_1_1?crid=XONPX6TL9F9U&dib=eyJ2IjoiMSJ9.Au1UgCc2IzRqX61k25GpwA.gO2PsLVmjAp6nuOLokGEBMECjoUwdCyvnd99QhpFb-A&dib_tag=se&keywords=yassya+lil+anger&qid=1726409665&s=books&sprefix=yassya+lil+anger%2Cstripbooks-intl-ship%2C169&sr=1-1">
+                        Buy now on Amazon
+                    </a>
                 </div>
             </div>
 
-            <div class="related-books-lower-right-block"></div>
+            <div class="related-books-lower-right-block">
+                <span class="related-books-block-title">Related books</span>
+                <hr class="related-books-block-content-divider">
+                <div class="related-books-grid">
+                    {% for book in books %}
+                        <div class="related-book-item">
+                            <a  class="related-book-link" href="{{ url_for('get_book', book_name=book.title) }}">
+                                <img class="related-book-cover" src="/static/images/{{ book.image }}" alt="{{ book.title }} cover">
+                            </a>
+                            <a class="related-book-title" href="{{ url_for('get_book', book_name=book.title) }}">{{ book.title }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
     </div>
