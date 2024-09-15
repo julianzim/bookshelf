@@ -137,7 +137,7 @@ header {
 /* CONTENT */
 .content {
     height: auto;
-    max-width: 900px;
+    max-width: 60%;
     margin: 285px auto 100px auto;
     padding: 20px;
     background-color: white;
