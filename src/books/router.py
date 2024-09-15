@@ -27,3 +27,11 @@ async def get_book(book_name: str, session: AsyncSession = Depends(get_async_ses
     result = await session.execute(query)
     book = result.scalars().one()
     return book
+
+
+@router.get(path="/{book_name}")
+async def get_related_books(book_name: str, session: AsyncSession = Depends(get_async_session)):
+    query = select(Books)
+    result = await session.execute(query)
+    books = result.scalars().all()
+    return books
