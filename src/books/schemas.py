@@ -11,6 +11,7 @@ class GetAllBooks(BaseModel):
     full_description: str
     pub_date: datetime
     image: str
-    age: str
     pages: int
     language: str
+    age: str
+    reviews_count: int

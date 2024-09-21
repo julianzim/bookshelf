@@ -18,3 +18,4 @@ class Books(Base):
     pages: Mapped[int]
     language: Mapped[str]
     age: Mapped[str]
+    reviews_count: Mapped[int]

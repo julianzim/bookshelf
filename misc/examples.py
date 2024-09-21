@@ -5,6 +5,7 @@ from src.auth.models import Role
 from datetime import date
 
 
+reviews_count = 43
 pub_date = date(2023, 12, 17)
 pages = 35
 language = "English"
@@ -21,7 +22,7 @@ Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
 
 example_books = [
     Books(
-        title="My friend Joy",
+        title="My Friend Joy",
         image="JoyCover.jpg",
         series=series,
         short_description=description,
@@ -30,10 +31,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Sadness",
+        title="My Friend Sadness",
         image="SadnessCover.jpg",
         series=series,
         short_description=description,
@@ -42,10 +44,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Anger",
+        title="My Friend Anger",
         image="AngerCover.jpg",
         series=series,
         short_description=description,
@@ -54,10 +57,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Fear",
+        title="My Friend Fear",
         image="FearCover.jpg",
         series=series,
         short_description=description,
@@ -66,10 +70,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Envy",
+        title="My Friend Envy",
         image="EnvyCover.png",
         series=series,
         short_description=description,
@@ -78,10 +83,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Love",
+        title="My Friend Love",
         image="LoveCover.png",
         series=series,
         short_description=description,
@@ -90,10 +96,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Jealousy",
+        title="My Friend Jealousy",
         image="JealousyCover.png",
         series=series,
         short_description=description,
@@ -102,10 +109,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Resentment",
+        title="My Friend Resentment",
         image="ResentmentCover.png",
         series=series,
         short_description=description,
@@ -114,10 +122,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Shame",
+        title="My Friend Shame",
         image="ShameCover.png",
         series=series,
         short_description=description,
@@ -126,10 +135,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Guilt",
+        title="My Friend Guilt",
         image="GuiltCover.png",
         series=series,
         short_description=description,
@@ -138,10 +148,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Loneliness",
+        title="My Friend Loneliness",
         image="LonelinessCover.png",
         series=series,
         short_description=description,
@@ -150,10 +161,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Shyness",
+        title="My Friend Shyness",
         image="ShynessCover.png",
         series=series,
         short_description=description,
@@ -162,10 +174,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Indifference",
+        title="My Friend Indifference",
         image="IndifferenceCover.png",
         series=series,
         short_description=description,
@@ -174,10 +187,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Helplessness",
+        title="My Friend Helplessness",
         image="HelplessnessCover.png",
         series=series,
         short_description=description,
@@ -186,10 +200,11 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     ),
     Books(
-        title="My friend Boredom",
+        title="My Friend Boredom",
         image="BoredomCover.png",
         series=series,
         short_description=description,
@@ -198,7 +213,8 @@ example_books = [
         author=author,
         age=age,
         pages=pages,
-        language=language
+        language=language,
+        reviews_count=reviews_count
     )
 ]
 
