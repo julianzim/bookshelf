@@ -1,4 +1,4 @@
-from src.books.models import Books
+from src.books.models import Books, Reviews
 from src.articles.models import Articles
 from src.auth.models import Role
 
@@ -249,6 +249,69 @@ roles = [
         id=2,
         name='admin',
         permissions=None
+    )
+]
+
+example_reviews = [
+    Reviews(
+        book=1,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
+    ),
+    Reviews(
+        book=2,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
+    ),
+    Reviews(
+        book=3,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
+    ),
+    Reviews(
+        book=4,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
+    ),
+    Reviews(
+        book=5,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
+    ),
+    Reviews(
+        book=6,
+        reviewer=1,
+        rating=5,
+        title="Great story and great purchase",
+        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
+        Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
+        pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     )
 ]
 

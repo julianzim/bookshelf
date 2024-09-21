@@ -3,7 +3,7 @@ import asyncio
 from src.database import async_session
 from src.queries import reset_database
 
-from misc.examples import example_books, example_articles, roles
+from misc.examples import example_reviews, example_books, example_articles, roles
 
 
 async def add_roles():
@@ -27,11 +27,19 @@ async def add_articles():
         print("Статьи добавлены.")
 
 
+async def add_reviews():
+    async with async_session() as session:
+        session.add_all(example_reviews)
+        await session.commit()
+        print("Отзывы добавлены.")
+
+
 async def remake():
     await reset_database()
     await add_books()
     await add_articles()
     await add_roles()
+    # await add_reviews()
 
 
 if __name__ == "__main__":

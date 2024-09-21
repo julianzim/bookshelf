@@ -14,7 +14,7 @@ class Books(Base):
     series: Mapped[str]
     short_description: Mapped[str]
     full_description: Mapped[str]
-    pub_date: Annotated[datetime.datetime, mapped_column(server_default=text("TIMEZONE('utc', now())"))]
+    pub_date: Mapped[datetime.datetime] = mapped_column(server_default=text("TIMEZONE('utc', now())"))
     author: Mapped[str]
     image: Mapped[str]
     pages: Mapped[int]
@@ -26,10 +26,10 @@ class Books(Base):
 class Reviews(Base):
     __tablename__ = "reviews"
 
-    id: Mapped[int] - mapped_column(primary_key=True)
-    book: mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
-    reviewer: mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    id: Mapped[int] = mapped_column(primary_key=True)
+    book: Mapped[int] = mapped_column(ForeignKey("books.id", ondelete="CASCADE"))
+    reviewer: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     rating: Mapped[int]
     title: Mapped[str]
     description: Mapped[str]
-    created_at: Annotated[datetime.datetime, mapped_column(server_default=text("TIMEZONE('utc', now())"))]
+    created_at: Mapped[datetime.datetime] = mapped_column(server_default=text("TIMEZONE('utc', now())"))
