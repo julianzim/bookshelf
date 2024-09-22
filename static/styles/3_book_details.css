@@ -209,6 +209,93 @@
                     text-align: center;
                 }
 
+
+        #review.modal {
+            display: none;
+            position: fixed;
+            z-index: 101;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        #review.modal:target {
+            display: block;
+        }
+
+            .review-container {
+                display: flex;
+                flex-direction: column;
+                background-color: #fff;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+                border-radius: 25px;
+                margin: 15% auto;
+                width: 50%;
+                min-width: 400px;
+                padding: 20px;
+            }
+
+                .modal-close-button-container {
+                }
+
+                    .modal-close-button {
+                        color: #aaa;
+                        float: right;
+                        font-size: 28px;
+                        font-weight: bold;
+                        text-decoration: none;
+                    }
+
+                    .modal-close-button:hover,
+                    .modal-close-button:focus {
+                        color: black;
+                        text-decoration: none;
+                        cursor: pointer;
+                    }
+
+
+
+                .review-form {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    .write-review-thesis {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        .write-review-thesis input {
+
+                        }
+
+                        .write-review-thesis input:focus {
+
+                        }
+
+                    .write-review-text {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                        .write-review-thesis input {
+
+                        }
+
+                        .write-review-thesis input:focus {
+
+                        }
+
+                    .send-review-button {
+
+                    }
+
+
+
+
         .content-divider-reviews-block {
             border: 0;
             height: 2px;

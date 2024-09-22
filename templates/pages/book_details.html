@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="write-review-button-container">
-                        <a class="write-review-button" href="">
+                        <a class="write-review-button" href="#review">
                             Write a review
                         </a>
                     </div>
@@ -133,6 +133,25 @@
         </div>
 
     </div>
+</div>
+
+<div class="modal" id="review">
+<div class="review-container">
+<!--    <div class="modal-close-button-container">-->
+        <a class="modal-close-button" href="#">&times</a>
+<!--    </div>-->
+    <form id="review-form" action="/endpoint" method="post" class="review-form">
+<!--        <div class="write-review-thesis">-->
+            <label for="thesis">Write your review thesis</label>
+            <input type="text" id="thesis" name="thesis">
+<!--        </div>-->
+<!--        <div class="write-review-text">-->
+            <label for="text">Write your impressions</label>
+            <input type="text" id="text" name="text">
+<!--        </div>-->
+        <button class="send-review-button" type="submit">Send review</button>
+    </form>
+</div>
 </div>
 
 
