@@ -34,13 +34,6 @@ async def add_reviews():
         print("Отзывы добавлены.")
 
 
-async def add_users():
-    async with async_session() as session:
-        session.add_all(example_users)
-        await session.commit()
-        print("Пользователи добавлены.")
-
-
 async def remake():
     await reset_database()
     await add_books()
