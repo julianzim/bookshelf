@@ -137,18 +137,15 @@
 
 <div class="modal" id="review">
 <div class="review-container">
-<!--    <div class="modal-close-button-container">-->
-        <a class="modal-close-button" href="#">&times</a>
-<!--    </div>-->
-    <form id="review-form" action="/endpoint" method="post" class="review-form">
-<!--        <div class="write-review-thesis">-->
-            <label for="thesis">Write your review thesis</label>
-            <input type="text" id="thesis" name="thesis">
-<!--        </div>-->
-<!--        <div class="write-review-text">-->
-            <label for="text">Write your impressions</label>
-            <input type="text" id="text" name="text">
-<!--        </div>-->
+    <a class="modal-close-button" href="#">&times</a>
+    <form id="review-form" action="{{ url_for('create_review', book_name=book.title) }}" method="post" class="review-form">
+        <label for="thesis">Write your review thesis</label>
+        <input type="text" id="thesis" name="title">
+        <label for="text">Write your impressions</label>
+        <input type="text" id="text" name="description">
+        <label for="rating">Write your rating</label>
+        <input type="number" id="rating" name="rating">
+
         <button class="send-review-button" type="submit">Send review</button>
     </form>
 </div>
