@@ -14,9 +14,9 @@ document.getElementById('registration-form').addEventListener('submit', async fu
     document.getElementById('password-strength').textContent = '';
 
     if (data.password !== data.repeat_password) {
-            document.getElementById('repeat-password-error').textContent = 'Passwords do not match';
-            return;
-        }
+        document.getElementById('repeat-password-error').textContent = 'Passwords do not match';
+        return;
+    }
 
     const response = await fetch('/auth/register', {
         method: 'POST',
@@ -26,9 +26,18 @@ document.getElementById('registration-form').addEventListener('submit', async fu
         body: JSON.stringify(data)
     });
 
-    const result = await response.json();
-    console.log('Form submitted with:', { username, email, password });
-    console.log(result);
+    if (response.ok) {
+        // Если ответ успешный, перенаправляем на страницу входа
+        window.location.href = '/auth/login';
+    } else {
+        // Обработка ошибок, если регистрация не удалась
+        const result = await response.json();
+        console.error('Registration failed:', result);
+        // Вы можете отобразить ошибку пользователю, если это необходимо
+        if (result.message) {
+            document.getElementById('email-error').textContent = result.message;
+        }
+    }
 });
 
 document.getElementById('password').addEventListener('input', function() {
