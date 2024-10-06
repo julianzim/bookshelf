@@ -15,3 +15,9 @@ class GetAllBooks(BaseModel):
     language: str
     age: str
     reviews_count: int
+
+
+class ReviewCreate(BaseModel):
+    title: str
+    description: str
+    rating: int
