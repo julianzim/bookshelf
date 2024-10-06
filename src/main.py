@@ -1,5 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 from fastapi.staticfiles import StaticFiles
+from fastapi.requests import Request
+from fastapi.responses import RedirectResponse, JSONResponse
 
 from src.auth.base_config import auth_backend, fastapi_users
 from src.auth.schemas import UserCreate, UserRead
@@ -25,3 +27,10 @@ app.include_router(
     prefix="/auth",
     tags=["Auth"],
 )
+
+
+@app.exception_handler(HTTPException)
+async def exc_401_handler(request: Request, exc: HTTPException):
+    if exc.status_code == status.HTTP_401_UNAUTHORIZED:
+        return RedirectResponse(url="/auth/login", status_code=status.HTTP_303_SEE_OTHER)
+    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
