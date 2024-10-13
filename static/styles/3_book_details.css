@@ -209,6 +209,18 @@
                     text-align: center;
                 }
 
+                .write-review-button-disabled {
+                    display: inline-flex;
+                    padding: 5px 15px;
+                    font-size: 20px;
+                    color: gray;
+                    pointer-events: none;
+                    background-color: #666;
+                    text-decoration: none;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
 
         #review.modal {
             display: none;
