@@ -41,43 +41,45 @@
                 <a id="logout-button" class="logout-button">Sign Out</a>
             {% endif %}
             {% if not current_user %}
-                <a href="/auth/register" class="register-button">Sign Up</a>
-                <a href="/auth/login" class="login-button">Sign In</a>
+                <a class="register-button" onclick="openRegisterModal()">Sign Up</a>
+                <a class="login-button" onclick="openLoginModal()">Sign In</a>
             {% endif %}
         </nav>
     </header>
     {% block content %}{% endblock %}
 
-<!--    <div id="sign-in" class="modal">-->
-<!--        <div class="sign-in-container">-->
-<!--            <a href="#" class="close-button">&times;</a>-->
-<!--            <h1>Sign In</h1>-->
-<!--            <form id="login-form" action="/auth/login" method="post" class="login-form">-->
-<!--                <div class="form-group">-->
-<!--                    <label for="username">Email</label>-->
-<!--                    <input type="text" id="username" name="username" required>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="password">Password</label>-->
-<!--                    <input type="password" id="password" name="password" required>-->
-<!--                    <div class="password-strength" id="password-strength"></div>-->
-<!--                </div>-->
 
-<!--                <button type="submit" class="login-btn">Login</button>-->
-<!--                <div class="redirect">-->
-<!--                    <a href="#">Forgot Password?</a>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--            <div class="redirect">-->
-<!--                Don't have an account yet? <a href="/auth/register">Sign Up here</a>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+<div id="registerModal" class="register-modal">
+    <div class="register-modal-content">
+        <span class="register-close">&times;</span>
+        <h2>Sign Up</h2>
+        <form id="registration-form" action="/auth/register" method="post" class="registration-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
 
-<!--    <footer>-->
-<!--        <p>&copy; 2023 Мой сайт. Все права защищены.</p>-->
-<!--    </footer>-->
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <div class="error" id="email-error"></div>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <div class="password-strength" id="password-strength"></div>
+
+            <label for="repeat-password">Repeat Password</label>
+            <input type="password" id="repeat-password" name="repeat_password" required>
+            <div class="error" id="repeat-password-error"></div>
+
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+        <div class="redirect">
+                Already have an account? <a href="/auth/login">Sign In here</a>
+        </div>
+    </div>
+</div>
+
+
 
     <script src="/static/scripts/logout.js"></script>
+    <script src="/static/scripts/authModal.js"></script>
 </body>
 </html>

@@ -191,9 +191,8 @@ footer {
 }
 
 
-
-/*
-.modal {
+/* Modal Styles (same base styles as before) */
+.register-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -202,121 +201,110 @@ footer {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 80px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Содержание модального окна */
-.sign-in-container {
-    margin: 5% auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.register-modal-content {
+    background-color: #fefefe;
+    margin: 7% auto;
     padding: 20px;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-    margin-top: 100px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
-/* Кнопка закрытия */
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 32px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Показ модального окна */
-.modal:target {
-    display: block;
-}
-
-
-
-
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 10px;
+.register-modal-content h2 {
     margin-top: 0;
+    text-align: center;
 }
 
-.form-group {
-    margin-bottom: 10px;
+/* Close button (similar style as the previous modal) */
+.register-close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.form-group label {
-    font-family: 'Comic Sans MS', sans-serif;
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.form-group input {
-    font-family: 'Comic Sans MS', sans-serif;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.form-group input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.form-group .error {
-    font-family: 'Comic Sans MS', sans-serif;
-    color: red;
-    font-size: 0.875em;
-    margin-top: 5px;
-}
-
-.form-group .error {
-    font-family: 'Comic Sans MS', sans-serif;
-    color: red;
-    font-size: 0.875em;
-    margin-top: 5px;
-}
-
-.form-group .password-strength {
-    font-family: 'Comic Sans MS', sans-serif;
-    color: #007bff;
-    font-size: 0.875em;
-    margin-top: 5px;
-}
-
-.register-btn {
-    font-family: 'Comic Sans MS', sans-serif;
+.register-close:hover,
+.register-close:focus {
     background-color: #007bff;
     color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
+}
+
+/* Form Styles */
+.registration-form label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="password"] {
     width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.registration-form input[type="text"]:focus,
+.registration-form input[type="email"]:focus,
+.registration-form input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Error and password strength messages */
+.error, .password-strength {
+    font-size: 0.875rem;
+    color: red;
+    margin-bottom: 15px;
+}
+
+/* Submit button (register button) */
+.register-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
 }
 
 .register-btn:hover {
     background-color: #0056b3;
 }
 
+/* Redirect message */
 .redirect {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 0.875rem;
 }
 
 .redirect a {
@@ -328,20 +316,18 @@ h1 {
     text-decoration: underline;
 }
 
-.login-btn {
-    font-family: 'Comic Sans MS', sans-serif;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 15px;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
+/* Modal fade-in animation (optional, like previous modal) */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.login-btn:hover {
-    background-color: #0056b3;
+.register-modal.show {
+    display: block;
+    animation: modalFadeIn 0.5s;
 }
-*/
+
+
+
+
+
