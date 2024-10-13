@@ -18,7 +18,7 @@
                 <span class="site-name">Yassya Lil</span>
             </a>
         </div>
-        <nav>
+        <nav class="main-nav">
             <a href="/">
                 <img src="/static/images/icons/Home.png" class="icon" id="home-ico">
                 <div class="nav-text">Home</div>
@@ -36,8 +36,15 @@
                 <div class="nav-text">About</div>
             </a>
         </nav>
-        <a href="/auth/register" class="register-button">Sign Up</a>
-        <a href="/auth/login" class="login-button">Sign In</a>
+        <nav class="auth-nav">
+            {% if current_user %}
+                <a href="/auth/logout" class="logout-button">Sign Out</a>
+            {% endif %}
+            {% if not current_user %}
+                <a href="/auth/register" class="register-button">Sign Up</a>
+                <a href="/auth/login" class="login-button">Sign In</a>
+            {% endif %}
+        </nav>
     </header>
     {% block content %}{% endblock %}
 
