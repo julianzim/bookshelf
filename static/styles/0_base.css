@@ -32,7 +32,7 @@ header {
     .logo-container {
         display: flex;
         align-items: center;
-        margin-left: 30px;
+        margin-left: 10px;
     }
 
     #logo {
@@ -60,66 +60,87 @@ header {
 
 
     /* NAVIGATION */
-    nav {
+    nav.main-nav {
         display: flex;
         justify-content: center;
         flex-grow: 1;
     }
 
-    nav a {
-        display: flex;
-        margin: 0 3%;
-        text-decoration: none;
-        color: #333;
-        font-size: 20px;
-        font-weight: bold;
-        align-items: center;
-    }
+        nav.main-nav a {
+            display: flex;
+            margin: 0 3%;
+            text-decoration: none;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            align-items: center;
+        }
 
-    .icon {
-        width: 45px;
-        height: auto;
-        vertical-align: middle;
+        .icon {
+            width: 45px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        .nav-text:hover {
+            text-decoration: underline;
+        }
+
+    nav.auth-nav {
+        display: flex;
         margin-right: 10px;
     }
 
-    .nav-text:hover {
-        text-decoration: underline;
-    }
 
-    .login-button {
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 16px;
-        color: white;
-        background-color: #333;
-        border-radius: 25px;
-        text-decoration: none;
-        text-align: center;
-        font-weight: bold;
-        margin-right: 50px;
-        cursor: pointer;
-    }
+        .login-button {
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 16px;
+            color: white;
+            background-color: #333;
+            border-radius: 25px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .login-button:hover {
-        background-color: darkblue;
-    }
+            .login-button:hover {
+                background-color: darkblue;
+            }
 
-    .register-button {
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        display: inline-block;
-        padding: 8px 16px;
-        font-size: 16px;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-    }
+        .register-button {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            display: inline-block;
+            padding: 8px 16px;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+        }
 
-    .register-button:hover {
-        text-decoration: underline;
-    }
+            .register-button:hover {
+                text-decoration: underline;
+            }
+
+        .logout-button {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                display: inline-block;
+                padding: 8px 16px;
+                font-size: 16px;
+                text-decoration: none;
+                text-align: center;
+                cursor: pointer;
+        }
+
+            .logout-button:hover {
+                    text-decoration: underline;
+            }
 
 
 /* BACKGROUND */
