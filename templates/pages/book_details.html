@@ -72,9 +72,21 @@
                         </div>
                     </div>
                     <div class="write-review-button-container">
-                        <a class="write-review-button" href="#review">
-                            Write a review
-                        </a>
+<!--                        <a class="write-review-button" href="#review">-->
+<!--                            Write a review-->
+<!--                        </a>-->
+
+                        {% if current_user %}
+                            <a class="write-review-button" href="#review">
+                                Write a review
+                            </a>
+                        {% else %}
+                            <a class="write-review-button-disabled" title="Please log in to write a review">
+                                Write a review
+                            </a>
+                        {% endif %}
+
+
                     </div>
                 </div>
 
