@@ -27,13 +27,10 @@ document.getElementById('registration-form').addEventListener('submit', async fu
     });
 
     if (response.ok) {
-        // Если ответ успешный, перенаправляем на страницу входа
         window.location.href = '/auth/login';
     } else {
-        // Обработка ошибок, если регистрация не удалась
         const result = await response.json();
         console.error('Registration failed:', result);
-        // Вы можете отобразить ошибку пользователю, если это необходимо
         if (result.message) {
             document.getElementById('email-error').textContent = result.message;
         }
