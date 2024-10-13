@@ -72,12 +72,8 @@
                         </div>
                     </div>
                     <div class="write-review-button-container">
-<!--                        <a class="write-review-button" href="#review">-->
-<!--                            Write a review-->
-<!--                        </a>-->
-
                         {% if current_user %}
-                            <a class="write-review-button" href="#review">
+                            <a class="write-review-button" onclick="openModal()">
                                 Write a review
                             </a>
                         {% else %}
@@ -85,8 +81,6 @@
                                 Write a review
                             </a>
                         {% endif %}
-
-
                     </div>
                 </div>
 
@@ -147,21 +141,26 @@
     </div>
 </div>
 
-<div class="modal" id="review">
-<div class="review-container">
-    <a class="modal-close-button" href="#">&times</a>
-    <form id="review-form" action="{{ url_for('create_review', book_name=book.title) }}" method="post" class="review-form">
-        <label for="thesis">Write your review thesis</label>
-        <input type="text" id="thesis" name="title">
-        <label for="text">Write your impressions</label>
-        <input type="text" id="text" name="description">
-        <label for="rating">Write your rating</label>
-        <input type="number" id="rating" name="rating">
 
-        <button class="send-review-button" type="submit">Send review</button>
-    </form>
+<div id="reviewModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>New Review</h2>
+        <form id="review-form" action="{{ url_for('create_review', book_name=book.title) }}"
+              method="post" class="review-form">
+            <label for="thesis">Thesis</label>
+            <textarea id="thesis" name="title" placeholder="Enter thesis"></textarea>
+
+            <label for="text">Impressions</label>
+            <textarea id="text" name="description" placeholder="Enter your impressions" maxlength="1000"></textarea>
+
+            <label for="rating">Rating</label>
+            <input type="number" id="rating" name="rating" placeholder="Rate the book">
+
+            <button class="send-review-button" type="submit">Send review</button>
+        </form>
+    </div>
 </div>
-</div>
 
-
+<script src="/static/scripts/reviewModal.js"></script>
 {% endblock %}
