@@ -38,7 +38,7 @@
         </nav>
         <nav class="auth-nav">
             {% if current_user %}
-                <a href="/auth/logout" class="logout-button">Sign Out</a>
+                <a id="logout-button" class="logout-button">Sign Out</a>
             {% endif %}
             {% if not current_user %}
                 <a href="/auth/register" class="register-button">Sign Up</a>
@@ -78,5 +78,6 @@
 <!--        <p>&copy; 2023 Мой сайт. Все права защищены.</p>-->
 <!--    </footer>-->
 
+    <script src="/static/scripts/logout.js"></script>
 </body>
 </html>
