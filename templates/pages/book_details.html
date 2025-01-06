@@ -38,7 +38,7 @@
                         <div class="info-icon">
                             <img src="/static/images/icons/Age.png" class="icon-info-container">
                         </div>
-                        <div class="info-value">{{ book.age }} years</div>
+                        <div class="info-value">{{ book.min_age }} - {{ book.max_age }} years</div>
                     </div>
                     <div class="info-container">
                         <div class="info-name">Pages</div>
@@ -54,7 +54,7 @@
             <div class="video-block">
                 <div class="video-block-title">{{ book.title }} aloud</div>
                 <div class="video-container">
-                    <iframe class="video-frame" src="https://www.youtube.com/embed/jMCXFGdSbH4" frameborder="0"
+                    <iframe class="video-frame" src="{{ book.aloud_link }}" frameborder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                 </div>
@@ -66,9 +66,9 @@
                         <div class="reviews-block-title">Customer reviews</div>
                         <div class="reviews-rating">
                             <div class="rating-stars">**********</div>
-                            <div class="rating-mean-value">4.9/5</div>
-                            <div class="ratings-count">157 ratings</div>
-                            <div class="reviews-count">| 43 reviews</div>
+                            <div class="rating-mean-value">{{ book.mean_rating }}/5</div>
+                            <div class="ratings-count">{{ book.ratings_count }} ratings</div>
+                            <div class="reviews-count">| {{ book.reviews_count }} reviews</div>
                         </div>
                     </div>
                     <div class="write-review-button-container">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="buy-button-container">
-                    <a class="buy-button" href="https://www.amazon.com/Friend-Anger-Our-Emotions-Friends/dp/B0C1J1H9MM/ref=sr_1_1?crid=XONPX6TL9F9U&dib=eyJ2IjoiMSJ9.Au1UgCc2IzRqX61k25GpwA.gO2PsLVmjAp6nuOLokGEBMECjoUwdCyvnd99QhpFb-A&dib_tag=se&keywords=yassya+lil+anger&qid=1726409665&s=books&sprefix=yassya+lil+anger%2Cstripbooks-intl-ship%2C169&sr=1-1">
+                    <a class="buy-button" href="{{ book.amazon_link }}">
                         Buy now on Amazon
                     </a>
                 </div>
