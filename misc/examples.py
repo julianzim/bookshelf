@@ -1,3 +1,5 @@
+import random
+
 from src.books.models import Books, Reviews
 from src.articles.models import Articles
 from src.auth.models import Role
@@ -5,11 +7,9 @@ from src.auth.models import Role
 from datetime import date
 
 
-reviews_count = 43
 pub_date = date(2023, 12, 17)
-pages = 35
 language = "English"
-age = "3-6"
+min_age, max_age = 3, 6
 series = "Our Emotions - Our Friends"
 author = "Yassya Lil"
 description = """
@@ -18,6 +18,8 @@ dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. Al
 convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex pellentesque rhoncus et quis felis. 
 Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
 """
+amazon_link = 'https://www.amazon.com/Friend-Anger-Our-Emotions-Friends/dp/B0C1J1H9MM/ref=sr_1_1?crid=XONPX6TL9F9U&dib=eyJ2IjoiMSJ9.Au1UgCc2IzRqX61k25GpwA.gO2PsLVmjAp6nuOLokGEBMECjoUwdCyvnd99QhpFb-A&dib_tag=se&keywords=yassya+lil+anger&qid=1726409665&s=books&sprefix=yassya+lil+anger%2Cstripbooks-intl-ship%2C169&sr=1-1'
+aloud_link = 'https://www.youtube.com/embed/jMCXFGdSbH4'
 
 
 example_books = [
@@ -29,10 +31,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Sadness",
@@ -42,10 +49,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Anger",
@@ -55,10 +67,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Fear",
@@ -68,10 +85,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Envy",
@@ -81,10 +103,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Love",
@@ -94,10 +121,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Jealousy",
@@ -107,10 +139,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Resentment",
@@ -120,10 +157,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Shame",
@@ -133,10 +175,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Guilt",
@@ -146,10 +193,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Loneliness",
@@ -159,10 +211,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Shyness",
@@ -172,10 +229,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Indifference",
@@ -185,10 +247,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Helplessness",
@@ -198,10 +265,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     ),
     Books(
         title="My Friend Boredom",
@@ -211,10 +283,15 @@ example_books = [
         full_description=description,
         pub_date=pub_date,
         author=author,
-        age=age,
-        pages=pages,
+        min_age=min_age,
+        max_age=max_age,
+        pages=random.randint(28, 38),
         language=language,
-        reviews_count=reviews_count
+        reviews_count=random.randint(50, 500),
+        ratings_count=random.randint(50, 500),
+        mean_rating=round(random.uniform(4.6, 5.0), 1),
+        amazon_link=amazon_link,
+        aloud_link=aloud_link
     )
 ]
 
@@ -258,7 +335,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
@@ -268,7 +345,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
@@ -278,7 +355,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
@@ -288,7 +365,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
@@ -298,7 +375,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
@@ -308,7 +385,7 @@ example_reviews = [
         reviewer=1,
         rating=5,
         title="Great story and great purchase",
-        description="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
+        text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
         dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. \
         Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex \
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",

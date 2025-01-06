@@ -19,8 +19,13 @@ class Books(Base):
     image: Mapped[str]
     pages: Mapped[int]
     language: Mapped[str]
-    age: Mapped[str]
+    min_age: Mapped[int]
+    max_age: Mapped[int]
     reviews_count: Mapped[int]
+    ratings_count: Mapped[int]
+    mean_rating: Mapped[float]
+    amazon_link: Mapped[str]
+    aloud_link: Mapped[str]
 
 
 class Reviews(Base):
