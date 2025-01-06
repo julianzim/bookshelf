@@ -51,3 +51,4 @@ if __name__ == "__main__":
     # asyncio.run(reset_database())
     # asyncio.run(add_books())
     # asyncio.run(add_articles())
+    # asyncio.run(add_roles())
