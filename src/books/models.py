@@ -31,5 +31,5 @@ class Reviews(Base):
     reviewer: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
     rating: Mapped[int]
     title: Mapped[str]
-    description: Mapped[str]
+    text: Mapped[str]
     created_at: Mapped[datetime.datetime] = mapped_column(server_default=text("TIMEZONE('utc', now())"))
