@@ -17,10 +17,10 @@ router = APIRouter(prefix="/books", tags=["Books"])
 
 @router.get(path="", response_model=List[GetAllBooks])
 async def get_all_books(session: AsyncSession = Depends(get_async_session)):
-    query = select(Books)
+    query = select(Books.id, Books.title, Books.image)
     result = await session.execute(query)
-    books = result.scalars().all()
-    return books
+    books = result.fetchall()
+    return [{"id": book[0], "title": book[1], "image": book[2]} for book in books]
 
 
 @router.get(path="/{book_name}")
