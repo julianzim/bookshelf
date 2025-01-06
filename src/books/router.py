@@ -44,7 +44,7 @@ async def get_related_books(book_name: str, session: AsyncSession = Depends(get_
 async def create_review(
     book_name: str,
     title: str = Form(...),
-    description: str = Form(...),
+    text: str = Form(...),
     rating: int = Form(...),
     session: AsyncSession = Depends(get_async_session),
     curr_user=Depends(current_user),
@@ -58,7 +58,7 @@ async def create_review(
         book=book.id,
         reviewer=curr_user.id,
         title=title,
-        description=description,
+        text=text,
         rating=rating
     )
     session.add(new_review)

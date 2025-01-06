@@ -19,5 +19,5 @@ class GetAllBooks(BaseModel):
 
 class ReviewCreate(BaseModel):
     title: str
-    description: str
+    text: str
     rating: int
