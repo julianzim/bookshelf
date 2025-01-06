@@ -1,5 +1,5 @@
 var modal = document.getElementById("reviewModal");
-var closeBtn = document.querySelector(".close");
+var closeBtn = document.getElementById("reviewModalCloseBtn");
 
 function openModal() {
     modal.classList.add("show");

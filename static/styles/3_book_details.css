@@ -222,7 +222,7 @@
                 }
 
 
-            .modal {
+            .review-modal {
                 display: none;
                 position: fixed;
                 z-index: 1;
@@ -234,7 +234,7 @@
                 background-color: rgba(0, 0, 0, 0.5);
             }
 
-                .modal-content {
+                .review-modal-content {
                     background-color: #fefefe;
                     margin: 8% auto;
                     padding: 20px;
@@ -244,12 +244,12 @@
                     position: relative;
                 }
 
-                    .modal-content h2 {
+                    .review-modal-content h2 {
                         margin-top: 0;
                         text-align: center;
                     }
 
-                .close {
+                .review-close-btn {
                     position: absolute;
                     top: 10px;
                     right: 20px;
@@ -260,8 +260,8 @@
                     transition: color 0.3s;
                 }
 
-                    .close:hover,
-                    .close:focus {
+                    .review-close:hover,
+                    .review-close:focus {
                         color: #007bff;
                     }
 
@@ -329,7 +329,7 @@
                 to { opacity: 1; }
             }
 
-            .modal.show {
+            .review-modal.show {
                 display: block;
                 animation: modalFadeIn 0.5s;
             }
