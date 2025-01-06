@@ -1,7 +1,7 @@
 var register_modal = document.getElementById("registerModal");
-var closeBtnRegister = document.querySelector(".register-close");
+var closeBtnRegister = document.getElementById("registerModalCloseBtn");
 var login_modal = document.getElementById("loginModal");
-var closeBtnLogin = document.querySelector(".login-close");
+var closeBtnLogin = document.getElementById("loginModalCloseBtn");
 
 function openRegisterModal() {
     login_modal.classList.remove("show");

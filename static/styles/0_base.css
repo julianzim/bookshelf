@@ -191,9 +191,8 @@ footer {
 }
 
 
-/* MODAL WINDOWS */
-/* register */
-.register-modal {
+/* AUTH MODAL WINDOWS */
+.auth-modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -205,255 +204,128 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-.register-modal-content {
-    background-color: #fefefe;
-    margin: 7% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
+    .auth-modal-content {
+        background-color: #fefefe;
+        margin: 7% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
 
-.register-modal-content h2 {
-    margin-top: 0;
-    text-align: center;
-}
+        .auth-modal-content h2 {
+            margin-top: 0;
+            text-align: center;
+        }
 
-/* Close button */
-.register-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: #f5f5f5;
-    color: #333;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
+        .auth-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, color 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
 
-.register-close:hover,
-.register-close:focus {
-    background-color: #007bff;
-    color: white;
-}
+            .auth-modal-close:hover,
+            .auth-modal-close:focus {
+                background-color: #007bff;
+                color: white;
+            }
 
-/* Form Styles */
-.registration-form label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-    display: block;
-}
+        .auth-form label {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
 
-.registration-form input[type="text"],
-.registration-form input[type="email"],
-.registration-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
+        .auth-form input[type="text"],
+        .auth-form input[type="email"],
+        .auth-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
 
-.registration-form input[type="text"]:focus,
-.registration-form input[type="email"]:focus,
-.registration-form input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-}
+        .auth-form input[type="text"]:focus,
+        .auth-form input[type="email"]:focus,
+        .auth-form input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
 
-/* Error and password strength messages */
-.error, .password-strength {
-    font-size: 0.875rem;
-    color: red;
-    margin-bottom: 15px;
-}
+        .error, .password-strength {
+            font-size: 0.875rem;
+            color: red;
+            margin-bottom: 15px;
+        }
 
-/* Submit button (register button) */
-.register-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-}
+        .auth-submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+        }
 
-.register-btn:hover {
-    background-color: #0056b3;
-}
+            .auth-submit-btn:hover {
+                background-color: #0056b3;
+            }
 
-/* Redirect message */
-.redirect {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.875rem;
-}
+        .redirect {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.875rem;
+        }
 
-.redirect a {
-    color: #007bff;
-    text-decoration: none;
-}
+            .redirect a {
+                color: #007bff;
+                text-decoration: none;
+            }
 
-.redirect a:hover {
-    text-decoration: underline;
-}
+                .redirect a:hover {
+                    text-decoration: underline;
+                }
 
-/* Modal fade-in animation */
-@keyframes modalFadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+            .auth-button {
+                text-decoration: none;
+                color: #333;
+                font-weight: bold;
+                display: inline-block;
+                margin-left: 4px;
+                font-size: 16px;
+                text-decoration: none;
+                text-align: center;
+                cursor: pointer;
+            }
 
-.register-modal.show {
-    display: block;
-    animation: modalFadeIn 0.5s;
-}
-
-
-
-/* login */
-.login-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.login-modal-content {
-    background-color: #fefefe;
-    margin: 7% auto;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-}
-
-.login-modal-content h2 {
-    margin-top: 0;
-    text-align: center;
-}
-
-/* Close button */
-.login-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    background-color: #f5f5f5;
-    color: #333;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s, color 0.3s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.login-close:hover,
-.login-close:focus {
-    background-color: #007bff;
-    color: white;
-}
-
-/* Form Styles */
-.registration-form label {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.registration-form input[type="text"],
-.registration-form input[type="email"],
-.registration-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-}
-
-.registration-form input[type="text"]:focus,
-.registration-form input[type="email"]:focus,
-.registration-form input[type="password"]:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Error and password strength messages */
-.error, .password-strength {
-    font-size: 0.875rem;
-    color: red;
-    margin-bottom: 15px;
-}
-
-/* Submit button (register button) */
-.login-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.login-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Redirect message */
-.redirect {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 0.875rem;
-}
-
-.redirect a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.redirect a:hover {
-    text-decoration: underline;
-}
+                .auth-button:hover {
+                    text-decoration: underline;
+                }
 
 /* Modal fade-in animation */
 @keyframes modalFadeIn {
@@ -461,7 +333,7 @@ footer {
     to { opacity: 1; }
 }
 
-.login-modal.show {
+.auth-modal.show {
     display: block;
     animation: modalFadeIn 0.5s;
 }
