@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Form, Request
-from starlette.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -96,4 +97,4 @@ async def create_review(
     await session.commit()
     await session.refresh(new_review)
 
-    return {"message": "Review created successfully", "review_id": new_review.id}
+    return RedirectResponse(url=f"/books/{book_title}", status_code=303)
