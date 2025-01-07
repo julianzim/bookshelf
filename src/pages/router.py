@@ -86,29 +86,3 @@ async def get_blog(
             "current_user": current_user
         }
     )
-
-
-@router.get("/auth/register")
-async def get_registration(
-        request: Request,
-        current_user=Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "auth_pages/registration.html", {
-            "request": request,
-            "current_user": current_user
-        }
-    )
-
-
-@router.get("/auth/login")
-async def get_registration(
-        request: Request,
-        current_user=Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "auth_pages/login.html", {
-            "request": request,
-            "current_user": current_user
-        }
-    )
