@@ -13,7 +13,6 @@ from src.auth.schemas import UserCreate, UserRead
 from src.books.models import Books
 from src.books.router import router as router_books
 from src.articles.router import router as router_blog
-from src.pages.router import router as router_pages
 
 
 templates = Jinja2Templates(directory="templates/")
@@ -22,7 +21,6 @@ app = FastAPI(title="Yassya Lil")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-app.include_router(router_pages)
 app.include_router(router_books)
 app.include_router(router_blog)
 app.include_router(
@@ -52,6 +50,19 @@ async def get_home(
         "pages/home.html", {
             "request": request,
             "books": books_rows,
+            "current_user": current_user
+        }
+    )
+
+
+@app.get("/about")
+async def get_about(
+    request: Request,
+    current_user=Depends(current_user_optional)
+):
+    return templates.TemplateResponse(
+        "pages/about.html", {
+            "request": request,
             "current_user": current_user
         }
     )
