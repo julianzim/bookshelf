@@ -1,5 +1,4 @@
 from fastapi import APIRouter, Depends, Form, Request
-# from fastapi.responses import RedirectResponse, Response
 from starlette.templating import Jinja2Templates
 
 from sqlalchemy import select
@@ -7,6 +6,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from typing import List
 
+from src.queries import (
+    get_book_by_title,
+    get_related_books_by_title,
+    get_all_book_reviews
+)
 from src.database import get_async_session
 from src.auth.base_config import current_user, current_user_optional
 from src.books.models import Books, Reviews
@@ -40,38 +44,38 @@ async def get_all_books(
 
 @router.get(path="/{book_name}")
 async def get_book(
-    book_name: str, 
+    book_name: str,
     session: AsyncSession = Depends(get_async_session)
 ):
-    # book_name_split = " ".join(book_name.split("_"))
-    query = select(Books).where(Books.title == book_name)
-    result = await session.execute(query)
-    book = result.scalars().one()
+    book = await get_book_by_title(
+        title=book_name,
+        session=session
+    )
     return book
 
 
 @router.get(path="/{book_name}")
 async def get_related_books(
-    book_name: str, 
+    book_name: str,
     session: AsyncSession = Depends(get_async_session)
 ):
-    query = select(Books)
-    result = await session.execute(query)
-    books = result.scalars().all()
-    return books
+    related_books = await get_related_books_by_title(
+        title=book_name,
+        session=session
+    )
+    return related_books
 
 
 @router.get(path="/{book_name}")
 async def get_book_reviews(
     book_name: str,
-    session: AsyncSession = Depends(get_async_session),
-
+    session: AsyncSession = Depends(get_async_session)
 ):
-    query = select(Reviews)
-    result = await session.execute(query)
-    reviews = result.scalars().all()
-
-    return reviews
+    book_reviews = await get_all_book_reviews(
+        title=book_name,
+        session=session
+    )
+    return book_reviews
 
 
 @router.post(path="/{book_name}/review")
