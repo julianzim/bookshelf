@@ -24,8 +24,9 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     ) -> None:
         print(f"User {user.id} {user.username} has login.")
         if response:
+            last_page = request.query_params.get("next") or request.headers.get("Referer") or "/"
             response.status_code = 302
-            response.headers["Location"] = "/"
+            response.headers["Location"] = last_page
 
     async def create(
         self,
