@@ -72,16 +72,16 @@ async def get_book_details(
     )
 
 
-@router.post(path="/{book_name}/review")
+@router.post(path="/{book_title}/review")
 async def create_review(
-    book_name: str,
+    book_title: str,
     title: str = Form(...),
     text: str = Form(...),
     rating: int = Form(...),
     session: AsyncSession = Depends(get_async_session),
     curr_user=Depends(current_user)
 ):
-    query = select(Books).where(Books.title == book_name)
+    query = select(Books).where(Books.title == book_title)
     result = await session.execute(query)
     book = result.scalars().one()
 

@@ -149,7 +149,7 @@
     <div class="review-modal-content">
         <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
         <h2>Review</h2>
-        <form id="review-form" action="{{ url_for('create_review', book_name=book.title) }}"
+        <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}"
               method="post" class="review-form">
             <label for="title">Your Review</label>
             <textarea id="title" name="title" placeholder="Write your review" maxlength="100"></textarea>
