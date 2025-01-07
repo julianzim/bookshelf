@@ -27,7 +27,9 @@ document.getElementById('auth-form').addEventListener('submit', async function(e
     });
 
     if (response.ok) {
-        window.location.href = '/auth/login';
+        // window.location.href = '/auth/login';
+        document.getElementById('registerModal').style.display = 'none';
+        document.getElementById('loginModal').style.display = 'block';
     } else {
         const result = await response.json();
         console.error('Registration failed:', result);
