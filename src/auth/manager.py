@@ -14,7 +14,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     verification_token_secret = SECRET_AUTH
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
-        print(f"User {user.id} has registered.")        # TODO
+        print(f"User {user.id} has registered.")
 
     async def on_after_login(
         self,
@@ -22,7 +22,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         request: Optional[Request] = None,
         response: Optional[Response] = None,
     ) -> None:
-        print(f"User {user.id} {user.username} has login.")     # TODO
+        print(f"User {user.id} {user.username} has login.")
         if response:
             response.status_code = 302
             response.headers["Location"] = "/"
