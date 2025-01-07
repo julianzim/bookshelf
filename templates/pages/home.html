@@ -14,10 +14,10 @@
                 <div class="book-grid-in-wrapper">
                     {% for book in books %}
                         <div class="book-item-in-wrapper">
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
                                 <img src="/static/images/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
                             </a>
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
                         </div>
                     {% endfor %}
                 </div>
@@ -32,10 +32,10 @@
                 <div class="book-grid-in-wrapper">
                     {% for book in books %}
                         <div class="book-item-in-wrapper">
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
                                 <img src="/static/images/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
                             </a>
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
                         </div>
                     {% endfor %}
                 </div>
@@ -50,10 +50,10 @@
                 <div class="book-grid-in-wrapper">
                     {% for book in books %}
                         <div class="book-item-in-wrapper">
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
                                 <img src="/static/images/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
                             </a>
-                            <a href="{{ url_for('get_book', book_name=book.title) }}" class="book-title">{{ book.title }}</a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
                         </div>
                     {% endfor %}
                 </div>
