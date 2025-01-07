@@ -42,40 +42,34 @@ async def get_all_books(
     ) 
 
 
-@router.get(path="/{book_name}")
-async def get_book(
-    book_name: str,
+@router.get(path="/{book_title}")
+async def get_book_details(
+    book_title: str,
+    request: Request,
+    current_user=Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
     book = await get_book_by_title(
-        title=book_name,
+        title=book_title,
         session=session
     )
-    return book
-
-
-@router.get(path="/{book_name}")
-async def get_related_books(
-    book_name: str,
-    session: AsyncSession = Depends(get_async_session)
-):
     related_books = await get_related_books_by_title(
-        title=book_name,
+        title=book_title,
         session=session
     )
-    return related_books
-
-
-@router.get(path="/{book_name}")
-async def get_book_reviews(
-    book_name: str,
-    session: AsyncSession = Depends(get_async_session)
-):
     book_reviews = await get_all_book_reviews(
-        title=book_name,
+        title=book_title,
         session=session
     )
-    return book_reviews
+    return templates.TemplateResponse(
+        "pages/book_details.html",
+        {
+            "request": request,
+            "book": book,
+            "related_books": related_books,
+            "current_user": current_user
+        }
+    )
 
 
 @router.post(path="/{book_name}/review")
