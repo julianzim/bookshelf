@@ -71,18 +71,3 @@ async def get_book_detail(
             "current_user": current_user
         }
     )
-
-
-@router.get("/blog")
-async def get_blog(
-        request: Request,
-        articles=Depends(get_all_articles),
-        current_user=Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "pages/blog.html", {
-            "request": request,
-            "articles": articles,
-            "current_user": current_user
-        }
-    )
