@@ -62,12 +62,14 @@ async def get_book_details(
         title=book_title,
         session=session
     )
+    
     return templates.TemplateResponse(
         "pages/book_details.html",
         {
             "request": request,
             "book": book,
             "related_books": related_books,
-            "current_user": current_user
+            "current_user": current_user,
+            "book_reviews": book_reviews
         }
     )
