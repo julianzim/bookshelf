@@ -1,7 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.books.models import Books, Reviews
+from src.books.models import Books
+from src.reviews.models import Reviews
 from src.database import async_engine, Base
 
 
