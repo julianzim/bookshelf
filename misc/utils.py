@@ -7,7 +7,7 @@ async def get_reviews_statistics(reviews: list[Reviews]):
     ratings = [review.rating for review in reviews]
     reviews_texts = [review.text for review in reviews]
     if ratings:
-        average_rating = statistics.mean(ratings)
+        average_rating = round(statistics.mean(ratings), 1)
     else:
         average_rating = 0
     ratings_count = len(ratings)
