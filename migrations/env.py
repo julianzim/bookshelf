@@ -6,7 +6,8 @@ from sqlalchemy import pool
 from alembic import context
 
 from src.config import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASS
-from src.books.models import Books, Reviews
+from src.books.models import Books
+from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.auth.models import Role, User
 from src.database import Base
