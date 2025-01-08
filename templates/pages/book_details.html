@@ -83,22 +83,22 @@
                         {% endif %}
                     </div>
                 </div>
-
-                    <hr class="content-divider-reviews-block">
-                    <div class="review">
-                        <div class="review-info">
-                            <div class="reviewer-name">by Julian,</div>
-                            <div class="review-date">March 18, 2023</div>
+                <hr class="content-divider-reviews-block">
+                    {% for review in book_reviews %}
+                        <div class="review">
+                            <div class="review-info">
+                                <div class="reviewer-name">by {{ review.username }},</div>
+                                <div class="review-date">{{ review.created_at }}</div>
+                            </div>
+                            <div class="review-rating-and-title">
+                                <div class="review-rating-stars">{{ review.rating }} stars</div>
+                                <div class="review-title">{{ review.title }}</div>
+                            </div>
+                            <div class="review-text">
+                                {{ review.text }}
+                            </div>
                         </div>
-                        <div class="review-rating-and-title">
-                            <div class="review-rating-stars">**********</div>
-                            <div class="review-title">Great story and great purchase</div>
-                        </div>
-                        <div class="review-text">
-                            Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, dolor eget aliquet auctor, dolor leo laoreet lorem, eu blandit justo nisi eu arcu. Donec et nulla dolor. Aliquam vitae leo tincidunt, convallis lectus sit amet, convallis felis. Donec sit amet lectus a ex pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
-                        </div>
-                    </div>
-
+                    {% endfor %}
             </div>
 
         </div>
