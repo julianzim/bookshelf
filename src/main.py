@@ -12,6 +12,7 @@ from src.auth.base_config import auth_backend, fastapi_users, current_user_optio
 from src.auth.schemas import UserCreate, UserRead
 from src.books.models import Books
 from src.books.router import router as router_books
+from src.reviews.router import router as router_reviews
 from src.articles.router import router as router_blog
 
 
@@ -22,6 +23,7 @@ app = FastAPI(title="Yassya Lil")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 app.include_router(router_books)
+app.include_router(router_reviews)
 app.include_router(router_blog)
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
