@@ -1,4 +1,4 @@
-from sqlalchemy import select, join
+from sqlalchemy import select, join, desc
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.models import User
@@ -52,6 +52,7 @@ async def get_all_book_reviews(
             .join(User, Reviews.reviewer == User.id)
         )
         .where(Books.title == title)
+        .order_by(desc(Reviews.created_at))
     )
     result = await session.execute(query)
 
