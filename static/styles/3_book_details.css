@@ -52,7 +52,7 @@
     }
 
     .book-titles-right {
-        align: left;
+        text-align: left;
     }
 
         .book-title-right {
@@ -100,14 +100,6 @@
 
         .info-container {
             text-align: center;
-        }
-
-        .info-name {
-
-        }
-
-        .info-icon {
-
         }
 
             .icon-info-container {
@@ -185,10 +177,6 @@
 
                     .ratings-count {
                         margin-right: 10px;
-                    }
-
-                    .reviews-count {
-
                     }
 
 
@@ -365,9 +353,6 @@
                     margin-right: 10px;
                 }
 
-                .review-date {
-                }
-
             .review-rating-and-title {
                 display: flex;
                 font-weight: bold;
@@ -377,10 +362,6 @@
 
                 .review-rating-stars {
                     margin-right: 10px;
-                }
-
-                .review-title {
-
                 }
 
             .review-text {
@@ -496,13 +477,8 @@
                 height: auto;
                 flex-shrink: 0;
                 flex-direction: column;
-                justify-content: space-between;
                 padding-bottom: 5px;
             }
-
-                .related-book-link {
-
-                }
 
                     .related-book-cover {
                         width: 100%;
