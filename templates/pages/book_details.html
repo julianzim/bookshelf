@@ -66,17 +66,17 @@
                         <div class="reviews-block-title">Customer reviews</div>
                         <div class="reviews-rating">
                             <div class="rating-stars">**********</div>
-                            <div class="rating-mean-value">{{ book.mean_rating }}/5</div>
-                            <div class="ratings-count">{{ book.ratings_count }} ratings</div>
-                            <div class="reviews-count">| {{ book.reviews_count }} reviews</div>
+                            <div class="rating-mean-value">{{ book_reviews_stats.average_rating }}/5</div>
+                            <div class="ratings-count">{{ book_reviews_stats.ratings_count }} ratings</div>
+                            <div class="reviews-count">| {{ book_reviews_stats.reviews_count }} reviews</div>
                         </div>
                     </div>
                     <div class="write-review-button-container">
                         {% if current_user %}
-                            <a class="write-review-button" onclick="openModal()">
-                                Write a review
-                            </a>
-                        {% else %}
+                        <a class="write-review-button" onclickbook_stats="openModal()">
+                            Write a review
+                        </a>
+                    {% else %}
                             <a class="write-review-button-disabled" title="Please log in to write a review">
                                 Write a review
                             </a>
