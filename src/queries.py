@@ -1,6 +1,7 @@
-from sqlalchemy import select
+from sqlalchemy import select, join
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.database import async_engine, Base
@@ -38,8 +39,20 @@ async def get_all_book_reviews(
     title: str,
     session: AsyncSession
 ):
-    query = select(Reviews)
+    query = (
+        select(
+            User.username,
+            Reviews.title,
+            Reviews.text,
+            Reviews.rating,
+            Reviews.created_at
+        )
+        .select_from(
+            join(Reviews, Books, Reviews.book == Books.id)
+            .join(User, Reviews.reviewer == User.id)
+        )
+        .where(Books.title == title)
+    )
     result = await session.execute(query)
-    reviews = result.scalars().all()
 
-    return reviews
+    return result.fetchall()
