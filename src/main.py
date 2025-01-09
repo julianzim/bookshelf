@@ -14,7 +14,13 @@ from src.books.models import Books
 from src.books.router import router as router_books
 from src.reviews.router import router as router_reviews
 from src.articles.router import router as router_blog
+from misc.utils import get_logger
 
+
+logger = get_logger(
+    name=__name__,
+    log_level="DEBUG"
+)
 
 templates = Jinja2Templates(directory="templates/")
 
@@ -43,13 +49,16 @@ async def get_home(
     current_user=Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
+    logger.debug("Requesting the Home page")
     query = select(Books.id, Books.title, Books.image)
     result = await session.execute(query)
     books = result.fetchall()
     books_rows = [{"id": book[0], "title": book[1], "image": book[2]} for book in books]
-    
+    logger.info(f"Books found: {len(books_rows)}")
+
     return templates.TemplateResponse(
-        "pages/home.html", {
+        "pages/home.html", 
+        {
             "request": request,
             "books": books_rows,
             "current_user": current_user
@@ -62,8 +71,11 @@ async def get_about(
     request: Request,
     current_user=Depends(current_user_optional)
 ):
+    logger.debug("Requesting the About page")
+    
     return templates.TemplateResponse(
-        "pages/about.html", {
+        "pages/about.html", 
+        {
             "request": request,
             "current_user": current_user
         }
@@ -73,5 +85,14 @@ async def get_about(
 @app.exception_handler(HTTPException)
 async def exc_401_handler(request: Request, exc: HTTPException):
     if exc.status_code == status.HTTP_401_UNAUTHORIZED:
-        return RedirectResponse(url="/auth/login", status_code=status.HTTP_303_SEE_OTHER)
-    return JSONResponse(status_code=exc.status_code, content={"detail": exc.detail})
+        logger.warning("Unauthorized access, redirecting to the login page")
+        return RedirectResponse(
+            url="/auth/login", 
+            status_code=status.HTTP_303_SEE_OTHER
+        )
+    logger.error(f"HTTPException: {exc.detail}")
+    
+    return JSONResponse(
+        status_code=exc.status_code, 
+        content={"detail": exc.detail}
+    )
