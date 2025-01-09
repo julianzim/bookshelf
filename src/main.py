@@ -17,9 +17,10 @@ from src.articles.router import router as router_blog
 from misc.utils import get_logger
 
 
-logger = get_logger(
+root_logger = get_logger(
     name=__name__,
-    log_level="DEBUG"
+    log_level="DEBUG",
+    set_sqla_logger=True
 )
 
 templates = Jinja2Templates(directory="templates/")
@@ -49,12 +50,12 @@ async def get_home(
     current_user=Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
-    logger.debug("Requesting the Home page")
+    root_logger.debug("Requesting the Home page")
     query = select(Books.id, Books.title, Books.image)
     result = await session.execute(query)
     books = result.fetchall()
     books_rows = [{"id": book[0], "title": book[1], "image": book[2]} for book in books]
-    logger.info(f"Books found: {len(books_rows)}")
+    root_logger.info(f"Books found: {len(books_rows)}")
 
     return templates.TemplateResponse(
         "pages/home.html", 
@@ -71,7 +72,7 @@ async def get_about(
     request: Request,
     current_user=Depends(current_user_optional)
 ):
-    logger.debug("Requesting the About page")
+    root_logger.debug("Requesting the About page")
     
     return templates.TemplateResponse(
         "pages/about.html", 
@@ -85,12 +86,12 @@ async def get_about(
 @app.exception_handler(HTTPException)
 async def exc_401_handler(request: Request, exc: HTTPException):
     if exc.status_code == status.HTTP_401_UNAUTHORIZED:
-        logger.warning("Unauthorized access, redirecting to the login page")
+        root_logger.warning("Unauthorized access, redirecting to the login page")
         return RedirectResponse(
             url="/auth/login", 
             status_code=status.HTTP_303_SEE_OTHER
         )
-    logger.error(f"HTTPException: {exc.detail}")
+    root_logger.error(f"HTTPException: {exc.detail}")
     
     return JSONResponse(
         status_code=exc.status_code, 
