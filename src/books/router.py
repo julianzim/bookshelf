@@ -23,7 +23,7 @@ router = APIRouter(prefix="/books", tags=["Books"])
 templates = Jinja2Templates(directory="templates/")
 
 
-@router.get(path="", response_model=List[GetAllBooks])
+@router.get(path="")
 async def get_all_books(
     request: Request,
     current_user=Depends(current_user_optional),
