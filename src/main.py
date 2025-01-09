@@ -44,6 +44,14 @@ app.include_router(
 )
 
 
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    root_logger.info(f"Request: {request.method} {request.url}")
+    response = await call_next(request)
+    root_logger.info(f"Response: status {response.status_code}")
+    return response
+
+
 @app.get("/")
 async def get_home(
     request: Request,
