@@ -38,8 +38,10 @@
         </nav>
         <nav class="auth-nav">
             {% if current_user %}
-                <span>Hello, {{ current_user.username }}</span>
-                <a id="logout-button" class="logout-button">Sign Out</a>
+                <div class="hello-user">
+                    <span>Hello, {{ current_user.username }}</span>
+                    <a id="logout-button" class="logout-button">Sign Out</a>
+                </div>
             {% endif %}
             {% if not current_user %}
                 <a class="register-button" onclick="openRegisterModal()">Sign Up</a>
