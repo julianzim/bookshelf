@@ -11,6 +11,9 @@ class Role(Base):
     name = Column(String, nullable=False)
     permissions = Column(JSON)
 
+    def __repr__(self):
+        return f"Role(id={self.id}, name='{self.name}', permissions='{self.permissions}')"
+
 
 class User(SQLAlchemyBaseUserTable[int], Base):
     __tablename__ = "users"
@@ -24,3 +27,6 @@ class User(SQLAlchemyBaseUserTable[int], Base):
     is_active: bool = Column(Boolean, default=True, nullable=False)
     is_superuser: bool = Column(Boolean, default=False, nullable=False)
     is_verified: bool = Column(Boolean, default=False, nullable=False)
+
+    def __repr__(self):
+        return f"User(id={self.id}, name='{self.username}', email='{self.email}', registered_at='{self.registered_at}')"
