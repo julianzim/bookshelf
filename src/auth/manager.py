@@ -17,7 +17,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     verification_token_secret = SECRET_AUTH
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
-        logger.info(f"User {user.id} has registered")
+        logger.info(f"{user} has registered")
 
     async def on_after_login(
         self,
@@ -25,12 +25,12 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         request: Optional[Request] = None,
         response: Optional[Response] = None,
     ) -> None:
-        logger.info(f"User {user.id} {user.username} has login")
+        logger.info(f"{user} has login")
         if response:
             last_page = request.query_params.get("next") or request.headers.get("Referer") or "/"
+            logger.debug(f"User id={user.id} redirecting to the page {last_page}")
             response.status_code = 302
             response.headers["Location"] = last_page
-            logger.debug(f"User {user.id} redirected to the page {last_page}")
 
     async def create(
         self,
