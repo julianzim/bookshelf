@@ -11,7 +11,10 @@ from src.auth.base_config import current_user
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewCreate
+from misc.utils import get_logger
 
+
+logger = get_logger(__name__)
 
 router = APIRouter(prefix="/reviews", tags=["Reviews"])
 
@@ -28,6 +31,7 @@ async def create_review(
     try:
         review_data = ReviewCreate(title=title, text=text, rating=rating)
     except ValidationError as e:
+        logger.error(f"{e.errors()}")
         raise HTTPException(status_code=422, detail=e.errors())
     
     query = select(Books).where(Books.title == book_title)
@@ -35,6 +39,7 @@ async def create_review(
     book = result.scalars().first()
 
     if not book:
+        logger.error(f"Book {book_title} not found")
         raise HTTPException(status_code=404, detail="Book not found")
     
     existing_review_query = select(Reviews).where(
@@ -44,6 +49,7 @@ async def create_review(
     existing_review = existing_review_result.scalars().first()
 
     if existing_review:
+        logger.error(f"{curr_user} has already reviewed this book")
         raise HTTPException(status_code=400, detail="User has already reviewed this book")
 
     new_review = Reviews(
@@ -56,5 +62,7 @@ async def create_review(
     session.add(new_review)
     await session.commit()
     await session.refresh(new_review)
+
+    logger.info(f"New review {new_review.id} was added by {curr_user} at {new_review.created_at}")
 
     return RedirectResponse(url=f"/books/{book_title}", status_code=303)
