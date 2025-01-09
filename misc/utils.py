@@ -54,7 +54,7 @@ def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = 
 
         if set_sqla_logger:
             sqlalchemy_logger = logging.getLogger("sqlalchemy.engine")
-            sqlalchemy_logger.setLevel(log_level)
+            sqlalchemy_logger.setLevel(logging.WARNING)
             sqlalchemy_logger.addHandler(file_handler)
 
     return logger
