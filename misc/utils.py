@@ -1,4 +1,6 @@
 import statistics
+import logging
+import os
 
 from src.reviews.models import Reviews
 
@@ -18,3 +20,36 @@ async def get_reviews_statistics(reviews: list[Reviews]):
         "ratings_count": ratings_count,
         "reviews_count": reviews_count
     }
+
+
+def get_logger(name: str = None, log_level: str = None):
+    """
+    Returns a configured logger with the specified name and logging level.
+    The logging level can be set either via an argument or the LOG_LEVEL environment variable.
+    """
+    logger = logging.getLogger(name)
+    if not logger.hasHandlers():
+        log_format = "%(asctime)s - %(levelname)-8s - %(name)s - %(message)s"
+        formatter = logging.Formatter(log_format)
+
+        file_handler = logging.FileHandler("app.log")
+        file_handler.setFormatter(formatter)
+
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(formatter)
+
+        if log_level is None:
+            log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+
+        if isinstance(log_level, str):
+            log_level = getattr(logging, log_level.upper(), logging.INFO)
+        elif isinstance(log_level, int):
+            pass
+        else:
+            raise ValueError("Log level must be either a string or an integer.")
+        
+        logger.setLevel(log_level)
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
+
+    return logger
