@@ -22,7 +22,7 @@ async def get_reviews_statistics(reviews: list[Reviews]):
     }
 
 
-def get_logger(name: str = None, log_level: str = None):
+def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = False):
     """
     Returns a configured logger with the specified name and logging level.
     The logging level can be set either via an argument or the LOG_LEVEL environment variable.
@@ -51,5 +51,10 @@ def get_logger(name: str = None, log_level: str = None):
         logger.setLevel(log_level)
         logger.addHandler(file_handler)
         logger.addHandler(console_handler)
+
+        if set_sqla_logger:
+            sqlalchemy_logger = logging.getLogger("sqlalchemy.engine")
+            sqlalchemy_logger.setLevel(log_level)
+            sqlalchemy_logger.addHandler(file_handler)
 
     return logger
