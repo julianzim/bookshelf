@@ -39,7 +39,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Sadness",
@@ -57,7 +58,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Anger",
@@ -75,7 +77,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Fear",
@@ -93,7 +96,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Envy",
@@ -111,7 +115,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Love",
@@ -129,7 +134,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Jealousy",
@@ -147,7 +153,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Resentment",
@@ -165,7 +172,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Shame",
@@ -183,7 +191,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Guilt",
@@ -201,7 +210,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Loneliness",
@@ -219,7 +229,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Shyness",
@@ -237,7 +248,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Indifference",
@@ -255,7 +267,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Helplessness",
@@ -273,7 +286,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     ),
     Books(
         title="My Friend Boredom",
@@ -291,7 +305,8 @@ example_books = [
         ratings_count=random.randint(50, 500),
         mean_rating=round(random.uniform(4.6, 5.0), 1),
         amazon_link=amazon_link,
-        aloud_link=aloud_link
+        aloud_link=aloud_link,
+        active=True
     )
 ]
 
@@ -300,19 +315,22 @@ example_articles = [
         title="Article 1",
         short_description=description,
         full_description=description,
-        created_at=pub_date
+        created_at=pub_date,
+        active=True
     ),
     Articles(
         title="Article 2",
         short_description=description,
         full_description=description,
-        created_at=pub_date
+        created_at=pub_date,
+        active=True
     ),
     Articles(
         title="Article 3",
         short_description=description,
         full_description=description,
-        created_at=pub_date
+        created_at=pub_date,
+        active=True
     )
 ]
 

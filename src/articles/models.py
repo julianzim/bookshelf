@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from sqlalchemy.orm import Mapped, mapped_column
 from src.database import Base
 
@@ -11,4 +12,8 @@ class Articles(Base):
     title: Mapped[str]
     short_description: Mapped[str]
     full_description: Mapped[str]
-    created_at: Mapped[datetime.datetime]
+    created_at: Mapped[datetime.datetime] = mapped_column(
+        server_default=text("TIMEZONE('utc', now())"),
+        nullable=False
+    )
+    active: Mapped[bool]
