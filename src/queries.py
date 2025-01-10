@@ -48,8 +48,8 @@ async def get_all_book_reviews(
             Reviews.created_at
         )
         .select_from(
-            join(Reviews, Books, Reviews.book == Books.id)
-            .join(User, Reviews.reviewer == User.id)
+            join(Reviews, Books, Reviews.book_id == Books.id)
+            .join(User, Reviews.user_id == User.id)
         )
         .where(Books.title == title)
         .order_by(desc(Reviews.created_at))
