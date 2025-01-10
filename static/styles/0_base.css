@@ -234,26 +234,20 @@ footer {
             position: absolute;
             top: 10px;
             right: 20px;
-            background-color: #f5f5f5;
             color: #333;
-            font-size: 28px;
+            font-size: 38px;
             font-weight: bold;
             cursor: pointer;
-            border: none;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 15px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s, color 0.3s;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
-            .auth-modal-close:hover,
-            .auth-modal-close:focus {
-                background-color: #007bff;
-                color: white;
+            .modal-close-btn:hover,
+            .modal-close-btn:focus {
+                color: #888;
             }
 
         .auth-form label {

@@ -235,22 +235,7 @@
                     .review-modal-content h2 {
                         margin-top: 0;
                         text-align: center;
-                    }
-
-                .review-close-btn {
-                    position: absolute;
-                    top: 10px;
-                    right: 20px;
-                    color: #333;
-                    font-size: 38px;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: color 0.3s;
-                }
-
-                    .review-close:hover,
-                    .review-close:focus {
-                        color: #007bff;
+                        color: #333;
                     }
 
                 .review-form label {
@@ -263,12 +248,12 @@
                 .review-form input {
                     width: 100%;
                     padding: 10px;
-                    margin-bottom: 20px;
                     border: 1px solid #ccc;
                     border-radius: 5px;
                     box-sizing: border-box;
                     font-size: 1rem;
                     transition: border-color 0.3s;
+                    margin-bottom: 10px;
                 }
 
                 .review-form input:focus {
@@ -286,6 +271,7 @@
                     resize: none;
                     min-height: 100px;
                     overflow: hidden;
+                    margin-bottom: 5px;
                 }
 
                 .review-form textarea:focus {
@@ -304,6 +290,7 @@
                     transition: background-color 0.3s;
                     display: block;
                     margin: 0 auto;
+                    margin-top: 10px;
                     width: 100%;
                 }
 

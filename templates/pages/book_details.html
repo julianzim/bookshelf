@@ -67,8 +67,8 @@
                         <div class="reviews-rating">
                             <div class="rating-stars">**********</div>
                             <div class="rating-mean-value">{{ book_reviews_stats.average_rating|default("N/A") }}/5</div>
-                            <div class="ratings-count">{{ book_reviews_stats.ratings_count|default("N/A") }} ratings</div>
-                            <div class="reviews-count">| {{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>
+                            <!-- <div class="ratings-count">{{ book_reviews_stats.ratings_count|default("N/A") }} ratings | </div> -->
+                            <div class="reviews-count">{{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>
                         </div>
                     </div>
                     <div class="write-review-button-container">
@@ -77,7 +77,7 @@
                                 Write a review
                             </a>
                         {% else %}
-                            <a class="write-review-button-disabled" title="Please log in to write a review">
+                            <a class="write-review-button-disabled" title="Please sign in to write a review">
                                 Write a review
                             </a>
                         {% endif %}
@@ -150,15 +150,18 @@
         <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
         <h2>Review</h2>
         <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}"
-              method="post" class="review-form">
-            <label for="title">Your Review</label>
-            <textarea id="title" name="title" placeholder="Write your review" maxlength="100"></textarea>
+        method="post" class="review-form">
+            
+            <label for="rating">Rate the book</label>
+            <input type="number" id="rating" name="rating" placeholder="Rate the book" min="1" max="5">
 
-            <label for="text">Your Impressions</label>
-            <textarea id="text" name="text" placeholder="Describe your impressions of the book" maxlength="1000"></textarea>
+            <label for="title">Title your review</label>
+            <textarea id="title" name="title" placeholder="Title your review" 
+            maxlength="100" minlength="3"></textarea>
 
-            <label for="rating">Your Rating</label>
-            <input type="number" id="rating" name="rating" placeholder="Rate the book">
+            <label for="text">Write your review</label>
+            <textarea id="text" name="text" placeholder="Describe your impressions of the book" 
+            maxlength="1000" minlength="10"></textarea>
 
             <button class="send-review-button" type="submit">Send</button>
         </form>
