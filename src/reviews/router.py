@@ -16,7 +16,7 @@ from misc.utils import get_logger
 
 logger = get_logger(__name__)
 
-router = APIRouter(prefix="/reviews", tags=["Reviews"])
+router = APIRouter(prefix = "/reviews", tags = ["Reviews"])
 
 
 @router.post(path="/{book_title}/create")
@@ -25,14 +25,14 @@ async def create_review(
     title: str = Form(...),
     text: str = Form(...),
     rating: int = Form(...),
-    curr_user=Depends(current_user),
+    curr_user = Depends(current_user),
     session: AsyncSession = Depends(get_async_session)
 ):
     try:
-        review_data = ReviewCreate(title=title, text=text, rating=rating)
+        review_data = ReviewCreate(title = title, text = text, rating = rating)
     except ValidationError as e:
         logger.error(f"{e.errors()}")
-        raise HTTPException(status_code=422, detail=e.errors())
+        raise HTTPException(status_code = 422, detail = e.errors())
     
     query = select(Books).where(Books.title == book_title)
     result = await session.execute(query)
@@ -40,7 +40,7 @@ async def create_review(
 
     if not book:
         logger.error(f"Book {book_title} not found")
-        raise HTTPException(status_code=404, detail="Book not found")
+        raise HTTPException(status_code = 404, detail = "Book not found")
     
     existing_review_query = select(Reviews).where(
         Reviews.book_id == book.id, Reviews.user_id == curr_user.id
@@ -50,14 +50,14 @@ async def create_review(
 
     if existing_review:
         logger.error(f"{curr_user} has already reviewed this book")
-        raise HTTPException(status_code=400, detail="User has already reviewed this book")
+        raise HTTPException(status_code = 400, detail = "User has already reviewed this book")
 
     new_review = Reviews(
-        book_id=book.id,
-        user_id=curr_user.id,
-        title=review_data.title,
-        text=review_data.text,
-        rating=review_data.rating
+        book_id = book.id,
+        user_id = curr_user.id,
+        title = review_data.title,
+        text = review_data.text,
+        rating = review_data.rating
     )
     session.add(new_review)
     await session.commit()
@@ -65,4 +65,4 @@ async def create_review(
 
     logger.info(f"New review {new_review.id} was added by {curr_user} at {new_review.created_at}")
 
-    return RedirectResponse(url=f"/books/{book_title}", status_code=303)
+    return RedirectResponse(url = f"/books/{book_title}", status_code = 303)

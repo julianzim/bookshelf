@@ -16,12 +16,13 @@ async def reset_database():
     print('База данных сброшена')
 
 
-async def get_all_books(
+async def get_active_books(
     session: AsyncSession
 ):
     query = (
         select(Books.id, Books.title, Books.image)
-        .order_by(Books.id)     #после деплоя сделать сортировку по pub_date
+        .where(Books.active == True)
+        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date
     )
     result = await session.execute(query)
 
@@ -32,7 +33,13 @@ async def get_book_by_title(
     title: str,
     session: AsyncSession
 ):
-    query = select(Books).where(Books.title == title)
+    query = (
+        select(Books)
+        .where(
+            Books.title == title,
+            Books.active == True
+        )
+    )
     result = await session.execute(query)
 
     return result.scalars().first()
@@ -42,7 +49,14 @@ async def get_related_books_by_title(
     title: str,
     session: AsyncSession
 ):
-    query = select(Books).order_by(Books.id)    #после деплоя сделать сортировку по pub_date
+    query = (
+        select(Books)
+        .where(
+            Books.title != title,
+            Books.active == True
+        )
+        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date
+    )
     result = await session.execute(query)
 
     return result.scalars().all()
