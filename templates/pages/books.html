@@ -11,7 +11,7 @@
             {% for book in books %}
                 <div class="book-item">
                     <a href="{{ url_for('get_book_details', book_title=book.title) }}">
-                        <img src="/static/images/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
+                        <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
                     </a>
                     <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
                 </div>
