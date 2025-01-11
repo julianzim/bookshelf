@@ -32,7 +32,13 @@ async def get_all_books(
     query = select(Books.id, Books.title, Books.image)
     result = await session.execute(query)
     books = result.fetchall()
-    books_rows = [{"id": book[0], "title": book[1], "image": book[2]} for book in books]
+    books_rows = [
+        {
+            "id": book[0],
+            "title": book[1],
+            "image": book[2]
+        } for book in books
+    ]
     
     return templates.TemplateResponse(
         "pages/books.html", {
