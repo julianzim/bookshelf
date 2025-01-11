@@ -4,6 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
+from src.articles.models import Articles
 from src.database import async_engine, Base
 
 
@@ -21,8 +22,8 @@ async def get_book_by_title(
 ):
     query = select(Books).where(Books.title == title)
     result = await session.execute(query)
-    book = result.scalars().one()
-    return book
+
+    return result.scalars().first()
 
 
 async def get_related_books_by_title(
@@ -31,8 +32,8 @@ async def get_related_books_by_title(
 ):
     query = select(Books)
     result = await session.execute(query)
-    books = result.scalars().all()
-    return books
+
+    return result.scalars().all()
 
 
 async def get_all_book_reviews(
@@ -57,3 +58,13 @@ async def get_all_book_reviews(
     result = await session.execute(query)
 
     return result.fetchall()
+
+
+async def get_article_by_id(
+    id: int,
+    session: AsyncSession
+):
+    query = select(Articles).where(Articles.id == id)
+    result = await session.execute(query)
+    
+    return result.scalars().first()
