@@ -1,6 +1,7 @@
 import random
 
-from src.books.models import Books, Reviews
+from src.books.models import Books
+from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.auth.models import Role
 
@@ -313,23 +314,26 @@ example_books = [
 example_articles = [
     Articles(
         title="Article 1",
-        short_description=description,
-        full_description=description,
+        summary=description,
+        text=description,
         created_at=pub_date,
+        preview='NoImage.jpg',
         active=True
     ),
     Articles(
         title="Article 2",
-        short_description=description,
-        full_description=description,
+        summary=description,
+        text=description,
         created_at=pub_date,
+        preview='NoImage.jpg',
         active=True
     ),
     Articles(
         title="Article 3",
-        short_description=description,
-        full_description=description,
+        summary=description,
+        text=description,
         created_at=pub_date,
+        preview='NoImage.jpg',
         active=True
     )
 ]
@@ -349,8 +353,8 @@ roles = [
 
 example_reviews = [
     Reviews(
-        book=1,
-        reviewer=1,
+        book_id=1,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
@@ -359,8 +363,8 @@ example_reviews = [
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     ),
     Reviews(
-        book=2,
-        reviewer=1,
+        book_id=2,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
@@ -369,8 +373,8 @@ example_reviews = [
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     ),
     Reviews(
-        book=3,
-        reviewer=1,
+        book_id=3,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
@@ -379,8 +383,8 @@ example_reviews = [
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     ),
     Reviews(
-        book=4,
-        reviewer=1,
+        book_id=4,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
@@ -389,8 +393,8 @@ example_reviews = [
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     ),
     Reviews(
-        book=5,
-        reviewer=1,
+        book_id=5,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \
@@ -399,8 +403,8 @@ example_reviews = [
         pellentesque rhoncus et quis felis. Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.",
     ),
     Reviews(
-        book=6,
-        reviewer=1,
+        book_id=6,
+        user_id=1,
         rating=5,
         title="Great story and great purchase",
         text="Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, \

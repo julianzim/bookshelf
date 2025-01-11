@@ -25,4 +25,4 @@ class Books(Base):
     mean_rating: Mapped[float]
     amazon_link: Mapped[str]
     aloud_link: Mapped[str]
-    active: Mapped[bool]
+    active: Mapped[bool] = mapped_column(nullable=False, default=False)
