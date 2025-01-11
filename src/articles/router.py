@@ -27,8 +27,9 @@ async def get_all_articles(
     query = select(
         Articles.id,
         Articles.title,
-        Articles.short_description,
-        Articles.created_at
+        Articles.summary,
+        Articles.created_at,
+        Articles.preview
     )
     result = await session.execute(query)
     articles = result.fetchall()
@@ -36,8 +37,9 @@ async def get_all_articles(
         {
             'id': article[0],
             'title': article[1],
-            'short_description': article[2],
-            'created_at': article[3]
+            'summary': article[2],
+            'created_at': article[3],
+            'preview': article[4]
         } for article in articles
     ]
     
