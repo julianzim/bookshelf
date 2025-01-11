@@ -22,7 +22,7 @@ async def get_active_books(
     query = (
         select(Books.id, Books.title, Books.image)
         .where(Books.active == True)
-        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date
+        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date desc
     )
     result = await session.execute(query)
 
@@ -55,7 +55,7 @@ async def get_related_books_by_title(
             Books.title != title,
             Books.active == True
         )
-        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date
+        .order_by(Books.id)     # после деплоя сделать сортировку по pub_date desc
     )
     result = await session.execute(query)
 
@@ -86,11 +86,35 @@ async def get_all_book_reviews(
     return result.fetchall()
 
 
+async def get_active_articles(
+    session: AsyncSession
+):
+    query = (
+        select(
+            Articles.id,
+            Articles.title,
+            Articles.summary,
+            Articles.created_at,
+            Articles.preview
+        )
+        .where(Articles.active == True)
+        .order_by(Articles.id)     # после деплоя сделать сортировку по created_at desc
+    )
+    result = await session.execute(query)
+    return result.fetchall()
+
+
 async def get_article_by_id(
     id: int,
     session: AsyncSession
 ):
-    query = select(Articles).where(Articles.id == id)
+    query = (
+        select(Articles)
+        .where(
+            Articles.id == id,
+            Articles.active == True
+        )
+    )
     result = await session.execute(query)
     
     return result.scalars().first()
