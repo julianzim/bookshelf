@@ -7,6 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.queries import (
+    get_all_books,
     get_book_by_title,
     get_related_books_by_title,
     get_all_book_reviews
@@ -24,26 +25,24 @@ templates = Jinja2Templates(directory="templates/")
 
 
 @router.get(path="")
-async def get_all_books(
+async def get_books(
     request: Request,
     current_user=Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
-    query = select(Books.id, Books.title, Books.image)
-    result = await session.execute(query)
-    books = result.fetchall()
-    books_rows = [
+    books_data = await get_all_books(session=session)
+    books = [
         {
             "id": book[0],
             "title": book[1],
             "image": book[2]
-        } for book in books
+        } for book in books_data
     ]
     
     return templates.TemplateResponse(
         "pages/books.html", {
             "request": request,
-            "books": books_rows,
+            "books": books,
             "current_user": current_user
         }
     ) 
