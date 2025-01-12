@@ -22,6 +22,10 @@ async def get_blog(
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
+    current_user_log = current_user or 'Unauthenticated user'
+
+    logger.debug(f'{current_user_log} requests the Blog page')
+
     articles_data = await get_active_articles(session=session)
     articles = [
         {
@@ -32,6 +36,8 @@ async def get_blog(
             'preview': article[4]
         } for article in articles_data
     ]
+
+    logger.info(f"Articles found: {len(articles)} for {current_user_log}")
     
     return templates.TemplateResponse(
         "pages/blog.html",
@@ -46,8 +52,13 @@ async def get_blog(
 @router.get(path="/article_{article_id}")
 async def get_article(
     article_id: int,
+    current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
+    current_user_log = current_user or 'Unauthenticated user'
+
+    logger.debug(f'{current_user_log} requests page of article "{article_id}"')
+
     article = await get_article_by_id(
         id = article_id,
         session = session
@@ -57,4 +68,6 @@ async def get_article(
         logger.error(f"Article id={article_id} not found")
         raise HTTPException(status_code=404, detail="Article not found")
     else:
+        logger.info(f'Article id={article.id} found for {current_user_log}')
+
         return article

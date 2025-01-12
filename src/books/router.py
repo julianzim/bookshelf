@@ -27,6 +27,10 @@ async def get_books(
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
+    current_user_log = current_user or 'Unauthenticated user'
+
+    logger.debug(f'{current_user_log} requests the Books page')
+
     books_data = await get_active_books(session=session)
     books = [
         {
@@ -35,6 +39,8 @@ async def get_books(
             "image": book[2]
         } for book in books_data
     ]
+
+    logger.info(f"Books found: {len(books)} for {current_user_log}")
     
     return templates.TemplateResponse(
         "pages/books.html", {
@@ -52,6 +58,10 @@ async def get_book_details(
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
+    current_user_log = current_user or 'Unauthenticated user'
+
+    logger.debug(f'{current_user_log} requests page of book "{book_title}"')
+    
     book = await get_book_by_title(
         title = book_title,
         session = session
@@ -70,6 +80,8 @@ async def get_book_details(
         )
         book_reviews_stats = await get_reviews_statistics(reviews = book_reviews)
         
+        logger.info(f'Book {book.title} found for {current_user_log}')
+
         return templates.TemplateResponse(
             "pages/book_details.html",
             {

@@ -28,6 +28,8 @@ async def create_review(
     curr_user = Depends(current_user),
     session: AsyncSession = Depends(get_async_session)
 ):
+    logger.debug(f'{curr_user} requests to add a new review')
+
     try:
         review_data = ReviewCreate(title = title, text = text, rating = rating)
     except ValidationError as e:
