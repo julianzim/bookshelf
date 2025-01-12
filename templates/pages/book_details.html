@@ -71,6 +71,32 @@
                             <div class="reviews-count">{{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>
                         </div>
                     </div>
+
+                    <div class="reviews-sort-dropdown">
+                        <button class="sort-button-dropdown">Sort By</button>
+                        <div class="dropdown-content">
+                            <div class="sort-option">
+                                <a href="/books/{{ book.title }}?sort_by=created_at&order=asc" 
+                                class="{% if sort_by == 'created_at' and order == 'asc' %}active{% endif %}">
+                                    ↑ Date
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=created_at&order=desc" 
+                                class="{% if sort_by == 'created_at' and order == 'desc' %}active{% endif %}">
+                                    ↓ Date
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=rating&order=asc" 
+                                class="{% if sort_by == 'rating' and order == 'asc' %}active{% endif %}">
+                                    ↑ Rating
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=rating&order=desc" 
+                                class="{% if sort_by == 'rating' and order == 'desc' %}active{% endif %}">
+                                    ↓ Rating
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+
                     <div class="write-review-button-container">
                         {% if current_user %}
                             <a class="write-review-button" onclick="openModal()">
@@ -103,6 +129,32 @@
 
         </div>
 
+        
+        
+        <div id="reviewModal" class="review-modal">
+            <div class="review-modal-content">
+                <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
+                <h2>Review</h2>
+                <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}"
+                method="post" class="review-form">
+                    
+                    <label for="rating">Rate the book</label>
+                    <input type="number" id="rating" name="rating" placeholder="Rate the book" min="1" max="5">
+        
+                    <label for="title">Title your review</label>
+                    <textarea id="title" name="title" placeholder="Title your review" 
+                    maxlength="100" minlength="3"></textarea>
+        
+                    <label for="text">Write your review</label>
+                    <textarea id="text" name="text" placeholder="Describe your impressions of the book" 
+                    maxlength="1000" minlength="10"></textarea>
+        
+                    <button class="send-review-button" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+        
+        <script src="/static/scripts/reviewModal.js"></script>
 
 
 
@@ -145,28 +197,5 @@
 </div>
 
 
-<div id="reviewModal" class="review-modal">
-    <div class="review-modal-content">
-        <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
-        <h2>Review</h2>
-        <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}"
-        method="post" class="review-form">
-            
-            <label for="rating">Rate the book</label>
-            <input type="number" id="rating" name="rating" placeholder="Rate the book" min="1" max="5">
 
-            <label for="title">Title your review</label>
-            <textarea id="title" name="title" placeholder="Title your review" 
-            maxlength="100" minlength="3"></textarea>
-
-            <label for="text">Write your review</label>
-            <textarea id="text" name="text" placeholder="Describe your impressions of the book" 
-            maxlength="1000" minlength="10"></textarea>
-
-            <button class="send-review-button" type="submit">Send</button>
-        </form>
-    </div>
-</div>
-
-<script src="/static/scripts/reviewModal.js"></script>
 {% endblock %}

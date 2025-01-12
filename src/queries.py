@@ -1,4 +1,4 @@
-from sqlalchemy import select, join, desc
+from sqlalchemy import select, join, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.models import User
@@ -64,8 +64,20 @@ async def get_related_books_by_title(
 
 async def get_all_book_reviews(
     title: str,
+    order_by: str,
+    order_method: str,
     session: AsyncSession
 ):
+    valid_order_columns = ['created_at', 'rating']
+    valid_order_methods = ['asc', 'desc']
+    
+    if order_by not in valid_order_columns:
+        raise ValueError(f"Invalid order_by value. Must be one of {valid_order_columns}. Got {order_by}")
+    if order_method not in valid_order_methods:
+        raise ValueError(f"Invalid order_method value. Must be one of {valid_order_methods}. Got {order_method}")
+
+    order_func = asc if order_method == 'asc' else desc
+
     query = (
         select(
             User.username,
@@ -79,7 +91,7 @@ async def get_all_book_reviews(
             .join(User, Reviews.user_id == User.id)
         )
         .where(Books.title == title)
-        .order_by(desc(Reviews.created_at))
+        .order_by(order_func(getattr(Reviews, order_by)))
     )
     result = await session.execute(query)
 

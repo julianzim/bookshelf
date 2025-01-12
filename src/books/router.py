@@ -55,6 +55,8 @@ async def get_books(
 async def get_book_details(
     book_title: str,
     request: Request,
+    sort_by: str = 'created_at',
+    order: str = 'desc',
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
@@ -76,6 +78,8 @@ async def get_book_details(
         )
         book_reviews = await get_all_book_reviews(
             title = book_title,
+            order_by = sort_by,
+            order_method = order,
             session = session
         )
         book_reviews_stats = await get_reviews_statistics(reviews = book_reviews)
@@ -90,6 +94,8 @@ async def get_book_details(
                 "related_books": related_books,
                 "current_user": current_user,
                 "book_reviews": book_reviews,
-                "book_reviews_stats": book_reviews_stats
+                "book_reviews_stats": book_reviews_stats,
+                "sort_by": sort_by,
+                "order": order
             }
         )
