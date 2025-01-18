@@ -7,29 +7,25 @@ def convert_docx_to_html(input_file: str, output_file: str):
     doc = Document(input_file)
     
     level = 0
-    html_content = [
-        "<!DOCTYPE html>", "<html lang='en'>", "\t<head>", "\t\t<meta charset='UTF-8'>", 
-        "\t\t<title>Title</title>", "\t</head>", "\t<body>"
-    ]
-
+    html_content = "<!DOCTYPE html>\n<html lang='en'>\n\t<head>\n\t\t<meta charset='UTF-8'>\n\t\t<title>Title</title>\n\t</head>\n\t<body>\n"
     for paragraph in doc.paragraphs:
         if not paragraph.text.strip():
             continue
 
         if paragraph.style.name.startswith("Heading"):
             level = int(paragraph.style.name[-1])
-            html_content.append((level + 1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>')
+            html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
         else:
             if paragraph.runs != "":
-                html_content.append((level + 2) * "\t" + f'<p class="artile-paragraph">{format_runs(paragraph.runs)}</p>')
+                html_content += (level * "\t" + f'<p class="artile-paragraph">{format_runs(paragraph.runs)}</p>\n')
             else:
-                html_content.append("\n")
+                html_content += ("\n")
     
-    html_content.append("\t</body>")
-    html_content.append("</html>")
-    
+    html_content += ("\t</body>\n")
+    html_content += ("</html>\n")
+    # return html_content
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("\n".join(html_content))
+        f.write(html_content)
 
 def format_runs(runs):
     """
@@ -54,5 +50,6 @@ if __name__ == "__main__":
     if Path(input_path).suffix.lower() != ".docx":
         print("Скрипт поддерживает только .docx файлы")
     else:
+        # print(convert_docx_to_html(input_path, output_path))
         convert_docx_to_html(input_path, output_path)
         print(f"Файл успешно преобразован в HTML и сохранён в {output_path}")
