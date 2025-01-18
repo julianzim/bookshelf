@@ -2,6 +2,8 @@ import statistics
 import logging
 import os
 
+from docx import Document
+
 from src.reviews.models import Reviews
 
 
@@ -58,3 +60,40 @@ def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = 
             sqlalchemy_logger.addHandler(file_handler)
 
     return logger
+
+
+def format_runs(runs):
+    formatted_text = ""
+    
+    for run in runs:
+        text = run.text
+        if run.bold:
+            text = f'<b class="bold-text">{text}</b>'
+        if run.italic:
+            text = f'<i class="italic-text">{text}</i>'
+        if run.underline:
+            text = f'<u class="underline-text">{text}</u>'
+        formatted_text += text
+    
+    return formatted_text
+
+
+def convert_docx_to_html(input_file: str, output_file: str):
+    
+    doc = Document(input_file)
+    
+    html_content = ""
+    for paragraph in doc.paragraphs:
+        if not paragraph.text.strip():
+            continue
+
+        if paragraph.style.name.startswith("Heading"):
+            level = int(paragraph.style.name[-1])
+            html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
+        else:
+            if paragraph.runs != "":
+                html_content += (level * "\t" + f'<p class="artile-paragraph">{format_runs(paragraph.runs)}</p>\n')
+            else:
+                html_content += ("\n")
+    
+    return html_content
