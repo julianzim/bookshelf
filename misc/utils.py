@@ -78,7 +78,7 @@ def format_runs(runs):
     return formatted_text
 
 
-def convert_docx_to_html(input_file: str, output_file: str):
+def convert_docx_to_html(input_file: str):
     
     doc = Document(input_file)
     

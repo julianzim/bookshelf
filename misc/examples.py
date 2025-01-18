@@ -1,13 +1,14 @@
 import random
+from datetime import date
 
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.auth.models import Role
+from misc.utils import convert_docx_to_html
 
-from datetime import date
 
-
+docx_file = "misc/docx_files/test.docx"
 review_title = "Very cute story and great storylines"
 pub_date = date(2023, 12, 17)
 language = "English"
@@ -40,17 +41,17 @@ book_image_map = {
     "My Friend Boredom": "BoredomCover.png"
 }
 article_image_map = {
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg",
-    "Example article title": "NoImage.jpg"
+    "Example article 1 title": "NoImage.jpg",
+    "Example article 2 title": "NoImage.jpg",
+    "Example article 3 title": "NoImage.jpg",
+    "Example article 5 title": "NoImage.jpg",
+    "Example article 6 title": "NoImage.jpg",
+    "Example article 7 title": "NoImage.jpg",
+    "Example article 8 title": "NoImage.jpg",
+    "Example article 9 title": "NoImage.jpg",
+    "Example article 10 title": "NoImage.jpg",
+    "Example article 11 title": "NoImage.jpg",
+    "Example article 12 title": "NoImage.jpg"
 }
 
 
@@ -70,13 +71,14 @@ example_books_info = {
 example_articles_info = {
     "article_image": article_image_map,
     "description": description,
-    "pub_date": pub_date
+    "pub_date": pub_date,
+    "docx_file": docx_file
 }
 
 example_reviews_info = {
     "n_reviews": 50,
     "n_books": len(book_image_map),
-    "n_users": 5,
+    "n_users": 10,
     "title": review_title,
     "text": description
 }
@@ -123,15 +125,17 @@ def generate_example_books_list(
 def generate_example_articles_list(
     article_image: dict,
     description: str,
-    pub_date
+    pub_date,
+    docx_file: str
 ):
+    converted_text = convert_docx_to_html(docx_file)
     articles = []
     for title, image in article_image.items():
         articles.append(
             Articles(
                 title=title,
                 summary=description,
-                text=description,
+                text=converted_text,
                 created_at=pub_date,
                 preview=image,
                 active=True
