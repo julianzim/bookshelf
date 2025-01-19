@@ -1,0 +1,25 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/6_article.css">
+
+<div id="article" class="background">
+    <div class="content" id="article-content">
+        <h1 class="article-title">{{ article.title }}</h1>
+        <div class="article-info">
+            <span class="info">{{ article.created_at }}</span>
+            <span class="info">Yassya Lil</span>
+            <span class="info">Read time: 5m</span>
+        </div>
+        <hr class="content-divider">
+        <img src="/static/images/previews/{{ article.preview }}" 
+            alt="{{ article.title }} header image" 
+            class="article-header-image">
+        <div class="article-text">
+            {{ article.text|safe}}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

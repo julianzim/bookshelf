@@ -1,0 +1,50 @@
+
+#article.background {
+    background-image: url('../images/backgrounds/Blog.png');
+}
+
+
+    h1.article-title {
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+
+    .article-info {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .article-info
+        .info {
+            text-align: center;
+            color: gray;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+
+    .article-header-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .article-text {
+
+    }
+
+
+        h2.article-header2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+
+        p.article-paragraph {
+            line-height: 1.6;
+            color: #333;
+        }
