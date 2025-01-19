@@ -492,7 +492,7 @@
 
     .related-books-lower-right-block {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
         flex-direction: column;
         height: auto;
         width: 100%;
@@ -519,7 +519,7 @@
         .related-books-grid {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-evenly;
             padding: 10px 10px 20px 10px;
         }
 

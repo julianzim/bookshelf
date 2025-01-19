@@ -2,3 +2,72 @@
 #articles.background {
     background-image: url('../images/backgrounds/Blog.png');
 }
+
+
+
+.blog-section {
+    text-align: center;
+    padding: 20px;
+}
+
+    .blog-section h2 {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .blog-section
+    .content-divider {
+        margin: 20px 20%;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            min-width: 300px;
+            overflow: hidden;
+        }
+        
+            .card-link {
+                text-decoration: none;
+                color: inherit;
+            }
+
+            .card-image {
+                height: 50%;
+                width: 100%;
+                background: linear-gradient(to right, #6ec1e4, #8ecae6);
+            }
+
+            .card-content {
+                padding: 0px 15px;
+                text-align: left;
+            }
+
+                .card-content .date {
+                    color: #646463;
+                    font-size: 14px;
+                }
+
+                .card-content h3 {
+                    margin: 10px 0;
+                    font-size: 20px;
+                }
+
+                .card-content p {
+                    color: #555;
+                    font-size: 16px;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 10;
+                    -webkit-box-orient: vertical;
+                    line-clamp: 10;
+                    overflow: hidden;
+                }
