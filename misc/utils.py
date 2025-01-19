@@ -92,7 +92,7 @@ def convert_docx_to_html(input_file: str):
             html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
         else:
             if paragraph.runs != "":
-                html_content += (level * "\t" + f'<p class="artile-paragraph">{format_runs(paragraph.runs)}</p>\n')
+                html_content += (level * "\t" + f'<p class="article-paragraph">{format_runs(paragraph.runs)}</p>\n')
             else:
                 html_content += ("\n")
     
