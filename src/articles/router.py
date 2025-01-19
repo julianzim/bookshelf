@@ -51,6 +51,7 @@ async def get_blog(
 
 @router.get(path="/article_{article_id}")
 async def get_article(
+    request: Request,
     article_id: int,
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
@@ -70,4 +71,11 @@ async def get_article(
     else:
         logger.info(f'Article id={article.id} found for {current_user_log}')
 
-        return article
+        return templates.TemplateResponse(
+            "pages/article.html",
+            {
+                "request": request,
+                "article": article,
+                "current_user": current_user
+            }
+        )
