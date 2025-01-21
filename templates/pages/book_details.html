@@ -110,21 +110,21 @@
                     </div>
                 </div>
                 <hr class="content-divider-reviews-block">
-                    {% for review in book_reviews %}
-                        <div class="review">
-                            <div class="review-info">
-                                <div class="reviewer-name">by {{ review.username }},</div>
-                                <div class="review-date">{{ review.created_at.strftime("%B %-d, %Y, %H:%M") }}</div>
-                            </div>
-                            <div class="review-rating-and-title">
-                                <div class="review-rating-stars">{{ review.rating }} stars</div>
-                                <div class="review-title">{{ review.title }}</div>
-                            </div>
-                            <div class="review-text">
-                                {{ review.text }}
-                            </div>
+                {% for review in book_reviews %}
+                    <div class="review">
+                        <div class="review-info">
+                            <div class="reviewer-name">by {{ review.username }},</div>
+                            <div class="review-date">{{ review.created_at.strftime("%B %d, %Y, %H:%M") }}</div>
                         </div>
-                    {% endfor %}
+                        <div class="review-rating-and-title">
+                            <div class="review-rating-stars">{{ review.rating }} stars</div>
+                            <div class="review-title">{{ review.title }}</div>
+                        </div>
+                        <div class="review-text">
+                            {{ review.text }}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
 
         </div>
