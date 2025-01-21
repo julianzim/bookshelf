@@ -5,25 +5,30 @@
 
 
     h1.article-title {
-        font-size: 24px;
+        font-size: 26px;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 
 
     .article-info {
         display: flex;
         justify-content: space-between;
+        padding: 0px 10%;
+        height: 20px;
     }
 
         .article-info
         .info {
-            text-align: center;
+            text-align: bottom;
             color: gray;
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 20px;
         }
 
+    hr.content-divider {
+        margin: 5px 0px 20px 0px;
+    }
 
     .article-header-image {
         display: block;
