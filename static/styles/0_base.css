@@ -173,7 +173,7 @@ header {
     margin: calc(17vw) auto 100px auto;
     padding: 20px;
     background-color: white;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
     border-radius: 25px;
 }
 
