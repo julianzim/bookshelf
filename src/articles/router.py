@@ -62,7 +62,7 @@ async def get_article(
 
     logger.debug(f'{current_user_log} requests page of article "{article_id}"')
 
-    article = await get_article_by_id(
+    article, theme = await get_article_by_id(
         id = article_id,
         session = session
     )
@@ -71,13 +71,14 @@ async def get_article(
         logger.error(f"Article id={article_id} not found")
         raise HTTPException(status_code=404, detail="Article not found")
     else:
-        logger.info(f'Article id={article.id} found for {current_user_log}')
+    #     logger.info(f'Article id={article.id} found for {current_user_log}')
 
         return templates.TemplateResponse(
             "pages/article.html",
             {
                 "request": request,
                 "article": article,
+                "theme": theme,
                 "current_user": current_user
             }
         )

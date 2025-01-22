@@ -2,10 +2,14 @@ from sqlalchemy import select, join, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.models import User
-from src.books.models import Books
+from src.books.models import Books, Themes
 from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.database import async_engine, Base
+from misc.utils import get_logger
+
+
+logger = get_logger(__name__, log_level="DEBUG")
 
 
 async def reset_database():
@@ -123,12 +127,19 @@ async def get_article_by_id(
     session: AsyncSession
 ):
     query = (
-        select(Articles)
+        select(Articles, Themes)
+        .join(Themes, Articles.theme == Themes.id)
         .where(
             Articles.id == id,
             Articles.active == True
         )
     )
     result = await session.execute(query)
+    article, theme = result.fetchall()[0]
+
+    if article:
+        logger.debug(f'get_article_by_id found article: {article}, theme: {theme}')
+    else:
+        logger.debug(f'get_article_by_id found no article with id {id}')
     
-    return result.scalars().first()
+    return article, theme
