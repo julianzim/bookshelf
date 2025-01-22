@@ -13,7 +13,7 @@ review_title = "Very cute story and great storylines"
 pub_date = date(2023, 12, 17)
 language = "English"
 min_age, max_age = 3, 6
-series = "Our Emotions - Our Friends"
+series = "Our Emotions are Our Friends"
 author = "Yassya Lil"
 description = """
 Phasellus ut lorem eu sapien placerat ornare quis ac purus. Aenean consectetur, dolor eget aliquet auctor, 
