@@ -5,16 +5,24 @@
 
 <div id="article" class="background">
     <div class="content" id="article-content">
-        <h1 class="article-title">{{ article.title }}</h1>
+        {% if article.theme %}
+            <h1 class="article-theme">{{ article.theme }}</h1>
+        {% endif %}
+        <h2 class="article-title">{{ article.title }}</h2>
         <div class="article-info">
-            <span class="info">{{ article.created_at }}</span>
+            <span class="info">{{ article.created_at.strftime("%B %d, %Y") }}</span>
             <span class="info">Yassya Lil</span>
-            <span class="info">Read time: 5m</span>
+            <span class="info">Read time: {{ article.read_time}} min</span>
         </div>
-        <hr class="content-divider">
-        <img src="/static/images/previews/{{ article.preview }}" 
-            alt="{{ article.title }} header image" 
-            class="article-header-image">
+        {% if article.preview %}
+            <img src="/static/images/previews/{{ article.preview }}" 
+                alt="{{ article.title }} header image" 
+                class="article-header-image">
+        {% else %}
+            <img src="/static/images/NoImage.jpg" 
+                alt="{{ article.title }} header image" 
+                class="article-header-image">
+        {% endif %}
         <div class="article-text">
             {{ article.text|safe}}
         </div>
