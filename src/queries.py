@@ -104,6 +104,7 @@ async def get_active_articles(
     query = (
         select(
             Articles.id,
+            Articles.theme,
             Articles.title,
             Articles.summary,
             Articles.created_at,

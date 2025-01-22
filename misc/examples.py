@@ -8,6 +8,7 @@ from src.auth.models import Role
 from misc.utils import convert_docx_to_html
 
 
+theme = "Theme of article"
 docx_file = "misc/docx_files/test.docx"
 review_title = "Very cute story and great storylines"
 pub_date = date(2023, 12, 17)
@@ -44,14 +45,14 @@ article_image_map = {
     "Example article 1 title": "NoImage.jpg",
     "Example article 2 title": "NoImage.jpg",
     "Example article 3 title": "NoImage.jpg",
+    "Example article 4 title": "NoImage.jpg",
     "Example article 5 title": "NoImage.jpg",
     "Example article 6 title": "NoImage.jpg",
     "Example article 7 title": "NoImage.jpg",
     "Example article 8 title": "NoImage.jpg",
     "Example article 9 title": "NoImage.jpg",
     "Example article 10 title": "NoImage.jpg",
-    "Example article 11 title": "NoImage.jpg",
-    "Example article 12 title": "NoImage.jpg"
+    "Example article 11 title": "NoImage.jpg"
 }
 
 
@@ -70,6 +71,7 @@ example_books_info = {
 
 example_articles_info = {
     "article_image": article_image_map,
+    "theme": theme,
     "description": description,
     "pub_date": pub_date,
     "docx_file": docx_file
@@ -124,6 +126,7 @@ def generate_example_books_list(
 
 def generate_example_articles_list(
     article_image: dict,
+    theme: str,
     description: str,
     pub_date,
     docx_file: str
@@ -133,6 +136,7 @@ def generate_example_articles_list(
     for title, image in article_image.items():
         articles.append(
             Articles(
+                theme=theme,
                 title=title,
                 summary=description,
                 text=converted_text,

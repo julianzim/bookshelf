@@ -84,6 +84,7 @@ def convert_docx_to_html(input_file: str):
     
     html_content = ""
     for paragraph in doc.paragraphs:
+        level = 3
         if not paragraph.text.strip():
             continue
 

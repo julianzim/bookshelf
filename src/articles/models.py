@@ -13,8 +13,9 @@ class Articles(Base):
         server_default=text("TIMEZONE('utc', now())"),
         nullable=False
     )
+    theme: Mapped[str] = mapped_column(nullable=True)
     title: Mapped[str] = mapped_column(nullable=False)
     summary: Mapped[str] = mapped_column(nullable=False)
     text: Mapped[str] = mapped_column(nullable=False)
-    preview: Mapped[str] = mapped_column(nullable=False)
+    preview: Mapped[str] = mapped_column(nullable=True)
     active: Mapped[bool] = mapped_column(nullable=False, default=False)
