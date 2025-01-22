@@ -10,3 +10,4 @@ class GetAllArticles(BaseModel):
     summary: str
     text: str
     created_at: datetime
+    read_time: int

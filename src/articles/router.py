@@ -34,7 +34,8 @@ async def get_blog(
             'title': article[2],
             'summary': article[3],
             'created_at': article[4],
-            'preview': article[5]
+            'preview': article[5],
+            'read_time': article[6]
         } for article in articles_data
     ]
 

@@ -108,7 +108,8 @@ async def get_active_articles(
             Articles.title,
             Articles.summary,
             Articles.created_at,
-            Articles.preview
+            Articles.preview,
+            Articles.read_time
         )
         .where(Articles.active == True)
         .order_by(Articles.id)     # после деплоя сделать сортировку по created_at desc

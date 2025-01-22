@@ -8,6 +8,7 @@ from src.auth.models import Role
 from misc.utils import convert_docx_to_html
 
 
+read_times = [3, 5, 7, 10, 15]
 theme = "Theme of article"
 docx_file = "misc/docx_files/test.docx"
 review_title = "Very cute story and great storylines"
@@ -142,6 +143,7 @@ def generate_example_articles_list(
                 text=converted_text,
                 created_at=pub_date,
                 preview=image,
+                read_time=random.choice(read_times),
                 active=True
             )
         )

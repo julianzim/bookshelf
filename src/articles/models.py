@@ -18,4 +18,5 @@ class Articles(Base):
     summary: Mapped[str] = mapped_column(nullable=False)
     text: Mapped[str] = mapped_column(nullable=False)
     preview: Mapped[str] = mapped_column(nullable=True)
+    read_time: Mapped[int] = mapped_column(nullable=False)
     active: Mapped[bool] = mapped_column(nullable=False, default=False)
