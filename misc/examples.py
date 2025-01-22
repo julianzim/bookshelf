@@ -1,7 +1,7 @@
 import random
 from datetime import date
 
-from src.books.models import Books
+from src.books.models import Books, Themes
 from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.auth.models import Role
@@ -9,7 +9,6 @@ from misc.utils import convert_docx_to_html
 
 
 read_times = [3, 5, 7, 10, 15]
-theme = "Theme of article"
 docx_file = "misc/docx_files/test.docx"
 review_title = "Very cute story and great storylines"
 pub_date = date(2023, 12, 17)
@@ -55,6 +54,25 @@ article_image_map = {
     "Example article 10 title": "NoImage.jpg",
     "Example article 11 title": "NoImage.jpg"
 }
+example_themes_info = {
+    "names": [
+        'Child\'s Joy',
+        'Child\'s Sadness',
+        'Child\'s Anger',
+        'Child\'s Fear',
+        'Child\'s Envy',
+        'Child\'s Love',
+        'Child\'s Jealousy',
+        'Child\'s Resentment',
+        'Child\'s Shame',
+        'Child\'s Guilt',
+        'Child\'s Loneliness',
+        'Child\'s Shyness',
+        'Child\'s Indifference',
+        'Child\'s Helplessness',
+        'Child\'s Boredom'
+    ]
+}
 
 
 example_books_info = {
@@ -72,7 +90,6 @@ example_books_info = {
 
 example_articles_info = {
     "article_image": article_image_map,
-    "theme": theme,
     "description": description,
     "pub_date": pub_date,
     "docx_file": docx_file
@@ -100,6 +117,7 @@ def generate_example_books_list(
     aloud_link: str
 ):
     books = []
+    count = 1
     for title, image in book_image.items():
         books.append(
             Books(
@@ -114,20 +132,18 @@ def generate_example_books_list(
                 max_age=max_age,
                 pages=random.randint(28, 38),
                 language=language,
-                reviews_count=random.randint(50, 500),
-                ratings_count=random.randint(50, 500),
-                mean_rating=round(random.uniform(4.6, 5.0), 1),
+                theme=count,
                 amazon_link=amazon_link,
                 aloud_link=aloud_link,
                 active=True
             )
         )
+        count += 1
     return books
 
 
 def generate_example_articles_list(
     article_image: dict,
-    theme: str,
     description: str,
     pub_date,
     docx_file: str
@@ -137,7 +153,7 @@ def generate_example_articles_list(
     for title, image in article_image.items():
         articles.append(
             Articles(
-                theme=theme,
+                theme=random.randint(1, 15),
                 title=title,
                 summary=description,
                 text=converted_text,
@@ -169,6 +185,13 @@ def generate_example_reviews_list(
             )
         )
     return reviews
+
+
+def generate_example_themes_list(names: list[str]):
+    themes = []
+    for name in names:
+        themes.append(Themes(name=name))
+    return themes
 
 
 roles = [

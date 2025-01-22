@@ -12,9 +12,11 @@ from misc.examples import (
     example_books_info,
     example_reviews_info,
     example_articles_info,
+    example_themes_info,
     generate_example_books_list,
     generate_example_reviews_list,
-    generate_example_articles_list
+    generate_example_articles_list,
+    generate_example_themes_list
 )
 
 
@@ -49,6 +51,14 @@ async def add_reviews():
         print("Отзывы добавлены.")
 
 
+async def add_themes():
+    example_themes = generate_example_themes_list(**example_themes_info)
+    async with async_session() as session:
+        session.add_all(example_themes)
+        await session.commit()
+        print("Темы добавлены")
+
+
 async def remake():
     await reset_database()
     await add_books()
@@ -60,6 +70,7 @@ async def remake():
 if __name__ == "__main__":
     # asyncio.run(remake())
     # asyncio.run(reset_database())
+    # asyncio.run(add_themes())
     # asyncio.run(add_books())
     # asyncio.run(add_reviews())
     asyncio.run(add_articles())

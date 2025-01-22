@@ -1,5 +1,6 @@
 import datetime
-from sqlalchemy import text
+
+from sqlalchemy import text, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
 
 from src.database import Base
@@ -13,16 +14,29 @@ class Books(Base):
     series: Mapped[str]
     short_description: Mapped[str]
     full_description: Mapped[str]
-    pub_date: Mapped[datetime.datetime] = mapped_column(server_default=text("TIMEZONE('utc', now())"))
+    pub_date: Mapped[datetime.datetime] = mapped_column(
+        server_default=text("TIMEZONE('utc', now())")
+    )
     author: Mapped[str]
     image: Mapped[str]
     pages: Mapped[int]
     language: Mapped[str]
     min_age: Mapped[int]
     max_age: Mapped[int]
-    reviews_count: Mapped[int]
-    ratings_count: Mapped[int]
-    mean_rating: Mapped[float]
+    theme: Mapped[int] = mapped_column(
+        ForeignKey("themes.id", ondelete="CASCADE"),
+        nullable=True
+    )
     amazon_link: Mapped[str]
     aloud_link: Mapped[str]
-    active: Mapped[bool] = mapped_column(nullable=False, default=False)
+    active: Mapped[bool] = mapped_column(
+        nullable=False,
+        default=False
+    )
+
+
+class Themes(Base):
+    __tablename__ = "themes"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str] = mapped_column(nullable=False)
