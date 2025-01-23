@@ -342,3 +342,63 @@ footer {
     display: block;
     animation: modalFadeIn 0.5s;
 }
+
+
+
+.footer {
+    background-color: #222;
+    color: #fff;
+    padding: 20px 0;
+    }
+
+    .footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    }
+
+    .footer-section {
+    flex: 1;
+    margin: 0 10px;
+    }
+
+        .footer-section h4 {
+        margin-bottom: 15px;
+        font-size: 18px;
+        color: #f0a500;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+        margin: 0;
+        line-height: 1.6;
+        }
+
+        .footer-section ul {
+        list-style: none;
+        padding: 0;
+        }
+
+            .footer-section ul li {
+            margin-bottom: 10px;
+            }
+
+                .footer-section ul li a {
+                color: #fff;
+                text-decoration: none;
+                transition: color 0.3s;
+                }
+
+                    .footer-section ul li a:hover {
+                    color: #f0a500;
+                    }
+
+    .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    }
