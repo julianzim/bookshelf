@@ -71,32 +71,6 @@
                             <div class="reviews-count">{{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>
                         </div>
                     </div>
-
-                    <div class="reviews-sort-dropdown">
-                        <button class="sort-button-dropdown">Sort By</button>
-                        <div class="dropdown-content">
-                            <div class="sort-option">
-                                <a href="/books/{{ book.title }}?sort_by=created_at&order=asc" 
-                                class="{% if sort_by == 'created_at' and order == 'asc' %}active{% endif %}">
-                                    ↑ Date
-                                </a>
-                                <a href="/books/{{ book.title }}?sort_by=created_at&order=desc" 
-                                class="{% if sort_by == 'created_at' and order == 'desc' %}active{% endif %}">
-                                    ↓ Date
-                                </a>
-                                <a href="/books/{{ book.title }}?sort_by=rating&order=asc" 
-                                class="{% if sort_by == 'rating' and order == 'asc' %}active{% endif %}">
-                                    ↑ Rating
-                                </a>
-                                <a href="/books/{{ book.title }}?sort_by=rating&order=desc" 
-                                class="{% if sort_by == 'rating' and order == 'desc' %}active{% endif %}">
-                                    ↓ Rating
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-
                     <div class="write-review-button-container">
                         {% if current_user %}
                             <a class="write-review-button" onclick="openModal()">
@@ -110,6 +84,43 @@
                     </div>
                 </div>
                 <hr class="content-divider-reviews-block">
+                <div class="sort-reviews-container">
+                    <span class="sort-button-label">Sort by:</span>
+                    <div class="reviews-sort-dropdown">
+                        <button class="sort-button-dropdown">
+                             {% if sort_by == 'created_at' and order == 'asc' %}
+                                 ↑ Date
+                            {% elif sort_by == 'created_at' and order == 'desc' %}
+                                 ↓ Date
+                            {% elif sort_by == 'rating' and order == 'asc' %}
+                                 ↑ Rating
+                            {% elif sort_by == 'rating' and order == 'desc' %}
+                                 ↓ Rating
+                            {% else %}
+                                Sort By
+                            {% endif %}
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="/books/{{ book.title }}?sort_by=created_at&order=asc" 
+                            class="{% if sort_by == 'created_at' and order == 'asc' %}active{% endif %}">
+                                ↑ Date
+                            </a>
+                            <a href="/books/{{ book.title }}?sort_by=created_at&order=desc" 
+                            class="{% if sort_by == 'created_at' and order == 'desc' %}active{% endif %}">
+                                ↓ Date
+                            </a>
+                            <a href="/books/{{ book.title }}?sort_by=rating&order=asc" 
+                            class="{% if sort_by == 'rating' and order == 'asc' %}active{% endif %}">
+                                ↑ Rating
+                            </a>
+                            <a href="/books/{{ book.title }}?sort_by=rating&order=desc" 
+                            class="{% if sort_by == 'rating' and order == 'desc' %}active{% endif %}">
+                                ↓ Rating
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 {% for review in book_reviews %}
                     <div class="review">
                         <div class="review-info">
