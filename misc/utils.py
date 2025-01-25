@@ -3,6 +3,7 @@ import logging
 import os
 
 from docx import Document
+from datetime import datetime
 
 from src.reviews.models import Reviews
 
@@ -78,23 +79,46 @@ def format_runs(runs):
     return formatted_text
 
 
+def parse_readtime_pubdata(input_string):
+    if not input_string:
+        read_time, pub_date = 5, datetime.now()
+    else:
+        read_time_string, date_string = input_string.split(", ")
+        try:
+            read_time = int(read_time_string.split(": ")[1])
+        except ValueError:
+            read_time = 5
+        try:
+            pub_date = datetime.strptime(date_string.split(": ")[1], "%d.%m.%Y")
+        except ValueError:
+            pub_date = datetime.now()
+
+    return {"read_time": read_time, "pub_date": pub_date}
+
+
 def convert_docx_to_html(input_file: str):
-    
     doc = Document(input_file)
-    
-    html_content = ""
-    for paragraph in doc.paragraphs:
-        level = 3
+
+    result = parse_readtime_pubdata(doc.paragraphs[0].runs[0].text)
+    result["html_content"] = ""
+    level = 0
+
+    for paragraph in doc.paragraphs[1:]:
         if not paragraph.text.strip():
             continue
 
         if paragraph.style.name.startswith("Heading"):
             level = int(paragraph.style.name[-1])
-            html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
+            if level == 1:
+                result["theme"] = paragraph.runs[0].text
+            elif level == 2:
+                result["title"] = paragraph.runs[0].text
+            else:
+                result["html_content"] += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
         else:
             if paragraph.runs != "":
-                html_content += (level * "\t" + f'<p class="article-paragraph">{format_runs(paragraph.runs)}</p>\n')
+                result["html_content"] += (level * "\t" + f'<p class="article-paragraph">{format_runs(paragraph.runs)}</p>\n')
             else:
-                html_content += ("\n")
+                result["html_content"] += ("\n")
     
-    return html_content
+    return result
