@@ -70,8 +70,8 @@ async def remake():
 if __name__ == "__main__":
     # asyncio.run(remake())
     # asyncio.run(reset_database())
-    # asyncio.run(add_themes())
-    # asyncio.run(add_books())
-    # asyncio.run(add_reviews())
-    asyncio.run(add_articles())
     # asyncio.run(add_roles())
+    # asyncio.run(add_themes())
+    # asyncio.run(add_articles())
+    # asyncio.run(add_books())
+    asyncio.run(add_reviews())
