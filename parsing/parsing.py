@@ -8,13 +8,21 @@ def convert_docx_to_html(input_file: str, output_file: str):
     
     level = 0
     html_content = "<!DOCTYPE html>\n<html lang='en'>\n\t<head>\n\t\t<meta charset='UTF-8'>\n\t\t<title>Title</title>\n\t</head>\n\t<body>\n"
-    for paragraph in doc.paragraphs:
+
+    read_time = doc.paragraphs[0].runs[0].text or 5
+
+    for paragraph in doc.paragraphs[1:]:
         if not paragraph.text.strip():
             continue
 
         if paragraph.style.name.startswith("Heading"):
             level = int(paragraph.style.name[-1])
-            html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
+            if level == 1:
+                theme = paragraph.runs[0].text
+            elif level == 2:
+                title = paragraph.runs[0].text
+            else:
+                html_content += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
         else:
             if paragraph.runs != "":
                 html_content += (level * "\t" + f'<p class="artile-paragraph">{format_runs(paragraph.runs)}</p>\n')
@@ -23,7 +31,12 @@ def convert_docx_to_html(input_file: str, output_file: str):
     
     html_content += ("\t</body>\n")
     html_content += ("</html>\n")
-    # return html_content
+    return {
+        'read_time': read_time,
+        'theme': theme,
+        'title': title,
+        'html_content': html_content
+    }
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(html_content)
 
