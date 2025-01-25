@@ -63,6 +63,7 @@
 
         p.article-paragraph {
             line-height: 1.6;
-            color: #333;
+            font-size: 19px;
+            color: black;
             padding: 0px 40px;
         }
