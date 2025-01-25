@@ -100,10 +100,11 @@ def convert_docx_to_html(input_file: str):
     doc = Document(input_file)
 
     result = parse_readtime_pubdata(doc.paragraphs[0].runs[0].text)
+    result["summary"] = doc.paragraphs[1].runs[0].text
     result["html_content"] = ""
     level = 0
 
-    for paragraph in doc.paragraphs[1:]:
+    for paragraph in doc.paragraphs[2:]:
         if not paragraph.text.strip():
             continue
 
