@@ -30,12 +30,10 @@ async def get_blog(
     articles = [
         {
             'id': article[0],
-            'theme': article[1],
-            'title': article[2],
-            'summary': article[3],
-            'created_at': article[4],
-            'preview': article[5],
-            'read_time': article[6]
+            'title': article[1],
+            'summary': article[2],
+            'created_at': article[3],
+            'preview': article[4]
         } for article in articles_data
     ]
 

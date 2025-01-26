@@ -8,7 +8,7 @@
         <div class="main-block">
             <div class="book-descr-block">
                 <div class="book-image-left">
-                    <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover-details">
+                    <img src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover" class="book-cover-details">
                 </div>
                 <div class="book-descr-right">
                     <div class="book-titles-right">
@@ -18,7 +18,7 @@
                         </a>
                     </div>
                     <div class="book-descr-text-right">
-                        {{ book.full_description }}
+                        {{ book.summary }}
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                     {% for book in related_books %}
                         <div class="related-book-item">
                             <a  class="related-book-link" href="{{ url_for('get_book_details', book_title=book.title) }}">
-                                <img class="related-book-cover" src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} cover">
+                                <img class="related-book-cover" src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover">
                             </a>
                             <a class="related-book-title" href="{{ url_for('get_book_details', book_title=book.title) }}">{{ book.title }}</a>
                         </div>
