@@ -10,29 +10,26 @@ class Books(Base):
     __tablename__ = "books"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    title: Mapped[str]
-    series: Mapped[str]
-    short_description: Mapped[str]
-    full_description: Mapped[str]
-    pub_date: Mapped[datetime.datetime] = mapped_column(
-        server_default=text("TIMEZONE('utc', now())")
-    )
-    author: Mapped[str]
-    image: Mapped[str]
-    pages: Mapped[int]
-    language: Mapped[str]
-    min_age: Mapped[int]
-    max_age: Mapped[int]
+    series: Mapped[str] = mapped_column(nullable=True)
     theme: Mapped[int] = mapped_column(
         ForeignKey("themes.id", ondelete="CASCADE"),
         nullable=True
     )
-    amazon_link: Mapped[str]
-    aloud_link: Mapped[str]
-    active: Mapped[bool] = mapped_column(
-        nullable=False,
-        default=False
+    title: Mapped[str] = mapped_column(nullable=False)
+    summary: Mapped[str] = mapped_column(nullable=False)
+    pub_date: Mapped[datetime.datetime] = mapped_column(
+        server_default=text("TIMEZONE('utc', now())"), 
+        nullable=False
     )
+    author: Mapped[str] = mapped_column(nullable=False, default="Yassya Lil")
+    cover: Mapped[str] = mapped_column(nullable=False)
+    pages: Mapped[int] = mapped_column(nullable=True)
+    language: Mapped[str] = mapped_column(nullable=True)
+    min_age: Mapped[int] = mapped_column(nullable=True)
+    max_age: Mapped[int] = mapped_column(nullable=True)
+    amazon_link: Mapped[str] = mapped_column(nullable=False)
+    aloud_link: Mapped[str] = mapped_column(nullable=False)
+    active: Mapped[bool] = mapped_column(nullable=False, default=False)
 
 
 class Themes(Base):
@@ -40,3 +37,21 @@ class Themes(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(nullable=False)
+
+
+class BookInfo(Base):
+    __tablename__ = "books_info"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    author: Mapped[str] = mapped_column(nullable=False, default="Yassya Lil")
+    cover: Mapped[str] = mapped_column(nullable=False)
+    pages: Mapped[int] = mapped_column(nullable=True)
+    language: Mapped[str] = mapped_column(nullable=True)
+    min_age: Mapped[int] = mapped_column(nullable=True)
+    max_age: Mapped[int] = mapped_column(nullable=True)
+    amazon_link: Mapped[str] = mapped_column(nullable=False)
+    aloud_link: Mapped[str] = mapped_column(nullable=False)
+    pub_date: Mapped[datetime.datetime] = mapped_column(
+        server_default=text("TIMEZONE('utc', now())"), 
+        nullable=False
+    )
