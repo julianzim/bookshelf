@@ -24,7 +24,7 @@ async def get_active_books(
     session: AsyncSession
 ):
     query = (
-        select(Books.id, Books.title, Books.image)
+        select(Books.id, Books.title, Books.cover)
         .where(Books.active == True)
         .order_by(Books.id)     # после деплоя сделать сортировку по pub_date desc
     )
@@ -108,12 +108,12 @@ async def get_active_articles(
     query = (
         select(
             Articles.id,
-            Articles.theme,
+            # Articles.theme,
             Articles.title,
             Articles.summary,
             Articles.created_at,
             Articles.preview,
-            Articles.read_time
+            # Articles.read_time
         )
         .where(Articles.active == True)
         .order_by(Articles.id)     # после деплоя сделать сортировку по created_at desc

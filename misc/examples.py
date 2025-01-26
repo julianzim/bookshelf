@@ -121,18 +121,17 @@ def generate_example_books_list(
     for title, image in book_image.items():
         books.append(
             Books(
-                title=title,
-                image=image,
                 series=series,
-                short_description=description,
-                full_description=description,
+                theme=count,
+                title=title,
+                cover=image,
+                summary=description,
                 pub_date=pub_date,
                 author=author,
-                min_age=min_age,
-                max_age=max_age,
                 pages=random.randint(28, 38),
                 language=language,
-                theme=count,
+                min_age=min_age,
+                max_age=max_age,
                 amazon_link=amazon_link,
                 aloud_link=aloud_link,
                 active=True
@@ -156,7 +155,7 @@ def generate_example_articles_list(
                 theme=random.randint(1, 15),
                 title=title,
                 summary=description,
-                text=converted_text,
+                text=converted_text["html_content"],
                 created_at=pub_date,
                 preview=image,
                 read_time=random.choice(read_times),
