@@ -11,3 +11,4 @@ class GetAllArticles(BaseModel):
     text: str
     created_at: datetime
     read_time: int
+    preview: str
