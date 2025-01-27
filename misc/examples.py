@@ -25,10 +25,10 @@ Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
 amazon_link = 'https://www.amazon.com/Friend-Anger-Our-Emotions-Friends/dp/B0C1J1H9MM/ref=sr_1_1?crid=XONPX6TL9F9U&dib=eyJ2IjoiMSJ9.Au1UgCc2IzRqX61k25GpwA.gO2PsLVmjAp6nuOLokGEBMECjoUwdCyvnd99QhpFb-A&dib_tag=se&keywords=yassya+lil+anger&qid=1726409665&s=books&sprefix=yassya+lil+anger%2Cstripbooks-intl-ship%2C169&sr=1-1'
 aloud_link = 'https://www.youtube.com/embed/jMCXFGdSbH4'
 book_image_map = {
-    "My Friend Joy": "MyFriendJoy.jpg",
-    "My Friend Sadness": "MyFriendSadness.jpg",
-    "My Friend Anger": "MyFriendAnger.jpg",
-    "My Friend Fear": "MyFriendFear.jpg",
+    "My Friend Joy": "MyFriendJoy.png",
+    "My Friend Sadness": "MyFriendSadness.png",
+    "My Friend Anger": "MyFriendAnger.png",
+    "My Friend Fear": "MyFriendFear.png",
     "My Friend Envy": "MyFriendEnvy.png",
     "My Friend Love": "MyFriendLove.png",
     "My Friend Jealousy": "MyFriendJealousy.png",
