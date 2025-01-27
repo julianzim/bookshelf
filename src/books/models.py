@@ -29,6 +29,8 @@ class Books(Base):
     max_age: Mapped[int] = mapped_column(nullable=True)
     amazon_link: Mapped[str] = mapped_column(nullable=False)
     aloud_link: Mapped[str] = mapped_column(nullable=False)
+    hc_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
+    pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     active: Mapped[bool] = mapped_column(nullable=False, default=False)
 
 

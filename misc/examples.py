@@ -134,6 +134,8 @@ def generate_example_books_list(
                 max_age=max_age,
                 amazon_link=amazon_link,
                 aloud_link=aloud_link,
+                hc_price = 9.99,
+                pb_price = 9.99,
                 active=True
             )
         )
