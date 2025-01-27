@@ -52,7 +52,7 @@
             .card-content {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+                justify-content: flex-start;
                 padding: 5px 15px 20px 15px;
                 text-align: left;
                 height: 100%;
