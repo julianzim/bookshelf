@@ -5,7 +5,7 @@
 
 <div id="home" class="background">
     <div class="content" id="home-content">
-        <h1 class="content-title">Our Emotions - Our Friends</h1>
+        <h1 class="content-title">Our Emotions are Our Friends</h1>
         <hr class="content-divider">
         <div class="book-carousel">
             <button class="scroll-button left">&lt;</button>
@@ -25,6 +25,10 @@
 <!--            <div class="scroll-zone right"></div>-->
             <button class="scroll-button right">&gt;</button>
         </div>
+
+        
+        <h1 class="content-title">Articles that you can read</h1>
+        <!-- <hr class="content-divider"> -->
         <div class="book-carousel">
             <button class="scroll-button left">&lt;</button>
 <!--            <div class="scroll-zone left"></div>-->
@@ -43,24 +47,7 @@
 <!--            <div class="scroll-zone right"></div>-->
             <button class="scroll-button right">&gt;</button>
         </div>
-        <div class="book-carousel">
-            <button class="scroll-button left">&lt;</button>
-<!--            <div class="scroll-zone left"></div>-->
-            <div class="book-grid-wrapper">
-                <div class="book-grid-in-wrapper">
-                    {% for book in books %}
-                        <div class="book-item-in-wrapper">
-                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
-                                <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
-                            </a>
-                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-<!--            <div class="scroll-zone right"></div>-->
-            <button class="scroll-button right">&gt;</button>
-        </div>
+        
     </div>
 </div>
 
