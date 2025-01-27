@@ -25,21 +25,21 @@ Mauris enim justo, congue congue rutrum nec, rhoncus vitae quam.
 amazon_link = 'https://www.amazon.com/Friend-Anger-Our-Emotions-Friends/dp/B0C1J1H9MM/ref=sr_1_1?crid=XONPX6TL9F9U&dib=eyJ2IjoiMSJ9.Au1UgCc2IzRqX61k25GpwA.gO2PsLVmjAp6nuOLokGEBMECjoUwdCyvnd99QhpFb-A&dib_tag=se&keywords=yassya+lil+anger&qid=1726409665&s=books&sprefix=yassya+lil+anger%2Cstripbooks-intl-ship%2C169&sr=1-1'
 aloud_link = 'https://www.youtube.com/embed/jMCXFGdSbH4'
 book_image_map = {
-    "My Friend Joy": "JoyCover.jpg",
-    "My Friend Sadness": "SadnessCover.jpg",
-    "My Friend Anger": "AngerCover.jpg",
-    "My Friend Fear": "FearCover.jpg",
-    "My Friend Envy": "EnvyCover.png",
-    "My Friend Love": "LoveCover.png",
-    "My Friend Jealousy": "JealousyCover.png",
-    "My Friend Resentment": "ResentmentCover.png",
-    "My Friend Shame": "ShameCover.png",
-    "My Friend Guilt": "GuiltCover.png",
-    "My Friend Loneliness": "LonelinessCover.png",
-    "My Friend Shyness": "ShynessCover.png",
-    "My Friend Indifference": "IndifferenceCover.png",
-    "My Friend Helplessness": "HelplessnessCover.png",
-    "My Friend Boredom": "BoredomCover.png"
+    "My Friend Joy": "MyFriendJoy.jpg",
+    "My Friend Sadness": "MyFriendSadness.jpg",
+    "My Friend Anger": "MyFriendAnger.jpg",
+    "My Friend Fear": "MyFriendFear.jpg",
+    "My Friend Envy": "MyFriendEnvy.png",
+    "My Friend Love": "MyFriendLove.png",
+    "My Friend Jealousy": "MyFriendJealousy.png",
+    "My Friend Resentment": "MyFriendResentment.png",
+    "My Friend Shame": "MyFriendShame.png",
+    "My Friend Guilt": "MyFriendGuilt.png",
+    "My Friend Loneliness": "MyFriendLoneliness.png",
+    "My Friend Shyness": "MyFriendShyness.png",
+    "My Friend Indifference": "MyFriendIndifference.png",
+    "My Friend Helplessness": "MyFriendHelplessness.png",
+    "My Friend Boredom": "MyFriendBoredom.png"
 }
 article_image_map = {
     "Example article 1 title": "NoImage.jpg",
