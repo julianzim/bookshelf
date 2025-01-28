@@ -70,7 +70,7 @@ async def get_home(
         } for book in books_data
     ]
     
-    root_logger.info(f"Books found: {len(books)} fro {current_user_log}")
+    root_logger.info(f"Books found: {len(books)} for {current_user_log}")
 
     return templates.TemplateResponse(
         "pages/home.html", 
