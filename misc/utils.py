@@ -79,7 +79,7 @@ def format_runs(runs):
     return formatted_text
 
 
-def parse_readtime_pubdata(input_string):
+def parse_readtime_pubdata(input_string: str):
     if not input_string:
         read_time, pub_date = 5, datetime.now()
     else:
@@ -99,21 +99,23 @@ def parse_readtime_pubdata(input_string):
 def convert_docx_to_html(input_file: str):
     doc = Document(input_file)
 
-    result = parse_readtime_pubdata(doc.paragraphs[0].runs[0].text)
-    result["summary"] = doc.paragraphs[1].runs[0].text
+    info_runs_str = "".join([run.text for run in doc.paragraphs[0].runs])
+    result = parse_readtime_pubdata(info_runs_str)
+    result["summary"] = "".join([run.text for run in doc.paragraphs[1].runs])
     result["html_content"] = ""
+    result["theme"] = "theme"
+    result["title"] = "title"
     level = 0
 
     for paragraph in doc.paragraphs[2:]:
         if not paragraph.text.strip():
             continue
-
         if paragraph.style.name.startswith("Heading"):
             level = int(paragraph.style.name[-1])
             if level == 1:
-                result["theme"] = paragraph.runs[0].text
+                result["theme"] = "".join([run.text for run in paragraph.runs])
             elif level == 2:
-                result["title"] = paragraph.runs[0].text
+                result["title"] = "".join([run.text for run in paragraph.runs])
             else:
                 result["html_content"] += ((level-1) * "\t" + f'<h{level} class="article-header{level}">{format_runs(paragraph.runs)}</h{level}>\n')
         else:

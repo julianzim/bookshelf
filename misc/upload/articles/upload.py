@@ -38,7 +38,7 @@ async def upload_articles(
     ):
         parsed_docx = convert_docx_to_html(docx)
         theme_name = parsed_docx["theme"]
-        
+        print(parsed_docx)
         query = (
             select(Themes.id)
             .where(Themes.name == theme_name)
@@ -73,7 +73,7 @@ async def upload_articles(
             
         shutil.move(preview, PROD_DIR / 'previews' / preview.name)
         shutil.move(header_image, PROD_DIR / 'header_images' / header_image.name)
-        # docx.unlink()
+        docx.unlink()
 
 
 if __name__ == "__main__":
