@@ -56,21 +56,21 @@ article_image_map = {
 }
 example_themes_info = {
     "names": [
-        'Child\'s Joy',
-        'Child\'s Sadness',
-        'Child\'s Anger',
-        'Child\'s Fear',
-        'Child\'s Envy',
-        'Child\'s Love',
-        'Child\'s Jealousy',
-        'Child\'s Resentment',
-        'Child\'s Shame',
-        'Child\'s Guilt',
-        'Child\'s Loneliness',
-        'Child\'s Shyness',
-        'Child\'s Indifference',
-        'Child\'s Helplessness',
-        'Child\'s Boredom'
+        'Children`s Joy',
+        'Children`s Sadness',
+        'Children`s Anger',
+        'Children`s Fear',
+        'Children`s Envy',
+        'Children`s Love',
+        'Children`s Jealousy',
+        'Children`s Resentment',
+        'Children`s Shame',
+        'Children`s Guilt',
+        'Children`s Loneliness',
+        'Children`s Shyness',
+        'Children`s Indifference',
+        'Children`s Helplessness',
+        'Children`s Boredom'
     ]
 }
 
