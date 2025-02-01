@@ -65,7 +65,7 @@
                     <div class="reviews-header-left-block">
                         <div class="reviews-block-title">Customer reviews</div>
                         <div class="reviews-rating">
-                            <div class="rating-stars">**********</div>
+                            <div class="rating-stars" style="--rating: {{ book_reviews_stats.average_rating }};">★★★★★</div>
                             <div class="rating-mean-value">{{ book_reviews_stats.average_rating|default("N/A") }}/5</div>
                             <!-- <div class="ratings-count">{{ book_reviews_stats.ratings_count|default("N/A") }} ratings | </div> -->
                             <div class="reviews-count">{{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>

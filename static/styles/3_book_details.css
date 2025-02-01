@@ -165,19 +165,43 @@
 
                 .reviews-rating {
                     display: flex;
-
+                    gap: 20px;
                 }
 
+
                     .rating-stars {
-                        margin-right: 10px;
+                        display: inline-block;
+                        font-size: 30px;
+                        letter-spacing: 5px;
+                        position: relative;
+                        color: #ccc;
+                        align-self: center;
                     }
+                    
+                    .rating-stars::before {
+                        content: "★★★★★";
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: calc(var(--rating) / 5 * 100%);
+                        overflow: hidden;
+                        white-space: nowrap;
+                        color: gold;
+                        align-self: center;
+                    }
+
+
 
                     .rating-mean-value {
-                        margin-right: 10px;
+                        align-self: center;
                     }
 
-                    .ratings-count {
-                        margin-right: 10px;
+                    /* .ratings-count {
+                        align-self: center;
+                    } */
+
+                    .reviews-count {
+                        align-self: center;
                     }
 
 
