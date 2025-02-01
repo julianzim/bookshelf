@@ -165,9 +165,9 @@
 
                 .reviews-rating {
                     display: flex;
+                    align-items: center;
                     gap: 20px;
                 }
-
 
                     .rating-stars {
                         display: inline-block;
@@ -176,6 +176,7 @@
                         position: relative;
                         color: #ccc;
                         align-self: center;
+                        font-weight: bold;
                     }
                     
                     .rating-stars::before {
@@ -190,20 +191,17 @@
                         align-self: center;
                     }
 
-
-
-                    .rating-mean-value {
+                    /* .rating-mean-value {
                         align-self: center;
                     }
 
-                    /* .ratings-count {
+                    .ratings-count {
                         align-self: center;
-                    } */
+                    } 
 
                     .reviews-count {
                         align-self: center;
-                    }
-
+                    }  */
 
 
                     .sort-reviews-container {
@@ -442,6 +440,8 @@
 
             .review-rating-and-title {
                 display: flex;
+                align-items: center;
+                gap: 20px;
                 font-weight: bold;
                 font-size: 18px;
                 margin-bottom: 10px;
