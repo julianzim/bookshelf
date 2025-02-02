@@ -133,11 +133,19 @@
 
 
 
-    <!-- Скрипт для обработки нажатия на кнопку Log Out -->
+    <!-- Script for handling the Log Out button click -->
     <script src="/static/scripts/logout.js"></script>
-    <!-- Скрипт для вывода модальных окон регистрации и входа -->
+    <!-- Script for displaying registration and login modal windows -->
     <script src="/static/scripts/authModal.js"></script>
-    <!-- Скрипт для отправки данных из формы регистрации в требуемом бекэндом формате -->
+    <!-- Script for sending registration form data in the required format -->
     <script src="/static/scripts/registration.js"></script>
+    <!-- Script for storing the client's time zone in cookies -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.cookie = `timezone=${timezone}; path=/; Secure`;
+        });
+    </script>
+        
 </body>
 </html>
