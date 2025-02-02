@@ -1,11 +1,31 @@
 import statistics
 import logging
 import os
+import pytz
 
 from docx import Document
 from datetime import datetime
 
 from src.reviews.models import Reviews
+
+
+
+async def localize_reviews(reviews: list[Reviews], timezone: pytz.timezone):
+    localized_reviews = []
+    for review in reviews:
+        created_at = review.created_at
+        
+        if created_at.tzinfo is None:
+            created_at = pytz.UTC.localize(created_at)
+
+        localized_created_at = created_at.astimezone(timezone)
+
+        updated_review = review._asdict()
+        updated_review['created_at'] = localized_created_at
+
+        localized_reviews.append(updated_review)
+    
+    return localized_reviews
 
 
 async def get_reviews_statistics(reviews: list[Reviews]):

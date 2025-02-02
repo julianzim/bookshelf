@@ -1,3 +1,5 @@
+from zoneinfo import ZoneInfo
+
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi.templating import Jinja2Templates
 
@@ -11,7 +13,7 @@ from src.queries import (
 )
 from src.database import get_async_session
 from src.auth.base_config import current_user_optional
-from misc.utils import get_reviews_statistics, get_logger
+from misc.utils import localize_reviews, get_reviews_statistics, get_logger
 
 
 logger = get_logger(__name__)
@@ -64,6 +66,12 @@ async def get_book_details(
 
     logger.debug(f'{current_user_log} requests page of book "{book_title}"')
     
+    client_timezone = request.cookies.get("timezone", "UTC")
+    try:
+        local_tz = ZoneInfo(client_timezone)
+    except ValueError:
+        local_tz = ZoneInfo("UTC")
+
     book = await get_book_by_title(
         title = book_title,
         session = session
@@ -83,7 +91,12 @@ async def get_book_details(
             session = session
         )
         book_reviews_stats = await get_reviews_statistics(reviews = book_reviews)
-        
+
+        book_reviews_localized = await localize_reviews(
+            reviews = book_reviews,
+            timezone = local_tz
+        )
+
         logger.info(f'Book {book.title} found for {current_user_log}')
 
         return templates.TemplateResponse(
@@ -93,7 +106,7 @@ async def get_book_details(
                 "book": book,
                 "related_books": related_books,
                 "current_user": current_user,
-                "book_reviews": book_reviews,
+                "book_reviews": book_reviews_localized,
                 "book_reviews_stats": book_reviews_stats,
                 "sort_by": sort_by,
                 "order": order
