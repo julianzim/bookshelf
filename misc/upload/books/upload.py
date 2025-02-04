@@ -19,6 +19,7 @@ TABLE_PATH = Path("misc/upload/books/books.xlsx")
 async def upload_books(table_path: Path):
     
     df = pd.read_excel(table_path)
+    df['summary'] = df['summary'].apply(lambda x: '\n'.join(f'<p>{line}</p>' for line in x.split('\n')))
     books, books_infos = [], []
     
     for _, row in df.iterrows():

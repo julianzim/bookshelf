@@ -14,9 +14,9 @@
                 <a href="/books" class="book-series-right">
                     <h2 class="book-series-right">{{ book.series }}</h2>
                 </a>
-                <p class="book-descr-text-right">
-                    {{ book.summary }}
-                </p>
+                <div class="book-descr-text-right">
+                    {{ book.summary|safe }}
+                </div>
             </div>
 
             <div class="book-info-block">
