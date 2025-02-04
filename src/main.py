@@ -41,6 +41,11 @@ app.include_router(
     prefix = "/auth",
     tags = ["Auth"],
 )
+app.include_router(
+    fastapi_users.get_reset_password_router(),
+    prefix = "/auth",
+    tags = ["Auth"],
+)
 
 
 @app.middleware("http")
