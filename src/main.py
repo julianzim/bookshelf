@@ -16,6 +16,8 @@ from src.articles.router import router as router_blog
 from misc.utils import get_logger
 
 
+APP_MODE = "dev"
+
 root_logger = get_logger(
     name = __name__,
     log_level = "DEBUG",
@@ -24,7 +26,16 @@ root_logger = get_logger(
 
 templates = Jinja2Templates(directory = "templates/")
 
-app = FastAPI(title = "Yassya Lil")
+docs_url=None if APP_MODE == "production" else "/docs"
+redoc_url=None if APP_MODE == "production" else "/redoc"
+openapi_url=None if APP_MODE == "production" else "/openapi.json"
+
+app = FastAPI(
+    title = "Yassya Lil",
+    docs_url=docs_url,
+    redoc_url=redoc_url,
+    openapi_url=openapi_url
+)
 
 app.mount("/static", StaticFiles(directory = "static"), name = "static")
 
