@@ -10,17 +10,13 @@
                 <div class="book-image-left">
                     <img src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover" class="book-cover-details">
                 </div>
-                <div class="book-descr-right">
-                    <div class="book-titles-right">
-                        <h1 class="book-title-right">{{ book.title }}</h1>
-                        <a href="/books" class="book-series-right">
-                            <h2 class="book-series-right">{{ book.series }}</h2>
-                        </a>
-                    </div>
-                    <div class="book-descr-text-right">
-                        {{ book.summary }}
-                    </div>
-                </div>
+                <h1 class="book-title-right">{{ book.title }}</h1>
+                <a href="/books" class="book-series-right">
+                    <h2 class="book-series-right">{{ book.series }}</h2>
+                </a>
+                <p class="book-descr-text-right">
+                    {{ book.summary }}
+                </p>
             </div>
 
             <div class="book-info-block">
