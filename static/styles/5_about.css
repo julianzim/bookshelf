@@ -3,12 +3,7 @@
     background-image: url('../images/backgrounds/About.png');
 }
 
-
-<<<<<<< HEAD
-.content img {
-=======
 .main-photo {
->>>>>>> 90ac72a (started editing styles)
     min-width: 150px;
     max-width: 35%;
     height: auto;
@@ -16,13 +11,13 @@
     margin-right: 20px;
 }
 
-<<<<<<< HEAD
-=======
+
+
 .main-photo img {
     width: 100%;
 }
 
->>>>>>> 90ac72a (started editing styles)
+
 .content p {
     margin-top: 0;
 }
