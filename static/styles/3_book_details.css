@@ -104,10 +104,9 @@
         }
 
             .icon-info-container {
-                width: 20px;
+                width: 30px;
                 height: auto;
                 vertical-align: middle;
-                margin: 10px 0;
             }
 
         .info-value {
