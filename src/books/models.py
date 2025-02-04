@@ -53,8 +53,8 @@ class BookInfo(Base):
     max_age: Mapped[int] = mapped_column(nullable=True)
     amazon_link: Mapped[str] = mapped_column(nullable=False)
     aloud_link: Mapped[str] = mapped_column(nullable=False)
-    # hc_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
-    # pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
+    hc_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
+    pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     pub_date: Mapped[datetime.datetime] = mapped_column(
         server_default=text("TIMEZONE('utc', now())"), 
         nullable=False
