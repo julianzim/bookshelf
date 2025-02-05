@@ -118,7 +118,7 @@
                 </div>
                 <div class="reviews-list">
                     {% for review in book_reviews %}
-                        <div class="review">
+                        <div class="review {% if loop.index > 3 %}hidden{% endif %}">
                             <div class="review-info">
                                 <div class="reviewer-name">by {{ review.username }},</div>
                                 <div class="review-date">{{ review.created_at.strftime("%B %d, %Y, %H:%M") }}</div>
@@ -132,6 +132,19 @@
                             </div>
                         </div>
                     {% endfor %}
+
+                    {% if book_reviews|length > 3 %}
+                        <button id="show-more-btn">Show more</button>
+                    {% endif %}
+
+                    <script>
+                        document.getElementById("show-more-btn")?.addEventListener("click", function() {
+                            document.querySelectorAll(".hidden").forEach(el => el.classList.remove("hidden"));
+                            this.style.display = "none";
+                        });
+                    </script>
+
+
                 </div>
             </div>
         </div>
