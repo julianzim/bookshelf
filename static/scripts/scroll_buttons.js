@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const leftButton = document.querySelector('.scroll-button.left');
     const rightButton = document.querySelector('.scroll-button.right');
-    const bookGrid = document.querySelector('.book-grid-in-wrapper');
+    const bookGrid = document.querySelector('.grid-in-wrapper');
 
     if (!leftButton || !rightButton || !bookGrid) {
         console.error("Scroll buttons or book grid not found");
