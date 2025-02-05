@@ -1,4 +1,5 @@
-static/images
+static/images/previews
+static/images/header_images
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
