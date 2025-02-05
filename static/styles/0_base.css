@@ -195,11 +195,89 @@ header {
 
 
 /* FOOTER */
-footer {
+.footer {
+    background-color: rgb(50, 50, 50);
+    padding: 20px;
     text-align: center;
-    padding: 10px;
-    background-color: #e5e5e5;
 }
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+        .footer-head {
+            display: flex;
+            gap: 75px;
+            align-items: center;
+        }
+
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .footer-logo p {
+                    color: white;
+                    font-size: 28px;
+                    margin: 0px;
+                }
+
+                .footer-logo img {
+                    width: 60px;
+                    height: 60px;
+                }
+            
+            .footer-nav {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .footer-nav a {
+                font-size: 18px;
+                text-decoration: none;
+                color: white;
+            }
+
+                .footer-nav a:hover {
+                    text-decoration: underline;
+                }
+
+        .footer-links,
+        .footer-social {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }  
+        
+            .footer-links a {
+                font-size: 14px;
+                text-decoration: none;
+                color: grey;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+
+            .footer-social img {
+                height: 35px;
+            }
+
+            #youtube {
+                height: 50px;
+            }
+
+        .footer-copyright {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+            margin: 0;
+        }
 
 
 /* AUTH MODAL WINDOWS */
@@ -342,83 +420,3 @@ footer {
     display: block;
     animation: modalFadeIn 0.5s;
 }
-
-
-
-.footer {
-    background-color: rgb(50, 50, 50);
-    padding: 20px;
-    text-align: center;
-}
-
-    .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-        .footer-head {
-            display: flex;
-            gap: 75px;
-            align-items: center;
-        }
-
-            .footer-logo {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-
-                .footer-logo p {
-                    color: white;
-                    font-size: 26px;
-                    margin: 0px;
-                }
-
-                .footer-logo img {
-                    width: 40px;
-                    height: 40px;
-                }
-            
-            .footer-nav {
-                display: flex;
-                gap: 20px;
-            }
-            
-            .footer-nav a {
-                text-decoration: none;
-                color: white;
-            }
-
-                .footer-nav a:hover {
-                    text-decoration: underline;
-                }
-
-        .footer-links,
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }  
-        
-            .footer-links a {
-                font-size: 14px;
-                text-decoration: none;
-                color: grey;
-            }
-
-                .footer-links a:hover {
-                    text-decoration: underline;
-                }
-
-            .footer-social img {
-                width: 40px;
-                height: 40px;
-            }
-
-    .footer-copyright {
-        margin-top: 10px;
-        font-size: 14px;
-        color: white;
-    }
