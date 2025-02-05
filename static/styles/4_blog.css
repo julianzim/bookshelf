@@ -94,3 +94,7 @@
                     -webkit-box-orient: vertical;
                     overflow: hidden; */
                 }
+
+                .card-summary {
+                    align-self: bottom;
+                }
