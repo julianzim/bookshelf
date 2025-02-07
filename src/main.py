@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, Request, HTTPException, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
-from fastapi.responses import RedirectResponse, JSONResponse
+from fastapi.responses import RedirectResponse, JSONResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -131,7 +131,7 @@ async def get_about(
 
 
 @app.exception_handler(HTTPException)
-async def exc_401_handler(
+async def http_exc_handler(
     request: Request,
     exc: HTTPException
 ):
@@ -141,10 +141,19 @@ async def exc_401_handler(
             url="/auth/login", 
             status_code = status.HTTP_303_SEE_OTHER
         )
+    else:
+        root_logger.error(f"HTTPException: {exc.detail}")
+        return HTMLResponse(
+            content=f"""
+            <html>
+                <head><title>Error {exc.status_code}</title></head>
+                <body>
+                    <h1>Error {exc.status_code}</h1>
+                    <p>{exc.detail}</p>
+                    <a href="/">Back to the Home</a>
+                </body>
+            </html>
+            """,
+            status_code=exc.status_code
+        )
     
-    root_logger.error(f"HTTPException: {exc.detail}")
-    
-    return JSONResponse(
-        status_code = exc.status_code, 
-        content = {"detail": exc.detail}
-    )
