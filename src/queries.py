@@ -20,13 +20,12 @@ async def reset_database():
     print('База данных сброшена')
 
 
-async def get_active_books(
+async def get_all_books(
     session: AsyncSession
 ):
     query = (
-        select(Books.id, Books.title, Books.cover)
-        .where(Books.active == True)
-        .order_by(asc(Books.id))
+        select(Books.id, Books.title, Books.cover, Books.pub_date, Books.active)
+        .order_by(asc(Books.pub_date))
     )
     result = await session.execute(query)
 
@@ -39,10 +38,7 @@ async def get_book_by_title(
 ):
     query = (
         select(Books)
-        .where(
-            Books.title == title,
-            Books.active == True
-        )
+        .where(Books.title == title)
     )
     result = await session.execute(query)
 
@@ -59,7 +55,7 @@ async def get_related_books_by_title(
             Books.title != title,
             Books.active == True
         )
-        .order_by(asc(Books.id))
+        .order_by(asc(Books.pub_date))
     )
     result = await session.execute(query)
 

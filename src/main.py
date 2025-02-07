@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.queries import get_active_books, get_active_articles
+from src.queries import get_all_books, get_active_articles
 from src.database import get_async_session
 from src.auth.base_config import auth_backend, fastapi_users, current_user_optional
 from src.auth.schemas import UserCreate, UserRead
@@ -77,7 +77,7 @@ async def get_home(
     
     root_logger.debug(f"{current_user_log} requests the Home page")
     
-    books_data = await get_active_books(session=session)
+    books_data = await get_all_books(session=session)
     books = [
         {
             "id": book[0],

@@ -6,7 +6,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.queries import (
-    get_active_books,
+    get_all_books,
     get_book_by_title,
     get_related_books_by_title,
     get_all_book_reviews
@@ -33,12 +33,14 @@ async def get_books(
 
     logger.debug(f'{current_user_log} requests the Books page')
 
-    books_data = await get_active_books(session=session)
+    books_data = await get_all_books(session=session)
     books = [
         {
             "id": book[0],
             "title": book[1],
-            "image": book[2]
+            "image": book[2],
+            "pub_date": book[3],
+            "active": book[4]
         } for book in books_data
     ]
 

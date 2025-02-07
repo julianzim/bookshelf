@@ -498,6 +498,7 @@
     display: flex;
     width: 25%;
     flex-direction: column;
+    gap: 20px;
 }
 
     .purchase-top-right-block {
@@ -544,14 +545,14 @@
         .buy-button {
             display: inline-block;
             padding: 8px 16px;
-            font-size: 16px;
-            color: white;
-            background-color: #333;
             border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
             text-decoration: none;
             text-align: center;
-            font-weight: bold;
             cursor: pointer;
+            color: white;
+            background-color: #333;
         }
 
 
@@ -559,9 +560,10 @@
         display: flex;
         justify-content: space-evenly;
         flex-direction: column;
+        gap: 5px;
+        padding-block: 10px;
         height: auto;
         width: 100%;
-        margin-top: 10px;
         background-color: white;
         box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
         border-radius: 25px;
@@ -569,9 +571,8 @@
 
         .related-books-block-title {
             text-align: center;
-            margin: 10px 0 10px 0;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 1.2em;
         }
 
         .related-books-block-content-divider {
@@ -585,30 +586,27 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
-            padding: 10px 10px 20px 10px;
+            padding: 10px;
+            row-gap: 15px;
         }
 
             .related-book-item {
                 display: flex;
-                width: 30%;
-                height: auto;
-                flex-shrink: 0;
+                width: 40%;
                 flex-direction: column;
-                padding-bottom: 5px;
             }
 
                     .related-book-cover {
                         width: 100%;
-                        box-shadow: 0 5px 10px rgba(0, 0, 0, .15);
+                        box-shadow: 4px 4px 8px rgba(0, 0, 0, .4);
                     }
 
                 .related-book-title {
-                    display: block;
-                    font-size: 12px;
+                    font-size: 0.8em;
                     font-weight: bold;
-                    color: #333;
                     text-decoration: none;
                     text-align: center;
+                    color: #333;
                 }
 
                     .related-book-title:hover {
