@@ -17,21 +17,6 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     reset_password_token_secret = SECRET_AUTH
     verification_token_secret = SECRET_AUTH
 
-    async def on_after_register(self, user: User, request: Optional[Request] = None):
-        logger.info(f"{user} has registered")
-
-    async def on_after_login(
-        self,
-        user: models.UP,
-        request: Optional[Request] = None,
-        response: Optional[Response] = None,
-    ) -> None:
-        logger.info(f"{user} has login")
-        if response:
-            last_page = request.query_params.get("next") or request.headers.get("Referer") or "/"
-            logger.debug(f"User id={user.id} redirecting to the page {last_page}")
-            response.status_code = 302
-            response.headers["Location"] = last_page
 
     async def create(
         self,
@@ -64,10 +49,26 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
         return created_user
 
+    async def on_after_register(self, user: User, request: Optional[Request] = None):
+        logger.info(f"{user} has registered")
+
+    async def on_after_login(
+        self,
+        user: models.UP,
+        request: Optional[Request] = None,
+        response: Optional[Response] = None,
+    ) -> None:
+        logger.info(f"{user} has login")
+        if response:
+            last_page = request.query_params.get("next") or request.headers.get("Referer") or "/"
+            logger.debug(f"User id={user.id} redirecting to the page {last_page}")
+            response.status_code = 302
+            response.headers["Location"] = last_page
+            
     async def send_reset_password_email(self, email: str, token: str):
-        subject = "Восстановление пароля"
+        subject = "Password Recovery"
         reset_url = f"http://localhost:8000/reset-password?token={token}"
-        body = f"Для сброса пароля перейдите по ссылке: {reset_url}"
+        body = f"To reset your password, click on the following link:\n{reset_url}"
 
         message = MessageSchema(
             subject=subject,
