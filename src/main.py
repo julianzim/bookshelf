@@ -130,6 +130,17 @@ async def get_about(
     )
 
 
+@app.get("/auth/reset-password")
+async def reset_password_page(request: Request, token: str):
+    return templates.TemplateResponse(
+        "reset-password.html",
+        {
+            "request": request,
+            "token": token
+        }
+    )
+
+
 @app.exception_handler(HTTPException)
 async def http_exc_handler(
     request: Request,
