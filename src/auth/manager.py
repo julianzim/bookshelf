@@ -1,12 +1,13 @@
 from typing import Optional
 
 from fastapi import Depends, Request
-from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
 from fastapi.responses import Response
+from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
+from fastapi_mail import FastMail, MessageSchema
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
-from src.config import SECRET_AUTH
+from src.config import SECRET_AUTH, mail_conf
 from misc.utils import get_logger
 
 
@@ -62,6 +63,24 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         await self.on_after_register(created_user, request)
 
         return created_user
+
+    async def send_reset_password_email(self, email: str, token: str):
+        subject = "Восстановление пароля"
+        reset_url = f"http://localhost:8000/reset-password?token={token}"
+        body = f"Для сброса пароля перейдите по ссылке: {reset_url}"
+
+        message = MessageSchema(
+            subject=subject,
+            recipients=[email],  
+            body=body,
+            subtype="plain"
+        )
+
+        fm = FastMail(mail_conf)
+        await fm.send_message(message)
+    
+    async def on_after_forgot_password(self, user: User, token: str, request: Optional[Request] = None):
+        await self.send_reset_password_email(user.email, token)
 
 
 async def get_user_manager(user_db=Depends(get_user_db)):
