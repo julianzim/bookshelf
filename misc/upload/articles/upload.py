@@ -67,13 +67,13 @@ async def upload_articles(
             )
         )
 
-        async with async_session() as session:
-            session.add_all(articles)
-            await session.commit()
-            
-        shutil.move(preview, PROD_DIR / 'previews' / preview.name)
-        shutil.move(header_image, PROD_DIR / 'header_images' / header_image.name)
-        docx.unlink()
+    async with async_session() as session:
+        session.add_all(articles)
+        await session.commit()
+        
+    shutil.move(preview, PROD_DIR / 'previews' / preview.name)
+    shutil.move(header_image, PROD_DIR / 'header_images' / header_image.name)
+    docx.unlink()
 
 
 if __name__ == "__main__":
