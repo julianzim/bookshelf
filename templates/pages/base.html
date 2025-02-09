@@ -40,11 +40,13 @@
             {% if current_user %}
                 <div class="hello-user">
                     <span>Hello, {{ current_user.username }}</span>
-                    <a id="logout-button" class="logout-button">Sign Out</a>
+                    <a id="logout-button" class="logout-button" title="Sign Out">
+                        <img src="/static/images/icons/signout.png">
+                    </a>
                 </div>
             {% endif %}
             {% if not current_user %}
-                <a class="register-button" onclick="openRegisterModal()">Sign Up</a>
+                <!-- <a class="register-button" onclick="openRegisterModal()">Sign Up</a> -->
                 <a class="login-button" onclick="openLoginModal()">Sign In</a>
             {% endif %}
         </nav>
