@@ -106,16 +106,16 @@
     <div id="forgotModal" class="auth-modal">
         <div class="auth-modal-content">
             <span id="forgotModalCloseBtn" class="modal-close-btn">&times;</span>
-            <span class="modal-title">Sign In</span>
-            <form id="auth-form" action="/auth/forgot-password" method="post" class="auth-form">
-                <label for="email">Your Email</label>
-                <input type="text" id="email" name="email" required>
-
+            <span class="modal-title">Forgot Password</span>
+            <form id="forgot-password-form" class="auth-form">
+                <label for="email">Your email</label>
+                <input type="email" id="fp-email" name="email" required>
                 <button type="submit" class="auth-submit-btn">Send Reset Link</button>
             </form>
+            <div id="reset-message" style="display: none; margin-top: 10px;"></div>
         </div>
     </div>
-
+    
 
     <footer class="footer">
         <div class="footer-content">
@@ -146,14 +146,16 @@
             <p class="footer-copyright">© Yassya Lil, 2024-2025. All rights reserved.</p>
         </div>
     </footer>
-
-
+    
+    
     <!-- Script for handling the Log Out button click -->
     <script src="/static/scripts/logout.js"></script>
     <!-- Script for displaying registration and login modal windows -->
     <script src="/static/scripts/authModal.js"></script>
-    <!-- Script for sending registration form data in the required format -->
+    <!-- Script for sending registration form data in application/json format -->
     <script src="/static/scripts/registration.js"></script>
+    <!-- Script for sending forgot-password form data in application/json format -->
+    <script src="/static/scripts/forgot_password.js"></script>
     <!-- Script for storing the client's time zone in cookies -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
