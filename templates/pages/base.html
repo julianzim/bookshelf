@@ -134,17 +134,18 @@
                 </nav>
             </div>
             <div class="footer-links">
-                <a href="#">Terms of Use</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">CA Privacy Policy</a>
-                <a href="#">Do Not Sell My Personal Info</a>
-                <a href="#">Affiliate Program Disclosure</a>
+                <a href="{{ url_for('get_policies', doc_name='terms_and_conditions') }}">Terms of Use</a>
+                <a href="{{ url_for('get_policies', doc_name='privacy_policy') }}">Privacy Policy</a>
+                <a href="{{ url_for('get_policies', doc_name='cookies_policy') }}">Cookies Policy</a>
             </div>
             <div class="footer-social">
                 <a href="#" title="Youtube"><img src="/static/images/icons/youtube.ico" alt="YouTube" id="youtube"></a>
                 <a href="#" title="Facebook"><img src="/static/images/icons/facebook.ico" alt="Facebook"></a>
                 <a href="#" title="Medium"><img src="/static/images/icons/medium.ico" alt="Medium"></a>
             </div>
+            <p class="footer-copyright">Questions? Email us at 
+                <a href="mailto:yassyalil.official@gmail.com">yassyalil.official@gmail.com</a>
+            </p>
             <p class="footer-copyright">© Yassya Lil, 2024-2025. All rights reserved.</p>
         </div>
     </footer>

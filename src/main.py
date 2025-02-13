@@ -141,6 +141,16 @@ async def reset_password_page(request: Request, token: str):
     )
 
 
+@app.get("/policies/{doc_name}")
+async def get_policies(request: Request, doc_name: str):
+    return templates.TemplateResponse(
+        f"docs/{doc_name}.html",
+        {
+            "request": request
+        }
+    )
+
+
 @app.exception_handler(HTTPException)
 async def http_exc_handler(
     request: Request,
