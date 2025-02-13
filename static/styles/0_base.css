@@ -235,13 +235,15 @@ header {
             align-items: center;
         }  
         
-            .footer-links a {
-                font-size: 14px;
+            .footer-links a,
+            .footer-copyright a {
+                font-size: 16px;
                 text-decoration: none;
-                color: grey;
+                color: rgb(146, 146, 146);
             }
 
-                .footer-links a:hover {
+                .footer-links a:hover,
+                .footer-copyright a:hover {
                     text-decoration: underline;
                 }
 
