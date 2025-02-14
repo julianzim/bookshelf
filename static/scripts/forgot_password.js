@@ -4,6 +4,11 @@ document.getElementById("forgot-password-form").addEventListener("submit", async
     const emailInput = document.getElementById("fp-email");
     const email = emailInput.value.trim();
     const messageDiv = document.getElementById("reset-message");
+    const form = document.getElementById("forgot-password-form");
+
+    messageDiv.textContent = "Sending form...";
+    messageDiv.style.color = "blue";
+    messageDiv.style.display = "block";
 
     if (!email) {
         messageDiv.textContent = "Please enter your email.";
@@ -24,7 +29,8 @@ document.getElementById("forgot-password-form").addEventListener("submit", async
         const result = await response.json();
 
         if (response.ok) {
-            messageDiv.textContent = "A password reset link has been sent to your email.";
+            form.style.display = "none";
+            messageDiv.innerHTML = "✓ A password reset link has been successfully sent to your email.";
             messageDiv.style.color = "green";
         } else {
             messageDiv.textContent = "Error: " + (result.detail || "Failed to send reset email");
