@@ -16,14 +16,31 @@
                 <div class="book-image-left">
                     <img src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover" class="book-cover-details">
                 </div>
-                <h1 class="book-title-right">{{ book.title }}</h1>
-                <a href="/books" class="book-series-right">
-                    <h2 class="book-series-right">{{ book.series }}</h2>
-                </a>
-                <div class="book-descr-text-right">
-                    {{ book.summary|safe }}
+                <div class="book-descr-right">
+                    <h1 class="book-title-right">{{ book.title }}</h1>
+                    <a href="/books" class="book-series-right">{{ book.series }}</a>
+                    <div class="book-descr-text-right">
+                        {{ book.summary|safe }}
+                    </div>
+                    <button class="descr-show-more-btn">Show more</button>
                 </div>
             </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const textContainer = document.querySelector(".book-descr-text-right");
+                    const showMoreBtn = document.querySelector(".descr-show-more-btn");
+                    
+                    if (textContainer.scrollHeight <= textContainer.clientHeight) {
+                        showMoreBtn.style.display = "none";
+                    }
+                
+                    showMoreBtn.addEventListener("click", function () {
+                        textContainer.style.maxHeight = "none";
+                        showMoreBtn.style.display = "none";
+                    });
+                });
+            </script>
 
             <div class="book-info-block">
                 <hr class="content-divider-info-block">
@@ -166,7 +183,7 @@
                 <h2>Review</h2>
                 <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}" method="post" class="review-form">
                     
-                    <label for="send-rating">Rate the book</label>
+                    <label>Rate the book</label>
                     <div class="send-rating">
                         <input type="radio" id="star5" name="rating" value="5" required>
                         <label for="star5">★</label>

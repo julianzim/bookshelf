@@ -27,47 +27,80 @@
     border-radius: 25px;
 }
 
+
     .book-descr-block {
+        display: flex;
+        gap: 40px;
         padding: 0 4%;
     }
 
         .book-image-left {
             max-width: 30%;
-            height: auto;
-            margin: 20px 30px 5px 0px;
-            float: left;
+            margin-block: 20px 0px;
         }
 
             .book-cover-details {
-                    width: 100%;
-                    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-                }
+                width: 100%;
+                box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+            }
+
+    .book-descr-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+        max-height: 100%;
+        overflow: hidden;
+    }
 
         .book-title-right {
-            margin-top: 0px;
-            margin-bottom: 10px;
+            margin-block: 0px;
         }
 
         .book-series-right {
-            margin-top: 0;
-            margin-bottom: 15px;
             font-size: 18px;
+            font-weight: bold;
             color: #666;
-            text-decoration: None;
+            text-decoration: none;
         }
 
-        .book-series-right:hover {
-            text-decoration: underline;
-        }
+            .book-series-right:hover {
+                text-decoration: underline;
+            }
 
         .book-descr-text-right {
-            margin-top: 75px;
+            margin-top: 10px;
             margin-bottom: 0px;
             font-size: 18px;
+            max-height: 250px;
+            overflow: hidden;
+            position: relative;
+
+            display: -webkit-box;
+            line-clamp:10;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
         }
 
             .book-descr-text-right p {
                 margin-block: 10px 0px;
+            }
+
+        .descr-show-more-btn {
+            align-self: flex-start;
+            background: #ccc;
+            color: black;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+            .descr-show-more-btn:hover {
+                background: #999;
             }
 
 
