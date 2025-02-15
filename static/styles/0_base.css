@@ -263,6 +263,59 @@ header {
         }
 
 
+/* COOKIES BANNER */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+    .cookie-banner-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 16px;
+    }
+    
+        .cookie-banner-content p {
+            margin: 0;
+        }
+
+        .cookie-banner-content div {
+            display: flex;
+            justify-content: center;
+            gap: 30px;  
+        }
+    
+            .cookie-btn {
+                font-size: 16px;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+            
+                .cookie-btn:hover {
+                    background-color: #45a049;
+                }
+                
+                .cookie-btn:focus {
+                    outline: none;
+                }
+
+
+
 /* AUTH MODAL WINDOWS */
 .auth-modal {
     display: none;

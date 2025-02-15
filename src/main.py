@@ -76,6 +76,8 @@ async def get_home(
     current_user_log = current_user or 'Unauthenticated user'
     
     root_logger.debug(f"{current_user_log} requests the Home page")
+
+    cookies_accepted = request.cookies.get('cookies_accepted', 'false')
     
     books_data = await get_all_books(session=session)
     books = [
@@ -107,7 +109,8 @@ async def get_home(
             "request": request,
             "books": books,
             "articles": articles,
-            "current_user": current_user
+            "current_user": current_user,
+            "cookies_accepted": cookies_accepted
         }
     )
 

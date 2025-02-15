@@ -117,6 +117,38 @@
             <div id="reset-message" style="display: none; margin-top: 10px;"></div>
         </div>
     </div>
+
+
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-banner-content">
+            <p>
+                This website uses cookies to enhance your experience. 
+                By continuing to browse, you agree to our use of cookies. 
+                You can accept or decline them at any time.
+            </p>
+            <div>
+                <button id="accept-cookies" class="cookie-btn">Accept</button>
+                <button id="decline-cookies" class="cookie-btn">Decline</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.cookie = "cookies_accepted=true; path=/; max-age=31536000";
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.cookie = "cookies_accepted=false; path=/; max-age=31536000";
+        });
+
+        if (document.cookie.indexOf('cookies_accepted=true') !== -1) {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
     
 
     <footer class="footer">
