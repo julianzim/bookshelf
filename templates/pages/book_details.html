@@ -36,10 +36,13 @@
                     }
                 
                     showMoreBtn.addEventListener("click", function () {
+                        textContainer.style.display = "block";
+                        textContainer.style.overflow = "visible";
+                        textContainer.style.webkitLineClamp = "unset";
                         textContainer.style.maxHeight = "none";
                         showMoreBtn.style.display = "none";
                     });
-                });
+                }); 
             </script>
 
             <div class="book-info-block">
