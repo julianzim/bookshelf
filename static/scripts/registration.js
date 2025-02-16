@@ -27,9 +27,12 @@ document.getElementById('register-form').addEventListener('submit', async functi
     });
 
     if (response.ok) {
-        // window.location.href = '/auth/login';
-        document.getElementById('registerModal').style.display = 'none';
-        document.getElementById('loginModal').style.display = 'block';
+        if (window.location.pathname === '/auth/register') {
+            window.location.href = '/auth/login';
+        } else {
+            document.getElementById('registerModal').style.display = 'none';
+            document.getElementById('loginModal').style.display = 'block';
+        }
     } else {
         const result = await response.json();
         console.error('Registration failed:', result);
