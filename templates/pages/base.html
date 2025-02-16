@@ -20,19 +20,19 @@
         </div>
         <nav class="main-nav">
             <a href="/">
-                <img src="/static/images/icons/Home.png">
+                <img src="/static/images/icons/Home.png" class="nav-icon">
                 <span>Home</span>
             </a>
             <a href="/books">
-                <img src="/static/images/icons/Books.png">
+                <img src="/static/images/icons/Books.png" class="nav-icon">
                 <span>Books</span>
             </a>
             <a href="/blog">
-                <img src="/static/images/icons/Blog.png">
+                <img src="/static/images/icons/Blog.png" class="nav-icon">
                 <span>Blog</span>
             </a>
             <a href="/about">
-                <img src="/static/images/icons/About.png">
+                <img src="/static/images/icons/About.png" class="nav-icon">
                 <span>About</span>
             </a>
         </nav>
@@ -41,15 +41,52 @@
                 <div class="hello-user">
                     <span>Hello, {{ current_user.username }}</span>
                     <a id="logout-button" class="logout-button" title="Sign Out">
-                        <img src="/static/images/icons/signout.png">
+                        <img src="/static/images/icons/signout.ico">
                     </a>
                 </div>
-            {% endif %}
-            {% if not current_user %}
-                <!-- <a class="register-button" onclick="openRegisterModal()">Sign Up</a> -->
+            {% else %}
                 <a class="login-button" onclick="openLoginModal()">Sign In</a>
             {% endif %}
         </nav>
+
+        <button class="menu-button" onclick="toggleMobMenu()">☰</button>
+        <nav class="mobile-menu">
+            <a href="/" class="mobile-menu-item">
+                <img src="/static/images/icons/Home.png" class="mobile-nav-icon">
+                <span>Home</span>
+            </a>
+            <a href="/books" class="mobile-menu-item">
+                <img src="/static/images/icons/Books.png" class="mobile-nav-icon">
+                <span>Books</span>
+            </a>
+            <a href="/blog" class="mobile-menu-item">
+                <img src="/static/images/icons/Blog.png" class="mobile-nav-icon">
+                <span>Blog</span>
+            </a>
+            <a href="/about" class="mobile-menu-item">
+                <img src="/static/images/icons/About.png" class="mobile-nav-icon">
+                <span>About</span>
+            </a>
+            {% if current_user %}
+                <a class="mobile-menu-item">
+                    <img src="/static/images/icons/signout.ico" class="mobile-nav-icon">
+                    <span id="logout-button" class="logout-button">Sign Out</span>
+                </a>
+            {% else %}
+                <a class="mobile-menu-item">
+                    <img src="/static/images/icons/signin.ico" class="mobile-nav-icon">
+                    <span>Sign In</span>
+                </a>
+            {% endif %}
+        </nav>
+
+        <script>
+            function toggleMobMenu() {
+                const menu = document.querySelector('.mobile-menu');
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            }
+        </script>
+
     </header>
     {% block content %}{% endblock %}
 
