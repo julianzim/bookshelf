@@ -1,0 +1,30 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/styles/8_auth.css">
+
+<div class="auth-modal-content">
+    <!-- <div class="form-logo">
+        <img src="/static/logo.ico" alt="Yassya Lil">
+        <p>Yassya Lil</p>
+    </div> -->
+    <span class="modal-title">Sign In</span>
+    <form id="auth-form" action="/auth/login" method="post" class="auth-form">
+        <label for="username">Email</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+        <div class="password-strength" id="password-strength"></div>
+
+        <button type="submit" class="auth-submit-btn">Sign In</button>
+    </form>
+    <a href="/auth/forgot-password"class="auth-button">Forgot Password?</a>
+    <div class="redirect">
+        Don't have an account yet? 
+        <a href="/auth/register" class="auth-button">Sign Up here</a>
+    </div>
+</div>
+
+{% endblock %}
