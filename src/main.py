@@ -133,8 +133,38 @@ async def get_about(
     )
 
 
+@app.get("/auth/login")
+async def get_login_page(request: Request):
+    return templates.TemplateResponse(
+        "pages/login.html",
+        {
+            "request": request
+        }
+    )
+
+
+@app.get("/auth/register")
+async def get_register_page(request: Request):
+    return templates.TemplateResponse(
+        "pages/register.html",
+        {
+            "request": request
+        }
+    )
+
+
+@app.get("/auth/forgot-password")
+async def get_forgot_password_page(request: Request):
+    return templates.TemplateResponse(
+        "pages/forgot-password.html",
+        {
+            "request": request
+        }
+    )
+
+
 @app.get("/auth/reset-password")
-async def reset_password_page(request: Request, token: str):
+async def get_reset_password_page(request: Request, token: str):
     return templates.TemplateResponse(
         "pages/reset-password.html",
         {
