@@ -50,13 +50,14 @@ header {
 
 
     /* NAVIGATION */
-    nav.main-nav {
+    .main-nav {
         display: flex;
         justify-content: space-between;
         width: 45%;
+        gap: 20px;
     }
 
-        nav.main-nav a {
+        .main-nav a {
             display: flex;
             gap: 1em;
             text-decoration: none;
@@ -66,16 +67,16 @@ header {
             align-items: center;
         }
 
-        nav.main-nav img {
+        .main-nav img {
             width: 2.4em;
         }
 
-        nav.main-nav span:hover {
+        .main-nav span:hover {
             text-decoration: underline;
         }
 
 
-    nav.auth-nav {
+    .auth-nav {
         display: flex;
         gap: 10px;
         align-items: center;
@@ -132,6 +133,59 @@ header {
                 .logout-button:hover {
                     
                 }
+
+        
+        .menu-button {
+            display: none;
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding-inline: 1.5rem;
+        }
+
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                width: 12rem;
+                top: 80px;
+                right: 0px;
+                background: white;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                flex-direction: column;
+                padding: 15px 40px;
+                gap: 10px;
+            }
+            
+                .mobile-menu-item {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: 1.2em;
+                    display: flex;
+                    justify-content: start;
+                    gap: 10px;
+                    align-items: center;
+                    padding: 10px;
+                }
+
+                    .mobile-nav-icon {
+                        width: 2.5rem;
+                    }
+            
+        @media (max-width: 1200px) {
+            .nav-icon, .mobile-menu {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .main-nav, .auth-nav {
+                display: none;
+            }
+            .menu-button {
+                display: block;
+            }
+        }
 
 
 
