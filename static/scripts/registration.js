@@ -1,20 +1,20 @@
-document.getElementById('auth-form').addEventListener('submit', async function(event) {
+document.getElementById('register-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     const form = event.target;
     const data = {
-        username: document.getElementById('username').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        repeat_password: document.getElementById('repeat-password').value
+        username: document.getElementById('register-username').value,
+        email: document.getElementById('register-email').value,
+        password: document.getElementById('register-password').value,
+        repeat_password: document.getElementById('register-repeat-password').value
     };
 
-    document.getElementById('email-error').textContent = '';
-    document.getElementById('repeat-password-error').textContent = '';
-    document.getElementById('password-strength').textContent = '';
+    document.getElementById('register-email-error').textContent = '';
+    document.getElementById('register-repeat-password-error').textContent = '';
+    document.getElementById('register-password-strength').textContent = '';
 
     if (data.password !== data.repeat_password) {
-        document.getElementById('repeat-password-error').textContent = 'Passwords do not match';
+        document.getElementById('register-repeat-password-error').textContent = 'Passwords do not match';
         return;
     }
 
@@ -34,15 +34,15 @@ document.getElementById('auth-form').addEventListener('submit', async function(e
         const result = await response.json();
         console.error('Registration failed:', result);
         if (result.message) {
-            document.getElementById('email-error').textContent = result.message;
+            document.getElementById('register-email-error').textContent = result.message;
         }
     }
 });
 
-document.getElementById('password').addEventListener('input', function() {
+document.getElementById('register-password').addEventListener('input', function() {
     const password = this.value;
     const strength = getPasswordStrength(password);
-    document.getElementById('password-strength').textContent = strength;
+    document.getElementById('register-password-strength').textContent = strength;
 });
 
 function getPasswordStrength(password) {
