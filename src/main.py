@@ -134,31 +134,43 @@ async def get_about(
 
 
 @app.get("/auth/login")
-async def get_login_page(request: Request):
+async def get_login_page(
+    request: Request,
+    current_user = Depends(current_user_optional)
+):
     return templates.TemplateResponse(
         "pages/login.html",
         {
-            "request": request
+            "request": request,
+            "current_user": current_user
         }
     )
 
 
 @app.get("/auth/register")
-async def get_register_page(request: Request):
+async def get_register_page(
+    request: Request,
+    current_user = Depends(current_user_optional)
+):
     return templates.TemplateResponse(
         "pages/register.html",
         {
-            "request": request
+            "request": request,
+            "current_user": current_user
         }
     )
 
 
 @app.get("/auth/forgot-password")
-async def get_forgot_password_page(request: Request):
+async def get_forgot_password_page(
+    request: Request,
+    current_user = Depends(current_user_optional)   
+):
     return templates.TemplateResponse(
         "pages/forgot-password.html",
         {
-            "request": request
+            "request": request,
+            "current_user": current_user
         }
     )
 
