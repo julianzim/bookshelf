@@ -1,0 +1,501 @@
+/* BODY */
+body {
+    font-family: 'Comic Sans MS', sans-serif;
+    margin: 0;
+    padding: 0;
+    /*background-color: #f1f1f1;*/
+
+}
+
+
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+    /* LOGO and SITE NAME*/
+    .logo-container {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        padding-left: 20px;
+    }
+
+        .logo-container a {
+            text-decoration: none;
+        }
+
+            #logo {
+                width: 65px;
+                vertical-align: middle;
+            }
+
+            .site-name {
+                font-size: 1.8em;
+                font-weight: bold;
+                color: #333;
+            }
+
+
+
+    /* NAVIGATION */
+    .main-nav {
+        display: flex;
+        justify-content: space-between;
+        width: 45%;
+        gap: 20px;
+    }
+
+        .main-nav a {
+            display: flex;
+            gap: 1em;
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2em;
+            font-weight: bold;
+            align-items: center;
+        }
+
+        .main-nav img {
+            width: 2.4em;
+        }
+
+        .main-nav span:hover {
+            text-decoration: underline;
+        }
+
+
+    .auth-nav {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding-right: 20px;
+    }
+
+        .register-button,
+        .login-button {
+            display: inline-block;
+            padding: 8px 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: none;
+            cursor: pointer;
+            color: #333;
+        }
+
+            .register-button:hover {
+                text-decoration: underline;
+            }
+
+        .login-button {
+            color: white;
+            background-color: #333;
+            border-radius: 25px;
+        }
+
+            .login-button:hover {
+                background-color: darkblue;
+            }
+
+
+        .hello-user {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+            .hello-user span {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .logout-button {
+                cursor: pointer;
+            }
+
+                .logout-button img {
+                    width: 2.4em;
+                }
+
+                .logout-button:hover {
+                    
+                }
+
+        
+        .menu-button {
+            display: none;
+            font-size: 2.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding-inline: 1.5rem;
+        }
+
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                width: 12rem;
+                top: 80px;
+                right: 0px;
+                background: white;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                flex-direction: column;
+                padding: 15px 40px;
+                gap: 10px;
+            }
+            
+                .mobile-menu-item {
+                    text-decoration: none;
+                    color: #333;
+                    font-size: 1.2em;
+                    display: flex;
+                    justify-content: start;
+                    gap: 10px;
+                    align-items: center;
+                    padding: 10px;
+                }
+
+                    .mobile-nav-icon {
+                        width: 2.5rem;
+                    }
+            
+        @media (max-width: 1200px) {
+            .nav-icon, .mobile-menu {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 800px) {
+            .main-nav, .auth-nav {
+                display: none;
+            }
+            .menu-button {
+                display: block;
+            }
+        }
+
+
+
+/* BACKGROUND */
+.background {
+    min-height: 100vh;
+    display: flex;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 80px;
+    background-attachment: fixed;
+}
+
+
+
+/* CONTENT */
+.content {
+    height: auto;
+    max-width: 60%;
+    margin: calc(17vw) auto 100px auto;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 25px;
+}
+
+
+.content-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    color: #222;
+    margin: 25px 0 25px 0;
+}
+
+.content-divider {
+    border: 0;
+    height: 3px;
+    background: #222;
+    margin: 20px 0;
+}
+
+
+/* FOOTER */
+.footer {
+    background-color: rgb(50, 50, 50);
+    padding: 20px;
+    text-align: center;
+}
+
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+        .footer-head {
+            display: flex;
+            gap: 75px;
+            align-items: center;
+        }
+
+            .footer-logo {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .footer-logo p {
+                    color: white;
+                    font-size: 28px;
+                    margin: 0px;
+                }
+
+                .footer-logo img {
+                    width: 60px;
+                    height: 60px;
+                }
+            
+            .footer-nav {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .footer-nav a {
+                font-size: 18px;
+                text-decoration: none;
+                color: white;
+            }
+
+                .footer-nav a:hover {
+                    text-decoration: underline;
+                }
+
+        .footer-links,
+        .footer-social {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }  
+        
+            .footer-links a,
+            .footer-copyright a {
+                font-size: 16px;
+                text-decoration: none;
+                color: rgb(146, 146, 146);
+            }
+
+                .footer-links a:hover,
+                .footer-copyright a:hover {
+                    text-decoration: underline;
+                }
+
+            .footer-social img {
+                height: 35px;
+            }
+
+            #youtube {
+                height: 50px;
+            }
+
+        .footer-copyright {
+            margin-top: 10px;
+            font-size: 14px;
+            color: white;
+            margin: 0;
+        }
+
+
+/* COOKIES BANNER */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    z-index: 1000;
+}
+
+    .cookie-banner-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        font-size: 16px;
+    }
+    
+        .cookie-banner-content p {
+            margin: 0;
+        }
+
+        .cookie-banner-content div {
+            display: flex;
+            justify-content: center;
+            gap: 30px;  
+        }
+    
+            .cookie-btn {
+                font-size: 16px;
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 20px;
+                cursor: pointer;
+            }
+            
+                .cookie-btn:hover {
+                    background-color: #45a049;
+                }
+                
+                .cookie-btn:focus {
+                    outline: none;
+                }
+
+
+
+/* AUTH MODAL WINDOWS */
+.auth-modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+    .auth-modal-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        background-color: #fefefe;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+
+        .modal-title {
+            font-weight: bold;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #333;
+            font-size: 2.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 15px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+            .modal-close-btn:hover,
+            .modal-close-btn:focus {
+                color: #888;
+            }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .auth-form label {
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .auth-form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+
+        .auth-form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .error, .password-strength {
+            font-size: 0.8rem;
+            color: red;
+            margin-bottom: 15px;
+        }
+
+        .auth-submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .auth-submit-btn:hover {
+                background-color: #0056b3;
+            }
+
+        .redirect {
+            text-align: center;
+            font-size: 1rem;
+        }
+
+            .auth-button {
+                color: #007bff;
+                font-weight: bold;
+                display: inline-block;
+                font-size: 1rem;
+                text-align: center;
+                cursor: pointer;
+            }
+
+                .auth-button:hover {
+                    text-decoration: underline;
+                }
+
+/* Modal fade-in animation */
+@keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.auth-modal.show {
+    display: block;
+    animation: modalFadeIn 0.5s;
+}

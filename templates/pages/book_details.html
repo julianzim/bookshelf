@@ -1,0 +1,264 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/3_book_details.css">
+
+<div id="book-details" class="background">
+    <div class="book-details-content">
+        <!-- {% if not book.active %}
+            <div class="coming-soon-block">
+                Comming Soon {{ book.pub_date }}
+            </div>
+        {% endif %} -->
+        
+        <div class="main-block">
+            <div class="book-descr-block">
+                <div class="book-image-left">
+                    <img src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover" class="book-cover-details">
+                </div>
+                <div class="book-descr-right">
+                    <h1 class="book-title-right">{{ book.title }}</h1>
+                    <a href="/books" class="book-series-right">{{ book.series }}</a>
+                    <div class="book-descr-text-right">
+                        {{ book.summary|safe }}
+                    </div>
+                    <button class="descr-show-more-btn">Show more</button>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const textContainer = document.querySelector(".book-descr-text-right");
+                    const showMoreBtn = document.querySelector(".descr-show-more-btn");
+                    
+                    if (textContainer.scrollHeight <= textContainer.clientHeight) {
+                        showMoreBtn.style.display = "none";
+                    }
+                
+                    showMoreBtn.addEventListener("click", function () {
+                        textContainer.style.display = "block";
+                        textContainer.style.overflow = "visible";
+                        textContainer.style.webkitLineClamp = "unset";
+                        textContainer.style.maxHeight = "none";
+                        showMoreBtn.style.display = "none";
+                    });
+                }); 
+            </script>
+
+            <div class="book-info-block">
+                <hr class="content-divider-info-block">
+                <div class="info-block">
+                    <div class="info-container">
+                        <div class="info-name">Language</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Language.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.language }}</div>
+                    </div>
+                    <div class="info-container">
+                        <div class="info-name">Age</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Age.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.min_age }}-{{ book.max_age }} years</div>
+                    </div>
+                    <div class="info-container">
+                        <div class="info-name">Pages</div>
+                        <div class="info-icon">
+                            <img src="/static/images/icons/Pages.png" class="icon-info-container">
+                        </div>
+                        <div class="info-value">{{ book.pages }} pcs</div>
+                    </div>
+                </div>
+                <hr class="content-divider-info-block">
+            </div>
+
+            {% if book.active %}
+                <div class="video-block">
+                    <div class="video-block-title">{{ book.title }} aloud</div>
+                    <div class="video-container">
+                        <iframe class="video-frame" src="{{ book.aloud_link }}" frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="reviews-block">
+                    <div class="reviews-header">
+                        <div class="reviews-header-left-block">
+                            <div class="reviews-block-title">Customer reviews</div>
+                            <div class="reviews-rating">
+                                <div class="rating-stars" style="--rating: {{ book_reviews_stats.average_rating }};">★★★★★</div>
+                                <div class="rating-mean-value">{{ book_reviews_stats.average_rating|default("N/A") }}/5</div>
+                                <!-- <div class="ratings-count">{{ book_reviews_stats.ratings_count|default("N/A") }} ratings | </div> -->
+                                <div class="reviews-count">{{ book_reviews_stats.reviews_count|default("N/A") }} reviews</div>
+                            </div>
+                        </div>
+                        <div class="write-review-button-container">
+                            {% if current_user %}
+                                <a class="write-review-button" onclick="openModal()">
+                                    Write a review
+                                </a>
+                            {% else %}
+                                <a class="write-review-button-disabled" title="Please sign in to write a review">
+                                    Write a review
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <hr class="content-divider-reviews-block">
+                    <div class="sort-reviews-container">
+                        <span>Sort by:</span>
+                        <div class="reviews-sort-dropdown">
+                            <button class="sort-button-dropdown">
+                                {% if sort_by == 'created_at' and order == 'asc' %}
+                                    ↑ Date
+                                {% elif sort_by == 'created_at' and order == 'desc' %}
+                                    ↓ Date
+                                {% elif sort_by == 'rating' and order == 'asc' %}
+                                    ↑ Rating
+                                {% elif sort_by == 'rating' and order == 'desc' %}
+                                    ↓ Rating
+                                {% else %}
+                                    Sort By
+                                {% endif %}
+                            </button>
+                            <div class="dropdown-content">
+                                <a href="/books/{{ book.title }}?sort_by=created_at&order=asc" 
+                                class="{% if sort_by == 'created_at' and order == 'asc' %}active{% endif %}">
+                                    ↑ Date
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=created_at&order=desc" 
+                                class="{% if sort_by == 'created_at' and order == 'desc' %}active{% endif %}">
+                                    ↓ Date
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=rating&order=asc" 
+                                class="{% if sort_by == 'rating' and order == 'asc' %}active{% endif %}">
+                                    ↑ Rating
+                                </a>
+                                <a href="/books/{{ book.title }}?sort_by=rating&order=desc" 
+                                class="{% if sort_by == 'rating' and order == 'desc' %}active{% endif %}">
+                                    ↓ Rating
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reviews-list">
+                        {% for review in book_reviews %}
+                            <div class="review {% if loop.index > 3 %}hidden{% endif %}">
+                                <div class="review-info">
+                                    <div class="reviewer-name">by {{ review.username }},</div>
+                                    <div class="review-date">{{ review.created_at.strftime("%B %d, %Y, %H:%M") }}</div>
+                                </div>
+                                <div class="review-rating-and-title">
+                                    <div class="rating-stars" style="--rating: {{ review.rating }};">★★★★★</div>
+                                    <div class="review-title">{{ review.title }}</div>
+                                </div>
+                                <div class="review-text">
+                                    {{ review.text }}
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        {% if book_reviews|length > 3 %}
+                            <button id="show-more-btn">Show more</button>
+                        {% endif %}
+
+                        <script>
+                            document.getElementById("show-more-btn")?.addEventListener("click", function() {
+                                document.querySelectorAll(".hidden").forEach(el => el.classList.remove("hidden"));
+                                this.style.display = "none";
+                            });
+                        </script>
+
+
+                    </div>
+                </div>
+            {% else %}
+            <div>Comming Soon {{ book.pub_date }}</div>
+            {% endif %}
+        </div>
+
+
+        <div id="reviewModal" class="review-modal">
+            <div class="review-modal-content">
+                <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
+                <h2>Review</h2>
+                <form id="review-form" action="{{ url_for('create_review', book_title=book.title) }}" method="post" class="review-form">
+                    
+                    <label>Rate the book</label>
+                    <div class="send-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required>
+                        <label for="star5">★</label>
+                        
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4">★</label>
+                        
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3">★</label>
+                        
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2">★</label>
+                        
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1">★</label>
+                    </div>
+        
+                    <label for="title">Title your review</label>
+                    <textarea id="title" name="title" placeholder="Title your review" maxlength="100" minlength="3" required></textarea>
+        
+                    <label for="text">Write your review</label>
+                    <textarea id="text" name="text" placeholder="Describe your impressions of the book" maxlength="1000" minlength="10" required></textarea>
+        
+                    <button class="send-review-button" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <script src="/static/scripts/reviewModal.js"></script>
+
+
+
+        <div class="minor-block">
+            {% if book.active %}
+                <div class="purchase-top-right-block">
+                    <div class="purchase-options">
+                        <div class="purchase-option">
+                            <span class="purchase-option-descr">Hardcover</span>
+                            <span class="purchase-option-price">from {{ book.hc_price }}$</span>
+                        </div>
+                        <div class="purchase-option">
+                            <span class="purchase-option-descr">Paperback</span>
+                            <span class="purchase-option-price">from {{ book.pb_price }}$</span>
+                        </div>
+                    </div>
+                    <div class="buy-button-container">
+                        <a class="buy-button" href="{{ book.amazon_link }}">
+                            Buy now on Amazon
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="related-books-lower-right-block">
+                <span class="related-books-block-title">Other books</span>
+                <hr class="related-books-block-content-divider">
+                <div class="related-books-grid">
+                    {% for book in related_books %}
+                        <div class="related-book-item">
+                            <a  class="related-book-link" href="{{ url_for('get_book_details', book_title=book.title) }}">
+                                <img class="related-book-cover" src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover">
+                            </a>
+                            <a class="related-book-title" href="{{ url_for('get_book_details', book_title=book.title) }}">{{ book.title }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

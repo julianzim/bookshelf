@@ -1,0 +1,46 @@
+
+#books.background {
+    background-image: url('../images/backgrounds/Books.png');
+}
+
+.content {
+    padding: 20px 30px 50px 30px;
+}
+
+/* BOOK GRID */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.book-item {
+    width: 20%;
+    min-width: 200px;
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.book-title {
+    display: block;
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+    .book-title:hover {
+        text-decoration: underline;
+    }
+
+.book-cover {
+    width: 100%;
+    height: auto;
+    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+

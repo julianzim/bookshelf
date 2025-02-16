@@ -1,0 +1,185 @@
+
+#home.background {
+    background-image: url('../images/backgrounds/Home.png');
+}
+
+
+/* BOOKS CAROUSEL */
+.carousel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.grid-wrapper {
+    overflow: hidden;
+}
+
+.grid-in-wrapper {
+    display: flex;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+    gap: 20px;
+    padding-inline: 10px;
+}
+
+.book-item-in-wrapper {
+    width: calc((100% - 100px) / 5);
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.book-cover-in-wrapper {
+    width: 100%;
+    height: auto;
+    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.4);
+}
+
+.book-cover {
+    width: 100%;
+    height: auto;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.book-title {
+    display: block;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+    .book-title:hover {
+        text-decoration: underline;
+    }
+
+
+/* SCROLL ZONE */
+.scroll-zone {
+    position: absolute;
+    top: 0;
+    bottom: 47px;
+    width: 300px;
+    z-index: 90;
+    background-color: rgba(255, 255, 255, 0.0);
+    /*cursor: pointer;*/
+}
+
+    .scroll-zone.left {
+        left: 0px;
+    }
+
+    .scroll-zone.right {
+        right: 0px;
+    }
+
+
+
+/* SCROLL BUTTON */
+.scroll-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    z-index: 100;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .scroll-button.left {
+        left: 0px;
+    }
+
+    .scroll-button.right {
+        right: 0px;
+    }
+
+    .scroll-button:disabled {
+        opacity: 0;
+    }
+
+
+
+
+
+
+
+
+    .card {
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.2);
+        width: 30%;
+        min-width: 300px;
+        overflow: hidden;
+    }
+    
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+            .img-box {
+                display: inline-block;
+                overflow: hidden;
+
+            }
+
+                .img-box img {
+                    transition: 1s;
+                    display: block;
+                    width: 100%;
+                    background: linear-gradient(to right, #6ec1e4, #8ecae6);
+                }
+
+                    .img-box img:hover {
+                        transform: scale(1.1);
+                    }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 5px 15px 20px 15px;
+            text-align: left;
+            height: 100%;
+        }
+
+            .card-content
+            .date {
+                margin-top: 0px;
+                margin-bottom: 15px;
+                color: #646463;
+                font-size: 14px;
+            }
+
+            .card-content h3 {
+                margin-top: 0px;
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+
+            .card-content p {
+                color: #555;
+                font-size: 16px;
+                margin: 0px 0px;
+                /* display: -webkit-box;
+                -webkit-line-clamp: 10;
+                -webkit-box-orient: vertical;
+                overflow: hidden; */
+            }
+
+

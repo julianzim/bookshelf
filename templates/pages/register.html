@@ -1,0 +1,33 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/styles/8_auth.css">
+
+<div class="auth-modal-content">
+    <span class="modal-title">Sign Up</span>
+    <form id="register-form" action="/auth/register" method="post" class="auth-form">
+        <label for="username">Username</label>
+        <input type="text" id="register-username" name="username" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="register-email" name="email" required>
+        <div class="error" id="register-email-error"></div>
+
+        <label for="password">Password</label>
+        <input type="password" id="register-password" name="password" required>
+        <div class="password-strength" id="register-password-strength"></div>
+
+        <label for="repeat-password">Repeat Password</label>
+        <input type="password" id="register-repeat-password" name="repeat_password" required>
+        <div class="error" id="register-repeat-password-error"></div>
+
+        <button type="submit" class="auth-submit-btn">Sign Up</button>
+    </form>
+    <div class="redirect">
+        Already have an account?
+        <a href="/auth/login" class="auth-button">Sign In here</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/6_article.css">
+
+<div id="article" class="background">
+    <div class="content" id="article-content">
+        {% if article.theme %}
+            <h1 class="article-theme">{{ theme.name }}</h1>
+        {% endif %}
+        <h2 class="article-title">{{ article.title }}</h2>
+        <div class="article-info">
+            <span class="info">{{ article.created_at.strftime("%B %d, %Y") }}</span>
+            <span class="info">Yassya Lil</span>
+            <span class="info">Read time: {{ article.read_time}} min</span>
+        </div>
+        <div class="img-box">
+            {% if article.header_image %}
+                <img src="/static/images/header_images/{{ article.header_image }}" 
+                    alt="{{ article.title }} header image" 
+                    class="article-header-image">
+            {% else %}
+                <img src="/static/images/NoImage.jpg" 
+                    alt="{{ article.title }} header image" 
+                    class="article-header-image">
+            {% endif %}
+        </div>
+        <div class="article-text">
+            {{ article.text|safe}}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

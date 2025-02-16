@@ -1,0 +1,77 @@
+{% extends "pages/base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/styles/1_home.css">
+
+<div id="home" class="background">
+    <div class="content" id="home-content">
+        <h1 class="content-title">Our Emotions are Our Friends</h1>
+        <hr class="content-divider">
+        <div class="carousel">
+            <button class="scroll-button left">&lt;</button>
+<!--            <div class="scroll-zone left"></div>-->
+            <div class="grid-wrapper">
+                <div class="grid-in-wrapper">
+                    {% for book in books %}
+                        <div class="book-item-in-wrapper">
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
+                                <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
+                            </a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+<!--            <div class="scroll-zone right"></div>-->
+            <button class="scroll-button right">&gt;</button>
+        </div>
+
+        
+        <h1 class="content-title">Articles that you can read</h1>
+        <!-- <hr class="content-divider"> -->
+        <div class="carousel">
+            <button class="scroll-button left">&lt;</button>
+<!--            <div class="scroll-zone left"></div>-->
+            <div class="grid-wrapper">
+                <div class="grid-in-wrapper">
+                    {% for article in articles %}
+
+                        <div class="card">
+                            <a href="{{ url_for('get_article', article_id=article.id) }}" 
+                                class="card-link">
+                                <div class="img-box">
+                                    {% if article.preview %}
+                                        <img src="/static/images/previews/{{ article.preview }}" 
+                                            alt="{{ article.title }} cover" 
+                                            class="card-image">
+                                    {% else %}
+                                        <img src="/static/images/NoImage.jpg" 
+                                            alt="{{ article.title }} cover" 
+                                            class="card-image">
+                                    {% endif %}
+                                </div>
+                            </a>
+                            <div class="card-content">
+                                <p class="date">{{ article.created_at.strftime("%B %d, %Y") }}</p>
+                                <a href="{{ url_for('get_article', article_id=article.id) }}" 
+                                    class="card-link">
+                                    <h3>{{ article.title }}</h3>
+                                </a>
+                                <!-- <p>{{ article.summary }}</p> -->
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+<!--            <div class="scroll-zone right"></div>-->
+            <button class="scroll-button right">&gt;</button>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<script src="/static/scripts/scroll_buttons.js"></script>
+{% endblock %}

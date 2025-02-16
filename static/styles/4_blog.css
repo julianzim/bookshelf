@@ -1,0 +1,100 @@
+
+#blog.background {
+    background-image: url('../images/backgrounds/Blog.png');
+}
+
+
+
+.blog-section {
+    text-align: center;
+    padding: 20px;
+}
+
+    .blog-section h2 {
+        font-size: 36px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+    }
+
+    .blog-section
+    .content-divider {
+        margin: 20px 20%;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+        .card {
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            min-width: 300px;
+            overflow: hidden;
+        }
+        
+            .card-link {
+                text-decoration: none;
+                color: inherit;
+            }
+
+                .img-box {
+                    display: inline-block;
+                    overflow: hidden;
+
+                }
+
+                    .img-box img {
+                        transition: 1s;
+                        display: block;
+                        width: 100%;
+                        background: linear-gradient(to right, #6ec1e4, #8ecae6);
+                    }
+
+                        .img-box img:hover {
+                            transform: scale(1.1);
+                        }
+
+            .card-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 5px 15px 20px 15px;
+                text-align: left;
+                height: 100%;
+            }
+
+                .card-content
+                .date {
+                    margin-top: 0px;
+                    margin-bottom: 15px;
+                    color: #646463;
+                    font-size: 14px;
+                }
+
+                .card-content h3 {
+                    margin-top: 0px;
+                    margin-bottom: 15px;
+                    font-size: 20px;
+                }
+
+                .card-content p {
+                    color: #555;
+                    font-size: 16px;
+                    margin: 0px 0px;
+                    /* display: -webkit-box;
+                    -webkit-line-clamp: 10;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden; */
+                }
+
+                .card-summary {
+                    align-self: bottom;
+                }

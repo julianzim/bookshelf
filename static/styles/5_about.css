@@ -1,0 +1,23 @@
+
+#about.background {
+    background-image: url('../images/backgrounds/About.png');
+}
+
+.main-photo {
+    min-width: 150px;
+    max-width: 35%;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+}
+
+
+
+.main-photo img {
+    width: 100%;
+}
+
+
+.content p {
+    margin-top: 0;
+}

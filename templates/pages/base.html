@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassya Lil</title>
+    <link rel="stylesheet" href="/static/styles/0_base.css">
+    <link rel="icon" href="/static/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/logo.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <a href="/" class="logo-link">
+                <img src="/static/logo.ico" alt="Logo" id="logo">
+            </a>
+            <a href="/">
+                <span class="site-name">Yassya Lil</span>
+            </a>
+        </div>
+        <nav class="main-nav">
+            <a href="/">
+                <img src="/static/images/icons/Home.png" class="nav-icon">
+                <span>Home</span>
+            </a>
+            <a href="/books">
+                <img src="/static/images/icons/Books.png" class="nav-icon">
+                <span>Books</span>
+            </a>
+            <a href="/blog">
+                <img src="/static/images/icons/Blog.png" class="nav-icon">
+                <span>Blog</span>
+            </a>
+            <a href="/about">
+                <img src="/static/images/icons/About.png" class="nav-icon">
+                <span>About</span>
+            </a>
+        </nav>
+        <nav class="auth-nav">
+            {% if current_user %}
+                <div class="hello-user">
+                    <span>Hello, {{ current_user.username }}</span>
+                    <a id="logout-button" class="logout-button" title="Sign Out">
+                        <img src="/static/images/icons/signout.ico">
+                    </a>
+                </div>
+            {% else %}
+                <a class="login-button" onclick="openLoginModal()">Sign In</a>
+            {% endif %}
+        </nav>
+
+        <button class="menu-button" onclick="toggleMobMenu()">☰</button>
+        <nav class="mobile-menu">
+            <a href="/" class="mobile-menu-item">
+                <img src="/static/images/icons/Home.png" class="mobile-nav-icon">
+                <span>Home</span>
+            </a>
+            <a href="/books" class="mobile-menu-item">
+                <img src="/static/images/icons/Books.png" class="mobile-nav-icon">
+                <span>Books</span>
+            </a>
+            <a href="/blog" class="mobile-menu-item">
+                <img src="/static/images/icons/Blog.png" class="mobile-nav-icon">
+                <span>Blog</span>
+            </a>
+            <a href="/about" class="mobile-menu-item">
+                <img src="/static/images/icons/About.png" class="mobile-nav-icon">
+                <span>About</span>
+            </a>
+            {% if current_user %}
+                <a class="mobile-menu-item">
+                    <img src="/static/images/icons/signout.ico" class="mobile-nav-icon">
+                    <span id="logout-button" class="logout-button">Sign Out</span>
+                </a>
+            {% else %}
+                <a href="/auth/login" class="mobile-menu-item">
+                    <img src="/static/images/icons/signin.ico" class="mobile-nav-icon">
+                    <span>Sign In</span>
+                </a>
+            {% endif %}
+        </nav>
+
+        <script>
+            function toggleMobMenu() {
+                const menu = document.querySelector('.mobile-menu');
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            }
+        </script>
+
+    </header>
+    {% block content %}{% endblock %}
+
+
+    <div id="registerModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span id="registerModalCloseBtn" class="modal-close-btn">&times;</span>
+            <span class="modal-title">Sign Up</span>
+            <form id="register-form" action="/auth/register" method="post" class="auth-form">
+                <label for="username">Username</label>
+                <input type="text" id="register-username" name="username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="register-email" name="email" required>
+                <div class="error" id="register-email-error"></div>
+
+                <label for="password">Password</label>
+                <input type="password" id="register-password" name="password" required>
+                <div class="password-strength" id="register-password-strength"></div>
+
+                <label for="repeat-password">Repeat Password</label>
+                <input type="password" id="register-repeat-password" name="repeat_password" required>
+                <div class="error" id="register-repeat-password-error"></div>
+
+                <button type="submit" class="auth-submit-btn">Sign Up</button>
+            </form>
+            <div class="redirect">
+                    Already have an account? <a class="auth-button" onclick="openLoginModal()">Sign In here</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="loginModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span id="loginModalCloseBtn" class="modal-close-btn">&times;</span>
+            <span class="modal-title">Sign In</span>
+            <form id="login-form" action="/auth/login" method="post" class="auth-form">
+                <label for="username">Email</label>
+                <input type="text" id="login-username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="login-password" name="password" required>
+
+                <button type="submit" class="auth-submit-btn">Sign In</button>
+            </form>
+            <a class="auth-button" onclick="openForgotModal()">Forgot Password?</a>
+            <div class="redirect">
+                Don't have an account yet? <a class="auth-button" onclick="openRegisterModal()">Sign Up here</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="forgotModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span id="forgotModalCloseBtn" class="modal-close-btn">&times;</span>
+            <span class="modal-title">Forgot Password</span>
+            <form id="forgot-password-form" class="auth-form">
+                <label for="email">Your email</label>
+                <input type="email" id="fp-email" name="email" required>
+                <button type="submit" class="auth-submit-btn">Send Reset Link</button>
+            </form>
+            <div id="reset-message" style="display: none; margin-top: 10px;"></div>
+        </div>
+    </div>
+
+
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-banner-content">
+            <p>
+                This website uses cookies to enhance your experience. 
+                By continuing to browse, you agree to our use of cookies. 
+                You can accept or decline them at any time.
+            </p>
+            <div>
+                <button id="accept-cookies" class="cookie-btn">Accept</button>
+                <button id="decline-cookies" class="cookie-btn">Decline</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('accept-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.cookie = "cookies_accepted=true; path=/; max-age=31536000";
+        });
+
+        document.getElementById('decline-cookies').addEventListener('click', function() {
+            document.getElementById('cookie-banner').style.display = 'none';
+            document.cookie = "cookies_accepted=false; path=/; max-age=31536000";
+        });
+
+        if (document.cookie.indexOf('cookies_accepted=true') !== -1) {
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+    </script>
+    
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-head">
+                <div class="footer-logo">
+                    <img src="/static/logo.ico" alt="Yassya Lil">
+                    <p>Yassya Lil</p>
+                </div>
+                <nav class="footer-nav">
+                    <a href="/">Home</a>
+                    <a href="/books">Books</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/about">About us</a>
+                </nav>
+            </div>
+            <div class="footer-links">
+                <a href="{{ url_for('get_policies', doc_name='terms_and_conditions') }}">Terms of Use</a>
+                <a href="{{ url_for('get_policies', doc_name='privacy_policy') }}">Privacy Policy</a>
+                <a href="{{ url_for('get_policies', doc_name='cookies_policy') }}">Cookies Policy</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.youtube.com/@yassyalil" title="Youtube"><img src="/static/images/icons/youtube.ico" alt="YouTube" id="youtube"></a>
+                <a href="#" title="Facebook"><img src="/static/images/icons/facebook.ico" alt="Facebook"></a>
+                <a href="https://official-yassyalil.medium.com/" title="Medium"><img src="/static/images/icons/medium.ico" alt="Medium"></a>
+            </div>
+            <p class="footer-copyright">Questions? Email us at 
+                <a href="mailto:yassyalil.official@gmail.com">yassyalil.official@gmail.com</a>
+            </p>
+            <p class="footer-copyright">© Yassya Lil, 2024-2025. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    
+    <!-- Script for handling the Log Out button click -->
+    <script src="/static/scripts/logout.js"></script>
+    <!-- Script for displaying registration and login modal windows -->
+    <script src="/static/scripts/authModal.js"></script>
+    <!-- Script for sending registration form data in application/json format -->
+    <script src="/static/scripts/registration.js"></script>
+    <!-- Script for sending forgot-password form data in application/json format -->
+    <script src="/static/scripts/forgot_password.js"></script>
+    <!-- Script for storing the client's time zone in cookies -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.cookie = `timezone=${timezone}; path=/; Secure`;
+        });
+    </script>
+        
+</body>
+</html>

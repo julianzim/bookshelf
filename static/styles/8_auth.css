@@ -1,0 +1,22 @@
+.auth-modal-content {
+    box-shadow: none;
+    margin-block: 200px;
+}
+
+    .form-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .form-logo p {
+            color: #333;
+            font-size: 28px;
+            margin: 0px;
+        }
+
+        .form-logo img {
+            width: 60px;
+            height: 60px;
+        }
