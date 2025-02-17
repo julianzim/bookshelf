@@ -382,7 +382,8 @@
                 
 
 
-                .review-form label {
+                .review-form label,
+                .review-form span {
                     color: #333;
                     margin-bottom: 8px;
                     display: block;
