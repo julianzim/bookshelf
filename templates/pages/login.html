@@ -11,10 +11,10 @@
     </div> -->
     <span class="modal-title">Sign In</span>
     <form id="login-form" action="/auth/login" method="post" class="auth-form">
-        <label for="username">Email</label>
-        <input type="text" id="login-username" name="username" required>
+        <label for="login-username">Email</label>
+        <input type="text" id="login-username" name="username" autocomplete="email" required>
 
-        <label for="password">Password</label>
+        <label for="login-password">Password</label>
         <input type="password" id="login-password" name="password" required>
 
         <button type="submit" class="auth-submit-btn">Sign In</button>
