@@ -1,7 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+header {
+    background: none;
+    position: relative;
+}
+
 .auth-modal-content {
     box-shadow: none;
-    margin-block: 200px;
+    padding: 30px;
+    width: auto;
+    max-width: 400px;
+    margin: none;
+    margin-block: 10vh;
 }
+
+    #loginPage {
+        margin-block: 20vw;
+    }
+    #registerPage {
+        margin-block: 10vw;
+    }
+    #fpPage {
+        margin-block: 20vw;
+        gap: 30px;
+    }
+
+    #forgot-password-form {
+        gap: 10px;
+    }
+
+    .modal-title {
+        font-size: 1.6em;
+    }
 
     .form-logo {
         display: flex;
@@ -20,3 +56,14 @@
             width: 60px;
             height: 60px;
         }
+
+.footer {
+    display: none;
+}
+
+@media (max-width: 360px) {
+    body {
+        font-size: 12px;
+    }
+    
+}
