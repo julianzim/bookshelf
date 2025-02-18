@@ -3,6 +3,14 @@
     background-image: url('../images/backgrounds/Home.png');
 }
 
+.content-title::after {
+    content: "";
+    display: block;
+    background: black;
+    height: 0.15rem;
+    width: 60%;
+    margin-left: 20%;
+}
 
 /* BOOKS CAROUSEL */
 .carousel {
@@ -21,7 +29,7 @@
     transition: transform 0.3s ease;
     overflow: hidden;
     gap: 20px;
-    padding-inline: 10px;
+    padding: 20px;
 }
 
 .book-item-in-wrapper {
@@ -122,9 +130,9 @@
         background: #fff;
         border-radius: 8px;
         box-shadow: 4px 8px 10px rgba(0, 0, 0, 0.2);
-        width: 30%;
-        min-width: 300px;
+        width: 25%;
         overflow: hidden;
+        flex-shrink: 0;
     }
     
         .card-link {
@@ -163,23 +171,35 @@
                 margin-top: 0px;
                 margin-bottom: 15px;
                 color: #646463;
-                font-size: 14px;
+                font-size: 12px;
             }
 
             .card-content h3 {
                 margin-top: 0px;
                 margin-bottom: 15px;
-                font-size: 20px;
+                font-size: 16px;
             }
 
-            .card-content p {
-                color: #555;
-                font-size: 16px;
-                margin: 0px 0px;
-                /* display: -webkit-box;
-                -webkit-line-clamp: 10;
-                -webkit-box-orient: vertical;
-                overflow: hidden; */
-            }
+
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+}
+
+    .about-img {
+        width: 30%;
+    }
+
+        .about-img img {
+            width: 100%;
+        }
+    
+    .about-text {
+        width: 65%;
+        margin: 0;
+    }
 
 
