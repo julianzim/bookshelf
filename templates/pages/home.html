@@ -6,29 +6,31 @@
 <div id="home" class="background">
     <div class="content" id="home-content">
         <h1 class="content-title">Our Emotions are Our Friends</h1>
-        <!-- <hr class="content-divider"> -->
         <div class="carousel">
-            <button class="scroll-button left">&lt;</button>
+            <button class="scroll-button books left">&lt;</button>
 <!--            <div class="scroll-zone left"></div>-->
             <div class="grid-wrapper">
-                <div class="grid-in-wrapper">
+                <div class="grid-in-wrapper books">
                     {% for book in books %}
                         <div class="book-item-in-wrapper">
-                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">
-                                <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} Cover" class="book-cover-in-wrapper">
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
+                                class="book-title">
+                                <img src="/static/images/covers/{{ book.image }}" 
+                                    alt="{{ book.title }} Cover" 
+                                    class="book-cover-in-wrapper">
                             </a>
-                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
+                                class="book-title">{{ book.title }}</a>
                         </div>
                     {% endfor %}
                 </div>
             </div>
 <!--            <div class="scroll-zone right"></div>-->
-            <button class="scroll-button right">&gt;</button>
+            <button class="scroll-button books right">&gt;</button>
         </div>
 
         
         <h1 class="content-title">Articles that you can read</h1>
-        <!-- <hr class="content-divider"> -->
         <div class="carousel">
             <button class="scroll-button left">&lt;</button>
 <!--            <div class="scroll-zone left"></div>-->
@@ -94,5 +96,5 @@
 
 
 
-<script src="/static/scripts/scroll_buttons.js"></script>
+<script src="/static/scripts/scroll_books_buttons.js"></script>
 {% endblock %}
