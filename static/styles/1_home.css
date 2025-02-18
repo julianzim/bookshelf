@@ -20,48 +20,48 @@
     width: 100%;
 }
 
-.grid-wrapper {
-    overflow: hidden;
-}
-
-.grid-in-wrapper {
-    display: flex;
-    transition: transform 0.3s ease;
-    overflow: hidden;
-    gap: 20px;
-    padding: 20px;
-}
-
-.book-item-in-wrapper {
-    width: calc((100% - 100px) / 5);
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.book-cover-in-wrapper {
-    width: 100%;
-    height: auto;
-    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.4);
-}
-
-.book-cover {
-    width: 100%;
-    height: auto;
-    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
-}
-
-.book-title {
-    display: block;
-    margin-top: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-}
-
-    .book-title:hover {
-        text-decoration: underline;
+    .grid-wrapper {
+        overflow: hidden;
     }
+
+        .grid-in-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            gap: 20px;
+            padding: 20px;
+        }
+
+            .book-item-in-wrapper {
+                width: calc((100% - 100px) / 5);
+                flex-shrink: 0;
+                text-align: center;
+            }
+
+                .book-cover-in-wrapper {
+                    width: 100%;
+                    height: auto;
+                    box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.4);
+                }
+
+                    .book-cover {
+                        width: 100%;
+                        height: auto;
+                        box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.4);
+                    }
+
+                    .book-title {
+                        display: block;
+                        margin-top: 5px;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #333;
+                        text-decoration: none;
+                    }
+
+                        .book-title:hover {
+                            text-decoration: underline;
+                        }
 
 
 /* SCROLL ZONE */
@@ -72,7 +72,6 @@
     width: 300px;
     z-index: 90;
     background-color: rgba(255, 255, 255, 0.0);
-    /*cursor: pointer;*/
 }
 
     .scroll-zone.left {
@@ -117,11 +116,7 @@
     }
 
 
-
-
-
-
-
+/* BLOG CAROUSEL */
 
     .card {
         display: flex;
