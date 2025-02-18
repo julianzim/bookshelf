@@ -8,7 +8,6 @@
         <h1 class="content-title">Our Emotions are Our Friends</h1>
         <div class="carousel">
             <button class="scroll-button books left">&lt;</button>
-<!--            <div class="scroll-zone left"></div>-->
             <div class="grid-wrapper">
                 <div class="grid-in-wrapper books">
                     {% for book in books %}
@@ -25,7 +24,6 @@
                     {% endfor %}
                 </div>
             </div>
-<!--            <div class="scroll-zone right"></div>-->
             <button class="scroll-button books right">&gt;</button>
         </div>
 
@@ -33,7 +31,6 @@
         <h1 class="content-title">Articles that you can read</h1>
         <div class="carousel">
             <button class="scroll-button left">&lt;</button>
-<!--            <div class="scroll-zone left"></div>-->
             <div class="grid-wrapper">
                 <div class="grid-in-wrapper">
                     {% for article in articles %}
@@ -59,14 +56,12 @@
                                     class="card-link">
                                     <h3>{{ article.title }}</h3>
                                 </a>
-                                <!-- <p>{{ article.summary }}</p> -->
                             </div>
                         </div>
 
                     {% endfor %}
                 </div>
             </div>
-<!--            <div class="scroll-zone right"></div>-->
             <button class="scroll-button right">&gt;</button>
         </div>
 
