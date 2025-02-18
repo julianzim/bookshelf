@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const rightButton = document.querySelector('.scroll-button.books.right');
     const bookGrid = document.querySelector('.grid-in-wrapper.books');
 
-    const bookItemWidth = document.querySelector('.book-item-in-wrapper').offsetWidth * 5;
+    const bookItemWidth = document.querySelector('.book-item-in-wrapper').offsetWidth * 5.5;
     console.log("Book item width: ", bookItemWidth);
     let scrollBooksAmount = 0;
 
