@@ -52,7 +52,7 @@ def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = 
     """
     logger = logging.getLogger(name)
     if not logger.hasHandlers():
-        log_format = "%(asctime)s - %(levelname)-8s - %(name)s - %(message)s"
+        log_format = "%(asctime)s - %(levelname)-8s - (%(name)s).%(funcName)s(%(lineno)d) - %(message)s"
         formatter = logging.Formatter(log_format)
 
         file_handler = logging.FileHandler("app.log")
