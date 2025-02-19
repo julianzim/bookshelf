@@ -15,6 +15,8 @@ DB_PASS = os.environ.get("DB_PASS")
 
 SECRET_AUTH = os.environ.get("SECRET_AUTH")
 
+LOG_LEVEL = os.environ.get("LOG_LEVEL")
+
 
 class EmailConfig(BaseModel):
     MAIL_USERNAME: str = os.environ.get("MAIL_USERNAME")
