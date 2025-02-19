@@ -5,11 +5,53 @@
 
 <div id="book-details" class="background">
     <div class="book-details-content">
-        <!-- {% if not book.active %}
+        {% if not book.active %}
             <div class="coming-soon-block">
-                Comming Soon {{ book.pub_date }}
+                <h1>Coming soon!</h1>
+                <div class="timer-container" id="timer" data-countdown="{{ book.pub_date.isoformat() }}"></div>
+
+                <script>
+                    function startCountdown(targetDate) {
+                        function updateTimer() {
+                            const now = new Date();
+                            const diff = targetDate - now;
+
+                            if (diff <= 0) {
+                                document.getElementById("timer").innerHTML = "";
+                                clearInterval(interval);
+                                return;
+                            }
+
+                            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                            const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, "0");
+                            const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, "0");
+                            const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
+
+                            document.getElementById("timer").innerHTML = 
+                                '<div class="days-digit-box">' + days + '</div>' +
+                                '<div class="digit-box">' + hours[0] + '</div>' +
+                                '<div class="digit-box">' + hours[1] + '</div>' +
+                                '<div class="separator">:</div>' +
+                                '<div class="digit-box">' + minutes[0] + '</div>' +
+                                '<div class="digit-box">' + minutes[1] + '</div>' +
+                                '<div class="separator">:</div>' +
+                                '<div class="digit-box">' + seconds[0] + '</div>' +
+                                '<div class="digit-box">' + seconds[1] + '</div>';
+                        }
+
+                        updateTimer();
+                        const interval = setInterval(updateTimer, 100000000);
+                    }
+
+                    // Получаем дату из data-countdown
+                    const countdownElement = document.getElementById("timer");
+                    const countdownDate = new Date(countdownElement.getAttribute("data-countdown"));
+
+                    // Запускаем таймер
+                    startCountdown(countdownDate);
+                </script>
             </div>
-        {% endif %} -->
+        {% endif %}
         
         <div class="main-block">
             <div class="book-descr-block">
@@ -174,8 +216,6 @@
 
                     </div>
                 </div>
-            {% else %}
-            <div>Comming Soon {{ book.pub_date }}</div>
             {% endif %}
         </div>
 
