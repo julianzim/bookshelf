@@ -224,7 +224,7 @@ header {
 
 /* FOOTER */
 .footer {
-    background-color: rgb(50, 50, 50);
+    background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
     padding: 20px;
     text-align: center;
 }
@@ -249,8 +249,9 @@ header {
             }
 
                 .footer-logo p {
-                    color: white;
+                    color: #333;
                     font-size: 28px;
+                    font-weight: bold;
                     margin: 0px;
                 }
 
@@ -267,7 +268,7 @@ header {
             .footer-nav a {
                 font-size: 18px;
                 text-decoration: none;
-                color: white;
+                color: #333;
             }
 
                 .footer-nav a:hover {
@@ -286,7 +287,7 @@ header {
             .footer-copyright a {
                 font-size: 16px;
                 text-decoration: none;
-                color: rgb(146, 146, 146);
+                color: #333;
             }
 
                 .footer-links a:hover,
@@ -305,7 +306,7 @@ header {
         .footer-copyright {
             margin-top: 10px;
             font-size: 14px;
-            color: white;
+            color: #333;
             margin: 0;
         }
 
