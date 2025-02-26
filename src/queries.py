@@ -1,11 +1,11 @@
 from sqlalchemy import select, join, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.auth.models import User
-from src.books.models import Books, Themes
-from src.reviews.models import Reviews
-from src.articles.models import Articles
-from src.database import async_engine, Base
+from .auth.models import User
+from .books.models import Books, Themes
+from .reviews.models import Reviews
+from .articles.models import Articles
+from .database import async_engine, Base
 from misc.utils import get_logger
 
 
