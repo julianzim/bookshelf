@@ -7,7 +7,7 @@
     <div class="book-details-content">
         {% if not book.active %}
             <div class="coming-soon-block">
-                <h1>Coming soon!</h1>
+                <h1 class="coming-soon-block-header">Coming soon!</h1>
                 <div class="timer-container" id="timer" data-countdown="{{ book.pub_date.isoformat() }}"></div>
 
                 <script>
@@ -28,19 +28,14 @@
                             const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, "0");
 
                             document.getElementById("timer").innerHTML = 
-                                '<div class="days-digit-box">' + days + '</div>' +
-                                '<div class="digit-box">' + hours[0] + '</div>' +
-                                '<div class="digit-box">' + hours[1] + '</div>' +
-                                '<div class="separator">:</div>' +
-                                '<div class="digit-box">' + minutes[0] + '</div>' +
-                                '<div class="digit-box">' + minutes[1] + '</div>' +
-                                '<div class="separator">:</div>' +
-                                '<div class="digit-box">' + seconds[0] + '</div>' +
-                                '<div class="digit-box">' + seconds[1] + '</div>';
+                                '<div class="digit-box">' + days + 'd</div>' +
+                                '<div class="digit-box">' + hours[0] + hours[1] + 'h</div>' +
+                                '<div class="digit-box">' + minutes[0] + minutes[1] + 'm</div>' +
+                                '<div class="digit-box">' + seconds[0] + seconds[1] + 's</div>';
                         }
 
                         updateTimer();
-                        const interval = setInterval(updateTimer, 100000000);
+                        const interval = setInterval(updateTimer, 1000);
                     }
 
                     // Получаем дату из data-countdown
