@@ -1,3 +1,5 @@
+import uvicorn
+
 from fastapi import FastAPI, Depends, Request, HTTPException, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
@@ -6,13 +8,13 @@ from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from src.queries import get_all_books, get_active_articles
-from src.database import get_async_session
-from src.auth.base_config import auth_backend, fastapi_users, current_user_optional
-from src.auth.schemas import UserCreate, UserRead
-from src.books.router import router as router_books
-from src.reviews.router import router as router_reviews
-from src.articles.router import router as router_blog
+from .queries import get_all_books, get_active_articles
+from .database import get_async_session
+from .auth.base_config import auth_backend, fastapi_users, current_user_optional
+from .auth.schemas import UserCreate, UserRead
+from .books.router import router as router_books
+from .reviews.router import router as router_reviews
+from .articles.router import router as router_blog
 from misc.utils import get_logger
 
 
@@ -222,4 +224,9 @@ async def http_exc_handler(
             """,
             status_code=exc.status_code
         )
+    
+
+
+if __name__ == "__main__":
+    uvicorn.run("src.main:app", host="0.0.0.0", port=8000)
     
