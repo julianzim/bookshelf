@@ -18,7 +18,7 @@ from .articles.router import router as router_blog
 from misc.utils import get_logger
 
 
-APP_MODE = "dev"
+APP_MODE = "production"
 
 root_logger = get_logger(
     name = __name__,
@@ -76,20 +76,20 @@ async def get_home(
     session: AsyncSession = Depends(get_async_session)
 ):
     current_user_log = current_user or 'Unauthenticated user'
-    
+
     root_logger.debug(f"{current_user_log} requests the Home page")
 
     cookies_accepted = request.cookies.get('cookies_accepted', 'false')
-    
+
     books_data = await get_all_books(session=session)
     books = [
         {
             "id": book[0],
-            "title": book[1], 
+            "title": book[1],
             "image": book[2]
         } for book in books_data
     ]
-    
+
     root_logger.info(f"Books found: {len(books)} for {current_user_log}")
 
     articles_data = await get_active_articles(session=session)
@@ -106,7 +106,7 @@ async def get_home(
     root_logger.info(f"Articles found: {len(articles)} for {current_user_log}")
 
     return templates.TemplateResponse(
-        "pages/home.html", 
+        "pages/home.html",
         {
             "request": request,
             "books": books,
@@ -125,9 +125,9 @@ async def get_about(
     current_user_log = current_user or 'Unauthenticated user'
 
     root_logger.debug(f"{current_user_log} requests the About page")
-    
+
     return templates.TemplateResponse(
-        "pages/about.html", 
+        "pages/about.html",
         {
             "request": request,
             "current_user": current_user
@@ -166,7 +166,7 @@ async def get_register_page(
 @app.get("/auth/forgot-password")
 async def get_forgot_password_page(
     request: Request,
-    current_user = Depends(current_user_optional)   
+    current_user = Depends(current_user_optional)
 ):
     return templates.TemplateResponse(
         "pages/forgot-password.html",
@@ -224,9 +224,9 @@ async def http_exc_handler(
             """,
             status_code=exc.status_code
         )
-    
+
 
 
 if __name__ == "__main__":
     uvicorn.run("src.main:app", host="0.0.0.0", port=8000)
-    
+
