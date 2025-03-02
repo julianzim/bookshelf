@@ -61,17 +61,17 @@ async def add_themes():
 
 async def remake():
     await reset_database()
-    await add_books()
-    await add_articles()
     await add_roles()
+    # await add_books()
+    # await add_articles()
     # await add_reviews()
 
 
 if __name__ == "__main__":
-    # asyncio.run(remake())
+    asyncio.run(remake())
     # asyncio.run(reset_database())
     # asyncio.run(add_roles())
     # asyncio.run(add_themes())
     # asyncio.run(add_articles())
     # asyncio.run(add_books())
-    asyncio.run(add_reviews())
+    # asyncio.run(add_reviews())
