@@ -7,11 +7,13 @@ services:
 
   app:
     build:
-      context: /app
+      context: ./app
     container_name: app
     restart: always
     environment:
       LOG_LEVEL: ${APP_LOG_LEVEL}
+    ports:
+      - "8000:8000"
     volumes:
       - ./app:/app
     depends_on:
@@ -25,7 +27,7 @@ services:
     restart: always
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_NAME}
+      POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ./postgres/data:/var/lib/postgresql/data
