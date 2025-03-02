@@ -13,74 +13,70 @@ from src.articles.models import Articles
 from src.books.models import Themes
 from misc.utils import convert_docx_to_html
 
-
+BASE_DIR = Path("misc/upload/articles/blog")
 PROD_DIR = Path("static/images/")
-BASE_DIR = Path("misc/upload/articles")
-DOCX_DIR = BASE_DIR / "docx_files"
-PREVIEWS_DIR = BASE_DIR / "previews"
-HEADER_IMAGES_DIR = BASE_DIR / "header_images"
 
 
-async def upload_articles(
-    docx_dir: Path, 
-    previews_dir: Path, 
-    header_images_dir: Path
-):
-    docx_files = sorted(docx_dir.glob("*.docx"))
-    preview_files = sorted(previews_dir.glob("*"))
-    header_images_files = sorted(header_images_dir.glob("*"))
+def find_image_file(folder: Path, name_prefix: str):
+    for ext in (".jpg", ".png", ".jpeg"):
+        file = folder / f"{name_prefix}{ext}"
+        if file.exists():
+            return file
+    return None
 
+
+async def upload_articles(base_dir: Path, prod_dir: Path):
     articles = []
-    for docx, preview, header_image in zip(
-        docx_files, 
-        preview_files, 
-        header_images_files
-    ):
-        parsed_docx = convert_docx_to_html(docx)
+    
+    for folder in sorted(base_dir.iterdir()):
+        if not folder.is_dir():
+            continue
+        
+        docx_file = folder / f"{folder.name}.docx"
+        preview_file = find_image_file(folder, f"{folder.name}_preview")
+        header_image_file = find_image_file(folder, f"{folder.name}_header")
+        
+        if not docx_file.exists() or not preview_file.exists() or not header_image_file.exists():
+            print(f"Skipping {folder.name}: missing required files. {docx_file,preview_file,header_image_file}")
+            continue
+        
+        parsed_docx = convert_docx_to_html(docx_file)
         theme_name = parsed_docx["theme"]
-        print(parsed_docx)
-        query = (
-            select(Themes.id)
-            .where(Themes.name == theme_name)
-        )
+        
         async with async_session() as session:
+            query = select(Themes.id).where(Themes.name == theme_name)
             result = await session.execute(query)
             theme_id = result.scalar()
+            
             if not theme_id:
                 new_theme = Themes(name=theme_name)
                 session.add(new_theme)
                 await session.commit()
                 await session.refresh(new_theme)
                 theme_id = new_theme.id
-
+        
         articles.append(
             Articles(
-                theme = theme_id,
-                title = parsed_docx["title"],
-                summary = parsed_docx["summary"],
-                text = parsed_docx["html_content"],
-                created_at = parsed_docx["pub_date"],
-                preview = preview.name,
-                header_image = header_image.name,
-                read_time = parsed_docx["read_time"],
-                active = True
+                theme=theme_id,
+                title=parsed_docx["title"],
+                summary=parsed_docx["summary"],
+                text=parsed_docx["html_content"],
+                created_at=parsed_docx["pub_date"],
+                preview=preview_file.name,
+                header_image=header_image_file.name,
+                read_time=parsed_docx["read_time"],
+                active=True
             )
         )
-
+        
+        shutil.move(preview_file, prod_dir / 'previews' / preview_file.name)
+        shutil.move(header_image_file, prod_dir / 'header_images' / header_image_file.name)
+        shutil.rmtree(folder)
+    
     async with async_session() as session:
         session.add_all(articles)
         await session.commit()
-        
-    shutil.move(preview, PROD_DIR / 'previews' / preview.name)
-    shutil.move(header_image, PROD_DIR / 'header_images' / header_image.name)
-    docx.unlink()
 
 
 if __name__ == "__main__":
-    asyncio.run(
-        upload_articles(
-            docx_dir=DOCX_DIR,
-            previews_dir=PREVIEWS_DIR,
-            header_images_dir=HEADER_IMAGES_DIR
-        )
-    )
+    asyncio.run(upload_articles(base_dir=BASE_DIR, prod_dir=PROD_DIR))
