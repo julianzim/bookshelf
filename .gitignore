@@ -1,7 +1,8 @@
 static/images/previews
 static/images/header_images
-app/static/images/previews
-app/static/images/header_images
+app/static/images/previews/*
+app/static/images/header_images/*
+app/misc/upload/articles/blog/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
