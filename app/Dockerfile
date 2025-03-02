@@ -8,6 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN chmod -R 777 /app && python ./misc/db_manage.py && python ./misc/upload/books/upload.py
+RUN chmod -R 777 /app
 
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
