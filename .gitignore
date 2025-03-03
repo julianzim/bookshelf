@@ -4,6 +4,7 @@ app/static/images/previews/*
 app/static/images/header_images/*
 app/misc/upload/articles/blog/*
 postgres/*/*
+certbot/*/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
