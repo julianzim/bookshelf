@@ -25,7 +25,7 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        gap: 20px;
+        row-gap: 40px;
     }
 
         .card {
@@ -38,7 +38,12 @@
             width: 30%;
             min-width: 300px;
             overflow: hidden;
+            transition: 1s;
         }
+
+            .card:hover {
+                transform: scale(1.1);
+            }
         
             .card-link {
                 text-decoration: none;
@@ -52,15 +57,11 @@
                 }
 
                     .img-box img {
-                        transition: 1s;
                         display: block;
                         width: 100%;
-                        background: linear-gradient(to right, #6ec1e4, #8ecae6);
+                        background: aliceblue;
                     }
 
-                        .img-box img:hover {
-                            transform: scale(1.1);
-                        }
 
             .card-content {
                 display: flex;
