@@ -20,12 +20,7 @@
         min-width: 200px;
         flex-shrink: 0;
         text-align: center;
-        transition: 1s;
     }
-
-        .book-item:hover {
-            transform: scale(1.1);
-        }
 
         .book-title {
             display: block;
@@ -44,7 +39,12 @@
             width: 100%;
             height: auto;
             box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+            transition: 1s;
         }
+
+            .book-cover:hover {
+                transform: scale(1.1);
+            }
 
 
 
