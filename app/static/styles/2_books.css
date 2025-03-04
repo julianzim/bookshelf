@@ -15,31 +15,36 @@
     gap: 20px;
 }
 
-.book-item {
-    width: 20%;
-    min-width: 200px;
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.book-title {
-    display: block;
-    margin-top: 5px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-}
-
-    .book-title:hover {
-        text-decoration: underline;
+    .book-item {
+        width: 20%;
+        min-width: 200px;
+        flex-shrink: 0;
+        text-align: center;
+        transition: 1s;
     }
 
-.book-cover {
-    width: 100%;
-    height: auto;
-    box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
-}
+        .book-item:hover {
+            transform: scale(1.1);
+        }
+
+        .book-title {
+            display: block;
+            margin-top: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+        }
+
+            .book-title:hover {
+                text-decoration: underline;
+            }
+
+        .book-cover {
+            width: 100%;
+            height: auto;
+            box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+        }
 
 
 
