@@ -86,7 +86,9 @@ async def get_home(
         {
             "id": book[0],
             "title": book[1],
-            "image": book[2]
+            "image": book[2],
+            "pub_date": book[3],
+            "active": book[4]
         } for book in books_data
     ]
 
