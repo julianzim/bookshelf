@@ -13,13 +13,19 @@
                     {% for book in books %}
                         <div class="book-item-in-wrapper">
                             <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
-                                class="book-title">
+                                class="book-cover-container">
                                 <img src="/static/images/covers/{{ book.image }}" 
                                     alt="{{ book.title }} Cover" 
                                     class="book-cover-in-wrapper">
+                                {% if not book.active %}
+                                    <img src="/static/images/icons/coming_soon.png" alt="" 
+                                        class="coming-soon-label">
+                                {% endif %}
                             </a>
-                            <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
-                                class="book-title">{{ book.title }}</a>
+                            <a href="{{ url_for('get_book_details', book_title=book.title) }}"
+                                class="book-item-title">
+                                {{ book.title }}
+                            </a>
                         </div>
                     {% endfor %}
                 </div>

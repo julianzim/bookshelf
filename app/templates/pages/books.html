@@ -9,10 +9,20 @@
         <div class="book-grid">
             {% for book in books %}
                 <div class="book-item">
-                    <a href="{{ url_for('get_book_details', book_title=book.title) }}">
-                        <img src="/static/images/covers/{{ book.image }}" alt="{{ book.title }} cover" class="book-cover">
+                    <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
+                        class="book-cover-container">
+                        <img src="/static/images/covers/{{ book.image }}" 
+                            alt="{{ book.title }} cover" 
+                            class="book-cover">
+                        {% if not book.active %}
+                            <img src="/static/images/icons/coming_soon.png" alt="" 
+                                class="coming-soon-label">
+                        {% endif %}
                     </a>
-                    <a href="{{ url_for('get_book_details', book_title=book.title) }}" class="book-title">{{ book.title }}</a>
+                    <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
+                        class="book-title">
+                        {{ book.title }}
+                    </a>
                 </div>
             {% endfor %}
         </div>
