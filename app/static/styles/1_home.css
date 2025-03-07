@@ -13,13 +13,17 @@
         gap: 20px;
     }
     
-    .book-item-in-wrapper {
-        width: calc((100% - 100px) / 5);
-    }
-    
-    .book-item-in-wrapper a {
-        font-size: 1.2rem;
-    }
+        .book-item-in-wrapper {
+            width: calc((100% - 100px) / 5);
+        }
+        
+            .book-item-in-wrapper a {
+                font-size: 1.2rem;
+            }
+
+                .book-cover-container:hover {
+                    transform: scale(1.1);
+                }
     
     .grid-in-wrapper.blog {
         padding: 32px;
@@ -28,6 +32,10 @@
         .card {
             width: 23%;
         }
+
+            .card:hover {
+                transform: scale(1.1);
+            }
 
             .card-content {
                 padding: 10px;
@@ -69,6 +77,10 @@
             .book-item-in-wrapper a {
                 font-size: 1rem;
             }
+
+                .book-cover-container:hover {
+                    transform: scale(1.1);
+                }
     
     .grid-in-wrapper.blog {
         padding: 32px;
@@ -77,6 +89,10 @@
         .card {
             width: 23%;
         }
+
+            .card:hover {
+                transform: scale(1.1);
+            }
 
             .card-content {
                 padding: 10px;
@@ -120,9 +136,17 @@
             font-size: 1rem;
         }
 
+            .book-cover-container:hover {
+                transform: none;
+            }
+
     .card {
         width: 35%;
     }
+
+        .card:hover {
+            transform: none;
+        }
 
         .card-content {
             padding: 10px;
@@ -156,6 +180,10 @@
             font-size: 0.8rem;
         }
 
+            .book-cover-container:hover {
+                transform: none;
+            }
+
     .grid-in-wrapper.blog {
         padding: 20px;
     }
@@ -163,6 +191,10 @@
     .card {
         width: 35%;
     }
+
+        .card:hover {
+            transform: none;
+        }
 
         .card-content {
             padding: 5px;
@@ -217,10 +249,6 @@
                 .book-cover-container {
                     transition: 1s;
                 }
-
-                    .book-cover-container:hover {
-                        transform: scale(1.1);
-                    }
 
                     .book-cover-in-wrapper {
                         width: 100%;
@@ -305,10 +333,6 @@
         flex-shrink: 0;
         transition: 1s;
     }
-
-        .card:hover {
-            transform: scale(1.1);
-        }
     
         .card-link {
             text-decoration: none;
