@@ -426,7 +426,7 @@
     .about-text {
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: center;
         row-gap: 20px;
     }
 

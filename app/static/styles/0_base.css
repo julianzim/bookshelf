@@ -281,12 +281,45 @@ header {
     .footer-head {
         gap: 75px;
     }
+
+    .footer-links,
+    .footer-social {
+        gap: 30px;
+    }
+
+        .footer-links a,
+        .footer-copyright a {
+            font-size: 1rem;
+        }
 }
 
 @media only screen and (max-width: 460px) {
     .footer-head {
         flex-direction: column;
         gap: 10px;
+    }
+
+    .footer-links {
+        gap: 10px;
+    }
+
+    .footer-social {
+        gap: 30px;
+    }
+
+        .footer-links a,
+        .footer-copyright a {
+            font-size: 1rem;
+        }
+}
+
+@media only screen and (max-width: 321px) {
+    .footer-links a {
+        font-size: 0.8rem;
+    }
+
+    .footer-copyright a {
+        font-size: 1rem;
     }
 }
 
@@ -345,14 +378,12 @@ header {
         .footer-links,
         .footer-social {
             display: flex;
-            gap: 30px;
             flex-wrap: wrap;
             align-items: center;
         }  
         
             .footer-links a,
             .footer-copyright a {
-                font-size: 16px;
                 text-decoration: none;
                 color: #333;
             }

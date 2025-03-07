@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+    .content h1::after {
+        display: none;
+    }
+
     h1.article-theme {
         font-size: 34px;
         text-align: center;
