@@ -10,6 +10,7 @@
     
     .grid-in-wrapper {
         overflow: hidden;
+        gap: 20px;
     }
     
     .book-item-in-wrapper {
@@ -58,6 +59,7 @@
 
     .grid-in-wrapper {
         overflow: hidden;
+        gap: 20px;
     }
     
         .book-item-in-wrapper {
@@ -142,8 +144,12 @@
 }
 
 @media only screen and (max-width: 426px) {
+    .grid-in-wrapper {
+        gap: 10px;
+    }
+
     .book-item-in-wrapper {
-        width: calc((100% - 10px) / 3.5);
+        width: calc(100% / 3);
     }
 
         .book-item-in-wrapper a {
@@ -188,7 +194,6 @@
         .grid-in-wrapper {
             display: flex;
             transition: transform 0.3s ease;
-            gap: 20px;
             padding: 20px;
         }
 
