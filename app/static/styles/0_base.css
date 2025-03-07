@@ -272,9 +272,24 @@ header {
             width: 60%;
             margin-left: 20%;
         }
-
-
+        
+        
+        
+        
 /* FOOTER */
+@media only screen and (min-width: 426px) {
+    .footer-head {
+        gap: 75px;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    .footer-head {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
 .footer {
     background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%);
     padding: 20px;
@@ -290,7 +305,6 @@ header {
 
         .footer-head {
             display: flex;
-            gap: 75px;
             align-items: center;
         }
 
@@ -319,6 +333,7 @@ header {
             
             .footer-nav a {
                 font-size: 18px;
+                font-weight: bold;
                 text-decoration: none;
                 color: #333;
             }
@@ -362,6 +377,7 @@ header {
             color: #333;
             margin: 0;
         }
+
 
 
 /* COOKIES BANNER */
