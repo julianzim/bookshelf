@@ -3,6 +3,12 @@
     background-image: url('../images/backgrounds/About.png');
 }
 
+@media only screen and (max-width: 950px) {
+    #about.background {
+        background: none;
+    }
+}
+
 .about-content {
     display: flex;
     flex-direction: column;

@@ -3,6 +3,12 @@
     background-image: url('../images/backgrounds/Books.png');
 }
 
+@media only screen and (max-width: 950px) {
+    #books.background {
+        background: none;
+    }
+}
+
 .content {
     padding: 20px 30px 50px 30px;
 }

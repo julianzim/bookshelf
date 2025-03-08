@@ -3,7 +3,11 @@
     background-image: url('../images/backgrounds/Blog.png');
 }
 
-
+@media only screen and (max-width: 950px) {
+    #blog.background {
+        background: none;
+    }
+}
 
 .blog-section {
     text-align: center;

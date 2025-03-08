@@ -3,6 +3,11 @@
     background-image: url('../images/backgrounds/Book_details.png');
 }
 
+@media only screen and (max-width: 950px) {
+    #book-details.background {
+        background: none;
+    }
+}
 
 .book-details-content {
     display: flex;
