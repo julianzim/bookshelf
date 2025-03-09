@@ -195,6 +195,20 @@ header {
 
 
 /* CONTENT */
+@media only screen and (min-width: 2101px) {
+    .content h1 {
+        font-size: 2.5rem;
+        margin-block: 25px;
+    }
+}
+
+@media only screen and (max-width: 2101px) {
+    .content h1 {
+        font-size: 2rem;
+        margin-block: 25px;
+    }
+}
+
 @media only screen and (min-width: 1351px) {
     .content {
         margin: calc(18vw) auto 100px auto;
@@ -205,12 +219,21 @@ header {
     .content {
         margin: calc(19vw) auto 100px auto;
     }
+
+        .content h1 {
+            font-size: 1.8rem;
+            margin-block: 15px;
+        }
 }
 
 @media only screen and (max-width: 1151px) {
     .content {
         margin: calc(20vw) auto 100px auto;
     }
+
+        .content h1 {
+            font-size: 1.6rem;
+        }
 }
 
 @media only screen and (max-width: 1001px) {
@@ -223,21 +246,17 @@ header {
     .content {
         height: auto;
         max-width: 60%;
+        min-width: 660px;
         padding: 20px;
         background-color: white;
         box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
         border-radius: 25px;
     }
 
-        .content h1 {
-            font-size: 2rem;
-            margin-block: 25px;
+        .content h1::after {
+            width: 60%;
+            margin-left: 20%;
         }
-
-            .content h1::after {
-                width: 60%;
-                margin-left: 20%;
-            }
 }
 
 @media only screen and (max-width: 950px) {
@@ -245,12 +264,12 @@ header {
         height: auto;
         width: 100%;
         margin-top: 100px;
+        margin-bottom: 20px;
         padding: 0px;
         background-color: white;
     }
 
         .content h1 {
-            margin-block: 0;
             font-size: 2rem;
         }
 
@@ -262,7 +281,6 @@ header {
 
 @media only screen and (max-width: 769px) {
     .content h1 {
-        margin-block: 0;
         font-size: 1.8rem;
     }
 
@@ -274,11 +292,9 @@ header {
 
 @media only screen and (max-width: 426px) {
     .content h1 {
-        margin-block: 0;
         font-size: 1.2rem;
     }
 }
-
 
 
     .content h1 {

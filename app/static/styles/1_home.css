@@ -3,6 +3,146 @@
     background-image: url('../images/backgrounds/Home.png');
 }
 
+@media only screen and (min-width: 2100px) {
+    .about-text {
+        font-size: 1.4rem;
+    }
+
+    .book-item-in-wrapper a {
+        font-size: 1.4rem;
+    }
+
+    .card {
+        width: 23%;
+    }
+
+    .card-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .card-content
+    .date {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 2100px) {
+    .about-text {
+        font-size: 1.3rem;
+    }
+
+    .book-item-in-wrapper a {
+        font-size: 1.2rem;
+    }
+
+    .card {
+        width: 25%;
+    }
+
+    .card-content h3 {
+        font-size: 1.35rem;
+    }
+
+    .card-content
+    .date {
+        font-size: 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 1921px) {
+    .card-content h3 {
+        font-size: 1.2rem;
+    }
+
+    .about-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 1700px) {
+    .book-item-in-wrapper {
+        width: calc((100% - 100px) / 5);
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    .about-text {
+        font-size: 1.1rem;
+    }
+    
+    .book-item-in-wrapper {
+        width: calc((100% - 100px) / 4.5);
+    }
+
+    .book-item-in-wrapper a {
+        font-size: 1.0rem;
+    }
+
+    .card {
+        width: 27%;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-content
+    .date {
+        font-size: 1.0rem;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (min-width: 1441px) {
+    .card-content {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 1441px) {
+    .about-text {
+        font-size: 0.95rem;
+    }
+
+    .book-item-in-wrapper a {
+        font-size: 0.9rem;
+    }
+
+    .card-content {
+        padding: 5px 10px;
+    }
+
+    .card-content h3 {
+        font-size: 1.0rem;
+    }
+
+    .card-content
+    .date {
+        font-size: 0.85rem;
+        margin-bottom: 7px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .about-text {
+        font-size: 0.85rem;
+    }
+
+    .book-item-in-wrapper a {
+        font-size: 0.8rem;
+    }
+
+    .card-content h3 {
+        font-size: 0.85rem;
+    }
+
+    .card-content
+    .date {
+        font-size: 0.75rem;
+        margin-bottom: 5px;
+    }
+}
+
 @media only screen and (min-width: 950px) {
     .scroll-button {
         display: flex;
@@ -12,48 +152,14 @@
         overflow: hidden;
         gap: 20px;
     }
-    
-        .book-item-in-wrapper {
-            width: calc((100% - 100px) / 5);
-        }
-        
-            .book-item-in-wrapper a {
-                font-size: 1.2rem;
-            }
 
-                .book-cover-container:hover {
-                    transform: scale(1.1);
-                }
-    
-    .grid-in-wrapper.blog {
-        padding: 32px;
+    .book-cover-container:hover {
+        transform: scale(1.1);
     }
 
-        .card {
-            width: 23%;
-        }
-
-            .card:hover {
-                transform: scale(1.1);
-            }
-
-            .card-content {
-                padding: 10px;
-            }
-
-                .card-content
-                .date {
-                    font-size: 1rem;
-                }
-
-                    .card-content h3 {
-                        font-size: 1.2rem;
-                    }
-
-    .about-text {
-        font-size: 1.5rem;
+    .card:hover {
+        transform: scale(1.1);
     }
-
 }
 
 @media only screen and (max-width: 950px) {
@@ -108,7 +214,7 @@
                     }
 
     .about-text {
-        font-size: 1.5rem;
+        font-size: 1.0rem;
     }
 }
 
@@ -163,7 +269,7 @@
                 }
 
     .about-text {
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
 }
 
@@ -211,6 +317,33 @@
                 }
 }
 
+
+@media only screen and (min-width: 1441px) {
+    .grid-in-wrapper {
+        padding: 20px;
+    }
+
+    .grid-in-wrapper.blog {
+        padding: 32px;
+    }
+}
+
+@media only screen and (max-width: 1441px) {
+    .grid-in-wrapper {
+        padding: 0 20px;
+    }
+
+    .grid-in-wrapper.blog {
+        padding: 15px 20px;
+    }
+}
+
+@media only screen and (max-width: 1441px) {
+    .grid-in-wrapper.blog {
+        padding: 10px 20px;
+    }
+}
+
 /* BOOKS CAROUSEL */
 .carousel {
     position: relative;
@@ -226,7 +359,6 @@
         .grid-in-wrapper {
             display: flex;
             transition: transform 0.3s ease;
-            padding: 20px;
         }
 
             .book-item-in-wrapper {
@@ -370,31 +502,63 @@
                 margin: 0px;
             }
 
-
-@media only screen and (min-width: 426px) {
+@media only screen and (min-width: 1350px) {
     .about-content {
         gap: 50px;
     }
 
-        .about-img {
-            width: 30%;
-        }
-
-        .about-text {
-            width: 50%;
-        }
+    .about-text {
+        width: 50%;
+    }
 }
 
-@media only screen and (max-width: 426px) {
+@media only screen and (max-width: 1350px) {
     .about-content {
         gap: 20px;
+    }
+
+    .about-text {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    .about-text {
+        row-gap: 20px;
+    }
+}
+
+@media only screen and (max-width: 1025px) {
+    .about-text {   
+        row-gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .about-content {
+        gap: 50px;
+    }
+
+    .about-text {
+        width: 50%;
+    }
+}
+
+
+@media only screen and (min-width: 769px) {
+    .about-img {
+        width: 30%;
+    }
+}
+
+@media only screen and (max-width: 769px) {
+    .about-content {
         flex-direction: column;
         align-items: center;
     }
 
         .about-img {
             width: 60%;
-            height: 290px;
         }
 
             .about-img img {
@@ -403,31 +567,53 @@
             }
 
         .about-text {
+            row-gap: 30px;
             width: 90%;
         }
+}
+
+@media only screen and (nim-width: 426px) {
+    .about-content {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 426px) {
+    .about-content {
+        gap: 20px;
+        padding: 20px;
+        padding-top: 5px;
+    }
+
+    .about-text {
+        font-size: 1.0rem;
+        row-gap: 15px;
+    }
 }
 
 .about-content {
     display: flex;
     justify-content: center;
-    padding: 20px;
 }
 
     .about-img {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        max-width: 350px;
+        min-width: 200px;
     }
 
         .about-img img {
             width: 100%;
+            border-radius: 2rem;
         }
     
     .about-text {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        row-gap: 20px;
+        text-align: center;
     }
 
         .about-text p {
