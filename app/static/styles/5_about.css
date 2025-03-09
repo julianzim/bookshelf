@@ -13,11 +13,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 20px;
-    padding: 20px;
+    row-gap: 40px;
 }
 
-    .about-section.top {
+    section.top {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -25,32 +24,52 @@
 
     }
 
-        .about-img {
+        section.top img {
             width: 30%;
+            border-radius: 2rem;
+        }
+
+        .main-text {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            float: left;
-        }
-
-            .about-img img {
-                width: 100%;
-                border-radius: 2rem;
-            }
-        
-        .about-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            row-gap: 20px;
+            row-gap: 30px;
             width: 50%;
-            font-size: 1.45rem;
+            text-align: center;
         }
 
-            .about-text p {
+            .main-text h2 {
+                font-size: 2.3rem;
                 margin: 0;
             }
+            
+            .main-text p {
+                font-size: 1.2rem;  
+            }
 
-    .about-text.bottom {
-        width: 85%;
+    section.bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: start; 
+        font-size: 1.2rem;
+        text-align: left;
     }
+
+        section.bottom p {
+            margin: 0;
+            padding: 3rem;
+            width: 65%;
+        }
+
+            p.one, p.three {
+                align-self: start;
+                text-align: left;
+                /* background: green; */
+            }
+
+            p.two, p.four {
+                align-self: end;
+                text-align: right;
+                /* background: greenyellow; */
+            }
+
