@@ -60,8 +60,8 @@
         .coming-soon-label {
             position: absolute;
             top: 0px;
-            right: 0px;
-            width: 35%;
+            right: -5%;
+            width: 110%;
             height: auto;
             z-index: 10;
         }
