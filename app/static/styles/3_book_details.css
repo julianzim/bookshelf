@@ -14,7 +14,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    row-gap: 50px;
+    row-gap: 30px;
     height: auto;
     max-width: 1300px;
     margin: calc(15vw) auto 100px auto;
@@ -25,17 +25,17 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(70, 70, 70, 0.5);
-        color: #fff;
+        background: white;
+        color: #333;
         flex-direction: column;
         gap: 20px;
         width: 100%;
         border-radius: 60px;
-        padding-block: 40px;
+        padding-block: 30px;
     }
 
         .coming-soon-block h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             margin: 0;
         }
 
@@ -44,7 +44,7 @@
                 display: block;
                 width: 80%;
                 height: 0.2rem;
-                background: white;
+                background: #333;
                 margin-left: 10%;
                 margin-top: 1.5rem;
                 border-radius: 10px;
@@ -52,14 +52,14 @@
 
     .timer-container {
         display: flex;
-        gap: 4rem;
+        gap: 3rem;
     }
 
         .digit-box {
             display: inline-block;
             text-align: center;
             vertical-align: middle;
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: bold;
             border-radius: 5px;
             padding-inline: 20px;
