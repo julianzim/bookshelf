@@ -18,7 +18,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    gap: 20px;
+    column-gap: 20px;
+    row-gap: 40px;
 }
 
     .book-item {
@@ -59,7 +60,7 @@
 
         .coming-soon-label {
             position: absolute;
-            top: 0px;
+            top: -5%;
             right: -5%;
             width: 110%;
             height: auto;
