@@ -60,7 +60,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     ) -> None:
         logger.info(f"{user} has login")
         if response:
-            last_page = request.query_params.get("next") or request.headers.get("Referer") or "/"
+            last_page = "/"     # request.query_params.get("next") or request.headers.get("Referer") or "/"
             logger.debug(f"User id={user.id} redirecting to the page {last_page}")
             response.status_code = 302
             response.headers["Location"] = last_page
