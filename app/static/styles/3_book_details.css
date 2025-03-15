@@ -28,16 +28,19 @@
         margin: calc(20vw) auto 100px auto;
     }
 }
+@media only screen and (max-width: 951px) {
+    .book-details-content {
+        margin: 80px 0px 0px 0px;
+    }
+}
 
 
 .book-details-content {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: 30px;
     height: auto;
-    width: clamp(700px, 70%, 1500px);
 }
 
 
@@ -112,10 +115,8 @@
     flex-direction: column;
     justify-content: start;
     gap: 25px;
-    width: 70%;
     padding: 4% 2%;
     background-color: white;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
     border-radius: 25px;
 }
 
@@ -614,7 +615,6 @@
 /*** MINOR block ***/
 .minor-block {
     display: flex;
-    width: 25%;
     flex-direction: column;
     gap: 20px;
 }
@@ -682,7 +682,6 @@
         height: auto;
         width: 100%;
         background-color: white;
-        box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
         border-radius: 25px;
     }
 
@@ -911,5 +910,51 @@
 
         .digit-box {
             font-size: 1.9rem;
+        }
+}
+
+
+/* OTHER */
+@media only screen and (min-width: 951px) {
+    .book-details-content {
+        flex-direction: row;
+        width: clamp(700px, 70%, 1500px);
+    }
+
+        .main-block {
+            width: 70%;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
+        }
+
+        .minor-block {
+            width: 25%;
+        }
+
+            .purchase-top-right-block {
+                box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
+            }
+
+            .related-books-lower-right-block {
+                box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
+            }
+}
+@media only screen and (max-width: 951px) {
+    .book-details-content {
+        flex-direction: column;
+        width: 100%;
+    }
+
+        .main-block,
+        .minor-block {
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .purchase-top-right-block {
+            box-shadow: none;
+        }
+
+        .related-books-lower-right-block {
+            box-shadow: none;
         }
 }
