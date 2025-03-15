@@ -3,71 +3,171 @@
     background-image: url('../images/backgrounds/Books.png');
 }
 
+    .book-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+        .book-item {
+            width: clamp(100px, 20%, 250px);  
+            flex-shrink: 0;
+            text-align: center;
+            position: relative;
+        }
+
+            .book-cover-container {
+                display: block;
+                transition: 1s;
+            }
+
+                .book-cover-container:hover {
+                    transform: scale(1.05);
+                }
+
+            .book-title {
+                display: block;
+                margin-top: 5px;
+                font-weight: bold;
+                color: #333;
+                text-decoration: none;
+            }
+
+                .book-title:hover {
+                    text-decoration: underline;
+                }
+
+            .book-cover {
+                width: 100%;
+                height: auto;
+                box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+            }
+
+            .coming-soon-label {
+                position: absolute;
+                top: -5%;
+                right: -5%;
+                width: 110%;
+                height: auto;
+                z-index: 10;
+            }
+
+
+/* BACKGROUND */
 @media only screen and (max-width: 950px) {
     #books.background {
         background: none;
     }
 }
 
-.content {
-    padding: 20px 30px 50px 30px;
-}
 
-/* BOOK GRID */
-.book-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    column-gap: 20px;
-    row-gap: 40px;
-}
-
-    .book-item {
-        width: 20%;
-        min-width: 200px;
-        flex-shrink: 0;
-        text-align: center;
-        position: relative;
+/* FONTS */
+@media only screen and (min-width: 2201px) {
+    .content {
+        padding: 20px 30px 50px 30px;
     }
 
-        .book-cover-container {
-            display: block;
-            transition: 1s;
+        .book-title {
+            font-size: 22px;
         }
-
-            .book-cover-container:hover {
-                transform: scale(1.05);
-            }
+}
+@media only screen and (max-width: 2201px) {
+    .content {
+        padding: 20px 30px 50px 30px;
+    }
 
         .book-title {
-            display: block;
-            margin-top: 5px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #333;
-            text-decoration: none;
+            font-size: 20px;
+        }
+}
+@media only screen and (max-width: 1701px) {
+    .book-title {
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 1441px) {
+    .book-title {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 1351px) {
+    .book-title {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 1025px) {
+    .book-title {
+        font-size: 12px;
+    }
+}
+
+
+
+/* OTHER */
+@media only screen and (min-width: 1441px) {
+    .book-grid {
+        gap: 40px 20px;
+    }
+}
+@media only screen and (max-width: 1440px) {
+    .book-grid {
+        gap: 30px 20px;
+    }
+}
+@media only screen and (max-width: 1025px) {
+    .book-grid {
+        gap: 20px;
+    }
+}
+@media only screen and (max-width: 951px) {
+    .content {
+        margin-top: 80px;
+        margin-bottom: 0px;
+    }
+
+        .book-grid {
+            gap: 40px 20px;
         }
 
-            .book-title:hover {
-                text-decoration: underline;
+            .book-title {
+                font-size: 16px;
             }
+}
+@media only screen and (max-width: 769px) {
+    .book-grid {
+        gap: 30px 20px;
+    }
 
-        .book-cover {
-            width: 100%;
-            height: auto;
-            box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+        .book-title {
+            font-size: 14px;
         }
+}
+@media only screen and (max-width: 641px) {
+    .book-grid {
+        gap: 20px 20px;
+    }
 
-        .coming-soon-label {
-            position: absolute;
-            top: -5%;
-            right: -5%;
-            width: 110%;
-            height: auto;
-            z-index: 10;
+        .book-title {
+            font-size: 12px;
         }
+}
+@media only screen and (max-width: 426px) {
+    .content {
+        padding: 20px 15px 50px 15px;
+    }
 
-
-
-
-
+        .content h1::after {
+            margin-left: 15%;
+            width: 70%;
+        }
+}
+@media only screen and (max-width: 376px) {
+    .content h1::after {
+        margin-left: 10%;
+        width: 80%;
+    }
+    
+}
+@media only screen and (max-width: 322px) {
+    
+}
