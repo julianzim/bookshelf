@@ -3,11 +3,32 @@
     background-image: url('../images/backgrounds/Book_details.png');
 }
 
-@media only screen and (max-width: 950px) {
-    #book-details.background {
-        background: none;
+@media only screen and (min-width: 1551px) {
+    .book-details-content {
+        margin: calc(16vw) auto 100px auto;
     }
 }
+@media only screen and (max-width: 1551px) {
+    .book-details-content {
+        margin: calc(17vw) auto 100px auto;
+    }
+}
+@media only screen and (max-width: 1351px) {
+    .book-details-content {
+        margin: calc(18vw) auto 100px auto;
+    }
+}
+@media only screen and (max-width: 1151px) {
+    .book-details-content {
+        margin: calc(19vw) auto 100px auto;
+    }
+}
+@media only screen and (max-width: 1001px) {
+    .book-details-content {
+        margin: calc(20vw) auto 100px auto;
+    }
+}
+
 
 .book-details-content {
     display: flex;
@@ -16,8 +37,7 @@
     justify-content: space-between;
     row-gap: 30px;
     height: auto;
-    max-width: 1300px;
-    margin: calc(15vw) auto 100px auto;
+    width: clamp(700px, 70%, 1500px);
 }
 
 
@@ -28,15 +48,18 @@
         background: white;
         color: #333;
         flex-direction: column;
-        gap: 20px;
         width: 100%;
         border-radius: 60px;
         padding-block: 30px;
     }
 
+        .coming-soon-block img {
+            width: 100%;
+        }
+
         .coming-soon-block h1 {
-            font-size: 4rem;
             margin: 0;
+            margin-bottom: 20px;
         }
 
             .coming-soon-block-header::after {
@@ -52,14 +75,12 @@
 
     .timer-container {
         display: flex;
-        gap: 3rem;
     }
 
         .digit-box {
             display: inline-block;
             text-align: center;
             vertical-align: middle;
-            font-size: 3.5rem;
             font-weight: bold;
             border-radius: 5px;
             padding-inline: 20px;
@@ -98,15 +119,11 @@
     border-radius: 25px;
 }
 
-
     .book-descr-block {
         display: flex;
-        gap: 40px;
-        padding: 0 4%;
     }
 
         .book-image-left {
-            max-width: 30%;
             margin-block: 20px 0px;
         }
 
@@ -119,18 +136,16 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 20px;
         position: relative;
         max-height: 100%;
         overflow: hidden;
     }
 
-        .book-title-right {
+        .book-details-content h1 {
             margin-block: 0px;
         }
 
         .book-series-right {
-            font-size: 18px;
             font-weight: bold;
             color: #666;
             text-decoration: none;
@@ -202,15 +217,19 @@
             gap: 10px;
             align-items: center;
         }
+            .info-name {
+                font-size: 1em;
+            }
 
             .icon-info-container {
                 width: 40px;
                 vertical-align: middle;
             }
 
-        .info-value {
-            font-weight: bold;
-        }
+            .info-value {
+                font-size: 1em;
+                font-weight: bold;
+            }
 
 
     .video-block {
@@ -525,10 +544,6 @@
             }
 
 
-
-
-
-
         .content-divider-reviews-block {
             border: 0;
             height: 2px;
@@ -596,13 +611,6 @@
         }
 
 
-
-
-
-
-
-
-
 /*** MINOR block ***/
 .minor-block {
     display: flex;
@@ -631,9 +639,8 @@
             .purchase-option {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-evenly;
                 width: 45%;
-                height: 100%;
                 border: 1px solid #000;
                 border-radius: 10px;
             }
@@ -726,3 +733,183 @@
 
 
 
+
+@media only screen and (max-width: 950px) {
+    #book-details.background {
+        background: none;
+    }
+}
+
+
+/* FONTS */
+@media only screen and (min-width: 1801px) {
+    .coming-soon-block {
+        gap: 20px;
+    }
+
+    .coming-soon-block h1 {
+        font-size: 4rem;
+    }
+
+    .timer-container {
+        gap: 3rem;
+    }
+
+    .digit-box {
+        font-size: 3.5rem;
+    }
+}
+@media only screen and (max-width: 1801px) {
+    .coming-soon-block {
+        gap: 20px;
+    }
+    
+    .coming-soon-block h1 {
+        font-size: 3.5rem;
+    }
+
+    .timer-container {
+        gap: 2rem;
+    }
+
+        .digit-box {
+            font-size: 3.0rem;
+        }
+}
+@media only screen and (min-width: 1441px) {
+    .book-descr-block {
+        gap: 40px;
+        padding: 0 4%;
+    }
+
+    .book-image-left {
+        max-width: 30%;
+    }
+
+    .book-descr-right {
+        gap: 5px;
+    }
+
+    .book-series-right, .book-descr-text-right {
+        font-size: 1.125rem;
+    }
+
+    .purchase-top-right-block {
+        height: 150px;
+    }
+
+    .purchase-option-descr,
+    .purchase-option-price,
+    .buy-button {
+        font-size: 1rem;
+    }
+
+    .book-info-block {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 1441px) {
+    .book-descr-block {
+        gap: 30px;
+        padding: 0 3%;
+    }
+
+    .book-image-left {
+        max-width: 35%;
+    }
+
+    .book-descr-right {
+        gap: 5px;
+    }
+
+    .coming-soon-block h1 {
+        font-size: 2.85rem;
+    }
+
+    .timer-container {
+        gap: 1.75rem;
+    }
+
+        .digit-box {
+            font-size: 2.5rem;
+        }
+
+    .book-details-content h1 {
+        font-size: 1.75rem;
+    }
+
+    .book-series-right, .book-descr-text-right {
+        font-size: 1.0rem;
+    }
+
+    .purchase-top-right-block {
+        height: 130px;
+    }
+
+    .purchase-option-descr,
+    .purchase-option-price,
+    .buy-button {
+        font-size: 0.85rem;
+    }
+    
+    .book-info-block {
+        font-size: 1rem;
+    }
+}
+@media only screen and (max-width: 1221px) {
+    .book-descr-block {
+        gap: 20px;
+        padding: 0 2%;
+    }
+
+    .coming-soon-block {
+        gap: 0px;
+    }
+    
+    .coming-soon-block h1 {
+        font-size: 2.5rem;
+    }
+
+    .timer-container {
+        gap: 1.75rem;
+    }
+
+        .digit-box {
+            font-size: 2.2rem;
+        }
+
+    .book-details-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .book-series-right, .book-descr-text-right {
+        font-size: 0.925rem;
+    }
+
+    .purchase-top-right-block {
+        height: 110px;
+    }
+
+    .purchase-option-descr,
+    .purchase-option-price,
+    .buy-button {
+        font-size: 0.7rem;
+    }
+    
+    .book-info-block {
+        font-size: 0.8rem;
+    }
+}
+@media only screen and (max-width: 1025px) {
+    .coming-soon-block h1 {
+        font-size: 2.2rem;
+    }
+
+    .timer-container {
+        gap: 1.4rem;
+    }
+
+        .digit-box {
+            font-size: 1.9rem;
+        }
+}

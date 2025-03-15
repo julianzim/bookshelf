@@ -7,6 +7,7 @@
     <div class="book-details-content">
         {% if not book.active %}
             <div class="coming-soon-block">
+                <!-- <img src="/static/images/icons/coming_soon.png" alt="Coming Soon image" class="coming-soon-image"> -->
                 <h1 class="coming-soon-block-header">Coming soon!</h1>
                 <div class="timer-container" id="timer" data-countdown="{{ book.pub_date.isoformat() }}"></div>
 
@@ -112,7 +113,7 @@
 
             {% if book.active %}
                 <div class="video-block">
-                    <div class="video-block-title">{{ book.title }} aloud</div>
+                    <h1 class="video-block-title">{{ book.title }} aloud</h1>
                     <div class="video-container">
                         <iframe class="video-frame" src="{{ book.aloud_link }}" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
@@ -123,7 +124,7 @@
                 <div class="reviews-block">
                     <div class="reviews-header">
                         <div class="reviews-header-left-block">
-                            <div class="reviews-block-title">Customer reviews</div>
+                            <h1 class="reviews-block-title">Customer reviews</h1>
                             <div class="reviews-rating">
                                 <div class="rating-stars" style="--rating: {{ book_reviews_stats.average_rating }};">★★★★★</div>
                                 <div class="rating-mean-value">{{ book_reviews_stats.average_rating|default("N/A") }}/5</div>
