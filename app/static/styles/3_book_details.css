@@ -682,8 +682,6 @@
         flex-direction: column;
         gap: 5px;
         padding-block: 10px;
-        height: auto;
-        width: 100%;
         background-color: white;
         border-radius: 25px;
     }
@@ -890,7 +888,7 @@
     .book-details-content {
         flex-direction: column;
         width: 100%;
-        background: #fafafa;
+        background: #eaeaea;
     }
 
         .main-block {
@@ -994,7 +992,7 @@
     }
     .book-descr-right {
         align-items: center;
-        background-color: white;
+        background-color: #fff;
         padding: 30px;
         border-radius: 30px;
     }
@@ -1009,6 +1007,18 @@
     }
     .timer-container {
         gap: 1em;
+    }
+    .book-info-block,
+    .video-block,
+    .reviews-block,
+    .related-books-lower-right-block.mob {
+        background: #fff;
+        padding-block: 30px;
+        border-radius: 30px;
+        margin-inline: 4%;
+    }
+    .related-books-grid {
+        padding: 20px;
     }
 }
 @media only screen and (max-width: 426px) {

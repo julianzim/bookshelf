@@ -26,6 +26,8 @@ header {
 }
 @media only screen and (max-width: 951px) {
     header, footer {
+        /* background: linear-gradient(90deg, #fff8e2 0%, #b7d0ff 100%); */
+        /* background: linear-gradient(90deg, #f1ffcd 0%, #dcfd87 100%); */
         background: white;
     }
     header {
