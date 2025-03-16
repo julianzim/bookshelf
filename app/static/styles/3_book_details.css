@@ -52,7 +52,7 @@
         color: #333;
         flex-direction: column;
         width: 90%;
-        border-radius: 60px;
+        border-radius: 40px;
     }
 
         .coming-soon-block img {
@@ -878,7 +878,7 @@
     }
 
     .timer-container {
-        gap: 3em;
+        gap: 2em;
     }
 
     .digit-box {
@@ -959,13 +959,8 @@
 @media only screen and (max-width: 769px) {
     .coming-soon-block {
         font-size: 0.8em;
-        padding-block: 0;
-        padding-top: 40px;
+        padding-block: 40px;
     }
-
-        .timer-container {
-            gap: 2em;
-        }
 
     .review-modal-content {
         margin: 0;
