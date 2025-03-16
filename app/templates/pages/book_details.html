@@ -57,10 +57,25 @@
                 <div class="book-descr-right">
                     <h1 class="book-title-right">{{ book.title }}</h1>
                     <a href="/books" class="book-series-right">{{ book.series }}</a>
+                    {% if book.active %}
+                        <div class="purchase-top-right-block mob">
+                            <h3>Buy now on Amazon</h3>
+                            <div class="purchase-options">
+                                <a href="{{ book.amazon_link }}" class="purchase-option">
+                                    <span class="purchase-option-descr">Hardcover</span>
+                                    <span class="purchase-option-price">from {{ book.hc_price }}$</span>
+                                </a>
+                                <a href="{{ book.amazon_link }}" class="purchase-option">
+                                    <span class="purchase-option-descr">Paperback</span>
+                                    <span class="purchase-option-price">from {{ book.pb_price }}$</span>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="book-descr-text-right">
                         {{ book.summary|safe }}
                     </div>
-                    <button class="descr-show-more-btn">Show more</button>
+                    <a class="descr-show-more-btn">Show more</a>
                 </div>
             </div>
 
@@ -118,6 +133,21 @@
                         <iframe class="video-frame" src="{{ book.aloud_link }}" frameborder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="related-books-lower-right-block mob">
+                    <span class="related-books-block-title">Other books</span>
+                    <hr class="related-books-block-content-divider">
+                    <div class="related-books-grid">
+                        {% for book in related_books %}
+                            <div class="related-book-item">
+                                <a  class="related-book-link" href="{{ url_for('get_book_details', book_title=book.title) }}">
+                                    <img class="related-book-cover" src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover">
+                                </a>
+                                <a class="related-book-title" href="{{ url_for('get_book_details', book_title=book.title) }}">{{ book.title }}</a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -259,14 +289,14 @@
             {% if book.active %}
                 <div class="purchase-top-right-block">
                     <div class="purchase-options">
-                        <div class="purchase-option">
+                        <a href="{{ book.amazon_link }}" class="purchase-option">
                             <span class="purchase-option-descr">Hardcover</span>
                             <span class="purchase-option-price">from {{ book.hc_price }}$</span>
-                        </div>
-                        <div class="purchase-option">
+                        </a>
+                        <a href="{{ book.amazon_link }}" class="purchase-option">
                             <span class="purchase-option-descr">Paperback</span>
                             <span class="purchase-option-price">from {{ book.pb_price }}$</span>
-                        </div>
+                        </a>
                     </div>
                     <div class="buy-button-container">
                         <a class="buy-button" href="{{ book.amazon_link }}">
