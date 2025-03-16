@@ -51,7 +51,7 @@
         background: white;
         color: #333;
         flex-direction: column;
-        width: 100%;
+        width: 90%;
         border-radius: 60px;
     }
 
@@ -875,6 +875,8 @@
 
     .coming-soon-block {
         padding-block: 30px;
+        margin-top: 50px;
+        margin-inline: 5%;
     }
 
     .timer-container {
@@ -888,10 +890,12 @@
     .book-details-content {
         flex-direction: column;
         width: 100%;
+        background: #fafafa;
     }
 
         .main-block {
             padding: 5% 0;
+            background: none;
         }
 
         .main-block,
@@ -927,6 +931,7 @@
 
         .related-books-lower-right-block.mob {
             display: flex;
+            background: none;
         }
 
         .related-books-block-content-divider {
@@ -941,6 +946,10 @@
             .related-book-title {
                 margin-top: 10px;
             }
+    
+    .sort-button-dropdown {
+        background: none;
+    }
 
     .review-modal-content {
         margin: 10% auto;
@@ -977,16 +986,15 @@
     .coming-soon-block {
         font-size: 0.6em;
     }
-
     .book-descr-block {
         flex-direction: column;
         align-items: center;
         gap: 25px;
-        padding: 0 2%;
+        padding: 0 4%;
     }
     .book-descr-right {
         align-items: center;
-        background-color: #dedede;
+        background-color: white;
         padding: 30px;
         border-radius: 30px;
     }
@@ -996,13 +1004,9 @@
     .rating-stars {
         width: 100%;
     }
-    
-}
-@media only screen and (max-width: 601px) {
     .coming-soon-block {
         padding-top: 40px;
     }
-
     .timer-container {
         gap: 1em;
     }

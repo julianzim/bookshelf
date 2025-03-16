@@ -56,7 +56,7 @@
 /* BACKGROUND */
 @media only screen and (max-width: 950px) {
     #books.background {
-        background: none;
+        background: #fafafa;
     }
 }
 

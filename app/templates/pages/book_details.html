@@ -136,21 +136,6 @@
                     </div>
                 </div>
 
-                <div class="related-books-lower-right-block mob">
-                    <span class="related-books-block-title">Other books</span>
-                    <hr class="related-books-block-content-divider">
-                    <div class="related-books-grid">
-                        {% for book in related_books %}
-                            <div class="related-book-item">
-                                <a  class="related-book-link" href="{{ url_for('get_book_details', book_title=book.title) }}">
-                                    <img class="related-book-cover" src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover">
-                                </a>
-                                <a class="related-book-title" href="{{ url_for('get_book_details', book_title=book.title) }}">{{ book.title }}</a>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-
                 <div class="reviews-block">
                     <div class="reviews-header">
                         <div class="reviews-header-left-block">
@@ -240,6 +225,21 @@
                         </script>
 
 
+                    </div>
+                </div>
+
+                <div class="related-books-lower-right-block mob">
+                    <span class="related-books-block-title">Other books</span>
+                    <hr class="related-books-block-content-divider">
+                    <div class="related-books-grid">
+                        {% for book in related_books %}
+                            <div class="related-book-item">
+                                <a  class="related-book-link" href="{{ url_for('get_book_details', book_title=book.title) }}">
+                                    <img class="related-book-cover" src="/static/images/covers/{{ book.cover }}" alt="{{ book.title }} cover">
+                                </a>
+                                <a class="related-book-title" href="{{ url_for('get_book_details', book_title=book.title) }}">{{ book.title }}</a>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             {% endif %}

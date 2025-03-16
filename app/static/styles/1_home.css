@@ -164,7 +164,7 @@
 
 @media only screen and (max-width: 950px) {
     #home.background {
-        background: none;
+        background: #fafafa;
     }
 
     .scroll-button {
@@ -335,12 +335,6 @@
 
     .grid-in-wrapper.blog {
         padding: 15px 20px;
-    }
-}
-
-@media only screen and (max-width: 1441px) {
-    .grid-in-wrapper.blog {
-        padding: 10px 20px;
     }
 }
 
