@@ -19,7 +19,7 @@ from src.reviews.models import Reviews
 from src.queries import get_book_by_title
 
 
-TABLE_PATH = Path("misc/upload/users/reviews.xlsx")
+TABLE_PATH = Path("misc/upload/reviews/reviews.xlsx")
 
 get_async_session_context = contextlib.asynccontextmanager(get_async_session)
 get_user_db_context = contextlib.asynccontextmanager(get_user_db)
