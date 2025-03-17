@@ -278,11 +278,12 @@
                     flex-wrap: wrap;
                     align-items: center;
                     gap: 0 20px;
+                    font-size: 1.2em;
                 }
 
                     .rating-stars {
                         display: inline-block;
-                        font-size: 1.8em;
+                        font-size: 1.5em;
                         letter-spacing: 5px;
                         position: relative;
                         color: #ccc;
@@ -557,9 +558,10 @@
 
             .review-info {
                 display: flex;
-                gap: 15px;
+                gap: 5px 15px;
                 font-weight: bold;
                 font-size: 0.875em;
+                flex-wrap: wrap;
             }
 
                 /* .reviewer-name {
@@ -569,9 +571,10 @@
             .review-rating-and-title {
                 display: flex;
                 align-items: center;
-                gap: 20px;
+                gap: 5px 20px;
                 font-weight: bold;
-                font-size: 1.125em;
+                font-size: 1em;
+                flex-wrap: wrap;
             }
 
                 /* .review-rating-stars {
@@ -994,9 +997,9 @@
     .book-image-left {
         max-width: 60%;
     }
-    .rating-stars {
+    /* .rating-stars {
         width: 100%;
-    }
+    } */
     .coming-soon-block {
         padding-top: 40px;
     }
@@ -1014,6 +1017,9 @@
     }
     .related-books-grid {
         padding: 20px;
+    }
+    .review-text {
+        padding: 0;
     }
 }
 @media only screen and (max-width: 426px) {
