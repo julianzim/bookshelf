@@ -640,6 +640,7 @@
                 border-radius: 10px;
                 text-decoration: none;
                 color: black;
+                background: #eee;
             }
 
                 .purchase-option:hover {
