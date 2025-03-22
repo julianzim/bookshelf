@@ -32,7 +32,7 @@ header {
     }
     header {
         border-bottom: 1px solid #ddd;
-        box-shadow: 5px 0px 50px rgb(0, 0, 0, 0.2);
+        box-shadow: 5px 0px 20px rgb(0, 0, 0, 0.2);
     }
     footer {
         border-top: 1px solid #ddd;
