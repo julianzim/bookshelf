@@ -59,7 +59,7 @@ async def get_books(
 async def get_book_details(
     book_title: str,
     request: Request,
-    sort_by: str = 'created_at',
+    sort_by: str = 'rating',
     order: str = 'desc',
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
