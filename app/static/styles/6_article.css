@@ -3,7 +3,7 @@
     background-image: url('../images/backgrounds/Blog.png');
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: 951px) {
     #article.background {
         background: none;
     }
@@ -13,11 +13,17 @@
     body {
         font-size: 1rem;
     }
+    #article-content.content {
+        padding: 40px 0;
+    }
 }
 
 @media only screen and (max-width: 1441px) {
     body {
         font-size: 0.9rem;
+    }
+    #article-content.content {
+        padding: 40px 0;
     }
 }
 
@@ -43,6 +49,10 @@
     header {
         font-size: 1rem;
     }
+    #article-content.content {
+        padding: 20px 0;
+        background-color: #ffffff;
+    }
 }
 @media only screen and (max-width: 601px) {
     body {
@@ -51,7 +61,7 @@
 }
 
 #article-content.content {
-    padding: 40px 0;
+    /* padding: 40px 0; */
     display: flex;
     flex-direction: column;
     row-gap: 20px;
