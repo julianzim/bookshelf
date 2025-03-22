@@ -92,7 +92,11 @@
     .card {
         flex-direction: column;
         width: 30%;
-        box-shadow: none;
+        box-shadow: 
+            3px 3px 5px rgb(150,150,150,0.15),
+            -3px 3px 5px rgb(150,150,150,0.15),
+            3px -3px 5px rgb(150,150,150,0.15),
+            -3px -3px 5px rgb(150,150,150,0.15);
         border: 1px solid #ddd;
     }
 }
@@ -147,6 +151,10 @@
 }
 
 @media only screen and (max-width: 426px) {
+    .content h1 {
+        font-size: 1.45rem;
+    }
+
     .card-header {
         flex-direction: column-reverse;
     }
