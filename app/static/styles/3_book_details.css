@@ -242,11 +242,11 @@
         .video-container {
             display: flex;
             justify-content: center;
+            aspect-ratio: 1.5;
         }
 
             .video-frame {
-                width: 95%;
-                height: 500px;
+                width: 100%;
             }
 
 
@@ -892,7 +892,7 @@
     .book-details-content {
         flex-direction: column;
         width: 100%;
-        background: #f9f9f9;
+        background: #f1f1f1;
     }
 
         .main-block {
