@@ -52,8 +52,8 @@ async def upload_books(table_path: Path):
                 max_age = row["max_age"],
                 amazon_link = row["amazon_link"],
                 aloud_link = row["aloud_link"],
-                hc_price = row["hc_price"],
-                pb_price = row["pb_price"],
+                hc_price = float(row["hc_price"]),
+                pb_price = float(row["pb_price"]),
                 active = True
             )
         )
