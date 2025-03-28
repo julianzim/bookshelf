@@ -8,6 +8,7 @@ from pydantic import ValidationError
 
 from src.database import get_async_session
 from src.auth.base_config import current_user
+from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewCreate
@@ -25,7 +26,7 @@ async def create_review(
     title: str = Form(...),
     text: str = Form(...),
     rating: int = Form(...),
-    curr_user = Depends(current_user),
+    curr_user: User = Depends(current_user),
     session: AsyncSession = Depends(get_async_session)
 ):
     logger.debug(f'{curr_user} requests to add a new review')
