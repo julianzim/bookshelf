@@ -578,8 +578,15 @@ header {
         .auth-form {
             display: flex;
             flex-direction: column;
+            row-gap: 10px;
             width: 100%;
         }
+
+            .input-container {
+                display: flex;
+                flex-direction: column;
+                row-gap: 3px;
+            }
 
         .auth-form label {
             font-size: 1.1rem;
@@ -588,12 +595,23 @@ header {
 
         .auth-form input {
             padding: 10px;
-            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 1.1rem;
             transition: border-color 0.3s;
+            width: 100%;
+        }
+
+        .password-container {
+            display: flex;
+            position: relative;
+        }
+
+        .password-container > svg {
+            position: absolute;
+            right: 10px;
+            top: 9px;
         }
 
         .auth-form input:focus {
@@ -602,9 +620,8 @@ header {
         }
 
         .error, .password-strength {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: red;
-            margin-bottom: 15px;
         }
 
         .auth-submit-btn {
