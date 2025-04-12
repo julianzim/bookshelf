@@ -44,8 +44,18 @@ document.getElementById('register-form').addEventListener('submit', async functi
 
 document.getElementById('register-password').addEventListener('input', function() {
     const password = this.value;
+    const strengthElement = document.getElementById('register-password-strength');
     const strength = getPasswordStrength(password);
-    document.getElementById('register-password-strength').textContent = strength;
+
+    strengthElement.textContent = strength;
+
+    if (password.length < 6) {
+        strengthElement.style.color = 'red';
+    } else if (password.length < 12) {
+        strengthElement.style.color = 'orange';
+    } else {
+        strengthElement.style.color = 'green';
+    }
 });
 
 function getPasswordStrength(password) {
