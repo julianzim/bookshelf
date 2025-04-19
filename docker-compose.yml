@@ -4,8 +4,6 @@ networks:
 services:
 
   app:
-    build:
-      context: ./app
     image: yassyalil-app:latest
     container_name: app
     restart: always
