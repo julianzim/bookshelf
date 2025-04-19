@@ -17,7 +17,7 @@ services:
       - postgres
     networks:
       - dev
-    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    command: "python src/main.py"
 
   postgres:
     image: postgres:latest
