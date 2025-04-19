@@ -10,4 +10,4 @@ build-job:
 deploy-job:
   stage: deploy
   script: 
-    - docker compose up -d app
+    - docker compose up -d --no-deps app
