@@ -9,5 +9,6 @@ build-job:
 
 deploy-job:
   stage: deploy
-  script: 
+  script:
+    - docker compose rm -sf app || true
     - docker compose up -d --no-deps app
