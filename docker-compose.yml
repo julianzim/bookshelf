@@ -6,6 +6,7 @@ services:
   app:
     build:
       context: ./app
+    image: yassyalil-app:v1
     container_name: app
     restart: always
     environment:
