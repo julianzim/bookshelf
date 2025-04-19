@@ -10,6 +10,6 @@ build-job:
 deploy-job:
   stage: deploy
   script:
-    - docker compose stop app || true
-    - docker compose rm -sf app || true
+    # - docker compose stop app || true
+    # - docker compose rm -sf app || true
     - docker compose up -d --no-deps app
