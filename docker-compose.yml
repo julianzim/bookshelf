@@ -17,7 +17,7 @@ services:
       - postgres
     networks:
       - dev
-    command: "python -m src.main"
+    # command: "python -m src.main"
 
   postgres:
     image: postgres:latest
