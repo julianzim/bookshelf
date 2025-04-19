@@ -1,0 +1,11 @@
+stages:
+  - build
+  - deploy
+
+build-job:
+  stage: build
+  script: docker build -t yassyalil-app:latest ./app
+
+deploy-job:
+  stage: deploy
+  script: docker compose up -d
