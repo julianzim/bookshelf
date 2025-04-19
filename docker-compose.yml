@@ -5,7 +5,7 @@ services:
 
   app:
     image: yassyalil-app:latest
-    container_name: app
+    # container_name: app
     restart: always
     environment:
       LOG_LEVEL: ${APP_LOG_LEVEL}
