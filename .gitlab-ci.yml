@@ -10,4 +10,5 @@ build-job:
 deploy-job:
   stage: deploy
   script:
+    - cd /opt/yassyalil
     - docker compose up -d --no-deps app
