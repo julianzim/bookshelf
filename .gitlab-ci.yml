@@ -13,6 +13,3 @@ deploy-job:
     - cp "$ENV" .env
   script:
     - docker compose up -d
-  after_script:
-    - ls -la
-    - cat .env
