@@ -15,3 +15,4 @@ deploy-job:
     - docker compose up -d
   after_script:
     - ls -la
+    - cat .env
