@@ -1,12 +1,5 @@
-static/images/previews
-static/images/header_images
-app/static/images/previews/*
-app/static/images/header_images/*
-app/misc/upload/articles/blog/*
-postgres/*/*
-certbot/*/*
-app/static/images/YassyaLil.*
-app/misc/upload/reviews/reviews.xlsx
+#CUSTOM
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

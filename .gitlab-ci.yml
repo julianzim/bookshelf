@@ -4,10 +4,10 @@ stages:
 
 build-job:
   stage: build
-  script: 
-    - docker build -t yassyalil-app:latest ./app
+  script:
+    - docker build -t yassyalil-app:latest
 
 deploy-job:
   stage: deploy
   script:
-    - docker compose up -d --no-deps app
+    - docker compose up -d

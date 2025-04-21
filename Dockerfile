@@ -1,4 +1,4 @@
-FROM python:3.12
+FROM python:3.12.10-alpine
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ COPY . .
 
 RUN chmod -R 777 /app
 
-# CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+#CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
