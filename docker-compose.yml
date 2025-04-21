@@ -14,8 +14,6 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    depends_on:
-      - postgres
     networks:
       - yassyalil
     command: "python src/main.py"
