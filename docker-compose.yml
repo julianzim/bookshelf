@@ -12,8 +12,6 @@ services:
       LOG_LEVEL: ${APP_LOG_LEVEL}
     ports:
       - "8000:8000"
-    volumes:
-      - .:/app
     networks:
       - yassyalil
     command: "python src/main.py"
