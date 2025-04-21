@@ -1,8 +1,7 @@
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from pprint import pprint
-pprint(['1', sys.path])
+
 import uvicorn
 
 from fastapi import FastAPI, Depends, Request, HTTPException, status
