@@ -4,12 +4,12 @@ stages:
 
 build-job:
   stage: build
-  before_script:
-    - cp "$ENV" .env
   script:
     - docker build -t yassyalil-app:latest .
 
 deploy-job:
   stage: deploy
+  before_script:
+    - cp "$ENV" .env
   script:
     - docker compose up -d
