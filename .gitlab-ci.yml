@@ -17,7 +17,7 @@ test-job:
   before_script:
     - cp "$ENV" .env
   script:
-    - docker run --rm --env-file .env yassyalil-app pytest -s -v
+    - docker run --rm --env-file .env --network yassyalil yassyalil-app pytest -s -v
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
 
