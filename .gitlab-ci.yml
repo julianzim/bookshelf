@@ -1,6 +1,8 @@
 stages:
   - build
+  - test
   - deploy
+
 
 build-job:
   stage: build
@@ -8,6 +10,15 @@ build-job:
     - docker build -t yassyalil-app:latest .
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
+
+
+test-job:
+  stage: test
+  script:
+    - docker run --rm yassyalil-app pytest -s -v
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'
+
 
 deploy-job:
   stage: deploy
