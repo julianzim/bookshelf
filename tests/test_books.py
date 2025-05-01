@@ -15,6 +15,12 @@ async def test_get_books():
         response = await ac.get("/books")
         assert response.status_code == 200
 
+        soup = BeautifulSoup(response.text, 'html.parser')
+
+        books = soup.find_all('div', class_='book-item')
+        assert len(books) == 15
+        
+
 
 @pytest.mark.asyncio(loop_scope="session")
 async def test_get_book_details():
@@ -26,8 +32,11 @@ async def test_get_book_details():
         assert response.status_code == 200
 
         soup = BeautifulSoup(response.text, 'html.parser')
+
         title = soup.find('h1', class_='book-title-right')
-        
-        assert 'My Friend Joy' in title
+        assert 'My Friend Joy' in title.text
+
+        img = soup.find('img', class_='book-cover-details')
+        assert '/static/images/covers/MyFriendJoy.png' in img['src']
 
         
