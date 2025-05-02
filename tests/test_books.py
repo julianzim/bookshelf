@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from src.main import app
 
 
-@pytest.mark.asyncio(loop_scope="session")
+@pytest.mark.asyncio
 async def test_get_books():
     async with AsyncClient(
         transport=ASGITransport(app=app),
@@ -22,7 +22,7 @@ async def test_get_books():
         
 
 
-@pytest.mark.asyncio(loop_scope="session")
+@pytest.mark.asyncio
 async def test_get_book_details():
     async with AsyncClient(
         transport=ASGITransport(app=app),
