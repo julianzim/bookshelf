@@ -1,48 +1,44 @@
-import statistics
-import logging
 import os
 import pytz
+import logging
+import statistics
 
 from docx import Document
 from datetime import datetime
 
-from src.reviews.models import Reviews
+from src.reviews.schemas import ReviewOut, BookReviewStats
 
 
-
-async def localize_reviews(reviews: list[Reviews], timezone: pytz.timezone):
-    localized_reviews = []
+async def localize_reviews(reviews: list[ReviewOut], timezone: pytz.timezone) -> list[ReviewOut]:
+    # TODO: added logging
     for review in reviews:
         created_at = review.created_at
         
         if created_at.tzinfo is None:
-            created_at = pytz.UTC.localize(created_at)
-
-        localized_created_at = created_at.astimezone(timezone)
-
-        updated_review = review._asdict()
-        updated_review['created_at'] = localized_created_at
-
-        localized_reviews.append(updated_review)
-    
-    return localized_reviews
+            review.created_at = pytz.UTC.localize(created_at)
+        
+        review.created_at = created_at.astimezone(timezone)
+    return reviews
 
 
-async def get_reviews_statistics(reviews: list[Reviews]):
+async def get_reviews_statistics(reviews: list[ReviewOut]) -> BookReviewStats:
+    # TODO: added logging
     ratings = [review.rating for review in reviews]
-    reviews_texts = [review.text for review in reviews]
+    texts = [review.text for review in reviews]
+    
     if ratings:
         average_rating = round(statistics.mean(ratings), 1)
     else:
-        average_rating = 0
+        average_rating = 0.0
     ratings_count = len(ratings)
-    reviews_count = len(reviews_texts)
-        
-    return {
-        "average_rating": average_rating,
-        "ratings_count": ratings_count,
-        "reviews_count": reviews_count
-    }
+    reviews_count = len(texts)
+    
+    stats = BookReviewStats(
+        average_rating=average_rating,
+        ratings_count=ratings_count,
+        reviews_count=reviews_count
+    )
+    return stats
 
 
 def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = False):
