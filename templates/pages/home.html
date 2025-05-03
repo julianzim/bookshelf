@@ -14,7 +14,7 @@
                         <div class="book-item-in-wrapper">
                             <a href="{{ url_for('get_book_details', book_title=book.title) }}" 
                                 class="book-cover-container">
-                                <img src="/static/images/covers/{{ book.image }}" 
+                                <img src="/static/images/covers/{{ book.cover }}" 
                                     alt="{{ book.title }} Cover" 
                                     class="book-cover-in-wrapper">
                                 {% if not book.active %}
