@@ -6,6 +6,7 @@ from src.auth.models import User
 from src.books.models import Books, Themes
 from src.books.schemas import BookCard, BookDetail
 from src.reviews.models import Reviews
+from src.reviews.schemas import ReviewOut
 from src.articles.models import Articles
 from src.database import async_engine, Base
 from misc.utils import get_logger
@@ -67,7 +68,7 @@ async def get_all_book_reviews(
     order_by: str,
     order_method: str,
     session: AsyncSession
-):
+) -> list[ReviewOut]:
     valid_order_columns = ['created_at', 'rating']
     valid_order_methods = ['asc', 'desc']
     
@@ -94,8 +95,11 @@ async def get_all_book_reviews(
         .order_by(order_func(getattr(Reviews, order_by)))
     )
     result = await session.execute(query)
-
-    return result.fetchall()
+    
+    reviews_orm = result.fetchall()
+    reviews = [ReviewOut.model_validate(review) for review in reviews_orm]
+    
+    return reviews
 
 
 async def get_active_articles(
