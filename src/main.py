@@ -79,23 +79,12 @@ async def get_home(
     current_user = Depends(current_user_optional),
     session: AsyncSession = Depends(get_async_session)
 ):
-    current_user_log = current_user or 'Unauthenticated user'
-
-    root_logger.debug(f"{current_user_log} requests the Home page")
-
     cookies_accepted = request.cookies.get('cookies_accepted', 'false')
+    cookies_accepted_log = "cookies accepted" if cookies_accepted else "cookies discarded"
+    current_user_log = current_user or 'Unauthenticated user'
+    root_logger.info(f"{current_user_log} [{cookies_accepted_log}] requests the Home page")
 
-    books_data = await get_all_books(session=session)
-    books = [
-        {
-            "id": book[0],
-            "title": book[1],
-            "image": book[2],
-            "pub_date": book[3],
-            "active": book[4]
-        } for book in books_data
-    ]
-
+    books = await get_all_books(session=session)
     root_logger.info(f"Books found: {len(books)} for {current_user_log}")
 
     articles_data = await get_active_articles(session=session)
@@ -108,7 +97,6 @@ async def get_home(
             'preview': article[4]
         } for article in articles_data
     ]
-
     root_logger.info(f"Articles found: {len(articles)} for {current_user_log}")
 
     return templates.TemplateResponse(
