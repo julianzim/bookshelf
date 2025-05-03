@@ -1,8 +1,10 @@
+from fastapi import HTTPException
 from sqlalchemy import select, join, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.models import User
 from src.books.models import Books, Themes
+from src.books.schemas import BookCard, BookDetail
 from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.database import async_engine, Base
@@ -20,35 +22,30 @@ async def reset_database():
     print('База данных сброшена')
 
 
-async def get_all_books(
-    session: AsyncSession
-):
-    query = (
-        select(Books.id, Books.title, Books.cover, Books.pub_date, Books.active)
-        .order_by(asc(Books.pub_date))
-    )
+async def get_all_books(session: AsyncSession) -> list[BookCard]:
+    query = select(Books).order_by(asc(Books.pub_date))
+    result = await session.execute(query)
+    
+    books_orm = result.scalars().all()
+    books = [BookCard.model_validate(book) for book in books_orm]
+
+    return books
+
+
+async def get_book_by_title(title: str, session: AsyncSession) -> BookDetail | None:
+    query = select(Books).where(Books.title == title)
     result = await session.execute(query)
 
-    return result.fetchall()
+    book_orm = result.scalars().first()
+    if book_orm is None:
+        logger.error(f"Book \"{title}\" not found")
+        raise HTTPException(status_code=404, detail=f"Book \"{title}\" not found")
+    else:
+        book = BookDetail.model_validate(book_orm)
+        return book
 
 
-async def get_book_by_title(
-    title: str,
-    session: AsyncSession
-):
-    query = (
-        select(Books)
-        .where(Books.title == title)
-    )
-    result = await session.execute(query)
-
-    return result.scalars().first()
-
-
-async def get_related_books_by_title(
-    title: str,
-    session: AsyncSession
-):
+async def get_related_books_by_title(title: str, session: AsyncSession) -> list[BookCard]:
     query = (
         select(Books)
         .where(
@@ -58,8 +55,11 @@ async def get_related_books_by_title(
         .order_by(asc(Books.pub_date))
     )
     result = await session.execute(query)
+    
+    books_orm = result.scalars().all()
+    books = [BookCard.model_validate(book) for book in books_orm]
 
-    return result.scalars().all()
+    return books
 
 
 async def get_all_book_reviews(
