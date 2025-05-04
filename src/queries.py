@@ -8,6 +8,7 @@ from src.books.schemas import BookCard, BookDetail
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewOut
 from src.articles.models import Articles
+from src.articles.schemas import ArticleCard, ArticleDetail, ThemeDetail
 from src.database import async_engine, Base
 from misc.utils import get_logger
 
@@ -102,28 +103,24 @@ async def get_all_book_reviews(
     return reviews
 
 
-async def get_active_articles(
-    session: AsyncSession
-):
+async def get_active_articles(session: AsyncSession) -> list[ArticleCard]:
     query = (
-        select(
-            Articles.id,
-            Articles.title,
-            Articles.summary,
-            Articles.created_at,
-            Articles.preview
-        )
+        select(Articles)
         .where(Articles.active == True)
         .order_by(desc(Articles.created_at))
     )
     result = await session.execute(query)
-    return result.fetchall()
+
+    articles_orm = result.scalars().all()
+    articles = [ArticleCard.model_validate(article) for article in articles_orm]
+
+    return articles
 
 
 async def get_article_by_id(
     id: int,
     session: AsyncSession
-):
+) -> tuple[ArticleDetail, ThemeDetail]:
     query = (
         select(Articles, Themes)
         .join(Themes, Articles.theme == Themes.id)
@@ -133,11 +130,12 @@ async def get_article_by_id(
         )
     )
     result = await session.execute(query)
-    article, theme = result.fetchall()[0]
+    if result is None:
+        logger.error(f"Article id={id} not found")
+        raise HTTPException(status_code=404, detail="Article not found")
 
-    if article:
-        logger.debug(f'get_article_by_id found article: {article}, theme: {theme}')
-    else:
-        logger.debug(f'get_article_by_id found no article with id {id}')
+    article_orm, theme_orm = result.first()
+    article = ArticleDetail.model_validate(article_orm)
+    theme = ThemeDetail.model_validate(theme_orm)
     
     return article, theme
