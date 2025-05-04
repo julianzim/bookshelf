@@ -42,9 +42,10 @@ async def get_book_by_title(title: str, session: AsyncSession) -> BookDetail | N
     if book_orm is None:
         logger.error(f"Book \"{title}\" not found")
         raise HTTPException(status_code=404, detail=f"Book \"{title}\" not found")
-    else:
-        book = BookDetail.model_validate(book_orm)
-        return book
+
+    book = BookDetail.model_validate(book_orm)
+
+    return book
 
 
 async def get_related_books_by_title(title: str, session: AsyncSession) -> list[BookCard]:
