@@ -1,14 +1,26 @@
-from datetime import datetime
+import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 
 
-class GetAllArticles(BaseModel):
+class BaseArticle(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+
+class ArticleCard(BaseArticle):
     id: int
-    theme: str
     title: str
-    summary: str
+    summary: str = Field(max_length=2000)
+    created_at: datetime.datetime
+    preview: str = Field(pattern=r".+\.(png|jpg|jpeg)$")
+
+
+class ArticleDetail(ArticleCard):
+    theme: int
     text: str
-    created_at: datetime
-    read_time: int
-    preview: str
+    read_time: int = Field(gt=0, lt=60)
+    header_image: str = Field(pattern=r".+\.(png|jpg|jpeg)$")
+
+
+class ThemeDetail(BaseArticle):
+    name: str
