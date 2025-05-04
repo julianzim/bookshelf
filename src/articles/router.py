@@ -23,20 +23,9 @@ async def get_blog(
     session: AsyncSession = Depends(get_async_session)
 ):
     current_user_log = current_user or 'Unauthenticated user'
-
     logger.debug(f'{current_user_log} requests the Blog page')
 
-    articles_data = await get_active_articles(session=session)
-    articles = [
-        {
-            'id': article[0],
-            'title': article[1],
-            'summary': article[2],
-            'created_at': article[3],
-            'preview': article[4]
-        } for article in articles_data
-    ]
-
+    articles = await get_active_articles(session=session)
     logger.info(f"Articles found: {len(articles)} for {current_user_log}")
     
     return templates.TemplateResponse(
@@ -57,26 +46,20 @@ async def get_article(
     session: AsyncSession = Depends(get_async_session)
 ):
     current_user_log = current_user or 'Unauthenticated user'
-
     logger.debug(f'{current_user_log} requests page of article "{article_id}"')
 
     article, theme = await get_article_by_id(
         id = article_id,
         session = session
     )
+    logger.info(f'Article id={article.id} found for {current_user_log}')
 
-    if not article:
-        logger.error(f"Article id={article_id} not found")
-        raise HTTPException(status_code=404, detail="Article not found")
-    else:
-    #     logger.info(f'Article id={article.id} found for {current_user_log}')
-
-        return templates.TemplateResponse(
-            "pages/article.html",
-            {
-                "request": request,
-                "article": article,
-                "theme": theme,
-                "current_user": current_user
-            }
-        )
+    return templates.TemplateResponse(
+        "pages/article.html",
+        {
+            "request": request,
+            "article": article,
+            "theme": theme,
+            "current_user": current_user
+        }
+    )

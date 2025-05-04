@@ -7,7 +7,7 @@ import uvicorn
 from fastapi import FastAPI, Depends, Request, HTTPException, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.requests import Request
-from fastapi.responses import RedirectResponse, JSONResponse, HTMLResponse
+from fastapi.responses import RedirectResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -87,16 +87,7 @@ async def get_home(
     books = await get_all_books(session=session)
     root_logger.info(f"Books found: {len(books)} for {current_user_log}")
 
-    articles_data = await get_active_articles(session=session)
-    articles = [
-        {
-            'id': article[0],
-            'title': article[1],
-            'summary': article[2],
-            'created_at': article[3],
-            'preview': article[4]
-        } for article in articles_data
-    ]
+    articles = await get_active_articles(session=session)
     root_logger.info(f"Articles found: {len(articles)} for {current_user_log}")
 
     return templates.TemplateResponse(
