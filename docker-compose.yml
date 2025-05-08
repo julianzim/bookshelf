@@ -16,4 +16,4 @@ services:
       - "8000:8000"
     networks:
       - yassyalil
-    command: "python src/main.py"
+    command: sh -c "alembic upgrade head && python src/main.py"
