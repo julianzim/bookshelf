@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Moderation Request</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            background-color: #fff;
+            padding: 30px;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        .review-info {
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .buttons {
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 12px 20px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .btn-approve {
+            background-color: #4CAF50;
+        }
+
+        .btn-reject {
+            background-color: #e74c3c;
+        }
+
+        .rejection-form {
+            margin-top: 20px;
+            display: none;
+            padding: 20px;
+            background-color: #fcebea;
+            border: 1px solid #e74c3c;
+            border-radius: 5px;
+        }
+
+        .rejection-form label {
+            display: block;
+            margin: 8px 0;
+        }
+
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            margin-top: 15px;
+            background-color: #c0392b;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>New Review Moderation Request</h2>
+        <div class="review-info">
+            <p><strong>Username:</strong> {{ user.username }} <strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Book Title:</strong> {{ book_title }}</p>
+            <p><strong>Rating:</strong> {{ review.rating }} / 5</p>
+            <p><strong>Review Title:</strong> {{ review.title }}</p>
+            <p><strong>Review Text:</strong><br>{{ review.text }}</p>
+            <p><strong>Created at:</strong><br>{{ review.created_at }}</p>
+        </div>
+
+        <div class="buttons">
+            <a href="{{ approve_url }}" class="btn btn-approve">Approve</a>
+            <a href="#" class="btn btn-reject" onclick="document.getElementById('rejection-form').style.display='block'; return false;">Reject</a>
+        </div>
+
+        <form id="rejection-form" class="rejection-form" method="post" action="{{ reject_url }}">
+            <p><strong>Select a reason for rejection:</strong></p>
+            <label><input type="radio" name="reason" value="Inappropriate language"> Inappropriate language</label>
+            <label><input type="radio" name="reason" value="Off-topic content"> Off-topic content</label>
+            <label><input type="radio" name="reason" value="Spam or promotional"> Spam or promotional</label>
+            <label><input type="radio" name="reason" value="Contains personal info"> Contains personal information</label>
+            <label><input type="radio" name="reason" value="Low-effort or unclear"> Low-effort or unclear</label>
+            <label><input type="radio" name="reason" onclick="document.getElementById('custom-reason').style.display='block';"> Other</label>
+
+            <div id="custom-reason" style="display:none; margin-top:10px;">
+                <label>Reason:</label>
+                <textarea name="reason" rows="5" placeholder="Enter other reason here..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit Rejection</button>
+        </form>
+
+        <div class="footer">
+            &copy; {{ year }} YassyaLil — Moderation Panel
+        </div>
+    </div>
+</body>
+</html>
