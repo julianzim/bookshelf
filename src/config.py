@@ -7,15 +7,18 @@ from fastapi_mail import ConnectionConfig
 load_dotenv()
 
 
-DB_HOST = os.environ.get("DB_HOST")
-DB_PORT = os.environ.get("DB_PORT")
-DB_NAME = os.environ.get("DB_NAME")
-DB_USER = os.environ.get("DB_USER")
-DB_PASS = os.environ.get("DB_PASS")
+class AppConfig(BaseModel):
+    APP_MODE: str = os.environ.get("APP_MODE")
+    APP_LOG_LEVEL: str = os.environ.get("APP_LOG_LEVEL")
+    APP_SECRET_AUTH: str = os.environ.get("APP_SECRET_AUTH")
 
-SECRET_AUTH = os.environ.get("SECRET_AUTH")
 
-LOG_LEVEL = os.environ.get("LOG_LEVEL")
+class DatabaseConfig(BaseModel):
+    DB_HOST: str = os.environ.get("DB_HOST")
+    DB_PORT: int = os.environ.get("DB_PORT")
+    DB_NAME: str = os.environ.get("DB_NAME")
+    DB_USER: str = os.environ.get("DB_USER")
+    DB_PASS: str = os.environ.get("DB_PASS")
 
 
 class EmailConfig(BaseModel):
@@ -27,6 +30,9 @@ class EmailConfig(BaseModel):
     MAIL_STARTTLS: bool = True
     MAIL_SSL_TLS: bool = False
 
+
+app_config = AppConfig()
+db_config = DatabaseConfig()
 email_config = EmailConfig()
 
 mail_conf = ConnectionConfig(

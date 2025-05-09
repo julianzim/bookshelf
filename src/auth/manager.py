@@ -7,15 +7,15 @@ from fastapi_mail import FastMail, MessageSchema
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
-from src.config import SECRET_AUTH, mail_conf
+from src.config import app_config, mail_conf
 from misc.utils import get_logger
 
 
 logger = get_logger(__name__)
 
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
-    reset_password_token_secret = SECRET_AUTH
-    verification_token_secret = SECRET_AUTH
+    reset_password_token_secret = app_config.APP_SECRET_AUTH
+    verification_token_secret = app_config.APP_SECRET_AUTH
 
 
     async def create(

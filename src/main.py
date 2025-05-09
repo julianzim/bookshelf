@@ -12,6 +12,7 @@ from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.config import app_config
 from src.queries import get_all_books, get_active_articles
 from src.database import get_async_session
 from src.auth.base_config import auth_backend, fastapi_users, current_user_optional
@@ -22,19 +23,17 @@ from src.articles.router import router as router_blog
 from misc.utils import get_logger
 
 
-APP_MODE = "production"
-
 root_logger = get_logger(
     name = __name__,
-    log_level = "DEBUG",
+    log_level = app_config.APP_LOG_LEVEL,
     set_sqla_logger = False
 )
 
 templates = Jinja2Templates(directory = "templates/")
 
-docs_url=None if APP_MODE == "production" else "/docs"
-redoc_url=None if APP_MODE == "production" else "/redoc"
-openapi_url=None if APP_MODE == "production" else "/openapi.json"
+docs_url=None if app_config.APP_MODE == "production" else "/docs"
+redoc_url=None if app_config.APP_MODE == "production" else "/redoc"
+openapi_url=None if app_config.APP_MODE == "production" else "/openapi.json"
 
 app = FastAPI(
     title = "Yassya Lil",
