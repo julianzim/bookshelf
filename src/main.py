@@ -17,6 +17,7 @@ from src.queries import get_all_books, get_active_articles
 from src.database import get_async_session
 from src.auth.base_config import auth_backend, fastapi_users, current_user_optional
 from src.auth.schemas import UserCreate, UserRead
+from src.auth.router import router as auth_pages_router
 from src.books.router import router as router_books
 from src.reviews.router import router as router_reviews
 from src.articles.router import router as router_blog
@@ -47,6 +48,7 @@ app.mount("/static", StaticFiles(directory = "static"), name = "static")
 app.include_router(router_books)
 app.include_router(router_reviews)
 app.include_router(router_blog)
+app.include_router(auth_pages_router)
 app.include_router(
     fastapi_users.get_auth_router(auth_backend),
     prefix = "/auth",
@@ -115,59 +117,6 @@ async def get_about(
         {
             "request": request,
             "current_user": current_user
-        }
-    )
-
-
-@app.get("/auth/login")
-async def get_login_page(
-    request: Request,
-    current_user = Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "pages/login.html",
-        {
-            "request": request,
-            "current_user": current_user
-        }
-    )
-
-
-@app.get("/auth/register")
-async def get_register_page(
-    request: Request,
-    current_user = Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "pages/register.html",
-        {
-            "request": request,
-            "current_user": current_user
-        }
-    )
-
-
-@app.get("/auth/forgot-password")
-async def get_forgot_password_page(
-    request: Request,
-    current_user = Depends(current_user_optional)
-):
-    return templates.TemplateResponse(
-        "pages/forgot-password.html",
-        {
-            "request": request,
-            "current_user": current_user
-        }
-    )
-
-
-@app.get("/auth/reset-password")
-async def get_reset_password_page(request: Request, token: str):
-    return templates.TemplateResponse(
-        "pages/reset-password.html",
-        {
-            "request": request,
-            "token": token
         }
     )
 
