@@ -67,7 +67,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
             
     async def send_reset_password_email(self, email: str, token: str):
         subject = "Password Recovery"
-        reset_url = f"http://yassyalil.com/auth/reset-password?token={token}"
+        reset_url = f"http://{app_config.APP_DOMAIN}/auth/reset-password?token={token}"
         body = f"To reset your password, click on the following link:\n\n{reset_url}"
 
         message = MessageSchema(
