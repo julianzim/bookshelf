@@ -104,6 +104,20 @@ async def get_all_book_reviews(
     return reviews
 
 
+async def get_review_by_id(
+    review_id: int,
+    session: AsyncSession
+) -> Reviews:
+    query = select(Reviews).where(Reviews.id == review_id)
+    result = await session.execute(query)
+    
+    review = result.scalars().first()
+    if not review:
+        raise HTTPException(status_code=404, detail=f"Review {review_id} not found")
+    
+    return review
+
+
 async def get_active_articles(session: AsyncSession) -> list[ArticleCard]:
     query = (
         select(Articles)
