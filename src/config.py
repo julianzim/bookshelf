@@ -8,9 +8,13 @@ load_dotenv()
 
 
 class AppConfig(BaseModel):
+    moderators_email_list_: str = os.environ.get("APP_MODERATORS")
+
+    APP_DOMAIN: str = os.environ.get("APP_DOMAIN")
     APP_MODE: str = os.environ.get("APP_MODE")
     APP_LOG_LEVEL: str = os.environ.get("APP_LOG_LEVEL")
     APP_SECRET_AUTH: str = os.environ.get("APP_SECRET_AUTH")
+    APP_MODERATORS: list[EmailStr] = [email.strip() for email in moderators_email_list_.split(",") if email.strip()]
 
 
 class DatabaseConfig(BaseModel):
