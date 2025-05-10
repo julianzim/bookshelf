@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -16,7 +17,7 @@ router = APIRouter(prefix = "/blog", tags = ["Blog"])
 templates = Jinja2Templates(directory = "templates/")
 
 
-@router.get(path="")
+@router.get(path="", response_class=HTMLResponse)
 async def get_blog(
     request: Request,
     current_user = Depends(current_user_optional),
@@ -29,16 +30,16 @@ async def get_blog(
     logger.info(f"Articles found: {len(articles)} for {current_user_log}")
     
     return templates.TemplateResponse(
-        "pages/blog.html",
-        {
-            "request": request,
+        request=request,
+        name="pages/blog.html",
+        context={
             "articles": articles,
             "current_user": current_user
         }
     )
 
 
-@router.get(path="/article_{article_id}")
+@router.get(path="/article_{article_id}", response_class=HTMLResponse)
 async def get_article(
     request: Request,
     article_id: int,
@@ -55,9 +56,9 @@ async def get_article(
     logger.info(f'Article id={article.id} found for {current_user_log}')
 
     return templates.TemplateResponse(
-        "pages/article.html",
-        {
-            "request": request,
+        request=request,
+        name="pages/article.html",
+        context={
             "article": article,
             "theme": theme,
             "current_user": current_user

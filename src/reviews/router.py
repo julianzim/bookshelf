@@ -1,8 +1,8 @@
 from datetime import datetime, timezone
 
-from fastapi import APIRouter, Depends, Form, Query, HTTPException
+from fastapi import APIRouter, Request, Depends, Form, HTTPException
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, HTMLResponse
 from fastapi_mail import FastMail, MessageSchema
 
 from sqlalchemy import select
@@ -103,7 +103,27 @@ async def create_review(
     return RedirectResponse(url=f"/books/{book_title}", status_code=303)
 
 
-@router.patch(path="/{book_title}/approve")
+@router.get("{book_title}/moderation/{review_id}", response_class=HTMLResponse)
+async def get_review_moderation(
+    request: Request,
+    book_title: str,
+    review_id: int,
+    session: AsyncSession = Depends(get_async_session)
+):
+    review = await get_review_by_id(
+        review_id=review_id,
+        session=session
+    )
+    return templates.TemplateResponse(
+        request=request,
+        name="pages/review_moderation.html",
+        context={
+            "review": review
+        }
+    )
+
+
+@router.patch(path="/{book_title}/moderation/{review_id}/approve")
 async def approve_review(
     book_title: str,
     review_id: int = Query(...),

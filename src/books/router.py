@@ -2,6 +2,7 @@ from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, Request, HTTPException
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -23,7 +24,7 @@ router = APIRouter(prefix = "/books", tags = ["Books"])
 templates = Jinja2Templates(directory = "templates/")
 
 
-@router.get(path="")
+@router.get(path="", response_class=HTMLResponse)
 async def get_books(
     request: Request,
     current_user = Depends(current_user_optional),
@@ -36,15 +37,16 @@ async def get_books(
     logger.info(f"Books found: {len(books)} for {current_user_log}")
     
     return templates.TemplateResponse(
-        "pages/books.html", {
-            "request": request,
+        request=request,
+        name="pages/books.html",
+        context={
             "books": books,
             "current_user": current_user
         }
     ) 
 
 
-@router.get(path="/{book_title}")
+@router.get(path="/{book_title}", response_class=HTMLResponse)
 async def get_book_details(
     book_title: str,
     request: Request,
@@ -83,9 +85,9 @@ async def get_book_details(
     logger.info(f'Book {book.title} found for {current_user_log}')
 
     return templates.TemplateResponse(
-        "pages/book_details.html",
-        {
-            "request": request,
+        request=request,
+        name="pages/book_details.html",
+        context={
             "book": book,
             "related_books": related_books,
             "current_user": current_user,
