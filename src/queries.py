@@ -3,6 +3,7 @@ from sqlalchemy import select, join, desc, asc
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.auth.models import User
+from src.auth.schemas import UserRead
 from src.books.models import Books, Themes
 from src.books.schemas import BookCard, BookDetail
 from src.reviews.models import Reviews
@@ -154,3 +155,17 @@ async def get_article_by_id(
     theme = ThemeDetail.model_validate(theme_orm)
     
     return article, theme
+
+
+async def get_user_by_id(id: int, session: AsyncSession) -> UserRead:
+    query = select(User).where(User.id == id)
+    result = await session.execute(query)
+    
+    user_orm = result.scalars().first()
+    if user_orm is None:
+        logger.error(f"User id={id} not found")
+        raise HTTPException(status_code=404, detail=f"User id={id} not found")
+
+    user = UserRead.model_validate(user_orm)
+
+    return user
