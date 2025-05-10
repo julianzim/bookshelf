@@ -93,7 +93,7 @@ async def get_all_book_reviews(
             join(Reviews, Books, Reviews.book_id == Books.id)
             .join(User, Reviews.user_id == User.id)
         )
-        .where(Books.title == title)
+        .where(Books.title == title, Reviews.approved == True)
         .order_by(order_func(getattr(Reviews, order_by)))
     )
     result = await session.execute(query)
