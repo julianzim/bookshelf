@@ -11,7 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import ValidationError
 
 from src.config import app_config, mail_conf
-from src.queries import get_review_by_id
+from src.queries import get_review_by_id, get_user_by_id
 from src.database import get_async_session
 from src.auth.base_config import current_user
 from src.auth.models import User
@@ -77,16 +77,13 @@ async def create_review(
 
     logger.info(f"New review {new_review.id} was created by {curr_user} at {new_review.created_at}")
 
-    # TODO: Sendind for moderation
     subject = f"Moderation required for review of \"{book.title}\""
     html = templates.get_template("mails/review_moderation_request.html").render(
         {
             "book_title": book.title,
             "review": new_review,
             "user": curr_user,
-            "approve_url": f"http://{app_config.APP_DOMAIN}/reviews/{book.title}/approve?review_id={new_review.id}", # TODO: HTTPS
-            "reject_url": f"http://{app_config.APP_DOMAIN}/reviews/{book.title}/reject?review_id={new_review.id}", # TODO: HTTPS
-            "year": datetime.now(timezone.utc).year
+            "moderation_url": f"http://{app_config.APP_DOMAIN}/reviews/{book.title}/moderation/{new_review.id}", # TODO: HTTPS
         }
     )
     message = MessageSchema(
@@ -103,22 +100,24 @@ async def create_review(
     return RedirectResponse(url=f"/books/{book_title}", status_code=303)
 
 
-@router.get("{book_title}/moderation/{review_id}", response_class=HTMLResponse)
+@router.get("/{book_title}/moderation/{review_id}", response_class=HTMLResponse)
 async def get_review_moderation(
     request: Request,
     book_title: str,
     review_id: int,
     session: AsyncSession = Depends(get_async_session)
 ):
-    review = await get_review_by_id(
-        review_id=review_id,
-        session=session
-    )
+    # TODO: relationship review-user
+    review = await get_review_by_id(id=review_id, session=session)
+    user = await get_user_by_id(id=review.user_id, session=session)
+
     return templates.TemplateResponse(
         request=request,
         name="pages/review_moderation.html",
         context={
-            "review": review
+            "review": review,
+            "book_title": book_title,
+            "user": user
         }
     )
 
@@ -126,11 +125,11 @@ async def get_review_moderation(
 @router.patch(path="/{book_title}/moderation/{review_id}/approve")
 async def approve_review(
     book_title: str,
-    review_id: int = Query(...),
+    review_id: int,
     session: AsyncSession = Depends(get_async_session)
 ):
     review = await get_review_by_id(
-        review_id=review_id,
+        id=review_id,
         session=session
     )
     review.approved = True
@@ -141,25 +140,21 @@ async def approve_review(
     return {"detail": "Review approved"}
 
 
-@router.post(path="/{book_title}/reject")
+@router.patch(path="/{book_title}/moderation/{review_id}/reject")
 async def reject_review(
     book_title: str,
-    review_id: int = Query(...),
+    review_id: int,
     reason: str = Form(...),
     session: AsyncSession = Depends(get_async_session)
 ):
-    '''
-    This endpoint is called only from the moderation HTML form sent via email.
-    It uses the POST method due to HTML limitations, but internally performs a PATCH-like update operation.
-    '''
     review = await get_review_by_id(
-        review_id=review_id,
+        id=review_id,
         session=session
     )
     review.approved = False
     review.rejection_reason = reason
     await session.commit()
 
-    logger.info(f"Review {review.id} for book '{book_title}' was rejected. Reason: {reason}")
+    logger.info(f"Review {review.id} for book \"{book_title}\" was rejected. Reason: {reason}")
 
     return {"details": "Review rejected"}
