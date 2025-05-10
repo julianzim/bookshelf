@@ -105,15 +105,15 @@ async def get_all_book_reviews(
 
 
 async def get_review_by_id(
-    review_id: int,
+    id: int,
     session: AsyncSession
 ) -> Reviews:
-    query = select(Reviews).where(Reviews.id == review_id)
+    query = select(Reviews).where(Reviews.id == id)
     result = await session.execute(query)
     
     review = result.scalars().first()
     if not review:
-        raise HTTPException(status_code=404, detail=f"Review {review_id} not found")
+        raise HTTPException(status_code=404, detail=f"Review {id} not found")
     
     return review
 
@@ -147,7 +147,7 @@ async def get_article_by_id(
     result = await session.execute(query)
     if result is None:
         logger.error(f"Article id={id} not found")
-        raise HTTPException(status_code=404, detail="Article not found")
+        raise HTTPException(status_code=404, detail=f"Article id={id} not found")
 
     article_orm, theme_orm = result.first()
     article = ArticleDetail.model_validate(article_orm)
