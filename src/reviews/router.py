@@ -1,8 +1,6 @@
-from datetime import datetime, timezone
-
 from fastapi import APIRouter, Request, Depends, Form, HTTPException
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import HTMLResponse
 from fastapi_mail import FastMail, MessageSchema
 
 from sqlalchemy import select
@@ -28,8 +26,12 @@ router = APIRouter(prefix = "/reviews", tags = ["Reviews"])
 templates = Jinja2Templates(directory="templates/")
 
 
-@router.post(path="/{book_title}/create")
+@router.post(
+    path="/{book_title}/create",
+    response_class=HTMLResponse
+)
 async def create_review(
+    request: Request,
     book_title: str,
     title: str = Form(...),
     text: str = Form(...),
@@ -54,7 +56,7 @@ async def create_review(
         raise HTTPException(status_code=404, detail="Book not found")
     
     existing_review_query = select(Reviews).where(
-        Reviews.book_id == book.id, Reviews.user_id == curr_user.id
+        Reviews.book_id == book.id, Reviews.user_id == curr_user.id, Reviews.published == True
     )
     existing_review_result = await session.execute(existing_review_query)
     existing_review = existing_review_result.scalars().first()
@@ -77,6 +79,7 @@ async def create_review(
 
     logger.info(f"New review {new_review.id} was created by {curr_user} at {new_review.created_at}")
 
+    # TODO: Create function for html mail sending
     subject = f"Moderation required for review of \"{book.title}\""
     html = templates.get_template("mails/review_moderation_request.html").render(
         {
@@ -97,10 +100,19 @@ async def create_review(
 
     logger.info(f"New review {new_review.id} sent for moderation to {app_config.APP_MODERATORS}")
 
-    return RedirectResponse(url=f"/books/{book_title}", status_code=303)
+    feedback_content = f"Your review for book \"{book_title}\" has been sent for moderation"
+    
+    return templates.TemplateResponse(
+        request=request,
+        name="pages/feedback.html",
+        context={"content": feedback_content}
+    )
 
 
-@router.get("/{book_title}/moderation/{review_id}", response_class=HTMLResponse)
+@router.get(
+    path="/{book_title}/moderation/{review_id}",
+    response_class=HTMLResponse
+)
 async def get_review_moderation(
     request: Request,
     book_title: str,
@@ -122,39 +134,104 @@ async def get_review_moderation(
     )
 
 
-@router.patch(path="/{book_title}/moderation/{review_id}/approve")
+@router.patch(
+    path="/{book_title}/moderation/{review_id}/approve",
+    response_class=HTMLResponse
+)
 async def approve_review(
+    request: Request,
     book_title: str,
     review_id: int,
     session: AsyncSession = Depends(get_async_session)
 ):
-    review = await get_review_by_id(
-        id=review_id,
-        session=session
-    )
+    # TODO: relationship review-user
+    review = await get_review_by_id(id=review_id, session=session)
+    user = await get_user_by_id(id=review.user_id, session=session)
+
     review.approved = True
+    review.rejection_reason = None
+    review.moderated = True
+    review.published = True
     await session.commit()
 
-    logger.info(f"Review {review.id} for book \"{book_title}\" was approved")
+    feedback_content = f"Review {review.id} for book \"{book_title}\" was approved successfully"
+    logger.info(feedback_content)
+    
+    # TODO: Create function for html mail sending
+    subject = f"Your Review Has Been Approved!"
+    html = (
+        templates
+        .get_template("mails/review_moderation_feedback_approved.html")
+        .render(
+            {
+                "book_title": book_title,
+                "review": review,
+            }
+        )
+    )
+    message = MessageSchema(
+        subject=subject,
+        recipients=[user.email],  
+        body=html,
+        subtype="html"
+    )
+    fm = FastMail(mail_conf)
+    await fm.send_message(message)
+    logger.info(f"Feedback on review (id={review.id}) moderation has been sent to user ({user.email}) via email")
 
-    return {"detail": "Review approved"}
+    return templates.TemplateResponse(
+        request=request,
+        name="pages/feedback.html",
+        context={"content": feedback_content}
+    )
 
 
-@router.patch(path="/{book_title}/moderation/{review_id}/reject")
+@router.patch(
+    path="/{book_title}/moderation/{review_id}/reject",
+    response_class=HTMLResponse
+)
 async def reject_review(
+    request: Request,
     book_title: str,
     review_id: int,
     reason: str = Form(...),
     session: AsyncSession = Depends(get_async_session)
 ):
-    review = await get_review_by_id(
-        id=review_id,
-        session=session
-    )
-    review.approved = False
+    # TODO: relationship review-user
+    review = await get_review_by_id(id=review_id, session=session)
+    user = await get_user_by_id(id=review.user_id, session=session)
+
     review.rejection_reason = reason
+    review.moderated = True
     await session.commit()
 
-    logger.info(f"Review {review.id} for book \"{book_title}\" was rejected. Reason: {reason}")
+    feedback_content = f"Review {review.id} for book \"{book_title}\" was rejected successfully. Reason: {reason}"
+    logger.info(feedback_content)
 
-    return {"details": "Review rejected"}
+    # TODO: Create function for html mail sending
+    subject = f"Your Review Has Been Rejected"
+    html = (
+        templates
+        .get_template("mails/review_moderation_feedback_rejected.html")
+        .render(
+            {
+                "book_title": book_title,
+                "review": review,
+            }
+        )
+    )
+    message = MessageSchema(
+        subject=subject,
+        recipients=[user.email],  
+        body=html,
+        subtype="html"
+    )
+    fm = FastMail(mail_conf)
+    await fm.send_message(message)
+    logger.info(f"Feedback on review (id={review.id}) moderation has been sent to user ({user.email}) via email")
+
+    return templates.TemplateResponse(
+        request=request,
+        name="pages/feedback.html",
+        context={"content": feedback_content}
+    )
