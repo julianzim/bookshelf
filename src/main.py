@@ -144,20 +144,11 @@ async def http_exc_handler(
         )
     else:
         root_logger.error(f"HTTPException: {exc.detail}")
-        return HTMLResponse(
-            content=f"""
-            <html>
-                <head><title>Error {exc.status_code}</title></head>
-                <body>
-                    <h1>Error {exc.status_code}</h1>
-                    <p>{exc.detail}</p>
-                    <a href="/">Back to the Home</a>
-                </body>
-            </html>
-            """,
-            status_code=exc.status_code
+        return templates.TemplateResponse(
+            request=request,
+            name="pages/exception.html",
+            context={"exc": exc}
         )
-
 
 
 if __name__ == "__main__":
