@@ -23,3 +23,5 @@ class Reviews(Base):
     text: Mapped[str] = mapped_column(nullable=False)
     approved: Mapped[bool] = mapped_column(nullable=False, server_default=sa.text("false"))
     rejection_reason: Mapped[str] = mapped_column(nullable=True)
+    moderated: Mapped[bool] = mapped_column(nullable=False, server_default=sa.text("false"))
+    published: Mapped[bool] = mapped_column(nullable=False, server_default=sa.text("false"))
