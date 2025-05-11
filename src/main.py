@@ -32,9 +32,9 @@ root_logger = get_logger(
 
 templates = Jinja2Templates(directory = "templates/")
 
-docs_url=None if app_config.APP_MODE == "production" else "/docs"
-redoc_url=None if app_config.APP_MODE == "production" else "/redoc"
-openapi_url=None if app_config.APP_MODE == "production" else "/openapi.json"
+docs_url=None if app_config.APP_MODE == "prod" else "/docs"
+redoc_url=None if app_config.APP_MODE == "prod" else "/redoc"
+openapi_url=None if app_config.APP_MODE == "prod" else "/openapi.json"
 
 app = FastAPI(
     title = "Yassya Lil",
@@ -92,9 +92,9 @@ async def get_home(
     root_logger.info(f"Articles found: {len(articles)} for {current_user_log}")
 
     return templates.TemplateResponse(
-        "pages/home.html",
-        {
-            "request": request,
+        request=request,
+        name="pages/home.html",
+        context={
             "books": books,
             "articles": articles,
             "current_user": current_user,
@@ -113,22 +113,15 @@ async def get_about(
     root_logger.debug(f"{current_user_log} requests the About page")
 
     return templates.TemplateResponse(
-        "pages/about.html",
-        {
-            "request": request,
-            "current_user": current_user
-        }
+        request=request,
+        name="pages/about.html",
+        context={"current_user": current_user}
     )
 
 
 @app.get("/policies/{doc_name}")
 async def get_policies(request: Request, doc_name: str):
-    return templates.TemplateResponse(
-        f"docs/{doc_name}.html",
-        {
-            "request": request
-        }
-    )
+    return templates.TemplateResponse(request=request, name=f"docs/{doc_name}.html")
 
 
 @app.exception_handler(HTTPException)
@@ -153,4 +146,3 @@ async def http_exc_handler(
 
 if __name__ == "__main__":
     uvicorn.run("src.main:app", host="0.0.0.0", port=8000)
-
