@@ -116,6 +116,10 @@ async def get_review_by_id(
     if not review:
         raise HTTPException(status_code=404, detail=f"Review {id} not found")
     
+    if review.published:
+        logger.error(f"Re-moderation is not allowed — review {id} has already been moderated and published.")
+        raise HTTPException(status_code = 400, detail = f"Re-moderation is not allowed — review {id} has already been moderated and published.")
+    
     return review
 
 
