@@ -1,7 +1,7 @@
 import datetime
 
 from sqlalchemy import text, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database import Base
 
@@ -32,6 +32,10 @@ class Books(Base):
     eb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     active: Mapped[bool] = mapped_column(nullable=False, default=False)
+
+    reviews: Mapped[list["Reviews"]]= relationship(
+        back_populates="book"
+    )
 
 
 class Themes(Base):

@@ -1,7 +1,18 @@
 from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
-from sqlalchemy import JSON, TIMESTAMP, Boolean, Column, ForeignKey, Integer, String, text
+from sqlalchemy import (
+    JSON,
+    TIMESTAMP,
+    Boolean,
+    Column,
+    ForeignKey,
+    Integer,
+    String,
+    text
+)
+from sqlalchemy.orm import Mapped, relationship
 
 from src.database import Base
+# from src.reviews.models import Reviews
 
 
 class Role(Base):
@@ -27,6 +38,10 @@ class User(SQLAlchemyBaseUserTable[int], Base):
     is_active: bool = Column(Boolean, default=True, nullable=False)
     is_superuser: bool = Column(Boolean, default=False, nullable=False)
     is_verified: bool = Column(Boolean, default=False, nullable=False)
+
+    reviews: Mapped[list["Reviews"]] = relationship(
+        back_populates="user"
+    )
 
     def __repr__(self):
         return f"User(id={self.id}, name='{self.username}', email='{self.email}', registered_at='{self.registered_at}')"

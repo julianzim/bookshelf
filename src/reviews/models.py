@@ -2,7 +2,7 @@ import datetime
 import sqlalchemy as sa
 
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.database import Base
 
@@ -25,3 +25,10 @@ class Reviews(Base):
     rejection_reason: Mapped[str] = mapped_column(nullable=True)
     moderated: Mapped[bool] = mapped_column(nullable=False, server_default=sa.text("false"))
     published: Mapped[bool] = mapped_column(nullable=False, server_default=sa.text("false"))
+
+    user: Mapped["User"] = relationship(
+        back_populates="reviews"
+    )
+    book: Mapped["Books"] = relationship(
+        back_populates="reviews"
+    )
