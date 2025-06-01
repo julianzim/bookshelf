@@ -25,3 +25,7 @@ class UserCreate(schemas.BaseUserCreate):
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
     is_verified: Optional[bool] = False
+
+
+class UserReadRel(UserRead):
+    reviews: list["ReviewOutRel"]

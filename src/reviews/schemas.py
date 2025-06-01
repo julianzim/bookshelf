@@ -2,6 +2,9 @@ import datetime
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from src.auth.schemas import UserReadRel
+from src.books.schemas import BookDetailRel
+
 
 class ReviewCreate(BaseModel):
     title: str = Field(min_length=3, max_length=100, description="Title of the review")
@@ -20,3 +23,13 @@ class BookReviewStats(BaseModel):
     average_rating: float
     ratings_count: int
     reviews_count: int
+
+
+class ReviewOutRel(ReviewCreate):
+    created_at: datetime.datetime
+
+    user: "UserReadRel"
+    book: "BookDetailRel"
+
+
+ReviewOutRel.model_rebuild()

@@ -26,3 +26,7 @@ class BookDetail(BookCard):
     min_age: int = Field(gt=0, lt=100)
     max_age: int = Field(gt=0, lt=100)
     pages: int = Field(gt=0)
+
+
+class BookDetailRel(BookDetail):
+    reviews: list["ReviewOutRel"]
