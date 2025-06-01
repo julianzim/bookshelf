@@ -250,7 +250,7 @@
             <div class="review-modal-content">
                 <span id="reviewModalCloseBtn" class="modal-close-btn">&times;</span>
                 <h2>Review</h2>
-                <form id="review-form" action="{{ url_for('create_review', book_title=book.title).replace('http://', 'https://') }}" method="post" class="review-form">
+                <form id="review-form" action="{{ url_for('create_review', book_title=book.title) | string | replace('http://', 'https://') }}" method="post" class="review-form">
                     
                     <span>Rate the book</span>
                     <div class="send-rating">
