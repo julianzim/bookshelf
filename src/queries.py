@@ -53,10 +53,7 @@ async def get_book_by_title(title: str, session: AsyncSession) -> BookDetail | N
 async def get_related_books_by_title(title: str, session: AsyncSession) -> list[BookCard]:
     query = (
         select(Books)
-        .where(
-            Books.title != title,
-            Books.active is True
-        )
+        .where(Books.title != title, Books.active)
         .order_by(asc(Books.pub_date))
     )
     result = await session.execute(query)
@@ -99,7 +96,7 @@ async def get_all_book_reviews(
             join(Reviews, Books, Reviews.book_id == Books.id)
             .join(User, Reviews.user_id == User.id)
         )
-        .where(Books.title == title, Reviews.approved is True)
+        .where(Books.title == title, Reviews.approved)
         .order_by(order_func(getattr(Reviews, order_by)))
     )
     result = await session.execute(query)
@@ -146,7 +143,7 @@ async def get_review_by_id(
 async def get_active_articles(session: AsyncSession) -> list[ArticleCard]:
     query = (
         select(Articles)
-        .where(Articles.active is True)
+        .where(Articles.active)
         .order_by(desc(Articles.created_at))
     )
     result = await session.execute(query)
@@ -164,10 +161,7 @@ async def get_article_by_id(
     query = (
         select(Articles, Themes)
         .join(Themes, Articles.theme == Themes.id)
-        .where(
-            Articles.id == id,
-            Articles.active is True
-        )
+        .where(Articles.id == id, Articles.active)
     )
     result = await session.execute(query)
     if result is None:

@@ -55,10 +55,11 @@ async def create_review(
         raise HTTPException(status_code=404, detail="Book not found")
 
     existing_review_query = select(Reviews).where(
-        Reviews.book_id == book.id, Reviews.user_id == curr_user.id, Reviews.published is True
+        Reviews.book_id == book.id, Reviews.user_id == curr_user.id, Reviews.published
     )
     existing_review_result = await session.execute(existing_review_query)
     existing_review = existing_review_result.scalars().first()
+    # print(existing_review)
 
     if existing_review is not None:
         logger.error("%s has already reviewed this book", curr_user)
