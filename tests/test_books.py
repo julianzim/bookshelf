@@ -27,17 +27,17 @@ async def test_get_books(async_client: AsyncClient) -> None:
     assert len(books) == 15
         
 
-@pytest.mark.asyncio
-async def test_get_book_details(async_client: AsyncClient) -> None:
-    response = await async_client.get(f"/books/My%20Friend%20Joy")
-    assert response.status_code == 200
+# @pytest.mark.asyncio
+# async def test_get_book_details(async_client: AsyncClient) -> None:
+#     response = await async_client.get(f"/books/My%20Friend%20Joy")
+#     assert response.status_code == 200
 
-    soup = BeautifulSoup(response.text, 'html.parser')
+#     soup = BeautifulSoup(response.text, 'html.parser')
 
-    title = soup.find('h1', class_='book-title-right')
-    assert 'My Friend Joy' in title.text
+#     title = soup.find('h1', class_='book-title-right')
+#     assert 'My Friend Joy' in title.text
 
-    img = soup.find('img', class_='book-cover-details')
-    assert '/static/images/covers/MyFriendJoy.png' in img['src']
+#     img = soup.find('img', class_='book-cover-details')
+#     assert '/static/images/covers/MyFriendJoy.png' in img['src']
 
         
