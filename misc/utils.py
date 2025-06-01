@@ -6,39 +6,10 @@ import statistics
 from docx import Document
 from datetime import datetime
 
+from fastapi_mail import FastMail, MessageSchema, MessageType
+
 from src.reviews.schemas import ReviewOut, BookReviewStats
-
-
-async def localize_reviews(reviews: list[ReviewOut], timezone: pytz.timezone) -> list[ReviewOut]:
-    # TODO: added logging
-    for review in reviews:
-        created_at = review.created_at
-        
-        if created_at.tzinfo is None:
-            review.created_at = pytz.UTC.localize(created_at)
-        
-        review.created_at = created_at.astimezone(timezone)
-    return reviews
-
-
-async def get_reviews_statistics(reviews: list[ReviewOut]) -> BookReviewStats:
-    # TODO: added logging
-    ratings = [review.rating for review in reviews]
-    texts = [review.text for review in reviews]
-    
-    if ratings:
-        average_rating = round(statistics.mean(ratings), 1)
-    else:
-        average_rating = 0.0
-    ratings_count = len(ratings)
-    reviews_count = len(texts)
-    
-    stats = BookReviewStats(
-        average_rating=average_rating,
-        ratings_count=ratings_count,
-        reviews_count=reviews_count
-    )
-    return stats
+from src.config import mail_conf
 
 
 def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = False):
@@ -77,6 +48,41 @@ def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = 
             sqlalchemy_logger.addHandler(file_handler)
 
     return logger
+
+
+logger = get_logger(name=__name__)
+
+
+async def localize_reviews(reviews: list[ReviewOut], timezone: pytz.timezone) -> list[ReviewOut]:
+    # TODO: added logging
+    for review in reviews:
+        created_at = review.created_at
+        
+        if created_at.tzinfo is None:
+            review.created_at = pytz.UTC.localize(created_at)
+        
+        review.created_at = created_at.astimezone(timezone)
+    return reviews
+
+
+async def get_reviews_statistics(reviews: list[ReviewOut]) -> BookReviewStats:
+    # TODO: added logging
+    ratings = [review.rating for review in reviews]
+    texts = [review.text for review in reviews]
+    
+    if ratings:
+        average_rating = round(statistics.mean(ratings), 1)
+    else:
+        average_rating = 0.0
+    ratings_count = len(ratings)
+    reviews_count = len(texts)
+    
+    stats = BookReviewStats(
+        average_rating=average_rating,
+        ratings_count=ratings_count,
+        reviews_count=reviews_count
+    )
+    return stats
 
 
 def format_runs(runs):
@@ -141,3 +147,14 @@ def convert_docx_to_html(input_file: str):
                 result["html_content"] += ("\n")
     
     return result
+
+
+async def send_email(subject: str, emails: list[str], body: str, subtype: MessageType):
+    message = MessageSchema(
+            subject=subject,
+            recipients=emails,
+            body=body,
+            subtype=subtype
+        )
+    fm = FastMail(mail_conf)
+    await fm.send_message(message)
