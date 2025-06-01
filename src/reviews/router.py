@@ -1,15 +1,14 @@
 from fastapi import APIRouter, Request, Depends, Form, HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
-from fastapi_mail import FastMail, MessageSchema
 
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from pydantic import ValidationError
 
-from src.config import app_config, mail_conf
-from src.queries import get_review_by_id, get_user_by_id
+from src.config import app_config
+from src.queries import get_review_by_id
 from src.database import get_async_session
 from src.auth.base_config import current_user
 from src.auth.models import User
@@ -39,30 +38,30 @@ async def create_review(
     curr_user: User = Depends(current_user),
     session: AsyncSession = Depends(get_async_session)
 ):
-    logger.debug(f'{curr_user} requests to add a new review')
+    logger.debug('%s requests to add a new review', curr_user)
 
     try:
         review_data = ReviewCreate(title=title, text=text, rating=rating)
     except ValidationError as e:
-        logger.error(f"{e.errors()}")
-        raise HTTPException(status_code=422, detail=e.errors())
-    
+        logger.error("%s", e.errors())
+        raise HTTPException(status_code=422, detail=e.errors()) from e
+
     query = select(Books).where(Books.title == book_title)
     result = await session.execute(query)
     book = result.scalars().first()
 
     if not book:
-        logger.error(f"Book {book_title} not found")
+        logger.error("Book %s not found", book_title)
         raise HTTPException(status_code=404, detail="Book not found")
-    
+
     existing_review_query = select(Reviews).where(
-        Reviews.book_id == book.id, Reviews.user_id == curr_user.id, Reviews.published == True
+        Reviews.book_id == book.id, Reviews.user_id == curr_user.id, Reviews.published is True
     )
     existing_review_result = await session.execute(existing_review_query)
     existing_review = existing_review_result.scalars().first()
 
     if existing_review is not None:
-        logger.error(f"{curr_user} has already reviewed this book")
+        logger.error("%s has already reviewed this book", curr_user)
         raise HTTPException(status_code = 400, detail = "User has already reviewed this book")
 
     new_review = Reviews(
@@ -77,24 +76,31 @@ async def create_review(
     await session.commit()
     await session.refresh(new_review)
 
-    logger.info(f"New review {new_review.id} was created by {curr_user} at {new_review.created_at}")
+    logger.info(
+        "New review %s was created by %s at %s",
+        new_review.id, curr_user, new_review.created_at
+    )
 
-    # TODO: Create function for html mail sending
     subject = f"Moderation required for review of \"{book.title}\""
     html = templates.get_template("mails/review_moderation_request.html").render(
         {
             "book_title": book.title,
             "review": new_review,
             "user": curr_user,
-            "moderation_url": f"http://{app_config.APP_DOMAIN}/reviews/{book.title}/moderation/{new_review.id}", # TODO: HTTPS
+            "moderation_url": (
+                f"https://{app_config.APP_DOMAIN}/reviews/{book.title}/moderation/{new_review.id}"
+            )
         }
     )
     await send_email(subject=subject, emails=app_config.APP_MODERATORS, body=html, subtype="html")
 
-    logger.info(f"New review {new_review.id} sent for moderation to {app_config.APP_MODERATORS}")
+    logger.info(
+        "New review %s sent for moderation to %s",
+        new_review.id, app_config.APP_MODERATORS
+    )
 
     feedback_content = f"Your review for book \"{book_title}\" has been sent for moderation"
-    
+
     return templates.TemplateResponse(
         request=request,
         name="pages/feedback.html",
@@ -112,9 +118,7 @@ async def get_review_moderation(
     review_id: int,
     session: AsyncSession = Depends(get_async_session)
 ):
-    # TODO: relationship review-user
-    review = await get_review_by_id(id=review_id, session=session)
-    user = await get_user_by_id(id=review.user_id, session=session)
+    review = await get_review_by_id(review_id=review_id, session=session)
 
     return templates.TemplateResponse(
         request=request,
@@ -122,7 +126,7 @@ async def get_review_moderation(
         context={
             "review": review,
             "book_title": book_title,
-            "user": user
+            "user": review.user
         }
     )
 
@@ -137,10 +141,7 @@ async def approve_review(
     review_id: int,
     session: AsyncSession = Depends(get_async_session)
 ):
-    # TODO: relationship review-user
-    review = await get_review_by_id(id=review_id, session=session)
-    user = await get_user_by_id(id=review.user_id, session=session)
-
+    review = await get_review_by_id(review_id=review_id, session=session)
     review.approved = True
     review.rejection_reason = None
     review.moderated = True
@@ -186,15 +187,15 @@ async def reject_review(
     reason: str = Form(...),
     session: AsyncSession = Depends(get_async_session)
 ):
-    # TODO: relationship review-user
-    review = await get_review_by_id(id=review_id, session=session)
-    user = await get_user_by_id(id=review.user_id, session=session)
-
+    review = await get_review_by_id(review_id=review_id, session=session)
     review.rejection_reason = reason
     review.moderated = True
     await session.commit()
 
-    feedback_content = f"Review {review.id} for book \"{book_title}\" was rejected successfully. Reason: {reason}"
+    feedback_content = (
+        f"Review {review.id} for book \"{book_title}\" was rejected successfully. "
+        f"Reason: {reason}"
+    )
     logger.info(feedback_content)
 
     subject = "Your Review Has Been Rejected"
