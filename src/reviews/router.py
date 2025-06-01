@@ -16,7 +16,7 @@ from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewCreate
-from misc.utils import get_logger
+from misc.utils import get_logger, send_email
 
 
 logger = get_logger(__name__)
@@ -89,14 +89,7 @@ async def create_review(
             "moderation_url": f"http://{app_config.APP_DOMAIN}/reviews/{book.title}/moderation/{new_review.id}", # TODO: HTTPS
         }
     )
-    message = MessageSchema(
-        subject=subject,
-        recipients=app_config.APP_MODERATORS,  
-        body=html,
-        subtype="html"
-    )
-    fm = FastMail(mail_conf)
-    await fm.send_message(message)
+    await send_email(subject=subject, emails=app_config.APP_MODERATORS, body=html, subtype="html")
 
     logger.info(f"New review {new_review.id} sent for moderation to {app_config.APP_MODERATORS}")
 
@@ -156,9 +149,8 @@ async def approve_review(
 
     feedback_content = f"Review {review.id} for book \"{book_title}\" was approved successfully"
     logger.info(feedback_content)
-    
-    # TODO: Create function for html mail sending
-    subject = f"Your Review Has Been Approved!"
+
+    subject = "Your Review Has Been Approved!"
     html = (
         templates
         .get_template("mails/review_moderation_feedback_approved.html")
@@ -169,15 +161,12 @@ async def approve_review(
             }
         )
     )
-    message = MessageSchema(
-        subject=subject,
-        recipients=[user.email],  
-        body=html,
-        subtype="html"
+    await send_email(subject=subject, emails=[review.user.email], body=html, subtype="html")
+
+    logger.info(
+        "Feedback on review (id=%s) moderation has been sent to user (%s) via email",
+        review.id, review.user.email
     )
-    fm = FastMail(mail_conf)
-    await fm.send_message(message)
-    logger.info(f"Feedback on review (id={review.id}) moderation has been sent to user ({user.email}) via email")
 
     return templates.TemplateResponse(
         request=request,
@@ -208,8 +197,7 @@ async def reject_review(
     feedback_content = f"Review {review.id} for book \"{book_title}\" was rejected successfully. Reason: {reason}"
     logger.info(feedback_content)
 
-    # TODO: Create function for html mail sending
-    subject = f"Your Review Has Been Rejected"
+    subject = "Your Review Has Been Rejected"
     html = (
         templates
         .get_template("mails/review_moderation_feedback_rejected.html")
@@ -220,15 +208,12 @@ async def reject_review(
             }
         )
     )
-    message = MessageSchema(
-        subject=subject,
-        recipients=[user.email],  
-        body=html,
-        subtype="html"
+    await send_email(subject=subject, emails=[review.user.email], body=html, subtype="html")
+
+    logger.info(
+        "Feedback on review (id=%s) moderation has been sent to user (%s) via email",
+        review.id, review.user.email
     )
-    fm = FastMail(mail_conf)
-    await fm.send_message(message)
-    logger.info(f"Feedback on review (id={review.id}) moderation has been sent to user ({user.email}) via email")
 
     return templates.TemplateResponse(
         request=request,

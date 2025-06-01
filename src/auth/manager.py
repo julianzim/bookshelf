@@ -8,7 +8,7 @@ from fastapi_mail import FastMail, MessageSchema
 from src.auth.models import User
 from src.auth.utils import get_user_db
 from src.config import app_config, mail_conf
-from misc.utils import get_logger
+from misc.utils import get_logger, send_email
 
 
 logger = get_logger(__name__)
@@ -69,16 +69,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         subject = "Password Recovery"
         reset_url = f"http://{app_config.APP_DOMAIN}/auth/reset-password?token={token}"
         body = f"To reset your password, click on the following link:\n\n{reset_url}"
-
-        message = MessageSchema(
-            subject=subject,
-            recipients=[email],  
-            body=body,
-            subtype="plain"
-        )
-
-        fm = FastMail(mail_conf)
-        await fm.send_message(message)
+        await send_email(subject=subject, emails=[email], body=body, subtype="plain")
     
     async def on_after_forgot_password(self, user: User, token: str, request: Optional[Request] = None):
         await self.send_reset_password_email(user.email, token)
