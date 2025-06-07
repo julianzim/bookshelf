@@ -4,10 +4,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import uvicorn
 
-from fastapi import FastAPI, Depends, Request, HTTPException, status
+from fastapi import FastAPI, Depends, Request, HTTPException, Response, status
 from fastapi.staticfiles import StaticFiles
-from fastapi.requests import Request
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -109,8 +108,7 @@ async def get_about(
     current_user = Depends(current_user_optional)
 ):
     current_user_log = current_user or 'Unauthenticated user'
-
-    root_logger.debug(f"{current_user_log} requests the About page")
+    root_logger.debug("%s requests the About page", current_user_log)
 
     return templates.TemplateResponse(
         request=request,
@@ -122,6 +120,11 @@ async def get_about(
 @app.get("/policies/{doc_name}")
 async def get_policies(request: Request, doc_name: str):
     return templates.TemplateResponse(request=request, name=f"docs/{doc_name}.html")
+
+
+@app.get("/api/health")
+async def get_health():
+    return Response(status_code=200)
 
 
 @app.exception_handler(HTTPException)
@@ -136,7 +139,7 @@ async def http_exc_handler(
             status_code = status.HTTP_303_SEE_OTHER
         )
     else:
-        root_logger.error(f"HTTPException: {exc.detail}")
+        root_logger.error("HTTPException: %s", exc.detail)
         return templates.TemplateResponse(
             request=request,
             name="pages/exception.html",
