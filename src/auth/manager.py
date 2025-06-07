@@ -2,13 +2,19 @@ from typing import Optional
 
 from fastapi import Depends, Request
 from fastapi.responses import Response
-from fastapi_users import BaseUserManager, IntegerIDMixin, exceptions, models, schemas
-from fastapi_mail import FastMail, MessageSchema
+from fastapi_users import (
+    BaseUserManager,
+    IntegerIDMixin,
+    exceptions,
+    models,
+    schemas
+)
 
 from src.auth.models import User
 from src.auth.utils import get_user_db
-from src.config import app_config, mail_conf
-from misc.utils import get_logger, send_email
+from src.config import app_config
+from src.tasks.email_tasks import send_email_task
+from misc.utils import get_logger
 
 
 logger = get_logger(__name__)
@@ -31,7 +37,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
         existing_user = await self.user_db.get_by_email(user_create.email)
         if existing_user is not None:
-            logger.warning(f"User with email {user_create.email} already exists")
+            logger.warning("User with email %s already exists", user_create.email)
             raise exceptions.UserAlreadyExists()
 
         user_dict = (
@@ -50,7 +56,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         return created_user
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
-        logger.info(f"{user} has registered")
+        logger.info("%s has registered", user)
 
     async def on_after_login(
         self,
@@ -58,20 +64,35 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         request: Optional[Request] = None,
         response: Optional[Response] = None,
     ) -> None:
-        logger.info(f"{user} has login")
+        logger.info("%s has login", user)
         if response:
-            last_page = "/"     # request.query_params.get("next") or request.headers.get("Referer") or "/"
-            logger.debug(f"User id={user.id} redirecting to the page {last_page}")
+            last_page = "/"
+            # request.query_params.get("next") or request.headers.get("Referer") or "/"
+            logger.debug("User id=%s redirecting to the page %s", user.id, last_page)
             response.status_code = 302
             response.headers["Location"] = last_page
-            
+
     async def send_reset_password_email(self, email: str, token: str):
         subject = "Password Recovery"
         reset_url = f"http://{app_config.APP_DOMAIN}/auth/reset-password?token={token}"
         body = f"To reset your password, click on the following link:\n\n{reset_url}"
-        await send_email(subject=subject, emails=[email], body=body, subtype="plain")
-    
-    async def on_after_forgot_password(self, user: User, token: str, request: Optional[Request] = None):
+        email_result = send_email_task.delay(
+            subject=subject,
+            body=body,
+            recipients=[email],
+            subtype="plain"
+        )
+        logger.info(
+            "Email with reset password link sent to user %s successfully. Result: %s",
+            email, email_result
+        )
+
+    async def on_after_forgot_password(
+            self,
+            user: User,
+            token: str,
+            request: Optional[Request] = None
+        ):
         await self.send_reset_password_email(user.email, token)
 
 
