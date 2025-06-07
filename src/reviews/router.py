@@ -17,7 +17,8 @@ from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewCreate
-from misc.utils import get_logger, send_email
+from src.tasks.email_tasks import send_email_task
+from misc.utils import get_logger
 
 
 logger = get_logger(__name__)
@@ -139,11 +140,13 @@ async def create_review(
             )
         }
     )
-    await send_email(subject=subject, emails=app_config.APP_MODERATORS, body=html, subtype="html")
+    email_result = send_email_task.delay(
+        subject=subject, body=html, recipients=app_config.APP_MODERATORS, subtype="html"
+    )
 
     logger.info(
-        "New review %s sent for moderation to %s",
-        new_review.id, app_config.APP_MODERATORS
+        "New review %s sent for moderation to %s. Result: %s",
+        new_review.id, app_config.APP_MODERATORS, email_result
     )
 
     feedback_content = f"Your review for book \"{book_title}\" has been sent for moderation"
@@ -286,11 +289,16 @@ async def approve_review(
             }
         )
     )
-    await send_email(subject=subject, emails=[review.user.email], body=html, subtype="html")
+    email_result = send_email_task.delay(
+        subject=subject,
+        body=html,
+        recipients=[review.user.email],
+        subtype="html"
+    )
 
     logger.info(
-        "Feedback on review (id=%s) moderation has been sent to user (%s) via email",
-        review.id, review.user.email
+        "Feedback on review (id=%s) moderation has been sent to user (%s) via email. Result: %s",
+        review.id, review.user.email, email_result
     )
 
     return templates.TemplateResponse(
@@ -377,11 +385,13 @@ async def reject_review(
             }
         )
     )
-    await send_email(subject=subject, emails=[review.user.email], body=html, subtype="html")
+    email_result = send_email_task.delay(
+        subject=subject, body=html, recipients=[review.user.email], subtype="html"
+    )
 
     logger.info(
-        "Feedback on review (id=%s) moderation has been sent to user (%s) via email",
-        review.id, review.user.email
+        "Feedback on review (id=%s) moderation has been sent to user (%s) via email. Result: %s",
+        review.id, review.user.email, email_result
     )
 
     return templates.TemplateResponse(

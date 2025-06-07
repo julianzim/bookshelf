@@ -17,3 +17,16 @@ services:
     networks:
       - yassyalil
     command: sh -c "alembic upgrade head && python src/main.py"
+
+  
+  celery:
+    image: yassyalil-app:latest
+    container_name: celery
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - yassyalil
+    depends_on:
+      - rabbitmq
+    command: celery --app src.tasks.celery_app worker --pool threads --loglevel=INFO

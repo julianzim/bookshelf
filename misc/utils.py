@@ -6,10 +6,7 @@ import statistics
 from docx import Document
 from datetime import datetime
 
-from fastapi_mail import FastMail, MessageSchema, MessageType
-
 from src.reviews.schemas import ReviewOut, BookReviewStats
-from src.config import mail_conf
 
 
 def get_logger(name: str = None, log_level: str = None, set_sqla_logger: bool = False):
@@ -147,14 +144,3 @@ def convert_docx_to_html(input_file: str):
                 result["html_content"] += ("\n")
     
     return result
-
-
-async def send_email(subject: str, emails: list[str], body: str, subtype: MessageType):
-    message = MessageSchema(
-            subject=subject,
-            recipients=emails,
-            body=body,
-            subtype=subtype
-        )
-    fm = FastMail(mail_conf)
-    await fm.send_message(message)

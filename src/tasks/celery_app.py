@@ -1,0 +1,11 @@
+from celery import Celery
+from src.config import app_config
+
+
+app = Celery(
+    "worker",
+    broker=app_config.CELERY_BROKER_URL,
+    backend=app_config.CELERY_RESULT_BACKEND,
+    include=["src.tasks.email"],
+    broker_connection_retry_on_startup=True
+)

@@ -8,13 +8,23 @@ load_dotenv()
 
 
 class AppConfig(BaseModel):
-    moderators_email_list_: str = os.environ.get("APP_MODERATORS")
+    _MODERATORS_EMAIL_LIST: str = os.environ.get("APP_MODERATORS")
+    _RABBITMQ_USER: str = os.environ.get("RABBITMQ_USER")
+    _RABBITMQ_PASS: str = os.environ.get("RABBITMQ_PASS")
+    _RABBITMQ_HOST: str = os.environ.get("RABBITMQ_HOST")
+    _RABBITMQ_PORT: str = os.environ.get("RABBITMQ_PORT")
 
     APP_DOMAIN: str = os.environ.get("APP_DOMAIN")
     APP_MODE: str = os.environ.get("APP_MODE")
     APP_LOG_LEVEL: str = os.environ.get("APP_LOG_LEVEL")
     APP_SECRET_AUTH: str = os.environ.get("APP_SECRET_AUTH")
-    APP_MODERATORS: list[EmailStr] = [email.strip() for email in moderators_email_list_.split(",") if email.strip()]
+    APP_MODERATORS: list[EmailStr] = [
+        email.strip() for email in _MODERATORS_EMAIL_LIST.split(",") if email.strip()
+    ]
+    CELERY_BROKER_URL: str = (
+        f"amqp://{_RABBITMQ_USER}:{_RABBITMQ_PASS}@{_RABBITMQ_HOST}:{_RABBITMQ_PORT}//"
+    )
+    CELERY_RESULT_BACKEND: str = os.environ.get("CELERY_RESULT_BACKEND")
 
 
 class DatabaseConfig(BaseModel):
@@ -29,7 +39,7 @@ class EmailConfig(BaseModel):
     MAIL_USERNAME: str = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD: str = os.environ.get("MAIL_PASSWORD")
     MAIL_FROM: EmailStr = os.environ.get("MAIL_FROM")
-    MAIL_PORT: int = int(os.environ.get("MAIL_PORT"))  # 587 for TLS, 465 for SSL
+    MAIL_PORT: int = int(os.environ.get("MAIL_PORT"))  # 587(TLS), 465(SSL)
     MAIL_SERVER: str = os.environ.get("MAIL_SERVER")
     MAIL_STARTTLS: bool = True
     MAIL_SSL_TLS: bool = False
