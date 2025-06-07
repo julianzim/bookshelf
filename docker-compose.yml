@@ -27,6 +27,6 @@ services:
       - .env
     networks:
       - yassyalil
-    depends_on:
-      - rabbitmq
+    # depends_on:
+    #   - rabbitmq
     command: celery --app src.tasks.celery_app worker --pool threads --loglevel=INFO
