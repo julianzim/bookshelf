@@ -28,5 +28,7 @@ deploy-job:
     - cp "$ENV" .env
   script:
     - docker compose up -d
+  after_script:
+    - docker restart nginx
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
