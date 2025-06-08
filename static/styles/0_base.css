@@ -608,11 +608,15 @@ header {
             position: relative;
         }
 
-        .password-container > svg {
-            position: absolute;
-            right: 10px;
-            top: 9px;
-        }
+            .password-container > svg {
+                position: absolute;
+                right: 10px;
+                top: 9px;
+            }
+
+                .password-container > svg path {
+                    fill: #333;
+                }
 
         .auth-form input:focus {
             border-color: #007bff;
