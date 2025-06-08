@@ -25,6 +25,7 @@ class AppConfig(BaseModel):
         f"amqp://{_RABBITMQ_USER}:{_RABBITMQ_PASS}@{_RABBITMQ_HOST}:{_RABBITMQ_PORT}//"
     )
     CELERY_RESULT_BACKEND: str = os.environ.get("CELERY_RESULT_BACKEND")
+    CELERY_DEV_MODE: bool = True if APP_MODE == 'dev' else False
 
 
 class DatabaseConfig(BaseModel):
