@@ -17,7 +17,7 @@ from src.auth.models import User
 from src.books.models import Books
 from src.reviews.models import Reviews
 from src.reviews.schemas import ReviewCreate
-from src.tasks.email_tasks import send_email_task
+from src.tasks import send_email
 from misc.utils import get_logger
 
 
@@ -140,7 +140,7 @@ async def create_review(
             )
         }
     )
-    email_result = send_email_task.delay(
+    email_result = send_email.delay(
         subject=subject, body=html, recipients=app_config.APP_MODERATORS, subtype="html"
     )
 
@@ -289,7 +289,7 @@ async def approve_review(
             }
         )
     )
-    email_result = send_email_task.delay(
+    email_result = send_email.delay(
         subject=subject,
         body=html,
         recipients=[review.user.email],
@@ -385,7 +385,7 @@ async def reject_review(
             }
         )
     )
-    email_result = send_email_task.delay(
+    email_result = send_email.delay(
         subject=subject, body=html, recipients=[review.user.email], subtype="html"
     )
 

@@ -13,7 +13,7 @@ from fastapi_users import (
 from src.auth.models import User
 from src.auth.utils import get_user_db
 from src.config import app_config
-from src.tasks.email_tasks import send_email_task
+from src.tasks import send_email
 from misc.utils import get_logger
 
 
@@ -22,7 +22,6 @@ logger = get_logger(__name__)
 class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
     reset_password_token_secret = app_config.APP_SECRET_AUTH
     verification_token_secret = app_config.APP_SECRET_AUTH
-
 
     async def create(
         self,
@@ -76,7 +75,7 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         subject = "Password Recovery"
         reset_url = f"http://{app_config.APP_DOMAIN}/auth/reset-password?token={token}"
         body = f"To reset your password, click on the following link:\n\n{reset_url}"
-        email_result = send_email_task.delay(
+        email_result = send_email.delay(
             subject=subject,
             body=body,
             recipients=[email],

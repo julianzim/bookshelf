@@ -2,7 +2,7 @@ import smtplib
 from email.message import EmailMessage
 from typing import Literal
 
-from src.tasks.celery_app import app
+from src.celery_app import app
 from src.config import email_config
 from misc.utils import get_logger
 
@@ -12,8 +12,13 @@ logger = get_logger(name=__name__)
 MessageType = Literal['plain', 'html']
 
 
-@app.task
-def send_email_task(subject: str, body: str, recipients: list[str], subtype: MessageType = "html"):
+@app.task(name="send_email", queue="email")
+def send_email(
+    subject: str,
+    body: str,
+    recipients: list[str],
+    subtype: MessageType = "html"
+):
     message = EmailMessage()
     message['Subject'] = subject
     message['From'] = email_config.MAIL_FROM
