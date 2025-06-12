@@ -30,5 +30,6 @@ deploy-job:
     - docker compose up -d
   after_script:
     - docker restart nginx
+    - docker system prune -f
   rules:
     - if: '$CI_COMMIT_BRANCH == "master"'
