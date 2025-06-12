@@ -35,4 +35,4 @@ services:
       - yassyalil
     # depends_on:
     #   - rabbitmq
-    command: celery --app src.tasks.celery_app worker --pool threads --loglevel=INFO
+    command: celery --app src.celery_app worker --pool threads --loglevel=INFO
