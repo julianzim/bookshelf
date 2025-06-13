@@ -617,7 +617,7 @@
         border-radius: 25px;
         flex-direction: column;
         justify-content: space-around;
-        padding: 5px;
+        padding: 10px;
     }
 
     .purchase-top-right-block.mob {
@@ -648,36 +648,14 @@
                 }
 
                 .purchase-option-descr,
-                .purchase-option-price,
-                .buy-button {
+                .purchase-option-price {
                     font-size: 1em;
                     text-align: center;
                 }
 
-                .purchase-option-price,
-                .buy-button {
+                .purchase-option-price {
                     font-weight: bold;
                 }
-
-                    .buy-button:hover {
-                        background-color: #555;
-                    }
-
-        .buy-button-container {
-            display: flex;
-            justify-content: center;
-        }
-
-        .buy-button {
-            display: inline-block;
-            padding: 8px 16px;
-            border-radius: 25px;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            color: white;
-            background-color: #333;
-        }
 
 
     .related-books-lower-right-block {
