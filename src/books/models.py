@@ -18,7 +18,7 @@ class Books(Base):
     title: Mapped[str] = mapped_column(nullable=False)
     summary: Mapped[str] = mapped_column(nullable=False)
     pub_date: Mapped[datetime.datetime] = mapped_column(
-        server_default=text("TIMEZONE('utc', now())"), 
+        server_default=text("TIMEZONE('utc', now())"),
         nullable=False
     )
     author: Mapped[str] = mapped_column(nullable=False, default="Yassya Lil")
@@ -27,8 +27,9 @@ class Books(Base):
     language: Mapped[str] = mapped_column(nullable=True)
     min_age: Mapped[int] = mapped_column(nullable=True)
     max_age: Mapped[int] = mapped_column(nullable=True)
-    amazon_link: Mapped[str] = mapped_column(nullable=False)
-    aloud_link: Mapped[str] = mapped_column(nullable=False)
+    aloud_link: Mapped[str] = mapped_column(nullable=True)
+    pb_asin: Mapped[str] = mapped_column(nullable=True)
+    eb_asin: Mapped[str] = mapped_column(nullable=True)
     eb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
     active: Mapped[bool] = mapped_column(nullable=False, default=False)
@@ -43,23 +44,3 @@ class Themes(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(nullable=False)
-
-
-class BookInfo(Base):
-    __tablename__ = "books_info"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    author: Mapped[str] = mapped_column(nullable=False, default="Yassya Lil")
-    cover: Mapped[str] = mapped_column(nullable=False)
-    pages: Mapped[int] = mapped_column(nullable=True)
-    language: Mapped[str] = mapped_column(nullable=True)
-    min_age: Mapped[int] = mapped_column(nullable=True)
-    max_age: Mapped[int] = mapped_column(nullable=True)
-    amazon_link: Mapped[str] = mapped_column(nullable=False)
-    aloud_link: Mapped[str] = mapped_column(nullable=False)
-    eb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
-    pb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")
-    pub_date: Mapped[datetime.datetime] = mapped_column(
-        server_default=text("TIMEZONE('utc', now())"), 
-        nullable=False
-    )

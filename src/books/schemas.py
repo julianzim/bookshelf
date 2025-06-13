@@ -17,8 +17,9 @@ class BookCard(BaseBook):
 class BookDetail(BookCard):
     series: str
     pub_date: datetime.datetime
-    amazon_link: HttpUrl
     aloud_link: HttpUrl
+    eb_asin: str = Field(min_length=10, max_length=10, description="Amazon ASIN (10 symbols)")
+    pb_asin: str = Field(min_length=10, max_length=10, description="Amazon ASIN (10 symbols)")
     eb_price: float = Field(ge=0.0)
     pb_price: float = Field(ge=0.0)
     summary: str = Field(max_length=2000)
