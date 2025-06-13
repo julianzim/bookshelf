@@ -7,7 +7,7 @@ from typing import AsyncGenerator
 from src.main import app
 
 
-pytestmark = pytest.mark.skip(reason="Все тесты в этом файле временно отключены")
+# pytestmark = pytest.mark.skip(reason="Все тесты в этом файле временно отключены")
 
 
 @pytest.fixture
