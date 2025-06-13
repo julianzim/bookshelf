@@ -6,7 +6,7 @@ from sqlalchemy import pool
 from alembic import context
 
 from src.config import db_config
-from src.books.models import Books, Themes, BookInfo
+from src.books.models import Books, Themes
 from src.reviews.models import Reviews
 from src.articles.models import Articles
 from src.auth.models import Role, User
