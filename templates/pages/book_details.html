@@ -61,11 +61,11 @@
                         <div class="purchase-top-right-block mob">
                             <h3>Buy now on Amazon</h3>
                             <div class="purchase-options">
-                                <a href="{{ book.amazon_link }}" class="purchase-option" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.amazon.com/dp/{{ book.eb_asin }}" class="purchase-option" target="_blank" rel="noopener noreferrer">
                                     <span class="purchase-option-descr">Kindle eBook</span>
                                     <span class="purchase-option-price">from {{ book.eb_price }}$</span>
                                 </a>
-                                <a href="{{ book.amazon_link }}" class="purchase-option" target="_blank" rel="noopener noreferrer">
+                                <a href="https://www.amazon.com/dp/{{ book.pb_asin }}" class="purchase-option" target="_blank" rel="noopener noreferrer">
                                     <span class="purchase-option-descr">Paperback</span>
                                     <span class="purchase-option-price">from {{ book.pb_price }}$</span>
                                 </a>
