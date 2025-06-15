@@ -27,7 +27,7 @@ class Books(Base):
     language: Mapped[str] = mapped_column(nullable=True)
     min_age: Mapped[int] = mapped_column(nullable=True)
     max_age: Mapped[int] = mapped_column(nullable=True)
-    aloud_link: Mapped[str] = mapped_column(nullable=True)
+    video_id: Mapped[str] = mapped_column(nullable=True)
     pb_asin: Mapped[str] = mapped_column(nullable=True)
     eb_asin: Mapped[str] = mapped_column(nullable=True)
     eb_price: Mapped[float] = mapped_column(nullable=False, server_default="9.99")

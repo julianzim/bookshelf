@@ -17,7 +17,7 @@ class BookCard(BaseBook):
 class BookDetail(BookCard):
     series: str
     pub_date: datetime.datetime
-    aloud_link: HttpUrl
+    video_id: str = Field(min_length=11, max_length=11, description="YouTube video ID (11 symbols)")
     eb_asin: str = Field(min_length=10, max_length=10, description="Amazon ASIN (10 symbols)")
     pb_asin: str = Field(min_length=10, max_length=10, description="Amazon ASIN (10 symbols)")
     eb_price: float = Field(ge=0.0)
